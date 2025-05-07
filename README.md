@@ -13,13 +13,36 @@
 ---
 ### 기술 스택
 ```md
+FastAPI – 웹 API 프레임워크
+
+Uvicorn – ASGI 서버
+
+MongoDB – 비정형 데이터 저장 (피드백, 진단 결과)
+
+MySQL – 구조화 데이터 저장 (유저, 평가, 진도)
+
+CromaDB - 로드맵 데이터 저장
+
+OpenAI GPT-4 – 로드맵 및 피드백 생성
+
+LangChain – GPT + RAG 기반 검색 기능
+
 
 ```
 
 ---
 ### 프로젝트 구조
 ```md
-
+EDU_AI/
+├── app/
+│ ├── main.py # FastAPI 실행 진입점
+│ ├── routes/ # API 라우터들
+│ ├── models/ # Pydantic 모델 정의
+│ └── services/ # GPT, RAG, DB 연동 등 로직
+├── .env # 환경 변수 파일
+├── requirements.txt # 의존성 리스트
+├── README.md # 프로젝트 설명 문서
+└── .gitignore
 
 ```
 
@@ -78,3 +101,8 @@ Breaking Point 가 있을 때
 * [Gitmoji](https://gitmoji.dev/)를 이용하여 Type을 대신하기도 합니다.
 
 ---
+
+API 문서
+Swagger UI: http://localhost:8000/docs
+
+ReDoc: http://localhost:8000/redoc
