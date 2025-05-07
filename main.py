@@ -1,0 +1,40 @@
+# main.py 또는 별도 라우터에서 사용
+from fastapi import FastAPI
+from pydantic import BaseModel
+from gpt_prompt import build_growth_feedback_prompt
+from mongo_feedback import save_feedback_cache
+import openai
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+
+app = FastAPI()
+
+class FeedbackInput(BaseModel):
+    user_id: str
+    pre_text: str
+    post_text: str
+
+@app.post("/generate-feedback")
+async def generate_feedback(data: FeedbackInput):
+    prompt = build_growth_feedback_prompt(data.pre_text, data.post_text)
+
+    # GPT 호출
+    response = openai.ChatCompletion.create(
+        model="gpt-4o",
+        messages=[
+            {"role": "system", "content": "당신은 학습 성장 분석가입니다."},
+            {"role": "user", "content": prompt}
+        ],
+        temperature=0.7,
+        max_tokens=800
+    )
+
+    feedback_text = response['choices'][0]['message']['content']
+    await save_feedback_cache(data.user_id, feedback_text)
+
+    return {"feedback": feedback_text}
+
