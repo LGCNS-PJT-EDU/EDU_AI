@@ -1,8 +1,8 @@
 # main.py 또는 별도 라우터에서 사용
 from fastapi import FastAPI
 from pydantic import BaseModel
-from .gpt_prompt import build_growth_feedback_prompt
-from .mongo_feedback import save_feedback_cache
+from app.gpt_prompt import build_growth_feedback_prompt
+from app.mongo_feedback import save_feedback_cache
 import openai
 import os
 from dotenv import load_dotenv
@@ -37,4 +37,3 @@ async def generate_feedback(data: FeedbackInput):
     await save_feedback_cache(data.user_id, feedback_text)
 
     return {"feedback": feedback_text}
-
