@@ -11,7 +11,7 @@ import openai
 import os
 from dotenv import load_dotenv
 from datetime import date
-from typing import List
+from typing import List, Dict
 
 from app.mongodb import db
 
@@ -26,21 +26,13 @@ class FeedbackInput(BaseModel):
     pre_text: str
     post_text: str
 
-class ScoreItem(BaseModel):
-    category: str
-    value:    int
-
-class StrengthWeaknessItem(BaseModel):
-    id:          str
-    description: str
-
-class Content(BaseModel):
-    scores:     List[ScoreItem]
-    strengths:  List[StrengthWeaknessItem]
-    weaknesses: List[StrengthWeaknessItem]
+class Feedback(BaseModel):
+    strength: Dict[str, str]
+    weakness: Dict[str, str]
+    final: str
 
     model_config = {
-        "populate_by_name":  True,
+        "populate_by_name": True,
         "populate_by_alias": True
     }
 
@@ -55,8 +47,9 @@ class Info(BaseModel):
     }
 
 class FeedbackResponse(BaseModel):
-    info:    Info
-    content: Content
+    info: Info
+    scores: Dict[str, int]
+    feedback: Feedback
 
     model_config = {
         "populate_by_name":  True,
@@ -89,23 +82,17 @@ async def list_feedbacks(userId: str):
     target = db["feedback"].find({"info.userId": userId})
     docs = await target.to_list(length=1000)
 
-    responses = []
+    responses: List[FeedbackResponse] = []
     for doc in docs:
-        info = doc.get("info", {})
-        content = doc.get("content", {})
+        info_dict = doc.get("info", {})
+        scores_dict = doc.get("scores", {})
+        feedback_dict = doc.get("feedback", {})
 
         responses.append(
             FeedbackResponse(
-                info=Info(
-                    user_id=info.get("userId"),
-                    date=info.get("date"),
-                    subject=info.get("subject")
-                ),
-                content=Content(
-                    scores=[ScoreItem(**s) for s in content.get("scores", [])],
-                    strengths=[StrengthWeaknessItem(**s) for s in content.get("strengths", [])],
-                    weaknesses=[StrengthWeaknessItem(**w) for w in content.get("weaknesses", [])]
-                )
+                info=Info(**info_dict),
+                scores=scores_dict,
+                feedback=Feedback(**feedback_dict)
             )
         )
 
