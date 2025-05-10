@@ -6,8 +6,8 @@ from typing import List
 from datetime import date
 import openai
 
-from app.mongodb import db
-from app.rag_module import retrieve_similar_docs
+from app.configs.mongodb import db
+from app.services.rag_module import retrieve_similar_docs
 
 router = APIRouter()
 

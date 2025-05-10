@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-from app.mongodb import db
+from app.configs.mongodb import db
 from datetime import datetime
 from app.utils.pretest_log_utils import build_pretest_log
 from app.utils.level_utils import calculate_level_from_answers

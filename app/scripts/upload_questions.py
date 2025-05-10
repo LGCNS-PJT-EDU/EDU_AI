@@ -1,7 +1,7 @@
 import os
 import json
 import asyncio
-from app.mongodb import db
+from app.configs.mongodb import db
 
 async def upload_questions():
     # 현재 스크립트 기준 경로
