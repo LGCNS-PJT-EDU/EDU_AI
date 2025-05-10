@@ -1,6 +1,6 @@
 # mongo_feedback.py
 from datetime import datetime
-from app.configs.mongodb import db
+from app.clients.mongodb import db
 
 async def save_feedback_cache(user_id: str, feedback_text: str):
     doc = {

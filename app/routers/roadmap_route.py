@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
-from app.configs.mongodb import db
+from app.clients.mongodb import db
 from app.services.mongo_roadmap import save_roadmap_cache
 from app.utils.gpt_prompt import build_roadmap_prompt
 from app.services.roadmap_rag import generate_roadmap_rag

@@ -1,6 +1,6 @@
 # app/mongo_roadmap.py
 
-from app.configs.mongodb import db
+from app.clients.mongodb import db
 from datetime import datetime
 
 async def save_roadmap_cache(user_id, roadmap):
