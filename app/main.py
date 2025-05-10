@@ -1,24 +1,23 @@
 # app/main.py
 from fastapi import FastAPI
 from dotenv import load_dotenv
-from pydantic import BaseModel, Field
 from starlette.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
-from app.gpt_prompt import build_growth_feedback_prompt
-from app.mongo_feedback import save_feedback_cache
+from app.models.models import FeedbackInput, FeedbackResponse, Info, Feedback
+from app.utils.gpt_prompt import build_growth_feedback_prompt
+from app.services.mongo_feedback import save_feedback_cache
 import openai
 import os
-from datetime import date
-from typing import List, Dict
-from app.mongodb import db
+from typing import List
+from app.clients.mongodb import db
 
 
 #  라우터들 먼저 import
-from app.routes.assessment import router as assessment_router
-from app.routes.post_assessment import router as post_assessment_router
-from app.routes.activity_log import router as activity_log_router
-from app.routes.roadmap_route import router as roadmap_router
-from app.routes.feedback_route import router as feedback_router
+from app.routers.endpoints.assessment import router as assessment_router
+from app.routers.endpoints.post_assessment import router as post_assessment_router
+from app.routers.endpoints.activity_log import router as activity_log_router
+from app.routers.roadmap_route import router as roadmap_router
+from app.routers.feedback_route import router as feedback_router
 
 #  환경 변수 및 OpenAI 키 설정
 load_dotenv()
@@ -38,41 +37,6 @@ app.include_router(activity_log_router, prefix="/api/v1")
 app.include_router(roadmap_router, prefix="/api/v1")
 app.include_router(feedback_router, prefix="/api/v1")
 
-
-class FeedbackInput(BaseModel):
-    user_id: str
-    pre_text: str
-    post_text: str
-
-class Feedback(BaseModel):
-    strength: Dict[str, str]
-    weakness: Dict[str, str]
-    final: str
-
-    model_config = {
-        "populate_by_name": True,
-        "populate_by_alias": True
-    }
-
-class Info(BaseModel):
-    user_id: str  = Field(..., alias="userId")
-    date:    date
-    subject: str
-
-    model_config = {
-        "populate_by_name":  True,
-        "populate_by_alias": True
-    }
-
-class FeedbackResponse(BaseModel):
-    info: Info
-    scores: Dict[str, int]
-    feedback: Feedback
-
-    model_config = {
-        "populate_by_name":  True,
-        "populate_by_alias": True
-    }
 
 
 @app.post("/generate-feedback")

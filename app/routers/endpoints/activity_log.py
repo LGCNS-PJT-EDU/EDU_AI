@@ -1,4 +1,4 @@
-# app/routes/activity_log.py
+# app/routers/activity_log.py
 
 from fastapi import APIRouter
 

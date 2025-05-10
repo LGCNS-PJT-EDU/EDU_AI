@@ -1,4 +1,4 @@
-# app/routes/post_assessment.py
+# app/routers/post_assessment.py
 
 from fastapi import APIRouter
 
