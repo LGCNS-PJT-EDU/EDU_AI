@@ -1,10 +1,10 @@
 # app/roadmap_rag.py
 
-from langchain.vectorstores import Chroma
+from langchain_community.vectorstores import Chroma
 from langchain.chains import RetrievalQA
-from langchain.chat_models import ChatOpenAI
+from langchain_community.chat_models import ChatOpenAI
 from langchain.prompts import PromptTemplate
-from langchain.embeddings import OpenAIEmbeddings
+from langchain_community.embeddings import OpenAIEmbeddings
 
 def generate_roadmap_rag(prompt: str):
     vectordb = Chroma(persist_directory="chroma_store/roadmaps", embedding_function=OpenAIEmbeddings())

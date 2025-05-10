@@ -2,9 +2,6 @@
 
 from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import OpenAIEmbeddings
-from langchain_community.document_loaders import TextLoader
-from langchain_community.text_splitter import RecursiveCharacterTextSplitter
-import os
 
 CHROMA_DIR = "chroma_store"
 
