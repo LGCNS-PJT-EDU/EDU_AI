@@ -2123,7 +2123,7 @@
       "git info"
     ],
     "answer": "git version",
-    "level": 0,
+    "level": 1,
     "difficulty": "low",
     "track": "frontend"
   },
@@ -2137,7 +2137,7 @@
       "git create"
     ],
     "answer": "git init",
-    "level": 0,
+    "level": 1,
     "difficulty": "low",
     "track": "frontend"
   },
@@ -2151,7 +2151,7 @@
       "REST API 모델"
     ],
     "answer": "파일 전체 스냅샷 모델",
-    "level": 0,
+    "level": 1,
     "difficulty": "medium",
     "track": "frontend"
   },
@@ -2165,7 +2165,7 @@
       "Repository"
     ],
     "answer": "Pull Request",
-    "level": 0,
+    "level": 1,
     "difficulty": "medium",
     "track": "frontend"
   },
@@ -2179,7 +2179,7 @@
       "GUI 필수"
     ],
     "answer": "분산 버전 관리",
-    "level": 0,
+    "level": 1,
     "difficulty": "medium",
     "track": "frontend"
   },
@@ -2193,7 +2193,7 @@
       ".version"
     ],
     "answer": ".git",
-    "level": 0,
+    "level": 1,
     "difficulty": "high",
     "track": "frontend"
   },
@@ -2207,7 +2207,7 @@
       "git setup name"
     ],
     "answer": "git config user.name",
-    "level": 0,
+    "level": 1,
     "difficulty": "high",
     "track": "frontend"
   },
@@ -2221,7 +2221,7 @@
       "커밋된 파일 저장소"
     ],
     "answer": "현재 작업 중인 로컬 폴더",
-    "level": 0,
+    "level": 1,
     "difficulty": "high",
     "track": "frontend"
   },
@@ -2235,7 +2235,7 @@
       "삭제 대기 공간"
     ],
     "answer": "커밋 준비 중인 공간",
-    "level": 0,
+    "level": 1,
     "difficulty": "high",
     "track": "frontend"
   },
@@ -2249,7 +2249,7 @@
       "git status"
     ],
     "answer": "git add",
-    "level": 0,
+    "level": 1,
     "difficulty": "low",
     "track": "frontend"
   },
@@ -2263,7 +2263,7 @@
       "git merge"
     ],
     "answer": "git commit",
-    "level": 0,
+    "level": 1,
     "difficulty": "low",
     "track": "frontend"
   },
@@ -2277,7 +2277,7 @@
       "git log"
     ],
     "answer": "git status",
-    "level": 0,
+    "level": 1,
     "difficulty": "low",
     "track": "frontend"
   },
@@ -2291,7 +2291,7 @@
       "git rebase"
     ],
     "answer": "git commit --amend",
-    "level": 0,
+    "level": 1,
     "difficulty": "medium",
     "track": "frontend"
   },
@@ -2305,7 +2305,7 @@
       "git rollback"
     ],
     "answer": "git restore file",
-    "level": 0,
+    "level": 1,
     "difficulty": "medium",
     "track": "frontend"
   },
@@ -2319,7 +2319,7 @@
       "서버 상태"
     ],
     "answer": "커밋 기록",
-    "level": 0,
+    "level": 1,
     "difficulty": "medium",
     "track": "frontend"
   },
@@ -2333,7 +2333,7 @@
       "git restore"
     ],
     "answer": "git reset HEAD <file>",
-    "level": 0,
+    "level": 1,
     "difficulty": "high",
     "track": "frontend"
   },
@@ -2347,7 +2347,7 @@
       "git commit"
     ],
     "answer": "git add",
-    "level": 0,
+    "level": 1,
     "difficulty": "high",
     "track": "frontend"
   },
@@ -2361,7 +2361,7 @@
       "git log"
     ],
     "answer": "git diff",
-    "level": 0,
+    "level": 1,
     "difficulty": "high",
     "track": "frontend"
   },
@@ -2375,7 +2375,7 @@
       "git show"
     ],
     "answer": "git diff",
-    "level": 0,
+    "level": 1,
     "difficulty": "high",
     "track": "frontend"
   },
@@ -2389,7 +2389,7 @@
       "git make branch"
     ],
     "answer": "git branch <branch-name>",
-    "level": 0,
+    "level": 1,
     "difficulty": "low",
     "track": "frontend"
   },
@@ -2403,7 +2403,7 @@
       "git check"
     ],
     "answer": "git branch",
-    "level": 0,
+    "level": 1,
     "difficulty": "low",
     "track": "frontend"
   },
@@ -2417,7 +2417,7 @@
       "git jump"
     ],
     "answer": "git switch",
-    "level": 0,
+    "level": 1,
     "difficulty": "low",
     "track": "frontend"
   },
@@ -2431,7 +2431,7 @@
       "git clear branch"
     ],
     "answer": "git branch -d <branch-name>",
-    "level": 0,
+    "level": 1,
     "difficulty": "medium",
     "track": "frontend"
   },
@@ -2445,7 +2445,7 @@
       "git combine"
     ],
     "answer": "git merge",
-    "level": 0,
+    "level": 1,
     "difficulty": "medium",
     "track": "frontend"
   },
@@ -2459,7 +2459,7 @@
       "reset 하기"
     ],
     "answer": "충돌 해결",
-    "level": 0,
+    "level": 1,
     "difficulty": "medium",
     "track": "frontend"
   },
@@ -2473,7 +2473,7 @@
       "충돌 발생 시"
     ],
     "answer": "브랜치가 동일 선상일 때",
-    "level": 0,
+    "level": 1,
     "difficulty": "high",
     "track": "frontend"
   },
@@ -2487,7 +2487,7 @@
       "브랜치 복제"
     ],
     "answer": "커밋 기록을 정리",
-    "level": 0,
+    "level": 1,
     "difficulty": "high",
     "track": "frontend"
   },
@@ -2501,7 +2501,7 @@
       "git merge"
     ],
     "answer": "충돌 해결 후 git rebase --continue",
-    "level": 0,
+    "level": 1,
     "difficulty": "high",
     "track": "frontend"
   },
@@ -2515,7 +2515,7 @@
       "squash"
     ],
     "answer": "rebase",
-    "level": 0,
+    "level": 1,
     "difficulty": "high",
     "track": "frontend"
   },
@@ -2529,7 +2529,7 @@
       "git copy"
     ],
     "answer": "git clone",
-    "level": 0,
+    "level": 1,
     "difficulty": "low",
     "track": "frontend"
   },
@@ -2543,7 +2543,7 @@
       "git sync"
     ],
     "answer": "git remote add",
-    "level": 0,
+    "level": 1,
     "difficulty": "low",
     "track": "frontend"
   },
@@ -2557,7 +2557,7 @@
       "git check remote"
     ],
     "answer": "git remote -v",
-    "level": 0,
+    "level": 1,
     "difficulty": "low",
     "track": "frontend"
   },
@@ -2585,7 +2585,7 @@
       "git clone"
     ],
     "answer": "git pull",
-    "level": 0,
+    "level": 1,
     "difficulty": "medium",
     "track": "frontend"
   },
@@ -2599,7 +2599,7 @@
       "git switch"
     ],
     "answer": "git merge",
-    "level": 0,
+    "level": 1,
     "difficulty": "medium",
     "track": "frontend"
   },
@@ -2613,7 +2613,7 @@
       "git delete origin"
     ],
     "answer": "git remote rm",
-    "level": 0,
+    "level": 1,
     "difficulty": "high",
     "track": "frontend"
   },
@@ -2627,7 +2627,7 @@
       "main 브랜치 이름 변경"
     ],
     "answer": "main 브랜치를 원격 저장소에 업로드",
-    "level": 0,
+    "level": 1,
     "difficulty": "high",
     "track": "frontend"
   },
@@ -2641,7 +2641,7 @@
       "브랜치를 새로 만드는 것"
     ],
     "answer": "자신의 계정으로 프로젝트를 복사",
-    "level": 0,
+    "level": 1,
     "difficulty": "high",
     "track": "frontend"
   },
@@ -2655,7 +2655,7 @@
       "hotfix"
     ],
     "answer": "master/main",
-    "level": 0,
+    "level": 1,
     "difficulty": "high",
     "track": "frontend"
   },
@@ -2669,7 +2669,7 @@
       "Commit Request"
     ],
     "answer": "Pull Request",
-    "level": 0,
+    "level": 1,
     "difficulty": "low",
     "track": "frontend"
   },
@@ -2683,7 +2683,7 @@
       "패치 URL"
     ],
     "answer": "베이스 브랜치와 비교 브랜치",
-    "level": 0,
+    "level": 1,
     "difficulty": "low",
     "track": "frontend"
   },
@@ -2697,7 +2697,7 @@
       "프로젝트 복제"
     ],
     "answer": "버그 관리 및 기능 요청",
-    "level": 0,
+    "level": 1,
     "difficulty": "low",
     "track": "frontend"
   },
@@ -2711,7 +2711,7 @@
       "브랜치 삭제"
     ],
     "answer": "코드 검토 요청",
-    "level": 0,
+    "level": 1,
     "difficulty": "medium",
     "track": "frontend"
   },
@@ -2725,7 +2725,7 @@
       "저장소 삭제"
     ],
     "answer": "CI/CD 파이프라인",
-    "level": 0,
+    "level": 1,
     "difficulty": "medium",
     "track": "frontend"
   },
@@ -2739,7 +2739,7 @@
       "새 브랜치 만들기"
     ],
     "answer": "포크한 저장소에 push",
-    "level": 0,
+    "level": 1,
     "difficulty": "medium",
     "track": "frontend"
   },
@@ -2753,7 +2753,7 @@
       "Fork 설정"
     ],
     "answer": "GPG 서명 설정",
-    "level": 0,
+    "level": 1,
     "difficulty": "high",
     "track": "frontend"
   },
@@ -2767,7 +2767,7 @@
       "Reviewer"
     ],
     "answer": "Owner",
-    "level": 0,
+    "level": 1,
     "difficulty": "high",
     "track": "frontend"
   },
@@ -2781,7 +2781,7 @@
       "config/issues/"
     ],
     "answer": ".github/ISSUE_TEMPLATE/",
-    "level": 0,
+    "level": 1,
     "difficulty": "high",
     "track": "frontend"
   },
@@ -2795,7 +2795,7 @@
       "코드를 롤백하기 위해"
     ],
     "answer": "히스토리를 깔끔하게 유지하기 위해",
-    "level": 0,
+    "level": 1,
     "difficulty": "high",
     "track": "frontend"
   }
