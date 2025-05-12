@@ -3,11 +3,6 @@ from pydantic import BaseModel, Field
 from datetime import date
 
 
-class FeedbackInput(BaseModel):
-    user_id: str
-    pre_text: str
-    post_text: str
-
 class Feedback(BaseModel):
     strength: Dict[str, str]
     weakness: Dict[str, str]

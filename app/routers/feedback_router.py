@@ -3,7 +3,8 @@ from fastapi import APIRouter
 from fastapi.encoders import jsonable_encoder
 
 from app.clients.mongodb import db
-from app.models.models import FeedbackResponse, Info, Feedback, FeedbackInput
+from app.models.feedback.request import FeedbackRequest
+from app.models.feedback.response import FeedbackResponse, Info, Feedback
 from typing import List
 
 from app.services.mongo_feedback import save_feedback_cache
@@ -36,7 +37,7 @@ async def list_feedbacks(userId: str):
 
 
 @router.post("/generate-feedback", summary="사용자의 피드백을 생성", description="ChatGPT를 활용해서 해당 사용자의 피드백을 생성한다.")
-async def generate_feedback(data: FeedbackInput):
+async def generate_feedback(data: FeedbackRequest):
     prompt = build_growth_feedback_prompt(data.pre_text, data.post_text)
 
     # GPT 호출
