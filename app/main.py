@@ -1,23 +1,16 @@
-# app/main.py
+# library
 from fastapi import FastAPI
 from dotenv import load_dotenv
-from starlette.responses import JSONResponse
-from fastapi.encoders import jsonable_encoder
-from app.models.models import FeedbackInput, FeedbackResponse, Info, Feedback
-from app.utils.gpt_prompt import build_growth_feedback_prompt
-from app.services.mongo_feedback import save_feedback_cache
 import openai
 import os
-from typing import List
-from app.clients.mongodb import db
 
+#  router import
+from app.routers.pre_assessment_router import router as assessment_router
+from app.routers.post_assessment_router import router as post_assessment_router
+from app.routers.activity_log_router import router as activity_log_router
+from app.routers.roadmap_router import router as roadmap_router
+from app.routers.feedback_router import router as feedback_router
 
-#  라우터들 먼저 import
-from app.routers.endpoints.assessment import router as assessment_router
-from app.routers.endpoints.post_assessment import router as post_assessment_router
-from app.routers.endpoints.activity_log import router as activity_log_router
-from app.routers.roadmap_route import router as roadmap_router
-from app.routers.feedback_route import router as feedback_router
 
 #  환경 변수 및 OpenAI 키 설정
 load_dotenv()
@@ -31,52 +24,8 @@ app = FastAPI(
 )
 
 #  라우터 등록 (순서 중요)
-app.include_router(assessment_router, prefix="/api/v1")
-app.include_router(post_assessment_router, prefix="/api/v1")
-app.include_router(activity_log_router, prefix="/api/v1")
-app.include_router(roadmap_router, prefix="/api/v1")
-app.include_router(feedback_router, prefix="/api/v1")
-
-
-
-@app.post("/generate-feedback")
-async def generate_feedback(data: FeedbackInput):
-    prompt = build_growth_feedback_prompt(data.pre_text, data.post_text)
-
-    # GPT 호출
-    response = openai.ChatCompletion.create(
-        model="gpt-4o",
-        messages=[
-            {"role": "system", "content": "당신은 학습 성장 분석가입니다."},
-            {"role": "user", "content": prompt}
-        ],
-        temperature=0.7,
-        max_tokens=800
-    )
-
-    feedback_text = response['choices'][0]['message']['content']
-    await save_feedback_cache(data.user_id, feedback_text)
-
-    return {"feedback": feedback_text}
-
-@app.get("/feedback", response_model=List[FeedbackResponse], response_model_by_alias=True)
-async def list_feedbacks(userId: str):
-    target = db["feedback"].find({"info.userId": userId})
-    docs = await target.to_list(length=1000)
-
-    responses: List[FeedbackResponse] = []
-    for doc in docs:
-        info_dict = doc.get("info", {})
-        scores_dict = doc.get("scores", {})
-        feedback_dict = doc.get("feedback", {})
-
-        responses.append(
-            FeedbackResponse(
-                info=Info(**info_dict),
-                scores=scores_dict,
-                feedback=Feedback(**feedback_dict)
-            )
-        )
-
-    serialized = [r.model_dump(by_alias=True) for r in responses]
-    return JSONResponse(status_code=200, content=jsonable_encoder(serialized))
+app.include_router(assessment_router, prefix="/api/pre", tags=["사전 평가 기능 관련 API"])
+app.include_router(post_assessment_router, prefix="/api/post", tags=["사후 평가 기능 관련 API"])
+app.include_router(activity_log_router, prefix="/api/activity", tags=["활동 기록 기능 관련 API"])
+app.include_router(roadmap_router, prefix="/api/roadmap", tags=["로드맵 기능 관련 API"])
+app.include_router(feedback_router, prefix="/api/feedback", tags=["피드백 기능 관련 API"])
