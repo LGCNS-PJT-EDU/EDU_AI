@@ -2,7 +2,6 @@ import json
 from datetime import date
 
 import openai
-from datetime import date
 
 
 from fastapi import APIRouter, HTTPException
@@ -23,7 +22,6 @@ from app.services.rag_module import retrieve_similar_docs
 from app.utils.build_feedback_prompt import build_feedback_prompt
 
 router = APIRouter()
-
 
 
 @router.get("", response_model=List[FeedbackResponse], response_model_by_alias=True, summary="지정한 사용자의 피드백을 반환", description="해당 유저의 전체 피드백을 반환한다.")
