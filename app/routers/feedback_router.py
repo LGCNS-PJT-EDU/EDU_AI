@@ -1,4 +1,5 @@
 import json
+import re
 from datetime import date
 
 import openai
@@ -50,34 +51,30 @@ async def list_feedbacks(userId: str):
 @router.post("/generate-feedback", response_model=List[FeedbackResponse], response_model_by_alias=True, summary="지정한 사용자의 피드백을 생성", description="해당 유저의 직전 테스트 결과와 이번 테스트 결과를 활용해서 피드백을 생성한다.")
 async def generate_feedback(data: FeedbackRequest, userId: str, subject: str):
     data.user_id = userId
-    data.subject = data.subject
+    data.subject = subject
 
-    # 사전 평가 여부 확인
-    pre_doc = await db.feedback.find_one({
-        "info.userId": data.user_id,
-        "info.subject": data.subject,
-        "info.type": "pre"
-    })
+    pre_count = await db.feedback.count_documents(
+        {"info.userId": data.user_id, "info.subject": data.subject, "info.type": "pre"}
+    )
 
-    # 현재 사후 평가 횟수 확인
-    post_docs = await db.feedback.find({
-        "info.userId": data.user_id,
-        "info.subject": data.subject,
-        "info.type": "post"
-    }).sort("info.date", -1).to_list(length=2)
+    post_count = await db.feedback.count_documents(
+        {"info.userId": data.user_id, "info.subject": data.subject, "info.type": "post"}
+    )
+
 
     # 피드백 프롬프트 생성
-    if not pre_doc:
+    if pre_count == 0:
         # 사전 평가 최초
         prompt = build_initial_feedback_prompt(data)
         feedback_type = "pre"
-    elif not post_docs:
+    elif post_count == 0:
         # 첫 사후 평가
+        pre_doc = await db.feedback.find_one({"info.userId": data.user_id, "info.subject": data.subject}, sort=[("_id", 1)])
         prompt = build_pre_post_comparison_prompt(pre_doc, data)
         feedback_type = "post"
     else:
         # 이전 사후와 비교
-        previous_post = post_docs[0]
+        previous_post = await db.feedback.find_one({"info.userId": data.user_id, "info.subject": data.subject}, sort=[("_id", -1)])
         prompt = build_post_post_comparison_prompt(previous_post, data)
         feedback_type = "post"
 
@@ -95,6 +92,7 @@ async def generate_feedback(data: FeedbackRequest, userId: str, subject: str):
 
 [사용자 피드백 요청]
 {base_prompt}
+※ 반드시 순수 JSON 객체 하나만 반환해주세요. 다른 설명이나 코드블록은 모두 제거해주세요. ※
 """
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
@@ -114,7 +112,16 @@ async def generate_feedback(data: FeedbackRequest, userId: str, subject: str):
 
     # JSON parse
     try:
-        parsed = json.loads(feedback_text)
+        text_reg = feedback_text.strip()
+        text_reg = re.sub(r"^```json\s*|\s*```$", "", text_reg)
+        match = re.search(r"\{.*\}", text_reg, re.DOTALL)
+        if match:
+            text_reg = match.group(0)
+
+        print(text_reg)
+
+
+        parsed = json.loads(text_reg)
         info = parsed["info"]
         scores = parsed["scores"]
         feedback = parsed["feedback"]

@@ -1,12 +1,72 @@
 from app.models.feedback.request import FeedbackRequest
 
+JSON_SCHEMA = """
+        [출력 포맷]
+        반드시 순수 JSON 객체 하나만 반환해주세요. 다른 설명, 코드블록, 마크다운 문법은 절대 포함하지 마세요.
+
+        스키마:
+        {
+          "info": {
+            "userId": "<string>",
+            "date": "<YYYY-MM-DD>",
+            "subject": "<string>"
+          },
+          "scores": {
+            "chapter1": <int>,
+            "chapter2": <int>,
+            "chapter3": <int>,
+            "chapter4": <int>,
+            "chapter5": <int>,
+            "total":    <int>
+          },
+          "feedback": {
+            "strength": { "<key>": "<문장>", ... },
+            "weakness": { "<key>": "<문장>", ... },
+            "final":     "<최종 코멘트>"
+          }
+        }
+
+        [데이터 저장 구조 예시]
+        ```json
+        {
+          "info": {
+            "userId": "3k1_s953",
+            "date": "2025-05-13",
+            "subject": "Vue.js"
+          },
+          "scores": {
+            "chapter1": 0,
+            "chapter2": 0,
+            "chapter3": 0,
+            "chapter4": 0,
+            "chapter5": 0,
+            "total":    0
+          },
+          "feedback": {
+            "strength": {
+              "chapter1": "good feedback for chapter1",
+              "chapter2": "good feedback for chapter2",
+              "chapter3": "good feedback for chapter3",
+              "chapter4": "good feedback for chapter4",
+              "chapter5": "good feedback for chapter5"
+            },
+            "weakness": {
+              "chapter1": "bad feedback for chapter1",
+              "chapter2": "bad feedback for chapter2",
+              "chapter3": "bad feedback for chapter3",
+              "chapter4": "bad feedback for chapter4",
+              "chapter5": "bad feedback for chapter5"
+            },
+            "final": "final summary comment"
+          }
+        }
+"""
+
 
 def build_feedback_prompt(data: FeedbackRequest) -> str:
     if data.pre_score is not None and data.post_score is not None:
-        gap = data.post_score - data.pre_score
-        summary = f"사전 평가 점수: {data.pre_score}, 사후 평가 점수: {data.post_score} → 변화: {gap:+}점"
 
-        return f"""
+        prompt_body = f"""
 당신은 교육 심리 기반의 학습 진단 전문가입니다.
 
 아래 조건을 바탕으로 전문적인 진단 보고서를 작성해주세요:
@@ -14,7 +74,6 @@ def build_feedback_prompt(data: FeedbackRequest) -> str:
 [학습 데이터]
 - 과목: {data.subject}
 - 단원: {data.chapter}
-- {summary}
 
 [출력 형식]
 1. 성취 수준 요약 (한 문단)
@@ -25,7 +84,7 @@ def build_feedback_prompt(data: FeedbackRequest) -> str:
 ※ 400자 이내 요약문으로 작성해주세요.
 """
     elif data.pre_text and data.post_text:
-        return f"""
+        prompt_body = f"""
 당신은 교육 심리 기반의 학습 진단 전문가입니다.
 
 [학습자 응답 비교]
@@ -40,6 +99,11 @@ def build_feedback_prompt(data: FeedbackRequest) -> str:
 4. 추천 보완 개념 3가지 (이해 기반 추천)
 
 ※ 전체 400자 이내의 평가 요약문으로 작성해주세요.
+
+[출력 포맷]
+반드시 순수 JSON 객체 하나만 반환해주세요.
 """
     else:
         raise ValueError("점수 또는 텍스트가 충분하지 않습니다.")
+
+    return prompt_body + JSON_SCHEMA
