@@ -19,4 +19,4 @@ spec:
         - name: fastapi-container
           image: 754874159206.dkr.ecr.ap-northeast-2.amazonaws.com/takeit/fastapi:latest
           ports:
-            - containerPort: 9800
+            - containerPort: 8000
