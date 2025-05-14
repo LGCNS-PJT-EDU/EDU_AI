@@ -143,7 +143,6 @@ async def generate_feedback(data: FeedbackRequest, userId: str, subject: str):
 
     #  MongoDB 저장
     await db.feedback.insert_one({
-        "user_id": data.user_id,
         "info": info,
         "scores": scores,
         "feedback": {
