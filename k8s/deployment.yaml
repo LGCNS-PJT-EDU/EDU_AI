@@ -5,6 +5,10 @@ metadata:
   namespace: fastapi
   labels:
     app: fastapi-app
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: 754874159206.dkr.ecr.ap-northeast-2.amazonaws.com/takeit/fastapi
+    argocd-image-updater.argoproj.io/image-update-strategy: latest
+    argocd-image-updater.argoproj.io/write-back-method: argocd
 spec:
   replicas: 1
   selector:
@@ -20,3 +24,9 @@ spec:
           image: 754874159206.dkr.ecr.ap-northeast-2.amazonaws.com/takeit/fastapi:latest
           ports:
             - containerPort: 8000
+          env:
+           - name: OPENAI_API_KEY
+             valueFrom:
+               secretKeyRef:
+                 name: fastapi-secret
+                 key: openai-api-key
