@@ -91,7 +91,7 @@ def build_pretest_log(user_id: str, questions: list[dict]):
     }
 
 # 사전 평가 문제 반환
-@router.get("/subject", response_model=List[PreQuestion])
+@router.get("/subject", response_model=List[PreQuestion], response_model_by_alias=False)
 async def get_pretest(user_id:str, subject_id: int):
     # 1. 사용자 정보 조회
     user = await db.user_profiles.find_one({"user_id": user_id})
@@ -99,7 +99,6 @@ async def get_pretest(user_id:str, subject_id: int):
         raise HTTPException(status_code=404, detail="User not found")
 
     e_level = user.get("level")
-    print(e_level)
 
     # 2) techMap 문서 한 번 불러오기
     mapping = await db.techMap.find_one({})
@@ -110,7 +109,6 @@ async def get_pretest(user_id:str, subject_id: int):
     subject_name = mapping.get(str(subject_id))
     if not subject_name:
         raise HTTPException(status_code=404, detail="Subject not found")
-    print(subject_name)
 
     # 4) Korean level (영어 키) 조회
     difficulties_doc = await db.techMap.find_one({"difficulties": {"$exists": True}})
@@ -119,15 +117,13 @@ async def get_pretest(user_id:str, subject_id: int):
 
     k_level = difficulties_doc["difficulties"].get(e_level)
 
-    print(k_level)
-
     question_count = {}
     if k_level == "하":
-        question_count["상"], question_count["중"], question_count["하"] = 2, 5, 8
+        question_count["상"], question_count["중"], question_count["하"] = 1, 3, 6
     elif k_level == "중":
-        question_count["상"], question_count["중"], question_count["하"] = 4, 6, 5
+        question_count["상"], question_count["중"], question_count["하"] = 3, 4, 3
     elif k_level == "상":
-        question_count["상"], question_count["중"], question_count["하"] = 7, 5, 3
+        question_count["상"], question_count["중"], question_count["하"] = 6, 3, 1
     else:
         raise HTTPException(status_code=500, detail="Forbidden attempt occurred")
 
