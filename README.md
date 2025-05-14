@@ -73,7 +73,7 @@ feat: 압축파일 미리보기 기능 추가
 Closes #125
 ```
 
-* Tpye
+* Type
 
 | 타입 | 설명 |
 | :- | - |
@@ -99,6 +99,14 @@ Breaking Point 가 있을 때
 특정 이슈에 대한 해결 작업일 때
 
 * [Gitmoji](https://gitmoji.dev/)를 이용하여 Type을 대신하기도 합니다.
+
+---
+
+### 피드백 프롬프트 수정 기록
+v1: link<br>
+v2: https://github.com/LGCNS-PJT-EDU/EDU_AI/commit/369b647b877a1777c9126fe20cece7257086e281<br>
+v3: https://github.com/LGCNS-PJT-EDU/EDU_AI/commit/02971bb81834d0b5c17067743bde0169e62f239a<br>
+v4: 
 
 ---
 
