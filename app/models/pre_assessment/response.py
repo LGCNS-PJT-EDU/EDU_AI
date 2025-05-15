@@ -1,5 +1,4 @@
 from pydantic import BaseModel, Field
-from sqlalchemy import BIGINT
 
 
 class PreQuestion(BaseModel):

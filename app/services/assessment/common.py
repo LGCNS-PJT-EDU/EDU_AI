@@ -36,7 +36,6 @@ def safe_sample(pool, cnt):
 def result_generate(question_list):
     random.shuffle(question_list)
 
-    # 5) question_id 부여 및 모델 변환
     result: List[PreQuestion] = []
     for idx, doc in enumerate(question_list, start=1):
         doc.pop("_id", None)
