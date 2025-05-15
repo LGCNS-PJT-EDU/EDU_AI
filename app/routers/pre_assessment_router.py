@@ -90,7 +90,7 @@ def build_pretest_log(user_id: str, questions: list[dict]):
         "timestamp": datetime.now().isoformat()
     }
 
-@router.get("/subject", response_model=List[PreQuestion], response_model_exclude_none=False)
+@router.get("/subject", response_model=List[PreQuestion], response_model_by_alias=False)
 async def get_pretest(user_id: str, subject_id: int):
     user = await get_user(user_id)
     level = user.get("level")
@@ -111,19 +111,11 @@ async def get_pretest(user_id: str, subject_id: int):
         selected += safe_sample(mid_qs, 1)
         selected += safe_sample(easy_qs, 1)
 
-    random.shuffle(selected)
-
-    # 5) question_id 부여 및 모델 변환
-    results: List[PreQuestion] = []
-    for idx, doc in enumerate(selected, start=1):
-        doc.pop("_id", None)
-        doc["question_id"] = idx
-        results.append(PreQuestion(**doc))
-#    result = result_generate(selected)
-    return results
+    result = result_generate(selected)
+    return result
 
 
-# 사전 평가 문제 반환(임시)
+# 사전 평가 문제 반환(임시) -> 사후 평가 문제 반환으로 수정
 @router.get("/subject-tmp", response_model=List[PreQuestion], response_model_by_alias=False)
 async def get_pretest(user_id:str, subject_id: int):
     # 1. 사용자 정보 조회

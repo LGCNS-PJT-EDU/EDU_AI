@@ -37,8 +37,10 @@ def result_generate(question_list):
     random.shuffle(question_list)
 
     # 5) question_id 부여 및 모델 변환
-    results: List[PreQuestion] = []
+    result: List[PreQuestion] = []
     for idx, doc in enumerate(question_list, start=1):
         doc.pop("_id", None)
         doc["question_id"] = idx
-        results.append(PreQuestion(**doc))
+        result.append(PreQuestion(**doc))
+
+    return result
