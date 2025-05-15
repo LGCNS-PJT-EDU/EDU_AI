@@ -5,7 +5,7 @@ metadata:
   namespace: fastapi
 spec:
   selector:
-    app: fastapi
+    app: fastapi-app
   ports:
     - port: 8000
       targetPort: 8000
