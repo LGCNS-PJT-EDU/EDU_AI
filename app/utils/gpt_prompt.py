@@ -1,3 +1,30 @@
+# utils/gpt_prompt.py
+import openai
+import os
+import openai.error
+
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+async def call_gpt(prompt: str) -> str:
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-4o",
+            messages=[
+                {"role": "system", "content": "당신은 친절하고 분석적인 AI 튜터입니다."},
+                {"role": "user", "content": prompt}
+            ],
+            timeout=20  # optional
+        )
+        if response and response.choices and len(response.choices) > 0:
+            return response.choices[0].message["content"]
+        else:
+            return "GPT 응답이 비어있습니다."
+
+    except openai.error.OpenAIError as e:
+        return f"GPT 호출 중 오류 발생: {str(e)}"
+
+
 from app.models.feedback.request import FeedbackRequest
 
 
@@ -92,4 +119,26 @@ def build_post_post_comparison_prompt(prev_post_doc, data: FeedbackRequest) -> s
 이전보다 향상된 강점 5가지와 여전히 부족한 약점 5가지를 제시해주세요.
 
 ※ 각 항목은 키워드 + 1줄 설명 형식으로 작성해주세요.
+"""
+
+def build_strategy_prompt(subjects: list[str], level: str, style: str, available_time: str) -> str:
+    return f"""
+당신은 학습 전략 코치입니다.
+
+다음 조건의 사용자를 위해 각 과목별 학습 전략을 제안해주세요:
+- 학습 수준: {level}
+- 선호 스타일: {style}
+- 학습 가능 시간: {available_time}
+- 학습 과목: {', '.join(subjects)}
+
+[출력 형식 예시]
+HTML:
+- 전략: ...
+- 이유: ...
+
+CSS:
+- 전략: ...
+- 이유: ...
+
+※ 실제 학습 상황을 고려해 구체적이고 현실적인 전략을 제시해주세요.
 """
