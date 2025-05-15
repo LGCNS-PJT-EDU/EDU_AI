@@ -4,7 +4,7 @@ from app.clients.mongodb import db
 from datetime import datetime
 
 from app.models.pre_assessment.response import PreQuestion
-from app.utils.pretest_log_utils import build_pretest_log
+from app.services.assessment.common import get_user, subject_id_to_name, safe_sample, result_generate
 from app.utils.level_utils import calculate_level_from_answers
 from typing import List
 import random
@@ -90,8 +90,41 @@ def build_pretest_log(user_id: str, questions: list[dict]):
         "timestamp": datetime.now().isoformat()
     }
 
-# 사전 평가 문제 반환
-@router.get("/subject", response_model=List[PreQuestion], response_model_by_alias=False)
+@router.get("/subject", response_model=List[PreQuestion], response_model_exclude_none=False)
+async def get_pretest(user_id: str, subject_id: int):
+    user = await get_user(user_id)
+    level = user.get("level")
+
+    if level is not None:
+        raise HTTPException(status_code=404, detail="Pre-test already done")
+
+    subject_name = await subject_id_to_name(subject_id)
+
+    all_questions = await db[subject_name].find().to_list(length=1000)
+    chapter_names = {q["chapterName"] for q in all_questions}
+
+    selected = []
+    for chapter in chapter_names:
+        mid_qs = [q for q in all_questions if q["chapterName"] == chapter and q["difficulty"] == "중"]
+        easy_qs = [q for q in all_questions if q["chapterName"] == chapter and q["difficulty"] == "하"]
+
+        selected += safe_sample(mid_qs, 1)
+        selected += safe_sample(easy_qs, 1)
+
+    random.shuffle(selected)
+
+    # 5) question_id 부여 및 모델 변환
+    results: List[PreQuestion] = []
+    for idx, doc in enumerate(selected, start=1):
+        doc.pop("_id", None)
+        doc["question_id"] = idx
+        results.append(PreQuestion(**doc))
+#    result = result_generate(selected)
+    return results
+
+
+# 사전 평가 문제 반환(임시)
+@router.get("/subject-tmp", response_model=List[PreQuestion], response_model_by_alias=False)
 async def get_pretest(user_id:str, subject_id: int):
     # 1. 사용자 정보 조회
     user = await db.user_profiles.find_one({"user_id": user_id})
@@ -157,6 +190,5 @@ async def get_pretest(user_id:str, subject_id: int):
         doc.pop("_id", None)
         doc["question_id"] = idx
         results.append(PreQuestion(**doc))
-
 
     return results
