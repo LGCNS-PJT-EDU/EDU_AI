@@ -115,4 +115,4 @@ Swagger UI: http://localhost:8000/docs
 
 ReDoc: http://localhost:8000/redoc
 
-http://ai.takeit.academy/docs
+URL: http://ai.takeit.academy/docs
