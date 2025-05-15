@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field
 
 
-class PreQuestion(BaseModel):
+class QuestionStructure(BaseModel):
     questionId: int = Field(..., alias="question_id")
     question: str
     choice1: str = Field(..., alias="option1")

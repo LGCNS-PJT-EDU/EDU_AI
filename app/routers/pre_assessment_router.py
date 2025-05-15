@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from app.clients.mongodb import db
 from datetime import datetime
 
-from app.models.pre_assessment.response import PreQuestion
+from app.models.pre_assessment.response import QuestionStructure
 from app.services.assessment.common import get_user, subject_id_to_name, safe_sample, result_generate
 from app.utils.level_utils import calculate_level_from_answers
 from typing import List
@@ -91,7 +91,7 @@ def build_pretest_log(user_id: str, questions: list[dict]):
     }
 
 
-@router.get("/subject", response_model=List[PreQuestion], response_model_by_alias=False)
+@router.get("/subject", response_model=List[QuestionStructure], response_model_by_alias=False)
 async def get_pretest(user_id: str, subject_id: int):
     user = await get_user(user_id)
     level = user.get("level")
