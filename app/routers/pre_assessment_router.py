@@ -1,9 +1,8 @@
-from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
+from fastapi import APIRouter, HTTPException, Response
 from app.clients.mongodb import db
 from datetime import datetime
 
-from app.models.pre_assessment.request import AnswerItem, PretestSubmitInput, AssessmentInput
+from app.models.pre_assessment.request import AnswerItem, PretestSubmitInput, AssessmentInput, AssessmentResult
 from app.models.pre_assessment.response import QuestionStructure
 from app.services.assessment.common import get_user, subject_id_to_name, safe_sample, result_generate
 from app.utils.level_utils import calculate_level_from_answers
@@ -100,13 +99,16 @@ async def get_pretest(user_id: str, subject_id: int):
     return result
 
 
+# Method: POST
+# URI: /api/pre/subject?user_id={user_id}
 @router.post('/subject')
-async def save_result(user_id: str, data: AssessmentInput):
+async def save_result(user_id: str, data: List[AssessmentResult]):
     user = await get_user(user_id)
-    compiled_data = data.model_dump()
+    tmp: AssessmentResult = data[0]
+    compiled_data = tmp.model_dump(exclude= {"userId"})
 
     await db.user_profiles.update_one(
         {"user_id": user["user_id"]},
-        {"$set": compiled_data}
+        {"$set": { "pre_assessment": compiled_data }}
     )
-    raise HTTPException(status_code=204)
+    return Response(status_code=204)
