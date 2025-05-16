@@ -74,7 +74,7 @@ def build_pretest_log(user_id: str, questions: list[dict]):
     }
 
 
-@router.get("/subject", response_model=List[QuestionStructure], response_model_by_alias=False)
+@router.get("/subject", response_model=List[QuestionStructure], response_model_by_alias=False, summary="사전 평가 문제를 생성", description="데이터베이스에서 사전에 지정된 규칙에 따라 저장된 문제를 가져오고, 사전 평가 문제 데이터셋을 완성한다.")
 async def get_pretest(user_id: str, subject_id: int):
     user = await get_user(user_id)
     level = user.get("level")
@@ -101,7 +101,7 @@ async def get_pretest(user_id: str, subject_id: int):
 
 # Method: POST
 # URI: /api/pre/subject?user_id={user_id}
-@router.post('/subject')
+@router.post('/subject', summary="사용자의 사전 평가 결과를 저장", description="백엔드 서버에서 전송된 사용자의 사전 평가 결과를 데이터베이스에 저장한다.")
 async def save_result(user_id: str, data: List[AssessmentResult]):
     user = await get_user(user_id)
     tmp: AssessmentResult = data[0]
