@@ -98,3 +98,15 @@ async def get_pretest(user_id: str, subject_id: int):
 
     result = result_generate(selected)
     return result
+
+
+@router.post('/subject')
+async def save_result(user_id: str, data: AssessmentInput):
+    user = await get_user(user_id)
+    compiled_data = data.model_dump()
+
+    await db.user_profiles.update_one(
+        {"user_id": user["user_id"]},
+        {"$set": compiled_data}
+    )
+    raise HTTPException(status_code=204)
