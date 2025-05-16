@@ -3,24 +3,17 @@ from pydantic import BaseModel
 from app.clients.mongodb import db
 from datetime import datetime
 
+from app.models.pre_assessment.request import AnswerItem, PretestSubmitInput, AssessmentInput
 from app.models.pre_assessment.response import QuestionStructure
 from app.services.assessment.common import get_user, subject_id_to_name, safe_sample, result_generate
 from app.utils.level_utils import calculate_level_from_answers
 from typing import List
-import random
 
 router = APIRouter()
 
 # ------------------ 사전 평가 제출 및 점수 계산 ------------------
 
-class AnswerItem(BaseModel):
-    question_id: str
-    correct: bool
-    difficulty: str
 
-class PretestSubmitInput(BaseModel):
-    user_id: str
-    answers: List[AnswerItem]
 
 def calculate_pretest_score(answers: List[AnswerItem]) -> int:
     score = 0
@@ -48,15 +41,6 @@ async def submit_pretest(data: PretestSubmitInput):
     )
 
     return {"user_id": data.user_id, "score": score}
-
-
-
-#  1. 사용자 설문 + 진단 저장
-class AssessmentInput(BaseModel):
-    user_id: str
-    survey_answers: dict
-    pre_test_score: int
-
 
 # 사전 평가 기반 사용자 평가
 @router.post("/user-assessment")
