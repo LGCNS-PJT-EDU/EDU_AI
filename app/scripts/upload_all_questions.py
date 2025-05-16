@@ -1,32 +1,32 @@
-import json
 import os
+import json
 from pymongo import MongoClient
 
-# 1. MongoDB 연결
+# MongoDB 연결
 client = MongoClient("mongodb://localhost:27017")
 db = client["ai_platform"]
 collection = db["evaluation_questions"]
 
-# 2. 한글 난이도 → 영어로 변환 함수
-def convert_difficulty(korean_level):
+# 난이도 변환
+def convert_difficulty(kor):
     return {
         "하": "low",
         "중": "medium",
         "상": "high"
-    }.get(korean_level.strip(), "medium")
+    }.get(kor.strip(), "medium")
 
-# 3. 개별 JSON 파일 업로드 함수
-def upload_json_file(filepath, q_type):
+# 개별 업로드
+def upload_json_file(filepath):
+    filename = os.path.basename(filepath)
+
     with open(filepath, "r", encoding="utf-8") as f:
         questions = json.load(f)
 
-    filename = os.path.basename(filepath)
-    subject = filename.replace("_평가문제.json", "").replace("_", " ")
+    subject = filename.replace("_평가문제.json", "").replace("_", " ").strip()
 
     for i, q in enumerate(questions):
         doc = {
             "question_id": f"{subject.lower().replace(' ', '_')}_{i:03}",
-            "type": q_type,
             "subject": subject,
             "chapter": q["chapterName"],
             "difficulty": convert_difficulty(q["difficulty"]),
@@ -34,23 +34,19 @@ def upload_json_file(filepath, q_type):
             "options": [q["option1"], q["option2"], q["option3"], q["option4"]],
             "answer_index": q["answerIndex"]
         }
-
         collection.update_one({"question_id": doc["question_id"]}, {"$set": doc}, upsert=True)
 
-    print(f"{filename} → {len(questions)}개 업로드 완료")
+    print(f" {filename} → {len(questions)}개 업로드 완료")
 
-# 4. 폴더 내 모든 JSON 처리
-def upload_all_from_folder(folder_path, q_type):
+# 전체 폴더 업로드
+def upload_all_from_folder(folder_path):
     files = [f for f in os.listdir(folder_path) if f.endswith(".json")]
     for f in files:
-        filepath = os.path.join(folder_path, f)
-        upload_json_file(filepath, q_type)
+        upload_json_file(os.path.join(folder_path, f))
 
-# 5. 실행
+# 실행
 if __name__ == "__main__":
-    folder_path = "./questions_folder"  # 🔁 여기에 실제 경로 입력
-    upload_all_from_folder(folder_path, q_type="pre")   # 사전평가 파일들
-    upload_all_from_folder(folder_path, q_type="post")  # 사후평가 파일들
-
-
+    base_dir = os.path.dirname(__file__)
+    folder = os.path.abspath(os.path.join(base_dir, "../../questions_folder"))
+    upload_all_from_folder(folder)
 

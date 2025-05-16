@@ -1,20 +1,20 @@
-# app/roadmap.py
-
 from langchain.vectorstores import Chroma
 from langchain.embeddings import OpenAIEmbeddings
-from langchain.document_loaders import TextLoader
-from langchain.text_splitter import CharacterTextSplitter
 from langchain.schema import Document
 
 embedding = OpenAIEmbeddings()
+db = Chroma(persist_directory="chroma_store/explanation", embedding_function=embedding)
 
-# 신규 기능: 사용자별 GPT 설명 결과 벡터 저장
+# 1. 설명 저장 함수
 def save_explanation_to_chroma(user_id: str, explanation: str, metadata: dict):
-    db = Chroma(persist_directory="chroma_store/explanation", embedding_function=embedding)
-
     doc = Document(
         page_content=explanation,
         metadata={"user_id": user_id, **metadata}
     )
     db.add_documents([doc])
+
+# 2. 유사 설명 검색 함수
+def search_similar_explanations(query: str, top_k: int = 3):
+    results = db.similarity_search(query, k=top_k)
+    return [doc.page_content for doc in results]
 

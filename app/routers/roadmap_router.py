@@ -8,7 +8,10 @@ from app.utils.gpt_prompt import (
 )
 from app.services.mongo_recommendation import get_recommended_contents_by_subject
 from app.clients.mongodb import save_explanation_log
-from app.services.roadmap_vectorstore import save_explanation_to_chroma
+from app.services.roadmap_vectorstore import (
+    save_explanation_to_chroma,
+    search_similar_explanations
+)
 
 
 router = APIRouter()
@@ -34,6 +37,13 @@ async def explain_roadmap(data: ExplainRequest):
     prompt = build_roadmap_prompt(user_profile)
     subject_list = ", ".join(data.subjects)
     prompt += f"\n\n현재 추천된 학습 유닛은 다음과 같습니다:\n{subject_list}\n\n각 유닛이 포함된 이유도 함께 설명해주세요."
+
+
+    similar_explanations = search_similar_explanations(subject_list)
+    if similar_explanations:
+        examples = "\n\n".join(similar_explanations)
+        prompt += f"\n\n 과거 비슷한 학습자들의 설명 예시:\n{examples}"
+
 
     explanation = await call_gpt(prompt)
 
