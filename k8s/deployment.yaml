@@ -30,3 +30,8 @@ spec:
                secretKeyRef:
                  name: fastapi-secret
                  key: openai-api-key
+
+
+
+
+                   
