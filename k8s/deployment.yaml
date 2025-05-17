@@ -7,7 +7,7 @@ metadata:
     app: fastapi-app
   annotations:
     argocd-image-updater.argoproj.io/image-list: 754874159206.dkr.ecr.ap-northeast-2.amazonaws.com/takeit/fastapi
-    argocd-image-updater.argoproj.io/image-update-strategy: latest
+    argocd-image-updater.argoproj.io/image-update-strategy: name
     argocd-image-updater.argoproj.io/write-back-method: argocd
 spec:
   replicas: 1
@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: fastapi-container
-          image: 754874159206.dkr.ecr.ap-northeast-2.amazonaws.com/takeit/fastapi:latest
+          image: 754874159206.dkr.ecr.ap-northeast-2.amazonaws.com/takeit/fastapi
           ports:
             - containerPort: 8000
           env:
