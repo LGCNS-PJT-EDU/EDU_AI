@@ -114,3 +114,5 @@ API 문서
 Swagger UI: http://localhost:8000/docs
 
 ReDoc: http://localhost:8000/redoc
+
+URL: http://ai.takeit.academy/docs
