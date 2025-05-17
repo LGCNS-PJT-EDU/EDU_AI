@@ -1,19 +1,20 @@
-# app/roadmap.py
-
 from langchain.vectorstores import Chroma
 from langchain.embeddings import OpenAIEmbeddings
-from langchain.document_loaders import TextLoader
-from langchain.text_splitter import CharacterTextSplitter
+from langchain.schema import Document
 
-def create_roadmap_vectorstore():
-    loader = TextLoader("data/roadmap_documents/all_roadmaps.txt", encoding="utf-8")
-    documents = loader.load()
+embedding = OpenAIEmbeddings()
+db = Chroma(persist_directory="chroma_store/explanation", embedding_function=embedding)
 
-    splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
-    docs = splitter.split_documents(documents)
+# 1. 설명 저장 함수
+def save_explanation_to_chroma(user_id: str, explanation: str, metadata: dict):
+    doc = Document(
+        page_content=explanation,
+        metadata={"user_id": user_id, **metadata}
+    )
+    db.add_documents([doc])
 
-    embedding = OpenAIEmbeddings()
-    vectordb = Chroma.from_documents(docs, embedding, persist_directory="chroma_store/roadmaps")
+# 2. 유사 설명 검색 함수
+def search_similar_explanations(query: str, top_k: int = 3):
+    results = db.similarity_search(query, k=top_k)
+    return [doc.page_content for doc in results]
 
-    vectordb.persist()
-    return vectordb

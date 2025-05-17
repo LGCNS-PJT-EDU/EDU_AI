@@ -21,7 +21,7 @@ from typing import List
 
 from app.services.rag_module import retrieve_similar_docs
 from app.utils.build_feedback_prompt import build_feedback_prompt
-
+from app.services.feedback_service import generate_feedback_by_gpt
 router = APIRouter()
 
 

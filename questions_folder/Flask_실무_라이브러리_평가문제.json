@@ -1,0 +1,561 @@
+[
+  {
+    "question": "Flask 애플리케이션의 핵심 객체는?",
+    "option1": "FlaskApp",
+    "option2": "AppBuilder",
+    "option3": "Flask",
+    "option4": "Server",
+    "answerIndex": 3,
+    "difficulty": "하",
+    "chapterName": "Flask 기본 구조 및 서버 프레임워크",
+    "chapterNum": 1
+  },
+  {
+    "question": "Flask에서 라우트를 정의할 때 사용하는 데코레이터는?",
+    "option1": "@flask.route()",
+    "option2": "@app.view()",
+    "option3": "@app.route()",
+    "option4": "@route.view()",
+    "answerIndex": 3,
+    "difficulty": "하",
+    "chapterName": "Flask 기본 구조 및 서버 프레임워크",
+    "chapterNum": 1
+  },
+  {
+    "question": "다음 중 Flask의 디버그 모드를 활성화하기 위한 환경 변수는?",
+    "option1": "FLASK_DEBUG",
+    "option2": "DEBUG_MODE",
+    "option3": "APP_DEBUG",
+    "option4": "FLASK_VERBOSE",
+    "answerIndex": 1,
+    "difficulty": "하",
+    "chapterName": "Flask 기본 구조 및 서버 프레임워크",
+    "chapterNum": 1
+  },
+  {
+    "question": "Flask에서 클라이언트의 GET 요청 데이터를 받기 위해 사용하는 객체는?",
+    "option1": "request.form",
+    "option2": "request.args",
+    "option3": "request.json",
+    "option4": "request.body",
+    "answerIndex": 2,
+    "difficulty": "중",
+    "chapterName": "Flask 기본 구조 및 서버 프레임워크",
+    "chapterNum": 1
+  },
+  {
+    "question": "Flask에서 404 Not Found 응답을 커스터마이징하려면?",
+    "option1": "@app.route('/404')",
+    "option2": "@app.not_found()",
+    "option3": "@app.errorhandler(404)",
+    "option4": "@app.handler(404)",
+    "answerIndex": 3,
+    "difficulty": "중",
+    "chapterName": "Flask 기본 구조 및 서버 프레임워크",
+    "chapterNum": 1
+  },
+  {
+    "question": "Flask에서 JSON 응답을 반환할 때 사용하는 함수는?",
+    "option1": "make_response()",
+    "option2": "jsonify()",
+    "option3": "render_template()",
+    "option4": "send_json()",
+    "answerIndex": 2,
+    "difficulty": "중",
+    "chapterName": "Flask 기본 구조 및 서버 프레임워크",
+    "chapterNum": 1
+  },
+  {
+    "question": "Flask의 request 객체는 어디에서 가져오는가?",
+    "option1": "flask.http",
+    "option2": "flask.request",
+    "option3": "flask.web",
+    "option4": "flask",
+    "answerIndex": 4,
+    "difficulty": "중",
+    "chapterName": "Flask 기본 구조 및 서버 프레임워크",
+    "chapterNum": 1
+  },
+  {
+    "question": "Flask에서 템플릿을 사용할 때 주로 쓰는 함수는?",
+    "option1": "render_json()",
+    "option2": "send_template()",
+    "option3": "render_template()",
+    "option4": "display_html()",
+    "answerIndex": 3,
+    "difficulty": "상",
+    "chapterName": "Flask 기본 구조 및 서버 프레임워크",
+    "chapterNum": 1
+  },
+  {
+    "question": "Flask 애플리케이션의 실행 포트를 지정하려면 어떤 메서드 인자를 사용해야 하는가?",
+    "option1": "app.listen(port=5000)",
+    "option2": "app.run(port=5000)",
+    "option3": "start_server(port=5000)",
+    "option4": "app.host(port=5000)",
+    "answerIndex": 2,
+    "difficulty": "상",
+    "chapterName": "Flask 기본 구조 및 서버 프레임워크",
+    "chapterNum": 1
+  },
+  {
+    "question": "Flask의 라우트에서 동적 URL 파라미터를 지정할 때 사용하는 문법은?",
+    "option1": "/user[<id>]",
+    "option2": "/user:<id>",
+    "option3": "/user/<id>",
+    "option4": "/user@id",
+    "answerIndex": 3,
+    "difficulty": "상",
+    "chapterName": "Flask 기본 구조 및 서버 프레임워크",
+    "chapterNum": 1
+  },
+
+  {
+    "question": "Flask에서 SQLAlchemy를 사용하려면 어떤 객체를 초기화해야 하는가?",
+    "option1": "FlaskDB",
+    "option2": "SQLObject",
+    "option3": "SQLAlchemy(app)",
+    "option4": "ORMManager",
+    "answerIndex": 3,
+    "difficulty": "하",
+    "chapterName": "ORM 및 인증/인가 도구",
+    "chapterNum": 2
+  },
+  {
+    "question": "Flask-SQLAlchemy에서 모델 클래스를 정의할 때 반드시 상속해야 하는 클래스는?",
+    "option1": "Base",
+    "option2": "db.Model",
+    "option3": "app.Model",
+    "option4": "SQLAlchemy.Base",
+    "answerIndex": 2,
+    "difficulty": "하",
+    "chapterName": "ORM 및 인증/인가 도구",
+    "chapterNum": 2
+  },
+  {
+    "question": "Flask-Migrate는 주로 어떤 작업을 돕는 도구인가?",
+    "option1": "정적 파일 관리",
+    "option2": "데이터베이스 마이그레이션",
+    "option3": "API 응답 포맷팅",
+    "option4": "라우팅 최적화",
+    "answerIndex": 2,
+    "difficulty": "하",
+    "chapterName": "ORM 및 인증/인가 도구",
+    "chapterNum": 2
+  },
+  {
+    "question": "Flask-Login에서 로그인 여부를 확인할 때 사용하는 속성은?",
+    "option1": "current_user.is_authenticated",
+    "option2": "user.is_logged_in",
+    "option3": "session['logged']",
+    "option4": "login_required(user)",
+    "answerIndex": 1,
+    "difficulty": "중",
+    "chapterName": "ORM 및 인증/인가 도구",
+    "chapterNum": 2
+  },
+  {
+    "question": "Flask-Login을 사용하려면 사용자 모델에 반드시 구현해야 하는 메서드는?",
+    "option1": "get_user()",
+    "option2": "is_valid()",
+    "option3": "get_id()",
+    "option4": "check_password()",
+    "answerIndex": 3,
+    "difficulty": "중",
+    "chapterName": "ORM 및 인증/인가 도구",
+    "chapterNum": 2
+  },
+  {
+    "question": "JWT 토큰을 발급하는 Flask-JWT-Extended 함수는?",
+    "option1": "encode_jwt()",
+    "option2": "create_token()",
+    "option3": "generate_token()",
+    "option4": "create_access_token()",
+    "answerIndex": 4,
+    "difficulty": "중",
+    "chapterName": "ORM 및 인증/인가 도구",
+    "chapterNum": 2
+  },
+  {
+    "question": "Flask-JWT-Extended에서 토큰이 필요한 라우트에 사용하는 데코레이터는?",
+    "option1": "@requires_token",
+    "option2": "@jwt_required()",
+    "option3": "@login_required",
+    "option4": "@auth_required",
+    "answerIndex": 2,
+    "difficulty": "중",
+    "chapterName": "ORM 및 인증/인가 도구",
+    "chapterNum": 2
+  },
+  {
+    "question": "Flask-Login의 login_user() 함수는 어떤 역할을 하는가?",
+    "option1": "비밀번호를 검증",
+    "option2": "사용자를 DB에 추가",
+    "option3": "세션에 사용자 로그인 상태를 기록",
+    "option4": "새 토큰을 생성",
+    "answerIndex": 3,
+    "difficulty": "상",
+    "chapterName": "ORM 및 인증/인가 도구",
+    "chapterNum": 2
+  },
+  {
+    "question": "JWT의 주된 장점은?",
+    "option1": "HTML 렌더링이 빠름",
+    "option2": "서버 세션 없이 인증 상태 유지 가능",
+    "option3": "브라우저 캐싱 최적화",
+    "option4": "OAuth2 자동 구현",
+    "answerIndex": 2,
+    "difficulty": "상",
+    "chapterName": "ORM 및 인증/인가 도구",
+    "chapterNum": 2
+  },
+  {
+    "question": "Flask-Migrate에서 마이그레이션 생성 명령어는?",
+    "option1": "flask migrate init",
+    "option2": "flask db generate",
+    "option3": "flask db migrate",
+    "option4": "flask schema update",
+    "answerIndex": 3,
+    "difficulty": "상",
+    "chapterName": "ORM 및 인증/인가 도구",
+    "chapterNum": 2
+  },
+
+  {
+    "question": "Flask에서 API 경로를 구조적으로 분리할 때 사용하는 객체는?",
+    "option1": "RouteGroup",
+    "option2": "Blueprint",
+    "option3": "APIMap",
+    "option4": "Namespace",
+    "answerIndex": 2,
+    "difficulty": "하",
+    "chapterName": "REST API 구축 및 유효성 검사",
+    "chapterNum": 3
+  },
+  {
+    "question": "Flask에서 메서드별 처리를 위해 사용하는 클래스 기반 뷰는?",
+    "option1": "ClassView",
+    "option2": "RouteView",
+    "option3": "MethodView",
+    "option4": "ActionView",
+    "answerIndex": 3,
+    "difficulty": "하",
+    "chapterName": "REST API 구축 및 유효성 검사",
+    "chapterNum": 3
+  },
+  {
+    "question": "Flask-RESTful에서 리소스를 등록할 때 사용하는 메서드는?",
+    "option1": "add_url()",
+    "option2": "register()",
+    "option3": "add_resource()",
+    "option4": "map_route()",
+    "answerIndex": 3,
+    "difficulty": "하",
+    "chapterName": "REST API 구축 및 유효성 검사",
+    "chapterNum": 3
+  },
+  {
+    "question": "Marshmallow는 어떤 기능을 제공하는가?",
+    "option1": "CSS 템플릿 처리",
+    "option2": "ORM 쿼리 최적화",
+    "option3": "직렬화 및 유효성 검사",
+    "option4": "웹소켓 처리",
+    "answerIndex": 3,
+    "difficulty": "중",
+    "chapterName": "REST API 구축 및 유효성 검사",
+    "chapterNum": 3
+  },
+  {
+    "question": "WTForms에서 Form 클래스를 상속받을 때 주로 선언하는 필드는?",
+    "option1": "validators",
+    "option2": "fields",
+    "option3": "StringField, IntegerField 등",
+    "option4": "FormDataField",
+    "answerIndex": 3,
+    "difficulty": "중",
+    "chapterName": "REST API 구축 및 유효성 검사",
+    "chapterNum": 3
+  },
+  {
+    "question": "Marshmallow에서 필수 입력값을 지정하려면 사용하는 옵션은?",
+    "option1": "non_empty=True",
+    "option2": "must_exist=True",
+    "option3": "required=True",
+    "option4": "nullable=False",
+    "answerIndex": 3,
+    "difficulty": "중",
+    "chapterName": "REST API 구축 및 유효성 검사",
+    "chapterNum": 3
+  },
+  {
+    "question": "Flask-RESTful에서 POST 요청을 처리할 기본 메서드는?",
+    "option1": "post(self)",
+    "option2": "handle_post(self)",
+    "option3": "create(self)",
+    "option4": "save(self)",
+    "answerIndex": 1,
+    "difficulty": "중",
+    "chapterName": "REST API 구축 및 유효성 검사",
+    "chapterNum": 3
+  },
+  {
+    "question": "WTForms에서 문자열 필드 유효성 검사를 위한 validator는?",
+    "option1": "RegexOnly()",
+    "option2": "Length()",
+    "option3": "NotNull()",
+    "option4": "RequiredText()",
+    "answerIndex": 2,
+    "difficulty": "상",
+    "chapterName": "REST API 구축 및 유효성 검사",
+    "chapterNum": 3
+  },
+  {
+    "question": "Marshmallow의 validate 인자에 사용할 수 없는 것은?",
+    "option1": "validate.Range()",
+    "option2": "validate.Length()",
+    "option3": "validate.Email()",
+    "option4": "validate.Session()",
+    "answerIndex": 4,
+    "difficulty": "상",
+    "chapterName": "REST API 구축 및 유효성 검사",
+    "chapterNum": 3
+  },
+  {
+    "question": "Flask-RESTful에서 RequestParser를 사용하는 주요 목적은?",
+    "option1": "라우팅 분리",
+    "option2": "정적 파일 제공",
+    "option3": "요청 데이터 파싱 및 유효성 검사",
+    "option4": "템플릿 렌더링",
+    "answerIndex": 3,
+    "difficulty": "상",
+    "chapterName": "REST API 구축 및 유효성 검사",
+    "chapterNum": 3
+  },
+
+  {
+    "question": "Flask에서 캐시 기능을 제공하기 위해 사용하는 확장 도구는?",
+    "option1": "Flask-CacheLib",
+    "option2": "Flask-Caching",
+    "option3": "Flask-Redis",
+    "option4": "CachePlus",
+    "answerIndex": 2,
+    "difficulty": "하",
+    "chapterName": "캐싱, 스케줄링, 로깅",
+    "chapterNum": 4
+  },
+  {
+    "question": "Flask-Caching에서 timeout 인자의 역할은?",
+    "option1": "DB 연결을 끊는 시간",
+    "option2": "템플릿 렌더링 제한 시간",
+    "option3": "캐시 만료 시간(초 단위)",
+    "option4": "로그 파일 생성 주기",
+    "answerIndex": 3,
+    "difficulty": "하",
+    "chapterName": "캐싱, 스케줄링, 로깅",
+    "chapterNum": 4
+  },
+  {
+    "question": "다음 중 캐시 백엔드로 설정 가능한 옵션은?",
+    "option1": "redis", 
+    "option2": "memcached", 
+    "option3": "filesystem", 
+    "option4": "모두 가능",
+    "answerIndex": 4,
+    "difficulty": "하",
+    "chapterName": "캐싱, 스케줄링, 로깅",
+    "chapterNum": 4
+  },
+  {
+    "question": "APScheduler의 주요 기능은?",
+    "option1": "JWT 발급 처리",
+    "option2": "스케줄 기반 작업 실행",
+    "option3": "API 요청 캐싱",
+    "option4": "HTTP 세션 유지",
+    "answerIndex": 2,
+    "difficulty": "중",
+    "chapterName": "캐싱, 스케줄링, 로깅",
+    "chapterNum": 4
+  },
+  {
+    "question": "Flask에서 Celery를 사용할 때 가장 먼저 설정해야 할 항목은?",
+    "option1": "뷰 함수 등록",
+    "option2": "비동기 URL 생성",
+    "option3": "broker URL 설정",
+    "option4": "route name 지정",
+    "answerIndex": 3,
+    "difficulty": "중",
+    "chapterName": "캐싱, 스케줄링, 로깅",
+    "chapterNum": 4
+  },
+  {
+    "question": "Celery에서 주기적인 작업을 설정하려면 사용하는 구성 요소는?",
+    "option1": "Flask-Beat",
+    "option2": "celery-beat",
+    "option3": "ScheduleJob",
+    "option4": "TaskManager",
+    "answerIndex": 2,
+    "difficulty": "중",
+    "chapterName": "캐싱, 스케줄링, 로깅",
+    "chapterNum": 4
+  },
+  {
+    "question": "Python의 기본 logging 모듈에서 로그 레벨 중 가장 낮은 단계는?",
+    "option1": "DEBUG",
+    "option2": "INFO",
+    "option3": "WARNING",
+    "option4": "ERROR",
+    "answerIndex": 1,
+    "difficulty": "중",
+    "chapterName": "캐싱, 스케줄링, 로깅",
+    "chapterNum": 4
+  },
+  {
+    "question": "Flask에서 로그 메시지를 파일에 저장하려면 설정해야 할 구성 요소는?",
+    "option1": "logging.FileHandler",
+    "option2": "print()",
+    "option3": "app.logger.console()",
+    "option4": "log.save()",
+    "answerIndex": 1,
+    "difficulty": "상",
+    "chapterName": "캐싱, 스케줄링, 로깅",
+    "chapterNum": 4
+  },
+  {
+    "question": "Sentry는 Flask에서 어떤 용도로 주로 사용되는가?",
+    "option1": "배포 자동화",
+    "option2": "에러 추적 및 로깅",
+    "option3": "보안 인증",
+    "option4": "정적 파일 관리",
+    "answerIndex": 2,
+    "difficulty": "상",
+    "chapterName": "캐싱, 스케줄링, 로깅",
+    "chapterNum": 4
+  },
+  {
+    "question": "Celery 작업을 백그라운드에서 실행하는 명령은?",
+    "option1": "celery start",
+    "option2": "celery -A app run",
+    "option3": "celery -A app worker",
+    "option4": "celery launch",
+    "answerIndex": 3,
+    "difficulty": "상",
+    "chapterName": "캐싱, 스케줄링, 로깅",
+    "chapterNum": 4
+  },
+
+  {
+    "question": "pytest에서 테스트 함수 이름은 보통 어떤 접두사로 시작해야 인식되는가?",
+    "option1": "check_",
+    "option2": "run_",
+    "option3": "test_",
+    "option4": "case_",
+    "answerIndex": 3,
+    "difficulty": "하",
+    "chapterName": "테스트 및 배포 자동화 도구",
+    "chapterNum": 5
+  },
+  {
+    "question": "Flask-Testing에서 기본 테스트 클래스는 무엇을 상속해야 하는가?",
+    "option1": "TestCase",
+    "option2": "FlaskTestClient",
+    "option3": "LiveServerTestCase",
+    "option4": "FlaskTestCase",
+    "answerIndex": 1,
+    "difficulty": "하",
+    "chapterName": "테스트 및 배포 자동화 도구",
+    "chapterNum": 5
+  },
+  {
+    "question": "Flask에서 테스트 클라이언트를 생성하는 방법은?",
+    "option1": "app.test_client()",
+    "option2": "TestClient(app)",
+    "option3": "flask.create_client()",
+    "option4": "run_tests(app)",
+    "answerIndex": 1,
+    "difficulty": "하",
+    "chapterName": "테스트 및 배포 자동화 도구",
+    "chapterNum": 5
+  },
+  {
+    "question": "Gunicorn은 어떤 역할을 하는가?",
+    "option1": "캐시 저장소 역할",
+    "option2": "Flask 앱을 WSGI 서버로 실행",
+    "option3": "테스트 케이스 실행",
+    "option4": "정적 파일을 제공",
+    "answerIndex": 2,
+    "difficulty": "중",
+    "chapterName": "테스트 및 배포 자동화 도구",
+    "chapterNum": 5
+  },
+  {
+    "question": "Dockerfile에서 Flask 앱을 실행하는 명령은 보통 무엇인가?",
+    "option1": "CMD [\"python\", \"run.py\"]",
+    "option2": "CMD [\"gunicorn\", \"app:app\"]",
+    "option3": "RUN flask start",
+    "option4": "ENTRYPOINT [\"flask\"]",
+    "answerIndex": 2,
+    "difficulty": "중",
+    "chapterName": "테스트 및 배포 자동화 도구",
+    "chapterNum": 5
+  },
+  {
+    "question": "Flask 앱을 Elastic Beanstalk에 배포하려면 프로젝트 루트에 있어야 할 파일은?",
+    "option1": "start.sh",
+    "option2": "Dockerfile",
+    "option3": "requirements.txt",
+    "option4": ".ebextensions/config.yml",
+    "answerIndex": 3,
+    "difficulty": "중",
+    "chapterName": "테스트 및 배포 자동화 도구",
+    "chapterNum": 5
+  },
+  {
+    "question": "pytest에서 특정 에러가 발생하는지 확인하려면 사용하는 구문은?",
+    "option1": "assert error",
+    "option2": "with expect():",
+    "option3": "with pytest.raises():",
+    "option4": "try: assert False",
+    "answerIndex": 3,
+    "difficulty": "상",
+    "chapterName": "테스트 및 배포 자동화 도구",
+    "chapterNum": 5
+  },
+  {
+    "question": "Elastic Beanstalk에서 환경 설정은 어떤 폴더 아래 구성하는가?",
+    "option1": ".aws/",
+    "option2": ".ebconfig/",
+    "option3": ".ebextensions/",
+    "option4": "eb-settings/",
+    "answerIndex": 3,
+    "difficulty": "상",
+    "chapterName": "테스트 및 배포 자동화 도구",
+    "chapterNum": 5
+  },
+  {
+    "question": "Docker에서 Flask 앱이 사용하는 포트를 열려면 사용하는 명령은?",
+    "option1": "EXPOSE 80",
+    "option2": "OPEN PORT 5000",
+    "option3": "FLASK_PORT 8000",
+    "option4": "NETWORK enable",
+    "answerIndex": 1,
+    "difficulty": "상",
+    "chapterName": "테스트 및 배포 자동화 도구",
+    "chapterNum": 5
+  },
+  {
+    "question": "Docker로 Flask 앱을 실행할 때 컨테이너를 백그라운드에서 돌리려면 사용하는 옵션은?",
+    "option1": "-v",
+    "option2": "-d",
+    "option3": "--live",
+    "option4": "--fg",
+    "answerIndex": 2,
+    "difficulty": "상",
+    "chapterName": "테스트 및 배포 자동화 도구",
+    "chapterNum": 5
+  }
+
+
+
+
+
+]

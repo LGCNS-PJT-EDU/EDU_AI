@@ -1,0 +1,22 @@
+[
+  {
+    "subject_name": "HTML",
+    "title": "생활코딩-HTML",
+    "url": "https://youtube.com/...",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "CSS",
+    "title": "입문자를 위한 CSS 기초 강의",
+    "url": "https://inflearn.com/...",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "무료"
+  }
+]
