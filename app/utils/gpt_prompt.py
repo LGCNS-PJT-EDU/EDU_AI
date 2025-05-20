@@ -1,6 +1,5 @@
 import  os
 import openai
-import openai.error
 
 GPT_MODEL = "gpt-4o"
 SYSTEM_ROLE = {

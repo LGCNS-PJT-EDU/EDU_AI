@@ -122,13 +122,15 @@ async def get_pretest(user_id:str, subject_id: int):
     result = result_generate(selected)
     return result
 
+# Method: POST
+# URI: /api/post/subject?user_id={user_id}
 @router.post('/subject', summary="사용자의 사후 평가 결과를 저장", description="백엔드 서버에서 전송된 사용자의 사후 평가 결과를 데이터베이스에 저장한다.")
 async def save_result(user_id: str, payload: AssessmentResult):
     user = await get_user(user_id)
-    compiled_data = payload.model_dump(exclude= {"userId"})
+    compiled_data = payload.model_dump(exclude={"userId"})
 
     await db.user_profiles.update_one(
         {"user_id": user["user_id"]},
-        {"$set": { "pre_assessment": compiled_data }}
+        {"$set": { "post_assessment": compiled_data }}
     )
     return Response(status_code=204)
