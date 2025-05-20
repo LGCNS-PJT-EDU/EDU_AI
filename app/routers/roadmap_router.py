@@ -8,8 +8,8 @@ from app.services.mongo_roadmap import save_roadmap_cache
 from app.services.mongo_recommendation import get_recommended_contents_by_subject
 from app.services.roadmap_rag import generate_roadmap_rag
 from app.services.roadmap_vectorstore import save_explanations_to_chroma
-from app.utils.gpt_prompt import (
-    call_gpt,
+from app.utils.gpt_prompt import call_gpt
+from app.utils.roadmap_prompt import (
     build_roadmap_prompt,
     build_strategy_prompt
 )

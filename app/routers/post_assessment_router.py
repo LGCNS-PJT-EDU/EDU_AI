@@ -1,10 +1,11 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Response
 from pydantic import BaseModel
 from app.clients.mongodb import db
 from datetime import datetime
 from typing import List
 import random
 
+from app.models.pre_assessment.request import AssessmentResult
 from app.models.pre_assessment.response import QuestionStructure
 from app.routers.pre_assessment_router import AnswerItem, calculate_pretest_score
 from app.services.assessment.common import get_user, subject_id_to_name, result_generate, safe_sample
@@ -120,3 +121,16 @@ async def get_pretest(user_id:str, subject_id: int):
 
     result = result_generate(selected)
     return result
+
+# Method: POST
+# URI: /api/post/subject?user_id={user_id}
+@router.post('/subject', summary="사용자의 사후 평가 결과를 저장", description="백엔드 서버에서 전송된 사용자의 사후 평가 결과를 데이터베이스에 저장한다.")
+async def save_result(user_id: str, payload: AssessmentResult):
+    user = await get_user(user_id)
+    compiled_data = payload.model_dump(exclude={"userId"})
+
+    await db.user_profiles.update_one(
+        {"user_id": user["user_id"]},
+        {"$set": { "post_assessment": compiled_data }}
+    )
+    return Response(status_code=204)

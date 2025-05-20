@@ -1,8 +1,5 @@
 # library
 from fastapi import FastAPI
-from dotenv import load_dotenv
-import openai
-import os
 
 #  router import
 from app.routers.pre_assessment_router import router as assessment_router
@@ -10,11 +7,6 @@ from app.routers.post_assessment_router import router as post_assessment_router
 from app.routers.activity_log_router import router as activity_log_router
 from app.routers.roadmap_router import router as roadmap_router
 from app.routers.feedback_router import router as feedback_router
-
-
-#  환경 변수 및 OpenAI 키 설정
-load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_KEY")
 
 #  FastAPI 인스턴스 정의
 app = FastAPI(
