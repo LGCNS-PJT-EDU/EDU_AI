@@ -15,3 +15,18 @@ def calculate_level_from_answers(answers: dict) -> int:
         return 2  # 중급
     else:
         return 3  # 상급
+
+
+def normalize_duration(duration_str: str) -> float:
+    if "~ 1시간" in duration_str:
+        return 1
+    elif "1시간 ~ 3시간" in duration_str:
+        return 2
+    elif "3시간 ~ 5시간" in duration_str:
+        return 4
+    elif "5시간 ~ 10시간" in duration_str:
+        return 7.5
+    elif "10시간" in duration_str:
+        return 12
+    else:
+        return 1.0  # fallback

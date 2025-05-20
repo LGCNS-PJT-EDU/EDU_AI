@@ -11,13 +11,18 @@ def generate_roadmap_rag(prompt: str):
     retriever = vectordb.as_retriever()
 
     template = """
-사용자의 사전 정보와 목표:
-{prompt}
+    [사용자 요청]
+    {question}
 
-위 사용자에게 적합한 학습 로드맵을 3단계로 제안해주세요.
-각 단계는 제목, 설명, 이유로 구성해주세요.
-"""
-    final_prompt = PromptTemplate(input_variables=["prompt"], template=template)
+    [참고 문서]
+    {context}
+
+    위 사용자에게 적합한 학습 로드맵을 3단계로 제안해주세요.
+    각 단계는 제목, 설명, 이유로 구성해주세요.
+    """
+
+    # context + question 두 개를 필수로 넣어야 함
+    final_prompt = PromptTemplate(input_variables=["context", "question"], template=template)
 
     chain = RetrievalQA.from_chain_type(
         llm=ChatOpenAI(model_name="gpt-4o"),
@@ -26,6 +31,8 @@ def generate_roadmap_rag(prompt: str):
         chain_type_kwargs={"prompt": final_prompt}
     )
 
-    result = chain.run({"prompt": prompt})
+    # prompt는 'question'으로 전달
+    result = chain.run({"question": prompt})
     return result
+
 
