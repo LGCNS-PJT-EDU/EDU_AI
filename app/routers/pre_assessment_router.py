@@ -62,8 +62,6 @@ async def get_pretest(user_id: str, subject_id: int):
     return result
 
 
-# Method: POST
-# URI: /api/pre/subject?user_id={user_id}
 @router.post('/subject', summary="사용자의 사전 평가 결과를 저장", description="백엔드 서버에서 전송된 사용자의 사전 평가 결과를 데이터베이스에 저장한다.")
 async def save_result(user_id: str, payload: AssessmentResult):
     user = await get_user(user_id)
