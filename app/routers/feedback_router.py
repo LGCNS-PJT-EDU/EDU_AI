@@ -12,11 +12,12 @@ from starlette.responses import JSONResponse
 from app.clients.mongodb import db
 from app.models.feedback.request import FeedbackRequest
 from app.models.feedback.response import FeedbackResponse, Info, Feedback
-from app.utils.gpt_prompt import (
+from app.utils.build_feedback_prompt import (
     build_initial_feedback_prompt,
     build_pre_post_comparison_prompt,
     build_post_post_comparison_prompt
 )
+
 from typing import List
 
 from app.services.rag_module import retrieve_similar_docs

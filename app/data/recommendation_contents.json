@@ -2,7 +2,77 @@
   {
     "subject_name": "HTML",
     "title": "생활코딩-HTML",
-    "url": "https://youtube.com/...",
+    "URL": "https://www.youtube.com/watch?v=tZooW6PritE&list=PLuHgQVnccGMDZP7FJ_ZsUrdCGH68ppvPb&ab_channel=%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "HTML",
+    "title": "HTML 태그 정리",
+    "URL": "https://www.youtube.com/watch?v=T7h8O7dpJIg&ab_channel=드림코딩",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "HTML",
+    "title": "HTML중급 강의",
+    "URL": "https://m.blog.naver.com/mathesis_time/221906127872",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "3시간 ~ 5시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "HTML",
+    "title": "입문자를 위한 HTML 기초 강의",
+    "URL": "https://www.inflearn.com/course/%EC%9E%85%EB%AC%B8%EC%9E%90-html-%EA%B8%B0%EC%B4%88%EA%B0%95%EC%9D%98?srsltid=AfmBOooL9TdXvAkOj_uUnRnvHWUOAhYHM2jPiq_-aFslF5swlirjeGBx",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "HTML",
+    "title": "코딩 자율학습 HTML + CSS + 자바스크립트",
+    "URL": "https://product.kyobobook.co.kr/detail/S000001834830",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "CSS",
+    "title": "입문자를 위한 CSS 기초 강의",
+    "URL": "https://www.inflearn.com/course/입문자-css-기초강의?srsltid=AfmBOoqhLYWHIgSIuYN9L56c0YSqILc246vgsw8nGbi2y1MpHqUCoa0n",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "CSS",
+    "title": "CSS 프로그래밍 기초",
+    "URL": "https://dinfree.com/lecture/frontend/122_css_1.html",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "CSS",
+    "title": "WEB2 CSS - 1. 수업 소개",
+    "URL": "https://www.youtube.com/watch?v=Ok0bBJPtgJI&list=PLuHgQVnccGMAnWgUYiAW2cTzSBywFO75B&ab_channel=%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9",
     "type": "동영상",
     "platform": "유튜브",
     "duration": "1시간 ~ 3시간",
@@ -11,11 +81,5051 @@
   },
   {
     "subject_name": "CSS",
-    "title": "입문자를 위한 CSS 기초 강의",
-    "url": "https://inflearn.com/...",
+    "title": "CSS Flexbox 완전 정리. 포트폴리오 만드는 날까지!",
+    "URL": "https://www.youtube.com/watch?v=7neASrWEFEM&ab_channel=드림코딩",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "CSS",
+    "title": "코딩 자율학습 HTML + CSS + 자바스크립트",
+    "URL": "https://product.kyobobook.co.kr/detail/S000001834830",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "CSS",
+    "title": "【한글자막】 CSS 완벽 가이드 (Flexbox, Grid & Sass 포함)",
+    "URL": "https://www.udemy.com/course/css-flexbox-grid-sass",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "JavaScript",
+    "title": "코딩 자율학습 HTML + CSS + 자바스크립트",
+    "URL": "https://product.kyobobook.co.kr/detail/S000001834830",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "JavaScript",
+    "title": "모던 자바스크립트 Deep Dive",
+    "URL": "https://product.kyobobook.co.kr/detail/S000001766445",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "JavaScript",
+    "title": "바닐라 JS로 크롬 앱 만들기",
+    "URL": "https://nomadcoders.co/javascript-for-beginners",
+    "type": "동영상",
+    "platform": "노마드코더",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "JavaScript",
+    "title": "ES6의 정석",
+    "URL": "https://nomadcoders.co/es6-once-and-for-all",
+    "type": "동영상",
+    "platform": "노마드코더",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "JavaScript",
+    "title": "JavaScript 입문 수업",
+    "URL": "https://www.youtube.com/playlist?list=PLuHgQVnccGMA4uSig3hCjl7wTDeyIeZVU",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "JavaScript",
+    "title": "JavaScript Course for Beginners – Your First Step to Web Development",
+    "URL": "https://www.youtube.com/watch?v=W6NZfCO5SIk&ab_channel=ProgrammingwithMosh",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "JavaScript",
+    "title": "모던 JavaScript 튜토리얼",
+    "URL": "https://ko.javascript.info/",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "무료"
+  },
+  {
+    "subject_name": "JavaScript",
+    "title": "견고한 JS 소프트웨어 만들기",
+    "URL": "https://www.inflearn.com/course/tdd-%EA%B2%AC%EA%B3%A0%ED%95%9C-%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4-%EB%A7%8C%EB%93%A4%EA%B8%B0",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "TypeScript",
+    "title": "타입스크립트로 블록체인 만들기",
+    "URL": "https://nomadcoders.co/typescript-for-beginners",
+    "type": "동영상",
+    "platform": "노마드코더",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "TypeScript",
+    "title": "한 입 크기로 잘라먹는 타입스크립트",
+    "URL": "https://www.inflearn.com/course/한입-크기-타입스크립트",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "TypeScript",
+    "title": "타입스크립트 입문 - 기초부터 실전까지",
+    "URL": "https://www.inflearn.com/course/%ED%83%80%EC%9E%85%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EC%9E%85%EB%AC%B8",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "TypeScript",
+    "title": "실전 프로젝트로 배우는 타입스크립트",
+    "URL": "https://www.inflearn.com/course/%ED%83%80%EC%9E%85%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EC%8B%A4%EC%A0%84",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "상",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "TypeScript",
+    "title": "[코드팩토리] [초급] 8시간만에 끝내는 코드팩토리의 Typescript 완전정복 풀코스",
+    "URL": "https://www.inflearn.com/course/%EC%BD%94%EB%93%9C%ED%8C%A9%ED%86%A0%EB%A6%AC-%ED%83%80%EC%9E%85%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%ED%92%80%EC%BD%94%EC%8A%A4",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "TypeScript",
+    "title": "[TypeScript 독학] #1 타입스크립트 개념 및 타입",
+    "URL": "https://velog.io/@bbaa3218/TypeScript-1-%ED%83%80%EC%9E%85%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EA%B0%9C%EB%85%90-%EB%B0%8F-%ED%83%80%EC%9E%85",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "TypeScript",
+    "title": "프로가 되기 위한 타입스크립트 프로그래밍 입문",
+    "URL": "http://yes24.com/product/goods/117963966",
+    "type": "책",
+    "platform": "Yes24",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "TypeScript",
+    "title": "Do it! 타입스크립트 프로그래밍",
+    "URL": "https://www.yes24.com/product/goods/89328106",
+    "type": "책",
+    "platform": "Yes24",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "TypeScript",
+    "title": "타입스크립트로 블록체인 만들기",
+    "URL": "https://nomadcoders.co/typescript-for-beginners",
+    "type": "동영상",
+    "platform": "노마드코더",
+    "duration": "3시간 ~ 5시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "TypeScript",
+    "title": "공식문서로 배우는 실전 타입스크립트",
+    "URL": "https://www.inflearn.com/course/%EA%B3%B5%EC%8B%9D%EB%AC%B8%EC%84%9C-%EC%8B%A4%EC%A0%84-%ED%83%80%EC%9E%85%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "TypeScript",
+    "title": "핵심만 골라 배우는 TypeScript",
+    "URL": "https://www.inflearn.com/course/%ED%95%B5%EC%8B%AC%EB%A7%8C-%EB%B0%B0%EC%9A%B0%EB%8A%94-tyescript",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "TypeScript",
+    "title": "【한글자막】 Typescript :기초부터 실전형 프로젝트까지 with React + NodeJS",
+    "URL": "https://www.udemy.com/course/best-typescript-21/?srsltid=AfmBOoosvgmyQF-dC9cODGGQnG9LkhLTTC_rezgyPcbi9MIsTTZqjfyN&utm_source=chatgpt.com&couponCode=ST8MT220425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "TypeScript",
+    "title": "【한글자막】 TypeScript 마스터 with Webpack & React",
+    "URL": "https://www.udemy.com/course/typescript-with-webpack-react/?srsltid=AfmBOopB0mJ8ppGCLk55jVUe1S73fwXfIk0KbxXmnIUTn_ltkUGgLzQj&utm_source=chatgpt.com&couponCode=ST8MT220425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "TypeScript",
+    "title": "JavaScript & TypeScript Essential",
+    "URL": "https://fastcampus.co.kr/dev_academy_kmt1?utm_source=chatgpt.com",
+    "type": "동영상",
+    "platform": "FASTCAMPUS",
+    "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "20만원 ~ 50만원"
+  },
+  {
+    "subject_name": "TypeScript",
+    "title": "[리뉴얼] 타입스크립트 올인원 : Part1. 기본 문법편",
+    "URL": "https://www.inflearn.com/course/%ED%83%80%EC%9E%85%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EC%98%AC%EC%9D%B8%EC%9B%90-1",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "TypeScript",
+    "title": "[리뉴얼] 타입스크립트 올인원 : Part2. 실전 분석편",
+    "URL": "https://www.inflearn.com/course/%ED%83%80%EC%9E%85%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EC%98%AC%EC%9D%B8%EC%9B%90-2",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "TypeScript",
+    "title": "TypeScript",
+    "URL": "https://edu.goorm.io/lecture/39523/생활코딩-typescript",
+    "type": "동영상",
+    "platform": "goormedu",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "TypeScript",
+    "title": "타입스크립트 핸드북",
+    "URL": "https://joshua1988.github.io/ts/",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "TypeScript",
+    "title": "【한글자막】 TypeScript 마스터 with Webpack & React",
+    "URL": "https://www.udemy.com/course/typescript-with-webpack-react",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Virtual DOM",
+    "title": "DOM 기본",
+    "URL": "https://www.inflearn.com/course/dom-%EA%B8%B0%EB%B3%B8",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Virtual DOM",
+    "title": "React의 가상돔 (Virtual DOM)이 뭔가요? (짱 쉬움)",
+    "URL": "https://www.youtube.com/watch?v=gc-kXt0tjTM&ab_channel=별코딩",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Virtual DOM",
+    "title": "DOM 인터랙션",
+    "URL": "https://www.inflearn.com/course/dom-%EC%99%84%EC%A0%84-%EB%81%9D%EB%82%B4%EA%B8%B0-%EC%9D%B8%ED%84%B0%EB%A0%89%EC%85%98",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Virtual DOM",
+    "title": "Virtual DOM, 가상 돔 이란?",
+    "URL": "https://doqtqu.tistory.com/316#1.%20DOM(Document%20Object%20Model)",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Virtual DOM",
+    "title": "What is the Virtual DOM in React?",
+    "URL": "https://www.freecodecamp.org/news/what-is-the-virtual-dom-in-react/",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Virtual DOM",
+    "title": "DOM의 새로운 발견! Virtual DOM 동작 원리",
+    "URL": "https://velog.io/@sunhwa508/Virtual-DOM",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Git & Github",
+    "title": "제대로 파는 Git & GitHub",
+    "URL": "https://www.youtube.com/watch?v=1I3hMwQU6GU&ab_channel=%EC%96%84%ED%8C%8D%ED%95%9C%EC%BD%94%EB%94%A9%EC%82%AC%EC%A0%84",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Git & Github",
+    "title": "깃, 깃허브 제대로 배우기",
+    "URL": "https://www.youtube.com/watch?v=Z9dvM7qgN9s&ab_channel=%EB%93%9C%EB%A6%BC%EC%BD%94%EB%94%A9",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Git & Github",
+    "title": "https://learngitbranching.js.org/?locale=ko",
+    "URL": "https://learngitbranching.js.org/?locale=ko",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Git & Github",
+    "title": "마크다운 markdown 작성법",
+    "URL": "https://gist.github.com/ihoneymon/652be052a0727ad59601",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": NaN
+  },
+  {
+    "subject_name": "Git & Github",
+    "title": "제대로 파고드는 Git & GitHub - by 얄코(Yalco)",
+    "URL": "https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EA%B9%83",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Git & Github",
+    "title": "【한글자막】 Git & Github 실무 활용 완벽 가이드",
+    "URL": "https://www.udemy.com/course/best-git-github",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": NaN
+  },
+  {
+    "subject_name": "Git Hook (Husky lint-staged) 자동화",
+    "title": "Git 팀 작업을 자동화하는 방법 [Hooks와 커스텀 스크립트]",
+    "URL": "https://coding-by-head.tistory.com/entry/git-hook",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Git Hook (Husky lint-staged) 자동화",
+    "title": "Husky로 Git hooks 자동화하기(+ lint-staged, commitlint)",
+    "URL": "https://meoweundi.tistory.com/37",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Git Hook (Husky lint-staged) 자동화",
+    "title": "Git Hooks",
+    "URL": "https://www.atlassian.com/ko/git/tutorials/git-hooks",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Git Hook (Husky lint-staged) 자동화",
+    "title": "husky, lint-staged",
+    "URL": "https://deku.posstree.com/ko/react/husky-lint-staged/",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Git Hook (Husky lint-staged) 자동화",
+    "title": "Configuring husky pre-commit git hooks",
+    "URL": "https://www.youtube.com/watch?v=jGEkiljxvxU",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Git Hook (Husky lint-staged) 자동화",
+    "title": "Git Project Setup with Husky, Conventional Commits, and branching strategies.",
+    "URL": "https://www.youtube.com/watch?app=desktop&v=jNxDNoYEGVU&t=1169s",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "중",
+    "price": NaN
+  },
+  {
+    "subject_name": "Axios 인스턴스 관리 공통 인터셉터 구성",
+    "title": "Axios instance와 interceptors로 Axios 효율성 높이기",
+    "URL": "https://ramincoding.tistory.com/entry/React-Axios-instance-와-interceptors-로-Axios-효율성-높이기",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Axios 인스턴스 관리 공통 인터셉터 구성",
+    "title": "Axios Instance 만들어보기",
+    "URL": "https://velog.io/@posinity/%ED%95%AD%ED%95%B499-Axios-Instance-%EB%A7%8C%EB%93%A4%EC%96%B4%EB%B3%B4%EA%B8%B0",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Axios 인스턴스 관리 공통 인터셉터 구성",
+    "title": "Axios : instance와 interceptor",
+    "URL": "https://developer-haru.tistory.com/51",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Axios 인스턴스 관리 공통 인터셉터 구성",
+    "title": "Axios 공식 문서",
+    "URL": "https://axios-http.com/kr/docs/instance",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "3시간 ~ 5시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Axios 인스턴스 관리 공통 인터셉터 구성",
+    "title": "How can you use axios interceptors?",
+    "URL": "https://stackoverflow.com/questions/52737078/how-can-you-use-axios-interceptors",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Axios 인스턴스 관리 공통 인터셉터 구성",
+    "title": "Axios Tutorial",
+    "URL": "https://www.youtube.com/playlist?list=PLnHJACx3NwAdSOK3BoQ7wjCDT1Iw7hs_u",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Rest API 기반 에러 처리 / 재시도 로직",
+    "title": "React | 공통 API 에러 처리 제작기(feat. React Query)",
+    "URL": "https://velog.io/@jun_n3/React-%EA%B3%B5%ED%86%B5-API-%EC%97%90%EB%9F%AC-%EC%B2%98%EB%A6%AC-%EC%A0%9C%EC%9E%91%EA%B8%B0feat.-React-Query",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Rest API 기반 에러 처리 / 재시도 로직",
+    "title": "Axios Retry로 API 요청 마스터하기: 종합 가이드",
+    "URL": "https://apidog.com/kr/blog/axios-retry-request-2/",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
+    "level": "상",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Rest API 기반 에러 처리 / 재시도 로직",
+    "title": "[Web] API, REST API에 대해 공부해보자",
+    "URL": "https://five-sun.tistory.com/112",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Rest API 기반 에러 처리 / 재시도 로직",
+    "title": "Spring Boot 에서 API 재시도를 처리할수 있는 여러가지 방안들",
+    "URL": "https://velog.io/@garden6/API-%EC%9E%AC%EC%8B%9C%EB%8F%84%EB%A5%BC-%EC%B2%98%EB%A6%AC%ED%95%A0%EC%88%98-%EC%9E%88%EB%8A%94-%EC%97%AC%EB%9F%AC%EA%B0%80%EC%A7%80-%EB%B0%A9%EC%95%88%EB%93%A4",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Rest API 기반 에러 처리 / 재시도 로직",
+    "title": "API Fetch Retry로직 작성해보기 (with Axios)",
+    "URL": "https://flyingsquirrel.medium.com/api-fetch-retry로직-작성해보기-with-axios-5cb81e6345ad",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Rest API 기반 에러 처리 / 재시도 로직",
+    "title": "Spring Retry for resilient database or REST API access with simple annotation in Spring Boot.",
+    "URL": "https://www.youtube.com/watch?v=Q0nh8ECG5rQ",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Rest API 기반 에러 처리 / 재시도 로직",
+    "title": "Unlock the Hidden Power of Spring Boot Retry",
+    "URL": "https://www.youtube.com/watch?v=Nj3wPmIJRy0",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Rest API 기반 에러 처리 / 재시도 로직",
+    "title": "Spring Retry & RestClient (Part 2): Custom HTTP Exceptions, Error Handlers, JDK/Apache HttpClients",
+    "URL": "https://www.youtube.com/watch?v=pezBoiaBvus",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "React",
+    "title": "모던 리액트 Deep Dive",
+    "URL": "https://product.kyobobook.co.kr/detail/S000210725203",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "React",
+    "title": "React & Express 를 이용한 웹 어플리케이션 개발하기",
+    "URL": "https://www.inflearn.com/course/react-%EA%B0%95%EC%A2%8C-velopert",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "React",
+    "title": "ReactJS로 영화 웹 서비스 만들기",
+    "URL": "https://nomadcoders.co/react-for-beginners",
+    "type": "동영상",
+    "platform": "노마드코더",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "React",
+    "title": "리액트의 Hooks 완벽 정복하기",
+    "URL": "https://velog.io/@velopert/react-hooks",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "React",
+    "title": "React JS 마스터클래스",
+    "URL": "https://nomadcoders.co/react-masterclass",
+    "type": "동영상",
+    "platform": "노마드코더",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "React",
+    "title": "벨로퍼트와 함께하는 모던 리액트",
+    "URL": "https://react.vlpt.us/",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "3시간 ~ 5시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "React",
+    "title": "프로젝트로 배우는 React.js",
+    "URL": "https://www.inflearn.com/course/프로젝트-배우는-리액트",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "React",
+    "title": "웹 게임을 만들며 배우는 React에 TypeScript 적용하기",
+    "URL": "https://www.inflearn.com/course/react-typescript-webgame",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Redux",
+    "title": "생활코딩 - Redux",
+    "URL": "https://www.inflearn.com/course/redux-%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9?srsltid=AfmBOoocwGw5aB_bSPaJTRNsjkGaO9h_KiH9OPZ6R78kJqNI1-PuzWne",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Redux",
+    "title": "초보자를 위한 리덕스 101",
+    "URL": "https://nomadcoders.co/redux-for-beginners",
+    "type": "동영상",
+    "platform": "노마드코더",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Redux",
+    "title": "(2025 최신 업데이트)리액트 : 프론트엔드 개발자로 가는 마지막 단계",
+    "URL": "https://www.inflearn.com/course/%EB%A6%AC%EC%95%A1%ED%8A%B8-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EB%A7%88%EC%A7%80%EB%A7%89#curriculum",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "~ 1시간",
+    "level": "중",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "Redux",
+    "title": "[리액트] Redux와 사용법",
+    "URL": "https://medium.com/@heoh06/%EB%A6%AC%EC%95%A1%ED%8A%B8-redux%EC%99%80-%EC%82%AC%EC%9A%A9%EB%B2%95-731853fc3cd4",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Redux",
+    "title": "[Redux] Redux 사용법 기초 useState처럼 사용하기",
+    "URL": "https://velog.io/@chaerin00/Redux-%EC%82%AC%EC%9A%A9%EB%B2%95-%EA%B8%B0%EC%B4%88-useState%EC%B2%98%EB%9F%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Redux",
+    "title": "React 입문 - react-redux 리덕스 사용법",
+    "URL": "https://olive-jam.tistory.com/47",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "3시간 ~ 5시간",
+    "level": "상",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Redux",
+    "title": "React Redux Tutorials",
+    "URL": "https://www.youtube.com/watch?v=9boMnm5X9ak&list=PLC3y8-rFHvwheJHvseC3I0HuYI2f46oAK",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Redux",
+    "title": "Redux Toolkit Tutorial",
+    "URL": "https://www.youtube.com/watch?v=0awA5Uw6SJE&list=PLC3y8-rFHvwiaOAuTtVXittwybYIorRB3",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "상",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Zustand",
+    "title": "맛집 지도앱 만들기 (React Native + NestJS)",
+    "URL": "https://www.inflearn.com/course/%EB%A7%9B%EC%A7%91-%EC%A7%80%EB%8F%84%EC%95%B1-%EB%A7%8C%EB%93%A4%EA%B8%B0-reactnative-nestjs",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Zustand",
+    "title": "Zustand 가이드북(간단한 사용법부터 Pro Tips까지)",
+    "URL": "https://lambda-log.tistory.com/9",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Zustand",
+    "title": "실무에 바로 쓰는 Next.js",
+    "URL": "https://spartacodingclub.kr/product/72",
+    "type": "동영상",
+    "platform": "spartacodingclub",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "20만원 ~ 50만원"
+  },
+  {
+    "subject_name": "Zustand",
+    "title": "Zustand Tutorial for Beginners - The Only Course You Will Ever Need",
+    "URL": "https://www.youtube.com/watch?v=AYO4qHAnLQI",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Zustand",
+    "title": "react zustand in detail (2023)",
+    "URL": "https://www.youtube.com/playlist?list=PL1T-3Hf9FqXbH54aLLMWMpdn6OMa5TWOX",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Zustand",
+    "title": "Zustand React State Management Course (Simple Redux Alternative)",
+    "URL": "https://www.youtube.com/watch?v=fZPgBnL2x-Q",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Zustand",
+    "title": "Zustand",
+    "URL": "https://opentutorials.org/course/4671",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Zustand",
+    "title": "Zustand는 작고, 빠르고, 확장가능한 상태관리 솔루션입니다.",
+    "URL": "https://www.youtube.com/watch?v=L5ID-3r-U4w&list=PLeMeDIV7bypu08YTMGuKyjHgLnGN8VZ28&index=2",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Zustand",
+    "title": "Next + React Query로 SNS 서비스 만들기",
+    "URL": "https://www.inflearn.com/course/next-react-query-sns%EC%84%9C%EB%B9%84%EC%8A%A4",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Zustand",
+    "title": "기초부터 배우는 Next YTMusic 클론 코딩 (with next.js 14, UI 마스터)",
+    "URL": "https://www.inflearn.com/course/%EA%B8%B0%EC%B4%88-next-ytmusic-%ED%81%B4%EB%A1%A0%EC%BD%94%EB%94%A9",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Vue",
+    "title": "Vue.js 끝장내기 - 실무에 필요한 모든 것",
+    "URL": "https://www.inflearn.com/course/vue-js-끝내기-캡틴판교",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "상",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "Vue",
+    "title": "웹 게임을 만들며 배우는 Vue",
+    "URL": "https://www.inflearn.com/course/web-game-vue",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Vue",
+    "title": "Vue로 Nodebird SNS 만들기",
+    "URL": "https://www.inflearn.com/course/vue-nodebird-sns",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Vue",
+    "title": "Vue3 강좌 한방에 몰아보기",
+    "URL": "https://www.youtube.com/watch?v=m2j_Y245xew",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Vue",
+    "title": "트렐로 개발로 배우는 Vuejs, Vuex, Vue-Router 프론트엔드 실전 기술",
+    "URL": "https://www.inflearn.com/course/vuejs",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Vue",
+    "title": "Vue 3 시작하기",
+    "URL": "https://www.inflearn.com/course/vue-3-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0",
     "type": "동영상",
     "platform": "인프런",
     "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Vue",
+    "title": "Vue.js + TypeScript 완벽 가이드",
+    "URL": "https://www.inflearn.com/course/vue-ts",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "상",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Vue",
+    "title": "Vue 3 중급 - Composition API",
+    "URL": "https://www.inflearn.com/course/vue-3-%EC%A4%91%EA%B8%89-composition-api",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Vue",
+    "title": "Vue 3 & Firebase 10 커뮤니티 만들기 풀스택 - \"활용편\" (with Pinia, Quasar, Tiptap, VueUse)",
+    "URL": "https://www.inflearn.com/course/vue3-firebase10-%EC%BB%A4%EB%AE%A4%EB%8B%88%ED%8B%B0%EB%A7%8C%EB%93%A4%EA%B8%B0",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "Vue",
+    "title": "Vue JS 맛보기 - 정말 쉬운지 아닌지 살펴보기?",
+    "URL": "https://www.youtube.com/watch?v=QtQ-xbLyaqI&ab_channel=%EB%8D%B0%EB%B8%8C%EB%A6%AC",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Vue",
+    "title": "뷰js 2 (Vue.js 2) 기초 익히기 기본 강좌!",
+    "URL": "https://www.youtube.com/playlist?list=PLB7CpjPWqHOtYP7P_0Ls9XNed0NLvmkAh",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Vue",
+    "title": "프로젝트로 배우는 Vue.js 3",
+    "URL": "https://www.inflearn.com/course/vue-%EA%B8%B0%EC%B4%88-%EC%9D%B5%ED%9E%88%EA%B8%B0",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Vue",
+    "title": "Vue.js 중급 강좌 - 웹앱 제작으로 배워보는 Vue.js, ES6, Vuex",
+    "URL": "https://www.inflearn.com/course/vue-pwa-vue-js-%EC%A4%91%EA%B8%89",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Vuex & Piana",
+    "title": "Nuxt3 Pinia Full Course (feat. News API)",
+    "URL": "https://www.youtube.com/watch?v=5eA0V540hZs",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Vuex & Piana",
+    "title": "Vuex Tutorial",
+    "URL": "https://www.youtube.com/playlist?list=PLZzSdj89sCN292abcbI3utND8pA1T1OyB",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Vuex & Piana",
+    "title": "공식문서로 알아보는 Pinia Full Tutorial",
+    "URL": "https://www.youtube.com/watch?v=_LPTZbzzc7g",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Vuex & Piana",
+    "title": "Pinia Crash Course",
+    "URL": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9hp28dYyYBy3xoOdoeNw-hD",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Vuex & Piana",
+    "title": "Pinia Course 2022",
+    "URL": "https://www.youtube.com/watch?v=G4H6QOcGKbU",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Vuex & Piana",
+    "title": "Learn Pinia in 30 MINUTES! (Vue JS 3)",
+    "URL": "https://www.youtube.com/watch?v=JGC7aAC-3y8",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Angular",
+    "title": "Angular, 앵귤러 100분 핵심강의",
+    "URL": "https://www.inflearn.com/course/angular-100min?srsltid=AfmBOorAE_wX-ioQ-_CODnNbvJXN9SLgrbvtmGxbq4CFN-Ua1lcdM6Fz",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Angular",
+    "title": "Angular 기본과 간단한 To-Do 어플리케이션 만들기",
+    "URL": "https://www.inflearn.com/course/angular-강좌-기본?srsltid=AfmBOorsGYu1eRLCu9OXAvzM-JSkb22oK-gG4A3qdwfYRAqVGresJ_IT",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Angular",
+    "title": "Angular【한글자막】 Angular 완벽 가이드 : 기초 문법부터 TypeScript 기반 최신 문법까지",
+    "URL": "https://www.udemy.com/course/angular-2021/?couponCode=ST8MT220425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Angular",
+    "title": "Angular(2+) Front에서 Back까지 - Nest js를 알려면 Angular 모듈을 알아야한다!",
+    "URL": "https://www.inflearn.com/course/Angular",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Angular",
+    "title": "Angular Essentials",
+    "URL": "https://product.kyobobook.co.kr/detail/S000001891079",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Angular",
+    "title": "앵귤러 첫걸음",
+    "URL": "https://product.kyobobook.co.kr/detail/S000001057857",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Angular",
+    "title": "Angular - The Complete Guide (2025 Edition)",
+    "URL": "https://www.udemy.com/course/the-complete-guide-to-angular-2",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "Angular",
+    "title": "Angular Deep Dive - Beginner to Advanced (Angular 19)",
+    "URL": "https://www.udemy.com/course/angular-course/",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "NgRx",
+    "title": "Angular NGRX Complete Course Tutorial",
+    "URL": "https://www.youtube.com/playlist?list=PL_euSNU_eLbdg0gKbR8zmVJb4xLgHR7BX",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "NgRx",
+    "title": "이 영상을 보시면 NgRx를 이해하실 수 있을 거라 장담합니다",
+    "URL": "https://www.youtube.com/watch?v=kx0VTgTtSBg",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "NgRx",
+    "title": "Ngrx 도입",
+    "URL": "https://front-study.tistory.com/58",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "NgRx",
+    "title": "[Angular] NGRX 적용 - (1) ngrx 동작 과정 이해하기",
+    "URL": "https://dongurami0502.tistory.com/16",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "NgRx",
+    "title": "ngrx architecture를 이용하여 angular 앱을 더 기분 좋게 만들기",
+    "URL": "https://medium.com/pplink/ngrx-architecture%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-angular-%EC%95%B1%EC%9D%84-%EB%8D%94-%EA%B8%B0%EB%B6%84-%EC%A2%8B%EA%B2%8C-%EB%A7%8C%EB%93%A4%EA%B8%B0-9182c582a113",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
+    "level": "상",
+    "price": "무료"
+  },
+  {
+    "subject_name": "NgRx",
+    "title": "NgRx (with NgRx Data) - The Complete Guide (Angular 19)",
+    "URL": "https://www.udemy.com/course/ngrx-course/?utm_medium=udemyads&utm_source=wj-krweb&utm_campaign=udemykorea_course&utm_content=ngrx-course&utm_term=230814&couponCode=KRLETSLEARNNOW",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "5시간 ~ 10시간",
+    "level": "상",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "컴포넌트 디자인 시스템 (Storybook)",
+    "title": "실무에 바로 적용하는 스토리북과 UI 테스트",
+    "URL": "https://www.inflearn.com/course/%EC%8B%A4%EB%AC%B4%EC%A0%81%EC%9A%A9-%EC%8A%A4%ED%86%A0%EB%A6%AC%EB%B6%81-ui%ED%85%8C%EC%8A%A4%ED%8A%B8",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "컴포넌트 디자인 시스템 (Storybook)",
+    "title": "2시간으로 끝내는 프론트엔드 테스트 기본기",
+    "URL": "https://www.inflearn.com/course/%EC%A3%BC%EB%8B%88%EC%96%B4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EA%B8%B0%EB%B3%B8%EA%B8%B0",
+    "type": "동영상",
+    "platform": "코드잇",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "컴포넌트 디자인 시스템 (Storybook)",
+    "title": "스토리북 & 자동화 테스트와 함께 하는 컴포넌트 주도 프론트엔드 개발\r\n",
+    "URL": "https://www.inflearn.com/course/%ED%8C%90%EA%B5%90-%ED%87%B4%EA%B7%BC%EA%B8%B8%EB%B0%8B%EC%97%85-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%BD%94%EB%93%9C",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "컴포넌트 디자인 시스템 (Storybook)",
+    "title": "UI 컴포넌트 구축하기스토리북에서 디자인 시스템 컴포넌트를 구축하고 구조화하기",
+    "URL": "https://storybook.js.org/tutorials/design-systems-for-developers/react/ko/build/",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "컴포넌트 디자인 시스템 (Storybook)",
+    "title": "현장에서 바로 써먹는 리액트 with 타입스크립트",
+    "URL": "https://product.kyobobook.co.kr/detail/S000202707764",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "컴포넌트 디자인 시스템 (Storybook)",
+    "title": "Storybook Official Tutorial Code Along - Web Development",
+    "URL": "https://www.udemy.com/course/storybook-official-tutorial-code-along-web-development",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "컴포넌트 디자인 시스템 (Storybook)",
+    "title": "Convert a Figma design to ReactJS components using Storybook",
+    "URL": "https://www.udemy.com/course/implement-a-design-system-with-reactjs-storybook-tailwind",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "컴포넌트 디자인 시스템 (Storybook)",
+    "title": "Advanced React & Storybook: From Components Library to CI/CD",
+    "URL": "https://www.udemy.com/course/build-react-v17-components-with-storybook",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "3시간 ~ 5시간",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "컴포넌트 디자인 시스템 (Storybook)",
+    "title": "Advanced React: Design System, Design Patterns, Performance",
+    "URL": "https://www.udemy.com/course/advanced-react",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "컴포넌트 디자인 시스템 (Storybook)",
+    "title": "React Storybook Tutorial",
+    "URL": "https://www.youtube.com/playlist?list=PLC3y8-rFHvwhC-j3x3t9la8-GQJGViDQk",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "컴포넌트 디자인 시스템 (Storybook)",
+    "title": "Modern Component Library with React & Storybook",
+    "URL": "https://www.youtube.com/playlist?list=PLKBvDYynKmlWa59k8pnw-EHac2_miPagh",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "컴포넌트 디자인 시스템 (Storybook)",
+    "title": "Storybook Crash Course: For React Devs And Storybook Beginners with Storybook Maintainer, Yann Braga",
+    "URL": "https://www.youtube.com/watch?v=x-x47qHq3nY",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Tailwind CSS",
+    "title": "쉽고 빠른 스타일링 Tailwind CSS 기초 가이드",
+    "URL": "https://www.inflearn.com/course/tailwind-css-기초?srsltid=AfmBOoran6emeg4BdcdPHnUTYXV3h_ipF-U2bYisdK74Xyq7pDKrG1g5",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Tailwind CSS",
+    "title": "TailwindCSS 완벽 마스터: 포트폴리오부터 어드민까지!",
+    "URL": "https://www.inflearn.com/course/tailwindcss-완전정복-포트폴리오-어드민까지",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Tailwind CSS",
+    "title": "테일윈드 CSS",
+    "URL": "https://www.yes24.com/Product/Goods/126841796",
+    "type": "책",
+    "platform": "Yes24",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Tailwind CSS",
+    "title": "TailwindCSS 완전 정복 강의 EP01 ~ EP11",
+    "URL": "https://www.youtube.com/watch?v=sOiuZQo93cU&ab_channel=%EC%A7%90%EC%BD%94%EB%94%A9",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Tailwind CSS",
+    "title": "[쉽고 빠른 스타일링 Tailwind CSS 기초 가이드] 설치/확장프로그램/기본속성",
+    "URL": "https://velog.io/@posinity/%EC%89%BD%EA%B3%A0-%EB%B9%A0%EB%A5%B8-%EC%8A%A4%ED%83%80%EC%9D%BC%EB%A7%81-Tailwind-CSS-%EA%B8%B0%EC%B4%88-%EA%B0%80%EC%9D%B4%EB%93%9C",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "3시간 ~ 5시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Tailwind CSS",
+    "title": "Tailwind CSS 사용기",
+    "URL": "https://fe-developers.kakaoent.com/2022/220303-tailwind-tips/",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Tailwind CSS",
+    "title": "🚀Next.js + Tailwind.css 로 블로그 만들기 - 1. setting / config + data fetching",
+    "URL": "https://velog.io/@holicholicpop/Next.js-Tailwind.css-로-블로그-만들기-1.-setting-config-data-fetching",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Tailwind CSS",
+    "title": "Tailwind CSS Tutorial #1 - Intro & Setup",
+    "URL": "https://www.youtube.com/watch?v=bxmDnn7lrnk&list=PL4cUxeGkcC9gpXORlEHjc5bgnIi5HEGhw&ab_channel=NetNinja",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "SCSS",
+    "title": "[초급] 40분만에 훑어보는 Sass",
+    "URL": "https://www.inflearn.com/course/%EC%B4%88%EA%B8%89-30%EB%B6%84-sass",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "SCSS",
+    "title": "CSS에 날개를 달아주는 Sass (SCSS)",
+    "URL": "https://www.inflearn.com/course/css%EC%97%90-%EB%82%A0%EA%B0%9C%EB%A5%BC-%EB%8B%AC%EC%95%84%EC%A3%BC%EB%8A%94-sass-scss",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "SCSS",
+    "title": "The Complete Sass & SCSS Course: From Beginner to Advanced",
+    "URL": "https://www.udemy.com/course/sasscourse/?couponCode=ST8MT220425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "SCSS",
+    "title": "실무자를 위한 Sass (CSS 프리프로세서)",
+    "URL": "https://www.udemy.com/course/css-preprocessor/?couponCode=ST8MT220425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "SCSS",
+    "title": "https://www.youtube.com/playlist?list=PLmAWMAo-opQzz95sYuW5Bj9mcmx0NG-ey",
+    "URL": "https://www.youtube.com/watch?v=C4g036Ioo3o&list=PLmAWMAo-opQzz95sYuW5Bj9mcmx0NG-ey",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "SCSS",
+    "title": "초보자를 위한 Sass 기초 강의 & 자몽톡 클론코딩",
+    "URL": "https://www.inflearn.com/course/%EC%B4%88%EB%B3%B4%EC%9E%90-%EC%82%AC%EC%8A%A4-%EA%B8%B0%EC%B4%88%EA%B0%95%EC%9D%98-%ED%81%B4%EB%A1%A0#curriculum",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "SCSS",
+    "title": "SCSS",
+    "URL": "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000008381180",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "SCSS",
+    "title": "Sass Moderno (Lleva CSS al siguiente nivel)",
+    "URL": "https://www.udemy.com/course/sass-curso/?couponCode=ST8MT220425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "3시간 ~ 5시간",
+    "level": "상",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "SCSS",
+    "title": "SCSS(SASS)+FLEX 실전 반응형 웹 프로젝트 with Figma",
+    "URL": "https://www.inflearn.com/course/scss-flex-실전반응형-웹프로젝트-figma",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "styled",
+    "title": "React Styled Components Course (V5)",
+    "URL": "https://www.udemy.com/course/styled-components-tutorial-and-project-course/?couponCode=ST7MT290425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "styled",
+    "title": "Learn Styled Components in React",
+    "URL": "https://www.coursera.org/learn/learn-styled-components-in-react",
+    "type": "동영상",
+    "platform": "Coursera",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "styled",
+    "title": "Styled Components",
+    "URL": "https://www.codeit.kr/topics/styled-components",
+    "type": "동영상",
+    "platform": "코드잇",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "styled",
+    "title": "CSS for the <Component> Age",
+    "URL": "https://styled-components.com/",
+    "type": "책",
+    "platform": "공식문서",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "무료"
+  },
+  {
+    "subject_name": "styled",
+    "title": "https://velog.io/@pakxe/styled-component-styled-component-%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90",
+    "URL": "https://velog.io/@pakxe/series/styled-component",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "styled",
+    "title": "React Styled Components",
+    "URL": "https://www.youtube.com/playlist?list=PLC3y8-rFHvwgu-G08-7ovbN9EyhF_cltM",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "EsLint & Prettier",
+    "title": "Prettier, ESLint 이해하고 사용하기",
+    "URL": "https://velog.io/@imkkuk/Prettier-ESLint-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B3%A0-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "EsLint & Prettier",
+    "title": "프론트엔드 개발환경의 이해와 실습 (webpack, babel, eslint..)",
+    "URL": "https://www.inflearn.com/course/%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EA%B0%9C%EB%B0%9C%ED%99%98%EA%B2%BD/community?srsltid=AfmBOoqNJUk176njEl2FaVDoPUp19O7nleyenDXDRLlSBu4QzU5cIn11",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "EsLint & Prettier",
+    "title": "ESLint 설치 및 configuration 설정하는 방법",
+    "URL": "https://ablue-1.tistory.com/111",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "EsLint & Prettier",
+    "title": "우리 팀을 위한 ESLint, Prettier 공유 컨피그 만들어보기",
+    "URL": "https://techblog.woowahan.com/15903/",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "3시간 ~ 5시간",
+    "level": "상",
+    "price": "무료"
+  },
+  {
+    "subject_name": "EsLint & Prettier",
+    "title": "Prettier, ESLint 설치하기 [ 리액트 (React + Typescript) ]",
+    "URL": "https://www.youtube.com/watch?v=RDIKsxddlmg&ab_channel=어라운드허브스튜디오-AroundHubStudio",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "EsLint & Prettier",
+    "title": "Prettier",
+    "URL": "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000007628389",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "EsLint & Prettier",
+    "title": "ESLint",
+    "URL": "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000006806383",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "next.js",
+    "title": "Next.js 시작하기",
+    "URL": "https://www.inflearn.com/course/next-js-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "next.js",
+    "title": "NextJS 시작하기",
+    "URL": "https://nomadcoders.co/nextjs-for-beginners",
+    "type": "동영상",
+    "platform": "노마드코더",
+    "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "next.js",
+    "title": "Next.js 완벽 마스터 (v15): Notion 기반 개발자 블로그 만들기 (with Cursor AI)",
+    "URL": "https://www.inflearn.com/course/next-%EC%99%84%EB%B2%BD%EB%A7%88%EC%8A%A4%ED%84%B0-notion-%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%B8%94%EB%A1%9C%EA%B7%B8-cursorai",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "next.js",
+    "title": "Next.js 13",
+    "URL": "https://opentutorials.org/course/5098",
+    "type": "동영상",
+    "platform": "생활코딩",
+    "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "next.js",
+    "title": "Next.js로 웹서비스 만들기",
+    "URL": "https://codingapple.com/course/next-js/",
+    "type": "동영상",
+    "platform": "코딩애플",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "next.js",
+    "title": "Next.js로 웹사이트 최적화하기",
+    "URL": "https://www.codeit.kr/paths/nextjs-web-development",
+    "type": "동영상",
+    "platform": "코드잇",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "next.js",
+    "title": "Introduction to Next.js",
+    "URL": "https://www.coursera.org/learn/introduction-to-next-js",
+    "type": "동영상",
+    "platform": "Coursera",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "next.js",
+    "title": "Next.js 15 & React - The Complete Guide",
+    "URL": "https://www.udemy.com/course/nextjs-react-the-complete-guide/?couponCode=ST8MT220425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "next.js",
+    "title": "쉽게 시작하는 Next.js",
+    "URL": "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000010731194",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "next.js",
+    "title": "실전에서 바로 쓰는 Next.js",
+    "URL": "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000005120537",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "next.js",
+    "title": "Next + React Query로 SNS 서비스 만들기",
+    "URL": "https://www.inflearn.com/course/next-react-query-sns%EC%84%9C%EB%B9%84%EC%8A%A4",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "next.js",
+    "title": "한 입 크기로 잘라먹는 Next.js(v15)",
+    "URL": "https://www.inflearn.com/course/%ED%95%9C%EC%9E%85-%ED%81%AC%EA%B8%B0-nextjs",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": NaN,
+    "price": NaN
+  },
+  {
+    "subject_name": "next.js",
+    "title": "NextJS 14 : quick start",
+    "URL": "https://www.youtube.com/watch?v=ogV4d6q-ykQ&list=PLeMeDIV7bypu08YTMGuKyjHgLnGN8VZ28&index=3",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "React 렌더링 최적화",
+    "title": "리액트 리렌더링 최적화 방법 조사",
+    "URL": "https://blog.teamelysium.kr/react-rerendering-optimization",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "React 렌더링 최적화",
+    "title": "부트캠프에서 알려주지 않는 것들 (리액트 렌더링 최적화 편) 2편",
+    "URL": "https://www.inflearn.com/course/%EB%B6%80%ED%8A%B8%EC%BA%A0%ED%94%84-%EC%95%8C%EB%A0%A4%EC%A3%BC%EC%A7%80%EC%95%8A%EB%8A%94%EA%B2%83%EB%93%A4-%EB%A6%AC%EC%95%A1%ED%8A%B8-%EB%A0%8C%EB%8D%94%EB%A7%81-%EC%B5%9C%EC%A0%81%ED%99%94",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "1시간 ~ 3시간",
+    "level": "상",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "React 렌더링 최적화",
+    "title": "모던 리액트 Deep Dive",
+    "URL": "https://product.kyobobook.co.kr/detail/S000210725203",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "React 렌더링 최적화",
+    "title": "Learn useCallback in 8minutes",
+    "URL": "https://www.youtube.com/watch?v=_AyFP5s69N4&ab_channel=WebDevSimplified",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "React 렌더링 최적화",
+    "title": "React.memo로 컴포넌트 최적화하기 (ft. useMemo, useCallback)",
+    "URL": "https://www.youtube.com/watch?v=oqUgcxwrnSY&ab_channel=별코딩",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "React 렌더링 최적화",
+    "title": "React Advanced Concepts: Re-Rendering, Performance & More",
+    "URL": "https://www.udemy.com/course/react-advanced",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "React 렌더링 최적화",
+    "title": "React Render Tutorial",
+    "URL": "https://www.youtube.com/playlist?list=PLC3y8-rFHvwg7czgqpQIBEAHn8D6l530t",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "React 렌더링 최적화",
+    "title": "8 React Js performance optimization techniques YOU HAVE TO KNOW!",
+    "URL": "https://www.youtube.com/watch?v=CaShN6mCJB0 ",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "React Query 심화",
+    "title": "Learn React Query In 50 Minutes",
+    "URL": "https://www.youtube.com/watch?v=r8Dg0KVnfMA",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "React Query 심화",
+    "title": "React Query Tutorial for Beginners",
+    "URL": "https://www.youtube.com/playlist?list=PLC3y8-rFHvwjTELCrPrcZlo6blLBUspd2",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "React Query 심화",
+    "title": "React Query",
+    "URL": "https://www.codeit.kr/topics/react-query",
+    "type": "동영상",
+    "platform": "코드잇",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "무료"
+  },
+  {
+    "subject_name": "React Query 심화",
+    "title": "React Query |TanStack Query:Server State Management in React",
+    "URL": "https://www.udemy.com/course/react-query-tanstack-query-server-state-management-in-react/?couponCode=ST8MT220425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "React Query 심화",
+    "title": "리액트 쿼리",
+    "URL": "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000006500261",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "React Query 심화",
+    "title": "React Query / TanStack Query: React Server State Management",
+    "URL": "https://www.udemy.com/course/learn-react-query/?couponCode=ST8MT220425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "React Query 심화",
+    "title": "State Management with React Query",
+    "URL": "https://product.kyobobook.co.kr/detail/S000202678072",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "React Query 심화",
+    "title": "React Query : quick start",
+    "URL": "https://www.youtube.com/watch?v=rQwJMmgx_bg",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "React Query 심화",
+    "title": "Learn React Query In 50 Minutes",
+    "URL": "https://www.youtube.com/watch?v=r8Dg0KVnfMA",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "React Query 심화",
+    "title": "React Query Tutorial",
+    "URL": "https://www.youtube.com/playlist?list=PLzYM-WGWIJDTMei3yRgQtiDGlUdP1ydw3",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Vue Test Utils",
+    "title": "Vue Test Utils",
+    "URL": "https://joshua1988.github.io/vue-camp/testing/vue-test-util.html#%E1%84%8E%E1%85%AC%E1%84%89%E1%85%B5%E1%86%AB-vue-cli-3-x-%E1%84%87%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%AB-%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC-%E1%84%8B%E1%85%A6%E1%84%89%E1%85%A5-%E1%84%89%E1%85%A5%E1%86%AF%E1%84%8E%E1%85%B5-%E1%84%87%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B8",
+    "type": "블로그",
+    "platform": "GitHub",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Vue Test Utils",
+    "title": "Vue Unit Testing",
+    "URL": "https://www.youtube.com/playlist?list=PLXDouhCU5r6oai6AB-WpDNPxEAqhvDfFt",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Vue Test Utils",
+    "title": "Testing Vue 3 apps with Vue Test Utils",
+    "URL": "https://www.youtube.com/playlist?list=PLC2LZCNWKL9ahK1IoODqYxKu5aA9T5IOA",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Vue Test Utils",
+    "title": "Vue Testing with Vue Test Utils",
+    "URL": "https://www.youtube.com/watch?v=QIDhzBg5eWY",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Nuxt.js",
+    "title": "[최신] Vue 강의 끝판왕 : Nuxt 3 완벽 마스터",
+    "URL": "https://www.inflearn.com/course/vue-%EB%81%9D%ED%8C%90%EC%99%95-nuxt3-%EC%99%84%EB%B2%BD%EB%A7%88%EC%8A%A4%ED%84%B0",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "Nuxt.js",
+    "title": "Nuxt.js 시작하기",
+    "URL": "https://www.inflearn.com/course/%EB%84%89%EC%8A%A4%ED%8A%B8-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "상",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Nuxt.js",
+    "title": "Nuxt 3 기반으로 AI Flatform 만들기",
+    "URL": "https://www.youtube.com/playlist?list=PLIZTLPwzS_qXH5YR-3ZxN5W5gqgDlxwQ1",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Nuxt.js",
+    "title": "Nuxt.js 강좌",
+    "URL": "https://www.youtube.com/playlist?list=PLDE8MlAqcTnA9bJPt_aA-9A0YehTJ3FrC",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Nuxt.js",
+    "title": "Nuxt3 Pinia Full Course (feat. News API)",
+    "URL": "https://www.youtube.com/watch?v=5eA0V540hZs",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "상",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Nuxt.js",
+    "title": "Nuxt 3 Tutorial",
+    "URL": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9haQlqdCQyYmL_27TesCGPC",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Nuxt.js",
+    "title": "Master Nuxt.js - A Vuejs framework by building projects",
+    "URL": "https://www.udemy.com/course/master-nuxtjs-a-vuejs-framework-by-building-projects-and-deploy/",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Angular Universal (Angular SSR)",
+    "title": "Angular SSR In Depth (formerly Angular Universal)",
+    "URL": "https://www.udemy.com/course/angular-universal-course/?srsltid=AfmBOootMXpadDq_XUYQfVcQceOcvF08PJy6eLnaJ4_ofUw5TBfB8MAG",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "3시간 ~ 5시간",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Angular Universal (Angular SSR)",
+    "title": "Angular 16 Server Side Rendering and Client Side Rendering - Angular Universal",
+    "URL": "https://www.youtube.com/watch?v=lZoRAcoEFOw",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Angular Universal (Angular SSR)",
+    "title": "Angular SSR Deep Dive (With Client HYDRATION)",
+    "URL": "https://www.youtube.com/watch?v=U1MP4uCuUVI",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Angular Universal (Angular SSR)",
+    "title": "https://angular.io/guide/universal",
+    "URL": "https://v17.angular.io/guide/ssr",
+    "type": "책",
+    "platform": "공식문서",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Angular Universal (Angular SSR)",
+    "title": "Angular 19 SSR Guide",
+    "URL": "https://www.youtube.com/playlist?list=PL_euSNU_eLbc91j2QvA_URGFwbHZsjS95",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Jasmine",
+    "title": "[Vanilla Javascript] Jasmine을 이용해 테스트 코드 작성해보기",
+    "URL": "https://datobi.tistory.com/55",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Jasmine",
+    "title": "Jasmine JavaScript Testing Second Edition",
+    "URL": "https://product.kyobobook.co.kr/detail/S000035154674",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Jasmine",
+    "title": "[10분 테코톡] 자스민, 병민의 웹팩 최적화 Part1",
+    "URL": "https://www.youtube.com/watch?v=QXYWlqK2eHI",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Jasmine",
+    "title": "Jasmine Testing Framework Course",
+    "URL": "https://www.youtube.com/playlist?list=PL_euSNU_eLbcpJdoM-WWzUlNNVM4TwtMl",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "5시간 ~ 10시간",
+    "level": "상",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Jasmine",
+    "title": "Jasmine JS: Start Testing From-Scratch",
+    "URL": "https://www.testim.io/blog/jasmine-js-a-from-scratch-tutorial-to-start-testing/",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Jasmine",
+    "title": "JavaScript Testing with Jasmine",
+    "URL": "https://product.kyobobook.co.kr/detail/S000028165901",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Jasmine",
+    "title": "Jasmine Testing Framework: A Complete Guide",
+    "URL": "https://www.lambdatest.com/learning-hub/jasmine-unit-testing",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "webPack",
+    "title": "Webpack 5: Optimizing For Production",
+    "URL": "https://www.udemy.com/course/webpack-optimizing-for-production/?couponCode=ST8MT220425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "webPack",
+    "title": "Webpack",
+    "URL": "https://www.youtube.com/playlist?list=PLuHgQVnccGMChcT9IKopFDoAIoTA-03DA",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "webPack",
+    "title": "https://github.com/webpack/webpackebpack",
+    "URL": "https://github.com/webpack/webpack",
+    "type": "책",
+    "platform": "GitHub",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "webPack",
+    "title": "webpack DOCS",
+    "URL": "https://webpack.kr/concepts/",
+    "type": "책",
+    "platform": "공식문서",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "webPack",
+    "title": "Webpack 5 Fundamentals",
+    "URL": "https://www.youtube.com/playlist?list=PLB67cosR0_lPUXIK35J8M7EQUbUJQMA0Q",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "webPack",
+    "title": "프론트엔드 개발자를 위한 웹팩",
+    "URL": "https://www.inflearn.com/course/%ED%94%84%EB%9F%B0%ED%8A%B8%EC%97%94%EB%93%9C-%EC%9B%B9%ED%8C%A9#curriculum",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "webPack",
+    "title": "프론트엔드 개발환경의 이해와 실습 (webpack, babel, eslint..)",
+    "URL": "https://www.inflearn.com/course/%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EA%B0%9C%EB%B0%9C%ED%99%98%EA%B2%BD",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "상",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "webPack",
+    "title": "Webpack 5 Up and Running",
+    "URL": "https://product.kyobobook.co.kr/detail/S000003531061",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "webPack",
+    "title": "Webpack 5: The Complete Guide For Beginners",
+    "URL": "https://www.udemy.com/course/webpack-from-beginner-to-advanced",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "webPack",
+    "title": "웹팩 핸드북",
+    "URL": "https://joshua1988.github.io/webpack-guide/guide.html",
+    "type": "책",
+    "platform": "GitHub",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "webPack",
+    "title": "Webpack 5 and Vite: A New Way to Learn - Active Thinking",
+    "URL": "https://www.udemy.com/course/webpack-5-vite/",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "3시간 ~ 5시간",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "webPack",
+    "title": "Webpack 5 Ninja - Build Micro frontend and web apps",
+    "URL": "https://www.udemy.com/course/webpack-5-ninja-build-micro-frontend-and-web-apps",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "webPack",
+    "title": "Learn React Micro Frontend From Scratch Using Webpack",
+    "URL": "https://www.udemy.com/course/learn-react-micro-frontends-from-scratch-using-webpack",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "3시간 ~ 5시간",
+    "level": "상",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "webPack",
+    "title": "Webpack for React Applications",
+    "URL": "https://www.udemy.com/course/webpack-for-react-applications",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "3시간 ~ 5시간",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "webPack",
+    "title": "webpack",
+    "URL": "https://www.youtube.com/playlist?list=PL-qMANrofLysX7hRV9BQymJFLD7Fasiv6",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "GitHub Actions로 빌드/배포 자동화",
+    "title": "https://www.youtube.com/playlist?list=PLfth0bK2MgIazkNsXM59WNVCY_6kwSnxU",
+    "URL": "https://www.youtube.com/watch?v=-r_S_kweXlk&list=PLfth0bK2MgIazkNsXM59WNVCY_6kwSnxU",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "GitHub Actions로 빌드/배포 자동화",
+    "title": "CI/CD 5분 개념 정리 (현업에서 쓰는 개발 프로세스)",
+    "URL": "https://youtu.be/0Emq5FypiMM?si=xU4tZLVc5gsifqoI",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "GitHub Actions로 빌드/배포 자동화",
+    "title": "Amazon S3 및 CloudFront에 React 기반 단일 페이지 애플리케이션 배포",
+    "URL": "https://docs.aws.amazon.com/ko_kr/prescriptive-guidance/latest/patterns/deploy-a-react-based-single-page-application-to-amazon-s3-and-cloudfront.html",
+    "type": "블로그",
+    "platform": "공식문서",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "GitHub Actions로 빌드/배포 자동화",
+    "title": "제발 깃허브 액션🔥 모르는 개발자 없게해 주세요 🙏",
+    "URL": "https://youtu.be/iLqGzEkusIw?si=Nqg-hETnetlMqUTF",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "GitHub Actions로 빌드/배포 자동화",
+    "title": "실무에 바로 적용하는 AWS 배포",
+    "URL": "https://www.inflearn.com/course/%EC%8B%A4%EB%AC%B4-%EB%B0%94%EB%A1%9C-%EC%A0%81%EC%9A%A9%ED%95%98%EB%8A%94-aws-%EB%B0%B0%ED%8F%AC",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "3시간 ~ 5시간",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "GitHub Actions로 빌드/배포 자동화",
+    "title": "S3와 CloudFront를 이용하여 에러없이 SPA 배포하기",
+    "URL": "https://bigboss.dev/2022/11/cloudfront-functions-for-spa/",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "GitHub Actions로 빌드/배포 자동화",
+    "title": "도대체 프론트엔드 빌드는 왜 하는거에요?",
+    "URL": "https://youtu.be/D-fqNyTV3b8?si=VC0kKgLUKmw-ddpF",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "GitHub Actions로 빌드/배포 자동화",
+    "title": "The cloud architect's guide to CloudFront",
+    "URL": "https://www.udemy.com/course/the-cloud-architects-guide-to-cloudfront/?utm_source=adwords&utm_medium=udemyads&utm_campaign=Search_DSA_Beta_Prof_la.EN_cc.ROW-English&campaigntype=Search&portfolio=ROW-English&language=EN&product=Course&test=&audience=DSA&topic=&priority=Beta&utm_content=deal4584&utm_term=_._ag_162511579404_._ad_696197165421_._kw__._de_c_._dm__._pl__._ti_dsa-1677053911088_._li_9196622_._pd__._&matchtype=&gad_source=1&gbraid=0AAAAADROdO1LjJ0fto2rbz32I6LKCIy2j&gclid=CjwKCAjwn6LABhBSEiwAsNJrjujizbVpi1kgEdDANfpV0dR_vBKndtzVFeOVrHcYXsrn7BcdADmGyRoC9ncQAvD_BwE&couponCode=ST8MT220425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "GitHub Actions로 빌드/배포 자동화",
+    "title": "[Front-End] CI/CD에 대해서 알아보고 배포 준비하기",
+    "URL": "https://velog.io/@hayoung474/%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-Github-Action%EB%A5%BC-%ED%86%B5%ED%95%9C-%EB%B9%8C%EB%93%9C-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%9E%90%EB%8F%99%ED%99%94",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "GitHub Actions로 빌드/배포 자동화",
+    "title": "프로트엔드 배포 일지",
+    "URL": "https://babble-dev.tistory.com/32",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "GitHub Actions로 빌드/배포 자동화",
+    "title": "AWS 배포 완벽가이드 (feat. Lightsail, Docker, ECS)",
+    "URL": "https://www.inflearn.com/course/aws-배포-완벽가이드",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "GitHub Actions로 빌드/배포 자동화",
+    "title": "비전공자도 이해할 수 있는 Docker 입문/실전",
+    "URL": "https://www.inflearn.com/course/%EB%B9%84%EC%A0%84%EA%B3%B5%EC%9E%90-docker-%EC%9E%85%EB%AC%B8-%EC%8B%A4%EC%A0%84?srsltid=AfmBOoodrUu-ydxnuDiryh1SVY89-Pvz4y9YWzfdDsVKnhP5qaMmoeVP",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "GitHub Actions로 빌드/배포 자동화",
+    "title": "【한글자막】 DevOps 학습: 파이프라인 및 Docker를 이용한 Jenkins 와의 CI/CD",
+    "URL": "https://www.udemy.com/course/best-devops-docker-jenkins-cicd/",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "3시간 ~ 5시간",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "GitHub Actions로 빌드/배포 자동화",
+    "title": "【한글자막】 Docker & Kubernetes : 실전 가이드",
+    "URL": "https://www.udemy.com/course/docker-kubernetes-2022",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "GitHub Actions로 빌드/배포 자동화",
+    "title": "배포자동화(CI/CD) - Github Actions/Nuxtjs/Docker/EC2",
+    "URL": "https://www.youtube.com/watch?v=E3i9qt0SS-I",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "GitHub Actions로 빌드/배포 자동화",
+    "title": "프론트엔드 개발자를 위한 Docker로 React 개발 및 배포하기",
+    "URL": "https://velog.io/@oneook/Docker%EB%A1%9C-React-%EA%B0%9C%EB%B0%9C-%EB%B0%8F-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "GitHub Actions로 빌드/배포 자동화",
+    "title": "개발자를 위한 쉬운 도커",
+    "URL": "https://www.inflearn.com/course/개발자를-위한-쉬운-도커",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "GitHub Actions로 빌드/배포 자동화",
+    "title": "Frontend 효율적으로 배포하기 (React + Nginx + Docker)",
+    "URL": "https://ye0nn.tistory.com/67",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "GitHub Actions로 빌드/배포 자동화",
+    "title": "[Docker] 프론트에서 도커로 배포 자동화하기",
+    "URL": "https://velog.io/@navyjeongs/Docker-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%90%EC%84%9C-%EB%8F%84%EC%BB%A4%EB%A1%9C-%EB%B0%B0%ED%8F%AC-%EC%9E%90%EB%8F%99%ED%99%94%ED%95%98%EA%B8%B0",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "GitHub Actions로 빌드/배포 자동화",
+    "title": "프론트엔드 배포 자동화(feat. Netlify, Github Actions)",
+    "URL": "https://velog.io/@j7papa/%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EB%B0%B0%ED%8F%AC-%EC%9E%90%EB%8F%99%ED%99%94feat.-Netlify-Github-Actions",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "GitHub Actions로 빌드/배포 자동화",
+    "title": "[실습] Docker 전체 흐름 느껴보기",
+    "URL": "https://www.youtube.com/watch?v=Rw1gRR7lZwQ",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "GitHub Actions로 빌드/배포 자동화",
+    "title": "Dockerize your React app and serve your build artifacts through Nginx",
+    "URL": "https://www.youtube.com/watch?v=gM2cWo1DWIk",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "컴포넌트 테스트 방법론",
+    "title": "실무에 바로 적용하는 프런트엔드 테스트 - 1부. 테스트 기초: 단위・통합 테스트",
+    "URL": "https://www.inflearn.com/course/%EC%8B%A4%EB%AC%B4%EC%A0%81%EC%9A%A9-%ED%94%84%EB%9F%B0%ED%8A%B8%EC%97%94%EB%93%9C-%ED%85%8C%EC%8A%A4%ED%8A%B8-1%EB%B6%80",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "3시간 ~ 5시간",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "컴포넌트 테스트 방법론",
+    "title": "근본있는 프론트엔드 유닛테스트",
+    "URL": "https://www.inflearn.com/course/%EA%B7%BC%EB%B3%B8%EC%9E%88%EB%8A%94-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EC%9C%A0%EB%8B%9B%ED%85%8C%EC%8A%A4%ED%8A%B8",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "컴포넌트 테스트 방법론",
+    "title": "React - 컴포넌트 테스팅 (React Testing Library)",
+    "URL": "https://velog.io/@goodjam92/React-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%ED%85%8C%EC%8A%A4%ED%8C%85-React-Testing-Library",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "컴포넌트 테스트 방법론",
+    "title": "Snapshot Testing",
+    "URL": "https://jestjs.io/docs/snapshot-testing",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "컴포넌트 테스트 방법론",
+    "title": "https://blog.pumpkin-raccoon.com/81",
+    "URL": "https://blog.pumpkin-raccoon.com/81",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "컴포넌트 테스트 방법론",
+    "title": "React Testing Library and Jest: The Complete Guide",
+    "URL": "https://www.udemy.com/course/react-testing-library-and-jest/?couponCode=ST7MT290425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "5시간 ~ 10시간",
+    "level": "상",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "화면 테스트 방법론",
+    "title": "실무에 바로 적용하는 프런트엔드 테스트 - 2부. 테스트 심화: 시각적 회귀・E2E 테스트",
+    "URL": "https://www.inflearn.com/course/%EC%8B%A4%EB%AC%B4%EC%A0%81%EC%9A%A9-%ED%94%84%EB%9F%B0%ED%8A%B8%EC%97%94%EB%93%9C-%ED%85%8C%EC%8A%A4%ED%8A%B8-2%EB%B6%80",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "3시간 ~ 5시간",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "화면 테스트 방법론",
+    "title": "따라하며 배우는 리액트 테스트 [2023.11 업데이트]",
+    "URL": "https://www.inflearn.com/course/%EB%94%B0%EB%9D%BC%ED%95%98%EB%8A%94-%EB%A6%AC%EC%95%A1%ED%8A%B8-%ED%85%8C%EC%8A%A4%ED%8A%B8#curriculum",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "화면 테스트 방법론",
+    "title": "프런트엔드 개발을 위한 테스트 입문",
+    "URL": "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000008900593",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "화면 테스트 방법론",
+    "title": "실용적인 프론트엔드 테스트 전략 (2)",
+    "URL": "https://ui.toast.com/weekly-pick/ko_20190116#%EC%B6%94%EA%B0%80-%EC%8B%9C%EA%B0%81%EC%A0%81-%ED%9A%8C%EA%B7%80-%ED%85%8C%EC%8A%A4%ED%8A%B8",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Linux",
+    "title": "https://www.youtube.com/playlist?list=PL8oUjFBfGVJxH_oJkYfRwSqM9Q5Fy5C1X",
+    "URL": "https://www.youtube.com/watch?v=ymwMfvzAOPg&list=PL8oUjFBfGVJxH_oJkYfRwSqM9Q5Fy5C1X",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Linux",
+    "title": "가장 쉬운 리눅스 강좌",
+    "URL": "https://www.youtube.com/watch?v=tPWBF13JIVk",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Linux",
+    "title": "[우분투 리눅스 기초 강의] 이것이 우분투 리눅스다(3판)",
+    "URL": "https://www.youtube.com/watch?v=wDGzJFmSwN8&list=PLVsNizTWUw7HAcyW6bma7trGJfiTSDA44",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Linux",
+    "title": "리눅스 입문 - 개념으로 탄탄히!!",
+    "URL": "https://www.inflearn.com/course/%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%9E%85%EB%AC%B8",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Linux",
+    "title": "리눅스 커맨드라인 툴 (Full ver.)",
+    "URL": "https://www.inflearn.com/course/%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%A7%A8%EB%93%9C%EB%9D%BC%EC%9D%B8-%ED%88%B4",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Linux",
+    "title": "시스템엔지니어가 알려주는 리눅스 실전편 Bash Shell Script",
+    "URL": "https://www.inflearn.com/course/%EB%A6%AC%EB%88%85%EC%8A%A4-bash-%EC%8B%A4%EC%A0%84%ED%8E%B8",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "상",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Linux",
+    "title": "Complete Linux Training Course to Get Your Dream IT Job 2025",
+    "URL": "https://www.udemy.com/course/complete-linux-training-course-to-get-your-dream-it-job/?couponCode=ST8MT220425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "Linux",
+    "title": "Mastering Linux: The Comprehensive Guide",
+    "URL": "https://www.udemy.com/course/mastering-linux/?couponCode=ST8MT220425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Linux",
+    "title": "Linux 초보자를 위한 기초 명령어와 텍스트 편집기 사용법",
+    "URL": "https://codingon.co.kr/lessonDetail",
+    "type": "동영상",
+    "platform": "코딩온",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Linux",
+    "title": "Linux 명령 및 셸 스크립팅 실습 소개",
+    "URL": "https://www.coursera.org/learn/hands-on-introduction-to-linux-commands-and-shell-scripting",
+    "type": "동영상",
+    "platform": "Coursera",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Linux",
+    "title": "Advanced Embedded Linux Development 특화 과정",
+    "URL": "https://www.coursera.org/specializations/advanced-embedded-linux-development",
+    "type": "동영상",
+    "platform": "Coursera",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Linux",
+    "title": "실용적 유닉스 커맨드",
+    "URL": "https://www.codeit.kr/topics/practical-unix-commands",
+    "type": "동영상",
+    "platform": "코드잇",
+    "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Linux",
+    "title": "생활코딩 - 리눅스(Linux)",
+    "URL": "https://edu.goorm.io/lecture/12984/%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9-%EB%A6%AC%EB%88%85%EC%8A%A4-linux",
+    "type": "동영상",
+    "platform": "goormedu",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Linux",
+    "title": "쉽게 배우는 리눅스: 우분투 실습을 통한 Linux 기초 다지기",
+    "URL": "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000010611227",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Linux",
+    "title": "시스템 관리자와 일반 사용자를 위한 Unix & Linux 입문",
+    "URL": "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000005522281",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Linux",
+    "title": "Mastering Linux Device Driver Development",
+    "URL": "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000003560522",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Linux",
+    "title": "실무 초밀착 리눅스:클라우드 환경 운영부터 성능분석까지",
+    "URL": "https://fastcampus.co.kr/dev_online_linuxcloud",
+    "type": "동영상",
+    "platform": "FASTCAMPUS",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "20만원 ~ 50만원"
+  },
+  {
+    "subject_name": "Internet",
+    "title": "혼자 공부하는 네트워크",
+    "URL": "https://www.youtube.com/playlist?list=PLVsNizTWUw7HfOCgvlfHIDPPo3TE-2iQM",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Internet",
+    "title": "새내기 개발자들을 위한 필수 가이드",
+    "URL": "https://www.youtube.com/watch?app=desktop&v=dsoAkoxZ13o",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Internet",
+    "title": "모두의 네트워크",
+    "URL": "https://m.yes24.com/Goods/Detail/61794014",
+    "type": "책",
+    "platform": "Yes24",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Internet",
+    "title": "컴퓨터 네트워킹(하향식 접근)",
+    "URL": "https://product.kyobobook.co.kr/detail/S000061694627",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Internet",
+    "title": "HTTP 완벽 가이드",
+    "URL": "https://www.yes24.com/product/goods/15381085",
+    "type": "책",
+    "platform": "Yes24",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Internet",
+    "title": "[네트워크]네트워크 기초 지식 정리",
+    "URL": "https://noahlogs.tistory.com/47",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Internet",
+    "title": "왕초보를 위한 네트워크 기초",
+    "URL": "https://www.inflearn.com/course/%EC%99%95%EC%B4%88%EB%B3%B4-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B8%B0%EC%B4%88",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Internet",
+    "title": "네트워크,그림으로 이해하자",
+    "URL": "https://www.inflearn.com/course/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B7%B8%EB%A6%BC-%EC%9D%B4%ED%95%B4",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Internet",
+    "title": "개발자를 위한 컴퓨터공학 2: 혼자 공부하는 네트워크",
+    "URL": "https://www.inflearn.com/course/%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B3%B5%ED%95%99-%ED%98%BC%EC%9E%90%EA%B3%B5%EB%B6%80%ED%95%98%EB%8A%94-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Internet",
+    "title": "외워서 끝내느 네트워크 핵심이론 - 응용",
+    "URL": "https://www.inflearn.com/course/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%ED%95%B5%EC%8B%AC%EC%9D%B4%EB%A1%A0-%EC%9D%91%EC%9A%A9",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "3시간 ~ 5시간",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Internet",
+    "title": "생활코딩 - 네트워크 개념 잡기(도메인, 네임서버, HTTPS)",
+    "URL": "https://edu.goorm.io/lecture/12973/%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B0%9C%EB%85%90-%EC%9E%A1%EA%B8%B0-%EB%8F%84%EB%A9%94%EC%9D%B8-%EB%84%A4%EC%9E%84%EC%84%9C%EB%B2%84-https",
+    "type": "동영상",
+    "platform": "goormedu",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Internet",
+    "title": "비전공자의 전공자 따라잡기 - 네트워크, HTTP",
+    "URL": "https://www.inflearn.com/course/%EC%A0%84%EA%B3%B5%EC%9E%90-%EB%94%B0%EB%9D%BC%EC%9E%A1%EA%B8%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-http",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "JAVA",
+    "title": "자바 무료 강의 2시간 완성 (1분 자바)",
+    "URL": "https://www.youtube.com/watch?v=DNCBaeCoMug",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "JAVA",
+    "title": "Do it! 점프 투 자바",
+    "URL": "https://product.kyobobook.co.kr/detail/S000203246484",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "JAVA",
+    "title": "김영한의 자바 입문 - 코드로 시작하는 자바 첫걸음",
+    "URL": "https://www.inflearn.com/course/%EA%B9%80%EC%98%81%ED%95%9C%EC%9D%98-%EC%9E%90%EB%B0%94-%EC%9E%85%EB%AC%B8",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "JAVA",
+    "title": "김영한의 실전 자바 - 기본편",
+    "URL": "https://www.inflearn.com/course/%EA%B9%80%EC%98%81%ED%95%9C%EC%9D%98-%EC%8B%A4%EC%A0%84-%EC%9E%90%EB%B0%94-%EA%B8%B0%EB%B3%B8%ED%8E%B8",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "JAVA",
+    "title": "김영한의 실전 자바 - 중급 1편+김영한의 실전 자바 - 중급 2편",
+    "URL": "https://www.inflearn.com/course/%EA%B9%80%EC%98%81%ED%95%9C%EC%9D%98-%EC%8B%A4%EC%A0%84-%EC%9E%90%EB%B0%94-%EC%A4%91%EA%B8%89-1",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "JAVA",
+    "title": "https://www.inflearn.com/course/%EA%B9%80%EC%98%81%ED%95%9C%EC%9D%98-%EC%8B%A4%EC%A0%84-%EC%9E%90%EB%B0%94-%EA%B3%A0%EA%B8%89-1+https://www.inflearn.com/course/%EA%B9%80%EC%98%81%ED%95%9C%EC%9D%98-%EC%8B%A4%EC%A0%84-%EC%9E%90%EB%B0%94-%EA%B3%A0%EA%B8%89-2+https://www.inflearn.com/course/%EA%B9%80%EC%98%81%ED%95%9C%EC%9D%98-%EC%8B%A4%EC%A0%84-%EC%9E%90%EB%B0%94-%EA%B3%A0%EA%B8%89-3",
+    "URL": "https://www.inflearn.com/course/%EA%B9%80%EC%98%81%ED%95%9C%EC%9D%98-%EC%8B%A4%EC%A0%84-%EC%9E%90%EB%B0%94-%EA%B3%A0%EA%B8%89-1",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "20만원 ~ 50만원"
+  },
+  {
+    "subject_name": "JAVA",
+    "title": "Java의 정석",
+    "URL": "https://www.youtube.com/playlist?list=PLW2UjW795-f6xWA2_MUhEVgPauhGl3xIp",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "무료"
+  },
+  {
+    "subject_name": "JAVA",
+    "title": "java 소개",
+    "URL": "https://www.coursera.org/learn/java-introduction",
+    "type": "동영상",
+    "platform": "Coursera",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "JAVA",
+    "title": "핵심 Java 특화 과정",
+    "URL": "https://www.coursera.org/specializations/core-java",
+    "type": "동영상",
+    "platform": "Coursera",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Python",
+    "title": "최신 파이썬 코딩 무료 강의 | 2024 점프 투 파이썬 통합본",
+    "URL": "https://www.youtube.com/watch?v=ftQZo7XaTOA",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Python",
+    "title": "https://www.inflearn.com/course/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%9E%85%EB%AC%B8-%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%98%A4%EB%A6%AC%EC%A7%80%EB%84%90?attributionToken=hwHwhgoMCJPhocAGEK79otcCEAEaJDY4MWIxNTdmLTAwMDAtMmY5NC1iNDJhLTg4M2QyNGY3Y2M3NCoHMTAzNjgyNzIso4CXIsXL8xfUsp0VwvCeFba3jC2o5aotmNa3LZruxjCQ97Iw9-jDMJvWty06DmRlZmF1bHRfc2VhcmNoSAFYAWgBegJzaQ+https://www.inflearn.com/course/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%AC%B8%EB%B2%95-%EC%8B%A4%EC%8A%B5-%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%98%A4%EB%A6%AC%EC%A7%80%EB%84%90?attributionToken=hwHwhgoMCJPhocAGEK79otcCEAEaJDY4MWIxNTdmLTAwMDAtMmY5NC1iNDJhLTg4M2QyNGY3Y2M3NCoHMTAzNjgyNzIso4CXIsXL8xfUsp0VwvCeFba3jC2o5aotmNa3LZruxjCQ97Iw9-jDMJvWty06DmRlZmF1bHRfc2VhcmNoSAFYAWgBegJzaQ",
+    "URL": "https://www.inflearn.com/course/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%9E%85%EB%AC%B8-%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%98%A4%EB%A6%AC%EC%A7%80%EB%84%90?attributionToken=hwHwhgoMCJPhocAGEK79otcCEAEaJDY4MWIxNTdmLTAwMDAtMmY5NC1iNDJhLTg4M2QyNGY3Y2M3NCoHMTAzNjgyNzIso4CXIsXL8xfUsp0VwvCeFba3jC2o5aotmNa3LZruxjCQ97Iw9-jDMJvWty06DmRlZmF1bHRfc2VhcmNoSAFYAWgBegJzaQ",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Python",
+    "title": "https://www.inflearn.com/course/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A4%91%EA%B8%89-%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%98%A4%EB%A6%AC%EC%A7%80%EB%84%90?attributionToken=hwHwhgoMCJPhocAGEK79otcCEAEaJDY4MWIxNTdmLTAwMDAtMmY5NC1iNDJhLTg4M2QyNGY3Y2M3NCoHMTAzNjgyNzIso4CXIsXL8xfUsp0VwvCeFba3jC2o5aotmNa3LZruxjCQ97Iw9-jDMJvWty06DmRlZmF1bHRfc2VhcmNoSAFYAWgBegJzaQ",
+    "URL": "https://www.inflearn.com/course/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A4%91%EA%B8%89-%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%98%A4%EB%A6%AC%EC%A7%80%EB%84%90",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Python",
+    "title": "모두를 위한 파이썬 : 필수 문법 배우기 Feat. 오픈소스 패키지 배포 (Inflearn Original)+고수가 되는 파이썬 : 동시성과 병렬성 문법 배우기 Feat. 멀티스레딩 vs 멀티프로세싱 (Inflearn Original)",
+    "URL": "https://www.inflearn.com/course/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A4%91%EA%B3%A0%EA%B8%89",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "Python",
+    "title": "https://codingon.co.kr/lessonDetail",
+    "URL": "https://codingon.co.kr/lessonDetail",
+    "type": "동영상",
+    "platform": "코딩온",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Python",
+    "title": "Python 마스터로 가는 길: 고급 문법과 응용",
+    "URL": "https://codingon.co.kr/lessonDetail",
+    "type": "동영상",
+    "platform": "코딩온",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Python",
+    "title": "Python 활용 중급 과정",
+    "URL": "https://www.codeit.kr/paths/practical-python",
+    "type": "동영상",
+    "platform": "코드잇",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Python",
+    "title": "생활코딩 - Python 입문",
+    "URL": "https://edu.goorm.io/lecture/28708/%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9-python-%EC%9E%85%EB%AC%B8",
+    "type": "동영상",
+    "platform": "goormedu",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Python",
+    "title": "점프 투 파이썬",
+    "URL": "https://wikidocs.net/book/1",
+    "type": "책",
+    "platform": "위키독스",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "kotlin",
+    "title": "Kotlin 문법 총 정리 - 1시간",
+    "URL": "https://www.youtube.com/watch?v=OtHkb6wAI5U",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "kotlin",
+    "title": "https://www.inflearn.com/course/java-to-kotlin?attributionToken=hwHwhgoMCP_pocAGEPuKv9EBEAEaJDY4MWUxNDZiLTAwMDAtMjkwZi1iMTlmLTI0MDU4ODgwNzdkYyoHMTAzNjgyNzIsm9a3LaOAlyLC8J4V1LKdFcXL8xe1t4wtqOWqLZjWty336MMwmu7GMJD3sjA6DmRlZmF1bHRfc2VhcmNoSAFYAWgBegJzaQ",
+    "URL": "https://www.inflearn.com/course/java-to-kotlin",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "kotlin",
+    "title": "코틀린 고급편",
+    "URL": "https://www.inflearn.com/course/%EC%BD%94%ED%8B%80%EB%A6%B0-%EA%B3%A0%EA%B8%89%ED%8E%B8",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "상",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "kotlin",
+    "title": "https://www.inflearn.com/course/%EC%B9%9C%EC%A0%88%ED%95%9C-jetpack-1?attributionToken=hwHwhgoMCP_pocAGEPuKv9EBEAEaJDY4MWUxNDZiLTAwMDAtMjkwZi1iMTlmLTI0MDU4ODgwNzdkYyoHMTAzNjgyNzIsm9a3LaOAlyLC8J4V1LKdFcXL8xe1t4wtqOWqLZjWty336MMwmu7GMJD3sjA6DmRlZmF1bHRfc2VhcmNoSAFYAWgBegJzaQ+https://www.inflearn.com/course/%EC%B9%9C%EC%A0%88%ED%95%9C-jetpack-2?attributionToken=hwHwhgoMCP_pocAGEPuKv9EBEAEaJDY4MWUxNDZiLTAwMDAtMjkwZi1iMTlmLTI0MDU4ODgwNzdkYyoHMTAzNjgyNzIsm9a3LaOAlyLC8J4V1LKdFcXL8xe1t4wtqOWqLZjWty336MMwmu7GMJD3sjA6DmRlZmF1bHRfc2VhcmNoSAFYAWgBegJzaQ",
+    "URL": "https://www.inflearn.com/course/%EC%B9%9C%EC%A0%88%ED%95%9C-jetpack-1",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "kotlin",
+    "title": "Complete Kotlin development masterclass",
+    "URL": "https://www.udemy.com/course/kotlinmasterclass/?couponCode=ST8MT220425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "kotlin",
+    "title": "Java 개발자를 위한 Kotlin",
+    "URL": "https://www.coursera.org/learn/kotlin-for-java-developers",
+    "type": "동영상",
+    "platform": "Coursera",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "kotlin",
+    "title": "Kotlin의 고급 프로그래밍",
+    "URL": "https://www.coursera.org/learn/advanced-programming-in-kotlin",
+    "type": "동영상",
+    "platform": "Coursera",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "무료"
+  },
+  {
+    "subject_name": "kotlin",
+    "title": "Google 공식 언어 Kotlin 프로그래밍 시작하기",
+    "URL": "https://edu.goorm.io/lecture/20670/google-%EA%B3%B5%EC%8B%9D-%EC%96%B8%EC%96%B4-kotlin-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0",
+    "type": "동영상",
+    "platform": "goormedu",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "kotlin",
+    "title": "Kotlin으로 만드는 '심플셀스타그램' app",
+    "URL": "https://edu.goorm.io/lecture/45804/kotlin%EC%9C%BC%EB%A1%9C-%EB%A7%8C%EB%93%9C%EB%8A%94-%EC%8B%AC%ED%94%8C%EC%85%80%EC%8A%A4%ED%83%80%EA%B7%B8%EB%9E%A8-app",
+    "type": "동영상",
+    "platform": "goormedu",
+    "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "kotlin",
+    "title": "Do it! 깡샘의 안드로이드 앱 프로그래밍 with 코틀린 [개정 4판] : 친절한 문법 설명 + 19개 실습 예제로 배우는 모바일 앱 개발",
+    "URL": "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000011035564",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "kotlin",
+    "title": "안드로이드 with Kotlin 앱 프로그래밍 가이드",
+    "URL": "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000002949014",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "kotlin",
+    "title": "코틀린 고급편",
+    "URL": "https://www.inflearn.com/course/코틀린-고급편",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "상",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "SQL문",
+    "title": "누구나 SQL - 기초",
+    "URL": "https://www.youtube.com/watch?v=60I72X_aKC4&list=PLb_vgczBBiSRwP4qEA4fvJyAqBWSSrNfq",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "SQL문",
+    "title": "SQL 마스터클래스",
+    "URL": "https://nomadcoders.co/sql-masterclass",
+    "type": "동영상",
+    "platform": "노마드코더",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "SQL문",
+    "title": "[SQL 기초 강의] 혼자 공부하는 SQL",
+    "URL": "https://www.youtube.com/watch?v=0cRhit1EJM0&list=PLVsNizTWUw7GCfy5RH27cQL5MeKYnl8Pm",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "SQL문",
+    "title": "비전공자의 전공자 따라잡기 - 데이터베이스,SQL",
+    "URL": "https://www.inflearn.com/course/%EB%B9%84%EC%A0%84%EA%B3%B5%EC%9E%90-%EC%A0%84%EA%B3%B5%EC%9E%90-%EB%94%B0%EB%9D%BC%EC%9E%A1%EA%B8%B0-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-sql",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "SQL문",
+    "title": "기초탄탄, SQL 톺아보기 (입문과정)",
+    "URL": "https://edu.goorm.io/lecture/45796/%EA%B8%B0%EC%B4%88%ED%83%84%ED%83%84-sql-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0-%EC%9E%85%EB%AC%B8%EA%B3%BC%EC%A0%95",
+    "type": "동영상",
+    "platform": "goormedu",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "SQL문",
+    "title": "2025 이기적 SQL 개발자 이론서+기출문제",
+    "URL": "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000010603338",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "SQL문",
+    "title": "Do it! SQL 입문",
+    "URL": "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000002945454",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "SQL문",
+    "title": "혼자 공부하는 SQL",
+    "URL": "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000002942571",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "SQL문",
+    "title": "[백문이불여일타] 데이터 분석을 위한 고급 SQL",
+    "URL": "https://www.inflearn.com/course/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D-%EA%B3%A0%EA%B8%89-sql#curriculum",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "3시간 ~ 5시간",
+    "level": "상",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "SQL문",
+    "title": "The Ultimate MySQL Bootcamp: Go from SQL Beginner to Expert",
+    "URL": "https://www.udemy.com/course/the-ultimate-mysql-bootcamp-go-from-sql-beginner-to-expert/?couponCode=ST8MT220425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "SQL문",
+    "title": "Udacity Nanodegree: SQL",
+    "URL": "https://fastcampus.co.kr/dev_online_udacitysql",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "50만원~"
+  },
+  {
+    "subject_name": "SQL문",
+    "title": "[백문이불여일타] 데이터 분석을 위한 기초 SQL",
+    "URL": "https://www.inflearn.com/course/%EB%B0%B1%EB%AC%B8%EC%9D%B4%EB%B6%88%EC%97%AC%EC%9D%BC%ED%83%80-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D-%EA%B8%B0%EC%B4%88-sql",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "SQL문",
+    "title": "[백문이불여일타] 데이터 분석을 위한 중급 SQL",
+    "URL": "https://www.inflearn.com/course/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D-%EC%A4%91%EA%B8%89-sql",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "3시간 ~ 5시간",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "More About Database",
+    "title": "처음 시작하는 MySQL DataBase",
+    "URL": "https://edu.goorm.io/lecture/13353/%EC%B2%98%EC%9D%8C-%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94-mysql-database",
+    "type": "동영상",
+    "platform": "goormedu",
+    "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "More About Database",
+    "title": "갖고노는 MySQL 데이터베이스 by 얄코",
+    "URL": "https://www.inflearn.com/course/%EC%96%84%EC%BD%94-%EB%A7%88%EC%9D%B4%EC%97%90%EC%8A%A4%ED%81%90%EC%97%98#curriculum",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "More About Database",
+    "title": "[개념 콕] RDB, RDBMS, NoSQL",
+    "URL": "https://nbcamp.spartacodingclub.kr/blog/%EA%B0%9C%EB%85%90-%EC%BD%95-%EC%9B%B9-%EA%B0%9C%EB%B0%9C-%EC%A7%80%EC%8B%9D-spring%ED%8E%B8-rdb-rdbms-nosql-20953",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "More About Database",
+    "title": "NoSQL 설명!! RDB와는 어떤 차이가 있는지도 설명!! MongoDB, Redis 매우 간단한 예제 포함!!",
+    "URL": "https://www.youtube.com/watch?v=sqVByJ5tbNA&t=18s",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "More About Database",
+    "title": "처음하는 MongoDB(몽고DB) 와 NoSQL(빅데이터) 데이터베이스 부트캠프 [입문부터 활용까지]",
+    "URL": "https://www.inflearn.com/course/nosql-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%AA%BD%EA%B3%A0db-%EC%9E%94%EC%9E%AC%EB%AF%B8%EC%BD%94%EB%94%A9",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "More About Database",
+    "title": "Javascript로 배우는 NoSQL DB",
+    "URL": "https://www.inflearn.com/course/mongodb_grammar_basics",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "More About Database",
+    "title": "NoSQL 이해",
+    "URL": "https://www.fun-coding.org/post/mongodb_basic1.html#gsc.tab=0",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "More About Database",
+    "title": "MongoDB를 활용하여, 200억건 이상의 데이터 파이프라인 작성법",
+    "URL": "https://www.inflearn.com/course/%EC%8B%A4%EB%AC%B4%EC%9E%90%EB%8F%84-%EB%AA%A8%EB%A5%B4%EB%8A%94-mongo-%ED%99%9C%EC%9A%A9%EB%B2%95",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "More About Database",
+    "title": "Learn MongoDB in 2 hours | NoSql Database",
+    "URL": "https://www.udemy.com/course/getting-started-with-mongodb/?couponCode=KRLETSLEARNNOW",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "More About Database",
+    "title": "Redis : 개발자를 위한 Redis 완벽 가이드",
+    "URL": "https://www.udemy.com/course/redis-the-complete-developers-guide-korean/?couponCode=KRLETSLEARNNOW",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Scaling Databases",
+    "title": "한 눈에 끝내는 SQL",
+    "URL": "https://edu.goorm.io/lecture/15413/%ED%95%9C-%EB%88%88%EC%97%90-%EB%81%9D%EB%82%B4%EB%8A%94-sql",
+    "type": "동영상",
+    "platform": "goormedu",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Scaling Databases",
+    "title": "SQL 데이터베이스: 기초부터 데이터 모델링까지",
+    "URL": "https://www.codeit.kr/paths/sql-database-for-developers",
+    "type": "동영상",
+    "platform": "코드잇",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Scaling Databases",
+    "title": "SW 개발자를 위한 성능 좋은 SQL 쿼리 작성법",
+    "URL": "https://www.inflearn.com/course/%EC%84%B1%EB%8A%A5%EC%A2%8B%EC%9D%80-%EC%BF%BC%EB%A6%AC%EC%9E%91%EC%84%B1%EB%B2%95?srsltid=AfmBOop4B6wVQpH_jz6hmnmQbW7c76FN66qCPpiR_MsRcxyOjZ7w3nod",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "상",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "Scaling Databases",
+    "title": "업무에 바로 쓰는 SQL 튜닝",
+    "URL": "https://www.inflearn.com/course/%EC%97%85%EB%AC%B4-sql-%ED%8A%9C%EB%8B%9D?srsltid=AfmBOor_2B3r1qc4Gc0VQ3Wcssas-gWyYgximCXJV9TRBxb_Y1rHAyDZ",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Scaling Databases",
+    "title": "비전공자도 이해할 수 있는 MySQL 성능 최적화 입문/실전 (SQL 튜닝편)",
+    "URL": "https://www.inflearn.com/course/%EB%B9%84%EC%A0%84%EA%B3%B5%EC%9E%90-mysql-%EC%84%B1%EB%8A%A5%EC%B5%9C%EC%A0%95%ED%99%95-sql%ED%8A%9C%EB%8B%9D?srsltid=AfmBOoonqPu1uF2BxvwiyKUEHDcK51ynZXjzmhe_9LE5OLnAfuLjF428",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Scaling Databases",
+    "title": "SQL Tuning",
+    "URL": "https://www.youtube.com/playlist?list=PLCkO8I_DSQ7ejSSRg0FjAC6Y9aiEWeO0a",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "3시간 ~ 5시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Scaling Databases",
+    "title": "SQL SERVER 튜닝 가이드(이론편)",
+    "URL": "https://www.youtube.com/playlist?list=PLCkO8I_DSQ7dbWnsv0-DLsmjR_b2OguPU",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "3시간 ~ 5시간",
+    "level": "상",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Scaling Databases",
+    "title": "SQL SERVER 튜닝 가이드(실습편)",
+    "URL": "https://www.youtube.com/playlist?list=PLCkO8I_DSQ7e8fRtslphWS9fGkClGkxfr",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "3시간 ~ 5시간",
+    "level": "상",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Scaling Databases",
+    "title": "SQL Server 컨설턴트가 알려주는, 쿼리 능력 레벨업(고급 T-SQL 쿼리)",
+    "URL": "https://www.inflearn.com/course/sql-%EC%BF%BC%EB%A6%AC%EB%8A%A5%EB%A0%A5",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "상",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Spring+Java",
+    "title": "https://www.youtube.com/playlist?list=PLlTylS8uB2fBOi6uzvMpojFrNe7sRmlzU",
+    "URL": "https://www.youtube.com/watch?v=rHJgMRimJ4Y&list=PLlTylS8uB2fBOi6uzvMpojFrNe7sRmlzU",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Spring+Java",
+    "title": "스프링 입문 - 코드로 배우는 스프링 부트, 웹 MVC, DB 접근 기술",
+    "URL": "https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%EC%9E%85%EB%AC%B8-%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8?srsltid=AfmBOorhf7FZ7EFxoVHw6EgjQh2J2Gwya9a2oGKIlkr7yyX5oXo46KzF",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Spring+Java",
+    "title": "쉽게 배우는 Spring Boot & JPA",
+    "URL": "https://codingapple.com/course/spring-boot-jpa/",
+    "type": "동영상",
+    "platform": "코딩애플",
+    "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Spring+Java",
+    "title": "자바 스프링 프레임워크(renew ver.) - 신입 프로그래머를 위한 강좌",
+    "URL": "https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC_renew",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Spring+Java",
+    "title": "Java 마이크로서비스(MSA) 프로젝트 실습",
+    "URL": "https://www.inflearn.com/course/java-msa-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%8B%A4%EC%8A%B5",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "상",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Spring+Java",
+    "title": "스프링 MVC 1편 - 백엔드 웹 개발 핵심 기술",
+    "URL": "https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-mvc-1",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Spring+Java",
+    "title": "스프링 MVC 2편 - 백엔드 웹 개발 활용 기술",
+    "URL": "https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-mvc-2",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Spring+Java",
+    "title": "스프링 DB 1편 - 데이터 접근 핵심 원리",
+    "URL": "https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-db-1",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Spring+Java",
+    "title": "실전! 스프링 부트와 JPA 활용1 - 웹 애플리케이션 개발",
+    "URL": "https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-JPA-%ED%99%9C%EC%9A%A9-1",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Spring+Java",
+    "title": "스프링 부트 - 핵심 원리와 활용",
+    "URL": "https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-%ED%95%B5%EC%8B%AC%EC%9B%90%EB%A6%AC-%ED%99%9C%EC%9A%A9",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Spring+Java",
+    "title": "스프링 MVC 2편 - 백엔드 웹 개발 활용 기술",
+    "URL": "https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-mvc-2",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Spring+Java",
+    "title": "스프링 프레임워크는 내 손에 [스프1탄]",
+    "URL": "https://www.inflearn.com/course/%EC%8A%A4%ED%94%84-spring-1",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Spring+Java",
+    "title": "스프링 마이크로서비스 코딩 공작소",
+    "URL": "https://product.kyobobook.co.kr/detail/S000061351987",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Spring+Java",
+    "title": "[NarP Series] MVC 프레임워크는 내 손에 [나프2탄]",
+    "URL": "https://www.inflearn.com/course/%EB%82%98%ED%94%84-mvc-2",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Spring+Java",
+    "title": "스프링 핵심 원리 - 고급편",
+    "URL": "https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC-%EA%B3%A0%EA%B8%89%ED%8E%B8",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Spring+Java",
+    "title": "https://www.youtube.com/playlist?list=PLV9zd3otBRt7jmXvwCkmvJ8dH5tR_20c0",
+    "URL": "https://www.youtube.com/watch?v=YshcPPHClR4&list=PLV9zd3otBRt7jmXvwCkmvJ8dH5tR_20c0",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "3시간 ~ 5시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Spring+Java",
+    "title": "스프링과 스프링부트(Spring Boot)ㅣ정의, 특징, 사용 이유, 생성 방법",
+    "URL": "https://www.codestates.com/blog/content/%EC%8A%A4%ED%94%84%EB%A7%81-%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Spring+Java",
+    "title": "스프링 부트 3 핵심 가이드",
+    "URL": "https://product.kyobobook.co.kr/detail/S000216104276",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Spring+Java",
+    "title": "스프링 부트 3 백엔드 개발자 되기: 자바 편",
+    "URL": "https://product.kyobobook.co.kr/detail/S000212798297",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Spring+Java",
+    "title": "【한글자막】 Spring Boot 3 & Spring Framework 6 마스터하기! [최신판]",
+    "URL": "https://www.udemy.com/course/spring-boot-and-spring-framework-korean",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "Node.js",
+    "title": "Do it! Node.js 프로그래밍 입문",
+    "URL": "https://www.youtube.com/playlist?list=PLG7te9eYUi7vxSvo6hvhOaht8oP0PoCwi",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Node.js",
+    "title": "WEB2 - Node.js",
+    "URL": "https://opentutorials.org/course/3332",
+    "type": "동영상",
+    "platform": "생활코딩",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Node.js",
+    "title": "얄코의 Node.js (Korean ver.)",
+    "URL": "https://www.inflearn.com/course/%EC%96%84%EC%BD%94-node-js",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Node.js",
+    "title": "NodeJS - The Complete Guide (MVC, REST APIs, GraphQL, Deno)",
+    "URL": "https://www.udemy.com/course/nodejs-the-complete-guide/?couponCode=ST8MT220425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "Node.js",
+    "title": "Node.js로 백엔드 서버 개발하기",
+    "URL": "https://www.codeit.kr/paths/nodejs-backend-development",
+    "type": "동영상",
+    "platform": "코드잇",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Node.js",
+    "title": "Node.js 서버 프로그래밍 과정",
+    "URL": "https://edu.goorm.io/lecture/13564/node-js-%EC%84%9C%EB%B2%84-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EA%B3%BC%EC%A0%95",
+    "type": "동영상",
+    "platform": "goormedu",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Node.js",
+    "title": "[저자 직강] Do it! Node.js 프로그래밍",
+    "URL": "https://edu.goorm.io/lecture/12534/%EC%A0%80%EC%9E%90-%EC%A7%81%EA%B0%95-do-it-node-js-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D",
+    "type": "동영상",
+    "platform": "goormedu",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Node.js",
+    "title": "한시간만에 Node.js 백엔드 기초 끝내기 (ft. API 구축)",
+    "URL": "https://www.youtube.com/watch?v=Tt_tKhhhJqY",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Node.js",
+    "title": "https://www.youtube.com/playlist?list=PLG7te9eYUi7vxSvo6hvhOaht8oP0PoCwi",
+    "URL": "https://www.youtube.com/watch?v=4inLYlZOKAU&list=PLG7te9eYUi7vxSvo6hvhOaht8oP0PoCwi",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Node.js",
+    "title": "Do it! Node.js 프로그래밍 입문 : 쉽고 빠르게 달리는 백엔드 개발",
+    "URL": "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000005463761",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Node.js",
+    "title": "Node.js 프로젝트 투입 일주일 전",
+    "URL": "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000002955356",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Node.js",
+    "title": "생활코딩! Node.js 노드제이에스 프로그래밍",
+    "URL": "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000002928538",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Node.js",
+    "title": "테스트주도개발(TDD)로 만드는 NodeJS API 서버",
+    "URL": "https://www.inflearn.com/course/%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%A3%BC%EB%8F%84%EA%B0%9C%EB%B0%9C-tdd-nodejs-api",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "3시간 ~ 5시간",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Node.js",
+    "title": "【한글자막】 NodeJS 완벽 가이드 : MVC, REST APIs, GraphQL, Deno",
+    "URL": "https://www.udemy.com/course/nodejs-mvc-rest-apis-graphql-deno/",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "Django",
+    "title": "Vue.js - Django Web Programming (Blog CRUD and Auth)",
+    "URL": "https://www.udemy.com/course/vuejs-django-web-programming-blog-crud-and-auth/?couponCode=ST8MT220425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "3시간 ~ 5시간",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Django",
+    "title": "https://www.youtube.com/playlist?list=PLi4xPOplIq7d1vDdLBAvS5PmQR-p6KwUz",
+    "URL": "https://www.youtube.com/watch?v=alrLd9T96aA&list=PLi4xPOplIq7d1vDdLBAvS5PmQR-p6KwUz",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Django",
+    "title": "https://www.youtube.com/playlist?list=PLQFurmxCuZ2Qmcl0TJame_N79kP2o7VzG",
+    "URL": "https://www.youtube.com/watch?v=1qiQkKshMUs&list=PLQFurmxCuZ2Qmcl0TJame_N79kP2o7VzG",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Django",
+    "title": "【한글자막】 Django 4 및 Python 풀스택 개발자 마스터 클래스",
+    "URL": "https://www.udemy.com/course/django-4-python/?couponCode=ST8MT220425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "3시간 ~ 5시간",
+    "level": "중",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "Django",
+    "title": "실전! Django 활용",
+    "URL": "https://www.inflearn.com/course/%EC%8B%A4%EC%A0%84-django-%ED%99%9C%EC%9A%A9#curriculum",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "3시간 ~ 5시간",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Django",
+    "title": "모두를 위한 장고 특화 과정",
+    "URL": "https://www.coursera.org/specializations/django",
+    "type": "동영상",
+    "platform": "Coursera",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Django",
+    "title": "Django로 하나로 완성하는 MVP 개발",
+    "URL": "https://www.codeit.kr/paths/django-web-development",
+    "type": "동영상",
+    "platform": "코드잇",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Django",
+    "title": "Django 한 그릇 뚝딱",
+    "URL": "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000002986653",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Django",
+    "title": "이한영의 Django(장고) 입문",
+    "URL": "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000005171331",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Django",
+    "title": "장고 기초 끝내기(django Framework)",
+    "URL": "https://www.youtube.com/playlist?list=PLpzDq-W37heQVO-5JnVMp1blZH3M0lo5Z",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Flask",
+    "title": "Python Flask Web Framework",
+    "URL": "https://www.youtube.com/playlist?list=PLuHgQVnccGMClNOIuT3b3M4YZjxmult2y",
+    "type": "동영상",
+    "platform": "생활코딩",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Flask",
+    "title": "점프 투 플라스크",
+    "URL": "https://wikidocs.net/book/4542",
+    "type": "책",
+    "platform": "위키독스",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Flask",
+    "title": "【한글자막】 Python FLASK로 웹사이트 만들기",
+    "URL": "https://www.udemy.com/course/python-flask-jose/?couponCode=ST8MT220425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Flask",
+    "title": "flask/플라스크와 백엔드 기본",
+    "URL": "https://www.inflearn.com/course/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%ED%92%80%EC%8A%A4%ED%83%9D-1",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Flask",
+    "title": "파이썬 플라스크(Flask) 기반 웹 개발 및 업무 자동화 서비스 활용",
+    "URL": "https://www.inflearn.com/course/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%ED%94%8C%EB%9D%BC%EC%8A%A4%ED%81%AC-%EC%9B%B9%EC%84%9C%EB%B9%84%EC%8A%A4",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Flask",
+    "title": "Python용 Flask 알아보기 - 전체 튜토리얼",
+    "URL": "https://www.youtube.com/watch?v=Z1RJmh_OqeA",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Flask",
+    "title": "REST APIs with Flask and Python in 2025",
+    "URL": "https://www.udemy.com/course/rest-api-flask-and-python/?couponCode=ST8MT220425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "Flask",
+    "title": "Flask 기반의 파이썬 웹 프로그래밍",
+    "URL": "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000002970916",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Flask",
+    "title": "Flask for Beginners: Creating an Application",
+    "URL": "https://www.coursera.org/projects/flask-for-beginners-creating-an-application",
+    "type": "동영상",
+    "platform": "Coursera",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Flask",
+    "title": "Python Flask",
+    "URL": "https://www.youtube.com/playlist?list=PLEOnZ6GeucBWvOGSbIKNMp6RMQL9LYRc3",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Flask",
+    "title": "Flask Tutorial Note Web App",
+    "URL": "https://wikidocs.net/book/8078",
+    "type": "책",
+    "platform": "위키독스",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Flask",
+    "title": "파이썬과 파이어베이스로 커뮤니티 사이트 만들기",
+    "URL": "https://www.youtube.com/playlist?list=PLqIc89sXpwUCjwzRImFjO2UL8lBopRajj",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": NaN,
+    "price": "무료"
+  },
+  {
+    "subject_name": "Kotlin+Spring boot",
+    "title": "실전! 코틀린과 스프링 부트로 도서관리 애플리케이션 개발하기",
+    "URL": "https://www.inflearn.com/course/java-to-kotlin-2?srsltid=AfmBOorwYhOYGDjLQCkG__yqs__NHBpONEGNDTt7xNCGRKkYhpRvFNEA",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Kotlin+Spring boot",
+    "title": "자바 개발자를 위한 코틀린 입문",
+    "URL": "https://www.inflearn.com/course/java-to-kotlin",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": NaN
+  },
+  {
+    "subject_name": "Kotlin+Spring boot",
+    "title": "은행 서버 프로젝트 실습을 통해 배우는 코틀린 마스터 클래스",
+    "URL": "https://www.inflearn.com/course/%EC%9D%80%ED%96%89%EC%84%9C%EB%B2%84-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%8B%A4%EC%8A%B5-%EC%BD%94%ED%8B%80%EB%A6%B0-%EB%A7%88%EC%8A%A4%ED%84%B0%ED%81%B4%EB%9E%98%EC%8A%A4",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Kotlin+Spring boot",
+    "title": "https://www.youtube.com/playlist?list=PLiLLi47PCMPjdezfGUnayz5PwEfwAQCBi",
+    "URL": "https://www.youtube.com/watch?v=Fjf5_NQnDVw&list=PLiLLi47PCMPjdezfGUnayz5PwEfwAQCBi",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Kotlin+Spring boot",
+    "title": "코틀린 문법부터 실무까지 (실전 자바->코틀린 변환)",
+    "URL": "https://www.inflearn.com/course/%EC%BD%94%ED%8B%80%EB%A6%B0-%EB%AC%B8%EB%B2%95-%EC%8B%A4%EB%AC%B4-%EC%9E%90%EB%B0%94to%EC%BD%94%ED%8B%80%EB%A6%B0",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Kotlin+Spring boot",
+    "title": "Spring Boot & JPA에서 Java와 Kotlin을 함께 사용하기",
+    "URL": "https://tech.inflab.com/20240110-java-and-kotlin/",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Kotlin+Spring boot",
+    "title": "[입문] 누구나 배울 수 있는 코틀린(Kotlin)",
+    "URL": "https://www.inflearn.com/course/kotlin-%EC%9E%85%EB%AC%B8",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Kotlin+Spring boot",
+    "title": "Kotlin 및 Spring Boot 를 사용하여 RESTFUL API 구축하기",
+    "URL": "https://www.udemy.com/course/build-restful-apis-using-kotlin-and-spring-boot-korean/?couponCode=ST8MT220425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Kotlin+Spring boot",
+    "title": "[고급] Kotlin(코틀린) 개발자를 위한 마스터클래스",
+    "URL": "https://www.udemy.com/course/kotlin-part1/?couponCode=ST8MT220425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Kotlin+Spring boot",
+    "title": "[초급] 맛보자! 코틀린과 스프링으로 API 호출하기",
+    "URL": "https://www.inflearn.com/course/%EC%BD%94%ED%8B%80%EB%A6%B0-%EC%8A%A4%ED%94%84%EB%A7%81-api%ED%98%B8%EC%B6%9C-%EC%9E%85%EB%AC%B8?srsltid=AfmBOooOAx44LNVHnS2jyUEBhEWH7kue1OV6yWhDmrlq3ECLKeBpGGXd",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Kotlin+Spring boot",
+    "title": "코틀린 쿡북",
+    "URL": "https://www.yes24.com/product/goods/90452827",
+    "type": "책",
+    "platform": "Yes24",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Kotlin+Spring boot",
+    "title": "코틀린 마이크로서비스 개발",
+    "URL": "https://www.yes24.com/product/goods/68796734",
+    "type": "책",
+    "platform": "Yes24",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Java + Spring 라이브러리 & 유틸",
+    "title": "자바 ORM 표준 JPA 프로그래밍 - 기본편",
+    "URL": "https://www.inflearn.com/course/ORM-JPA-Basic",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Java + Spring 라이브러리 & 유틸",
+    "title": "실전! 스프링 데이터 JPA",
+    "URL": "https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-JPA-%EC%8B%A4%EC%A0%84",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Java + Spring 라이브러리 & 유틸",
+    "title": "실전! Querydsl",
+    "URL": "https://www.inflearn.com/course/Querydsl-%EC%8B%A4%EC%A0%84",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "상",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Java + Spring 라이브러리 & 유틸",
+    "title": "ORM, JPA, Spring Data JPA 적용하기 [ 스프링 부트 (Spring Boot) ]",
+    "URL": "https://www.youtube.com/watch?v=OiAYmtq4Av8",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Java + Spring 라이브러리 & 유틸",
+    "title": "자바 ORM 표준 JPA 프로그래밍",
+    "URL": "https://product.kyobobook.co.kr/detail/S000000935744",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Java + Spring 라이브러리 & 유틸",
+    "title": "[Spring] ORM (Object Relational Mapping) 이란?",
+    "URL": "https://velog.io/@matcha_/Spring-ORM-Object-Relational-Mapping-%EC%9D%B4%EB%9E%80",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Java + Spring 라이브러리 & 유틸",
+    "title": "스프링 배치",
+    "URL": "https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%EB%B0%B0%EC%B9%98",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Java + Spring 라이브러리 & 유틸",
+    "title": "Spring Batch란? 간단한 개념과 코드 살펴보기",
+    "URL": "https://dkswnkk.tistory.com/707",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Java + Spring 라이브러리 & 유틸",
+    "title": "스프링 시큐리티 완전 정복 [6.x 개정판]",
+    "URL": "https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%EC%8B%9C%ED%81%90%EB%A6%AC%ED%8B%B0-%EC%99%84%EC%A0%84%EC%A0%95%EB%B3%B5",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Java + Spring 라이브러리 & 유틸",
+    "title": "스프링 시큐리티 OAuth2",
+    "URL": "https://www.inflearn.com/course/%EC%A0%95%EC%88%98%EC%9B%90-%EC%8A%A4%ED%94%84%EB%A7%81-%EC%8B%9C%ED%81%90%EB%A6%AC%ED%8B%B0",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Java + Spring 라이브러리 & 유틸",
+    "title": "스프링 시큐리티 ",
+    "URL": "https://www.youtube.com/watch?v=y0PXQgrkb90&list=PLJkjrxxiBSFCKD9TRKDYn7IE96K2u3C3U",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Java + Spring 라이브러리 & 유틸",
+    "title": "Spring Security",
+    "URL": "https://spring.io/projects/spring-security",
+    "type": "블로그",
+    "platform": "공식문서",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Java + Spring 라이브러리 & 유틸",
+    "title": "【한글자막】 Spring Security 6 초보에서 마스터 되기 최신강의! (JWT , OAUTH2 포함)",
+    "URL": "https://www.udemy.com/course/spring-security-6-jwt-oauth2-korean/?couponCode=ST8MT220425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Java + Spring 라이브러리 & 유틸",
+    "title": "Logback vs SLF4J vs Log4J2 - 차이점은 무엇입니까? 자바 두뇌 두뇌 바이트",
+    "URL": "https://www.youtube.com/watch?v=SWHYrCXIL38&t=90s",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Java + Spring 라이브러리 & 유틸",
+    "title": "개발자에게 필요한 로그 관리",
+    "URL": "https://www.inflearn.com/course/%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%97%90%EA%B2%8C-%ED%95%84%EC%9A%94%ED%95%9C-%EB%A1%9C%EA%B7%B8%EA%B4%80%EB%A6%AC#curriculum",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Java + Spring 라이브러리 & 유틸",
+    "title": "https://sjh9708.tistory.com/195",
+    "URL": "https://sjh9708.tistory.com/195",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Java + Spring 라이브러리 & 유틸",
+    "title": "Java/Spring 테스트를 추가하고 싶은 개발자들의 오답노트",
+    "URL": "https://www.inflearn.com/course/%EC%9E%90%EB%B0%94-%EC%8A%A4%ED%94%84%EB%A7%81-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%98%A4%EB%8B%B5%EB%85%B8%ED%8A%B8",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Java + Spring 라이브러리 & 유틸",
+    "title": "스프링부트 JUnit 테스트 - 시큐리티를 활용한 Bank 애플리케이션",
+    "URL": "https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-junit-%ED%85%8C%EC%8A%A4%ED%8A%B8",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Java + Spring 라이브러리 & 유틸",
+    "title": "Springboot Test(종합)",
+    "URL": "https://www.youtube.com/playlist?list=PLeMeDIV7bypssYJ4ezUDEru-39G1gwXvr",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "3시간 ~ 5시간",
+    "level": "상",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Node.js 라이브러리 및 유틸",
+    "title": "Node.js - Express",
+    "URL": "https://www.inflearn.com/course/node-js-express#curriculum",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Node.js 라이브러리 및 유틸",
+    "title": "Node.js, Express, MongoDB & More: The Complete Bootcamp",
+    "URL": "https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/?couponCode=ST8MT220425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "Node.js 라이브러리 및 유틸",
+    "title": "Node.js 및 Express로 백엔드 앱 개발하기",
+    "URL": "https://www.coursera.org/learn/developing-backend-apps-with-nodejs-and-express",
+    "type": "동영상",
+    "platform": "Coursera",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Node.js 라이브러리 및 유틸",
+    "title": "Node.js 및 Express를 사용한 RESTful 마이크로서비스 특화 과정",
+    "URL": "https://www.coursera.org/specializations/restful-microservices-using-node-js-and-express",
+    "type": "동영상",
+    "platform": "Coursera",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Node.js 라이브러리 및 유틸",
+    "title": "Node.js 백엔드 개발자 되기",
+    "URL": "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000005200379",
+    "type": "책",
+    "platform": "교보문고",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Node.js 라이브러리 및 유틸",
+    "title": "Node.js에 TypeScript 적용하기(feat. NodeBird)",
+    "URL": "https://www.inflearn.com/course/nodejs-typescript-%EC%A0%81%EC%9A%A9",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Node.js 라이브러리 및 유틸",
+    "title": "Node.js 백엔드 서버 개발 소개(Fastify + Prisma + Typescript와 함께하는)",
+    "URL": "https://www.youtube.com/playlist?list=PLEU9vwKdoCqR9yTVGnfq1tIu5wPraKDV-",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Node.js 라이브러리 및 유틸",
+    "title": "WEB5 - Express Passport.js",
+    "URL": "https://www.inflearn.com/course/WEB5-Express-Passport-js",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Node.js 라이브러리 및 유틸",
+    "title": "EXPRESS.JS: Learn Node! Node js & Express js - Master Nodejs",
+    "URL": "https://www.udemy.com/course/expressjs-learn-node-node-js-express-js-master-nodejs/?couponCode=ST8MT220425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "상",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Node.js 라이브러리 및 유틸",
+    "title": "Express JS #15 - Passport.js Authentication",
+    "URL": "https://www.youtube.com/watch?v=_lZUq39FGv0",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Node.js 라이브러리 및 유틸",
+    "title": "Unit Testing for Typescript & NodeJs Developers with Jest",
+    "URL": "https://www.udemy.com/course/unit-testing-typescript-nodejs",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "django 라이브러리 및 유틸",
+    "title": "APTRS DOCS",
+    "URL": "https://aptrs.com/latest/custom-report/pdf/pdf/",
+    "type": "책",
+    "platform": "공식문서",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "django 라이브러리 및 유틸",
+    "title": "Python Django CRM - Course",
+    "URL": "https://www.youtube.com/playlist?list=PLpyspNLjzwBka94O3ABYcRYk8IaBR8hXZ",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "django 라이브러리 및 유틸",
+    "title": "작정하고 장고! Django REST Framework 편",
+    "URL": "https://www.youtube.com/playlist?list=PLQFurmxCuZ2Qmcl0TJame_N79kP2o7VzG",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "django 라이브러리 및 유틸",
+    "title": "django REST framework",
+    "URL": "https://www.django-rest-framework.org/",
+    "type": "책",
+    "platform": "공식문서",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "django 라이브러리 및 유틸",
+    "title": "https://django-crm-admin.readthedocs.io/en/latest/",
+    "URL": "https://github.com/DjangoCRM/django-crm?tab=readme-ov-file",
+    "type": "책",
+    "platform": "GitHub",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "django 라이브러리 및 유틸",
+    "title": "Django REST Framework 핵심사항",
+    "URL": "https://www.inflearn.com/course/%EC%9E%A5%EA%B3%A0-drf",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Flask 라이브러리 및 유틸",
+    "title": "REST APIs with Flask and Python in 2025",
+    "URL": "https://www.udemy.com/course/rest-api-flask-and-python/?couponCode=ST8MT220425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "10만원 ~ 20만원"
+  },
+  {
+    "subject_name": "Flask 라이브러리 및 유틸",
+    "title": "marshmallow flask python",
+    "URL": "https://www.youtube.com/playlist?list=PLwbVI2LKRNRysiK1pLESNU6kNBSRxSj3I",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "3시간 ~ 5시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Flask 라이브러리 및 유틸",
+    "title": "Python Web | Introduction To Flask SQLAlchemy | CRUD Operations",
+    "URL": "https://www.youtube.com/watch?v=wmIoQaLzhA4",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Flask 라이브러리 및 유틸",
+    "title": "Flask SQLAlchemy",
+    "URL": "https://www.youtube.com/playlist?list=PLXmMXHVSvS-BlLA5beNJojJLlpE0PJgCW",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "5시간 ~ 10시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Flask 라이브러리 및 유틸",
+    "title": "[Flask] Flask-WTF을 이용한 form 사용하기",
+    "URL": "https://velog.io/@___pepper/Flask-Flask-WTF%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-form-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Flask 라이브러리 및 유틸",
+    "title": "https://github.com/marshmallow-code/flask-marshmallow",
+    "URL": "https://github.com/marshmallow-code/flask-marshmallow",
+    "type": "책",
+    "platform": "GitHub",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Flask 라이브러리 및 유틸",
+    "title": "Flask-SQLAlchemy Docs",
+    "URL": "https://flask-sqlalchemy.readthedocs.io/en/stable/",
+    "type": "책",
+    "platform": "공식문서",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Flask 라이브러리 및 유틸",
+    "title": "Flask-Migrate",
+    "URL": "https://flask-migrate.readthedocs.io/en/latest/",
+    "type": "책",
+    "platform": "공식문서",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Spring 운영 배포",
+    "title": "Jenkins를 이용한 CI/CD Pipeline 구축",
+    "URL": "https://www.inflearn.com/course/%EC%A0%A0%ED%82%A8%EC%8A%A4-ci-cd-%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Spring 운영 배포",
+    "title": "DevOps를 위한 Docker 가상화 기술(Private Harbor Registry)",
+    "URL": "https://www.inflearn.com/course/devops-docker-%EA%B0%80%EC%83%81%ED%99%94-%EA%B8%B0%EC%88%A0",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Spring 운영 배포",
+    "title": "1시간만에 치킨 콤보값으로 배우는 서버 배포",
+    "URL": "https://www.inflearn.com/course/1%EC%8B%9C%EA%B0%84%EB%A7%8C%EC%97%90-%EC%B9%98%ED%82%A8%EC%BD%A4%EB%B3%B4%EA%B0%92-%EC%84%9C%EB%B2%84-%EB%B0%B0%ED%8F%AC",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Spring 운영 배포",
+    "title": "그래서 웹서비스는 하나 만들었는데 배포는 어떻게 함?(AWS)",
+    "URL": "https://www.youtube.com/watch?v=cOUhREAWJNw",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Spring 운영 배포",
+    "title": "AWS EC2 + Nginx + Docker + SpringBoot + GitHub Action 무중단 배포(Deploy)",
+    "URL": "https://www.youtube.com/playlist?list=PLcyPfaKZ8Ykg4OkqAhFgwLvASs5T_-UjE",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "3시간 ~ 5시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Spring 운영 배포",
+    "title": "스프링 부트로 만든 백엔드 서버 처음으로 AWS EC2에 배포해보기!",
+    "URL": "https://www.youtube.com/watch?v=-imYJdLJAU4",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Spring 운영 배포",
+    "title": "실전 대비! DevOps 인터뷰 완벽 정복 - 고급편",
+    "URL": "https://www.inflearn.com/course/%EB%8D%B0%EB%B8%8C%EC%98%B5%EC%8A%A4-%EC%9D%B8%ED%84%B0%EB%B7%B0-%EC%99%84%EB%B2%BD-%EC%A0%95%EB%B3%B5",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "1시간 ~ 3시간",
+    "level": "상",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Spring 운영 배포",
+    "title": "처음 시작하는 Infrastructure as Code : AWS & 테라폼",
+    "URL": "https://www.inflearn.com/course/%EB%8D%B0%EB%B8%8C%EC%98%B5%EC%8A%A4-%ED%85%8C%EB%9D%BC%ED%8F%BC-aws",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "3시간 ~ 5시간",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Spring 운영 배포",
+    "title": "비전공자도 이해할 수 있는 CI/CD 입문 실전",
+    "URL": "https://www.inflearn.com/course/%EB%B9%84%EC%A0%84%EA%B3%B5%EC%9E%90-ci-cd-%EC%9E%85%EB%AC%B8-%EC%8B%A4%EC%A0%84",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Node.js 운영 배포",
+    "title": "하루만에 배우는 express with AWS",
+    "URL": "https://www.inflearn.com/course/%ED%95%98%EB%A3%A8%EB%A7%8C%EC%97%90-%EB%A7%8C%EB%93%9C%EB%8A%94-express-aws",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Node.js 운영 배포",
+    "title": "Node.js로 웹 서버 만들기 : Heroku로 배포하기",
+    "URL": "https://www.youtube.com/watch?v=igFgJ5KENy0",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Node.js 운영 배포",
+    "title": "지금 당장 데브옵스 AWS",
+    "URL": "https://www.inflearn.com/course/지금-당장-데브옵스-aws",
+    "type": "책",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Node.js 운영 배포",
+    "title": "AWS EC2 접속하기 | Node.js 서버 클라우드에 띄우기",
+    "URL": "https://www.youtube.com/watch?v=lzZ9KSGh6eI",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Node.js 운영 배포",
+    "title": "Serverless Framework Guide: API Gateway, AWS & Node.js",
+    "URL": "https://www.udemy.com/course/aws-lambda-serverless-framework-build-ecommerce-apis/?kw=node.js+server&src=sac&couponCode=ST8MT220425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Node.js 운영 배포",
+    "title": "백엔드 서버 클릭 몇번으로 무료 배포하는 방법",
+    "URL": "https://www.youtube.com/watch?v=SGGebq48h3Y&t=77s",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Node.js 운영 배포",
+    "title": "Build and Deploy a NodeJS API",
+    "URL": "https://www.udemy.com/course/build-and-deploy-a-nodejs-api/?srsltid=AfmBOorHLtFnIM-wjvPYeKPWMEldz8PjHdnKktV-e8xf51ooPnsPGoWu&utm_source=chatgpt.com",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "~ 1시간",
+    "level": "상",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Node.js 운영 배포",
+    "title": "Full Node.js Deployment to AWS - FREE SSL, NGINX | Node js HTTPS Server",
+    "URL": "https://www.youtube.com/watch?v=yhiuV6cqkNs",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "상",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Node.js 운영 배포",
+    "title": "Deploy NodeJS app with PM2 on AWS EC2 instance | Deploying NodeJS in AWS by AWS Avinash Reddy",
+    "URL": "https://www.youtube.com/watch?v=rI6Cr4QqUm4",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Node.js 운영 배포",
+    "title": "Deploying Node.js App With PM2",
+    "URL": "https://www.youtube.com/watch?v=RF6Dzwwpduo",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "중",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Flask 운영 배포",
+    "title": "Vercel로 Flask 배포하기",
+    "URL": "https://velog.io/@seondal/Vercel-Flask-무료로-배포하기",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Flask 운영 배포",
+    "title": "[Python] Flask + uWSGI + Nginx를 연결 및 배포",
+    "URL": "https://soyoung-new-challenge.tistory.com/118",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Flask 운영 배포",
+    "title": "Flask 또는 Django를 Production 서버로 배포(Deploy)하기",
+    "URL": "https://jay-flow.medium.com/flask-%EB%98%90%EB%8A%94-django%EB%A5%BC-production-%EC%84%9C%EB%B2%84%EB%A1%9C-%EB%B0%B0%ED%8F%AC-deploy-%ED%95%98%EA%B8%B0-1abadb0b941a",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Flask 운영 배포",
+    "title": "The Ultimate Flask Course",
+    "URL": "https://www.udemy.com/course/the-ultimate-flask-course/?couponCode=ST8MT220425G1",
+    "type": "동영상",
+    "platform": "유데미",
+    "duration": "10시간 ~",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Flask 운영 배포",
+    "title": "How to Deploy a Python Flask App with Google Cloud Platform (GCP) on a Virtual Machine",
+    "URL": "https://youtu.be/NlO84jRTwPU?si=fwoBwPNSaXUYoOdw",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Flask 운영 배포",
+    "title": "AWS 안쓰고 파이썬 플라스크 프로그램, 백엔드 서버 10분만에 http://fly.io 이용해서 배포하는 방법",
+    "URL": "https://youtu.be/9ZYB_bFRW8A?si=6iFrwUBB3rxTQp8J",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Flask 운영 배포",
+    "title": "Flask 앱 CI/CD 파이프라인 만들고, 배포 5분만에 하기 | Azure Web App",
+    "URL": "https://youtu.be/huNRWtL-GF8?si=VnDjL0NDiHGFiCjS",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Flask 운영 배포",
+    "title": "Azure 무료 VM으로 flask앱 배포하기 | 서버리스 flask 앱 배포와 비교",
+    "URL": "https://youtu.be/2ORb2g_dpCU?si=7XE9IBG836HcsPSz",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "중",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Flask 운영 배포",
+    "title": "[Azure] WebApp 생성 및 Flask 배포하기",
+    "URL": "https://dev-astra.tistory.com/384",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Flask 운영 배포",
+    "title": "Terraform을 사용하여 기본 Flask 웹 서버 배포",
+    "URL": "https://cloud.google.com/docs/terraform/get-started-with-terraform?hl=ko",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "~ 1시간",
+    "level": "상",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Django 운영 배포",
+    "title": "https://woojin.tistory.com/36",
+    "URL": "https://woojin.tistory.com/36",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Django 운영 배포",
+    "title": "Django 빠르게 배포하기",
+    "URL": "https://www.codeit.kr/topics/getting-started-with-django/lessons/3620",
+    "type": "동영상",
+    "platform": "코드잇",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Django 운영 배포",
+    "title": "10분만에 Django 프로젝트 Heroku에 배포하기 - [1시간만에 플러터/장고로 풀스택 퀴즈앱 만들기]",
+    "URL": "https://www.youtube.com/watch?v=9NnjMHxhqkI&list=PL3ilpnPyonYfztoBliWzrS6pzV8C5jxdR&index=6",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Django 운영 배포",
+    "title": "파이썬 웹 프로그래밍 : FlyIO를 사용해 Django를 인터넷에 배포하기",
+    "URL": "https://www.youtube.com/watch?v=CkBIU6nvF2U",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Django 운영 배포",
+    "title": "Django EC2 배포하기",
+    "URL": "https://www.youtube.com/playlist?list=PLOemN3LiCpznbiEeM_XH9Lfzi6TM4cm_9",
+    "type": "동영상",
+    "platform": "유튜브",
+    "duration": "~ 1시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Django 운영 배포",
+    "title": "파이썬으로 장고(Django) 공략하기 : 입문",
+    "URL": "https://www.inflearn.com/course/django-course",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "5시간 ~ 10시간",
+    "level": "하",
+    "price": "~ 5만원"
+  },
+  {
+    "subject_name": "Django 운영 배포",
+    "title": "작정하고 장고! Django로 Pinterest 따라만들기 : 바닥부터 배포까지",
+    "URL": "https://www.inflearn.com/course/%EC%9E%A5%EA%B3%A0-%ED%95%80%ED%84%B0%EB%A0%88%EC%8A%A4%ED%8A%B8",
+    "type": "동영상",
+    "platform": "인프런",
+    "duration": "10시간 ~",
+    "level": "하",
+    "price": "5만원 ~ 10만원"
+  },
+  {
+    "subject_name": "Django 운영 배포",
+    "title": "Django 서비스 AWS로 배포하기",
+    "URL": "https://nerogarret.tistory.com/45",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
+    "level": "하",
+    "price": "무료"
+  },
+  {
+    "subject_name": "Django 운영 배포",
+    "title": "[Django] Django 서비스 Azure로 배포하기(제일 빠르고 쉬운 방법)",
+    "URL": "https://medium.com/@heeee/django-django-%EC%84%9C%EB%B9%84%EC%8A%A4-azure%EB%A1%9C-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0-%EC%A0%9C%EC%9D%BC-%EB%B9%A0%EB%A5%B4%EA%B3%A0-%EC%89%AC%EC%9A%B4-%EB%B0%A9%EB%B2%95-7e7d2e005ed7",
+    "type": "블로그",
+    "platform": "블로그",
+    "duration": "1시간 ~ 3시간",
     "level": "하",
     "price": "무료"
   }
