@@ -10,37 +10,6 @@ from typing import List
 
 router = APIRouter()
 
-# ------------------ 사전 평가 제출 및 점수 계산 ------------------
-
-
-
-def calculate_pretest_score(answers: List[AnswerItem]) -> int:
-    score = 0
-    for ans in answers:
-        if ans.correct:
-            if ans.difficulty == "low":
-                score += 1
-            elif ans.difficulty == "medium":
-                score += 3
-    return score
-
-# pre-test 결과 저장
-@router.post("/submit-pretest")
-async def submit_pretest(data: PretestSubmitInput):
-    score = calculate_pretest_score(data.answers)
-
-    await db.pretest_results.update_one(
-        {"user_id": data.user_id},
-        {"$set": {
-            "score": score,
-            "answers": [a.dict() for a in data.answers],
-            "timestamp": datetime.now().isoformat()
-        }},
-        upsert=True
-    )
-
-    return {"user_id": data.user_id, "score": score}
-
 # 사전 평가 기반 사용자 평가
 @router.post("/user-assessment")
 async def save_user_assessment(data: AssessmentInput):
