@@ -1,19 +1,42 @@
-# app/roadmap.py
+# app/services/roadmap_vectorstore.py
+import os
+from typing import Union, List
 
-from langchain.vectorstores import Chroma
-from langchain.embeddings import OpenAIEmbeddings
-from langchain.document_loaders import TextLoader
-from langchain.text_splitter import CharacterTextSplitter
+from dotenv import load_dotenv
+from langchain.schema import Document
+from langchain_community.vectorstores import Chroma
+from langchain_openai import OpenAIEmbeddings
 
-def create_roadmap_vectorstore():
-    loader = TextLoader("data/roadmap_documents/all_roadmaps.txt", encoding="utf-8")
-    documents = loader.load()
 
-    splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
-    docs = splitter.split_documents(documents)
+load_dotenv()
+openai_api_key = os.getenv("OPENAI_API_KEY")
 
-    embedding = OpenAIEmbeddings()
-    vectordb = Chroma.from_documents(docs, embedding, persist_directory="chroma_store/roadmaps")
+embedding = OpenAIEmbeddings(openai_api_key=openai_api_key)
 
-    vectordb.persist()
-    return vectordb
+
+def save_explanations_to_chroma(
+    user_id: str,
+    explanations: Union[str, List[str]],
+    metadata: dict
+):
+
+    if isinstance(explanations, str):
+        explanations = [explanations]
+
+
+    db = Chroma(
+        persist_directory="chroma_store/explanation",
+        embedding_function=embedding
+    )
+
+
+    docs = [
+        Document(
+            page_content=ex,
+            metadata={"user_id": user_id, **metadata}
+        )
+        for ex in explanations
+    ]
+
+    db.add_documents(docs)
+    db.persist()
