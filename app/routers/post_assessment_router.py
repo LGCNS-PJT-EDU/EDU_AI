@@ -1,4 +1,6 @@
 from fastapi import APIRouter, HTTPException, Response
+from pydantic import BaseModel
+
 from app.clients.mongodb import db
 from typing import List
 
