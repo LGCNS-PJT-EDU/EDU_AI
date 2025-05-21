@@ -6,7 +6,7 @@ import openai
 
 
 from fastapi import APIRouter, HTTPException
-from fastapi.encoders import jsonable_encoder
+from fastapi.encoders import j7sonable_encoder
 from starlette.responses import JSONResponse
 
 from app.clients.mongodb import db

@@ -110,6 +110,14 @@ v4:
 
 ---
 
+### hypercorn 실행 설정
+- pip install hypercorn으로 hypercorn 설치
+- 실행 환경 구성 -> Python -> main으로 이동
+- scripts를 module로 바꾸고, 모듈명으로 hypercorn이라 입력
+- 스크립트 매개 변수에 app.main:app --reload --bind 127.0.0.1:8000 --access-logfile - --error-logfile - 를 입력(실행 및 로그 출력)
+
+ ---
+
 API 문서
 Swagger UI: http://localhost:8000/docs
 

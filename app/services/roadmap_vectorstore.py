@@ -1,11 +1,17 @@
 # app/services/roadmap_vectorstore.py
-
+import os
 from typing import Union, List
-from langchain.schema import Document
-from langchain.vectorstores import Chroma
-from langchain.embeddings import OpenAIEmbeddings
 
-embedding = OpenAIEmbeddings()
+from dotenv import load_dotenv
+from langchain.schema import Document
+from langchain_community.vectorstores import Chroma
+from langchain_openai import OpenAIEmbeddings
+
+
+load_dotenv()
+openai_api_key = os.getenv("OPENAI_API_KEY")
+
+embedding = OpenAIEmbeddings(openai_api_key=openai_api_key)
 
 
 def save_explanations_to_chroma(

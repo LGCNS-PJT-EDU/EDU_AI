@@ -477,7 +477,7 @@
     "platform": "블로그",
     "duration": "~ 1시간",
     "level": "하",
-    "price": NaN
+    "price": 100
   },
   {
     "subject_name": "Git & Github",
@@ -497,7 +497,7 @@
     "platform": "유데미",
     "duration": "10시간 ~",
     "level": "중",
-    "price": NaN
+    "price": 100
   },
   {
     "subject_name": "Git Hook (Husky lint-staged) 자동화",
@@ -557,7 +557,7 @@
     "platform": "유튜브",
     "duration": "~ 1시간",
     "level": "중",
-    "price": NaN
+    "price":100
   },
   {
     "subject_name": "Axios 인스턴스 관리 공통 인터셉터 구성",
@@ -1826,8 +1826,8 @@
     "type": "동영상",
     "platform": "인프런",
     "duration": "10시간 ~",
-    "level": NaN,
-    "price": NaN
+    "level": 100,
+    "price": 100
   },
   {
     "subject_name": "next.js",
@@ -4186,7 +4186,7 @@
     "type": "동영상",
     "platform": "유튜브",
     "duration": "1시간 ~ 3시간",
-    "level": NaN,
+    "level": 100,
     "price": "무료"
   },
   {
@@ -4207,7 +4207,7 @@
     "platform": "인프런",
     "duration": "5시간 ~ 10시간",
     "level": "하",
-    "price": NaN
+    "price": 100
   },
   {
     "subject_name": "Kotlin+Spring boot",
