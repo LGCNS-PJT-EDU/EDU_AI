@@ -13,11 +13,6 @@ from app.services.assessment.post import generate_key
 
 router = APIRouter()
 
-@router.post("/submit-assessment")
-async def submit_post_assessment():
-    return {"message": "사후 평가 저장"}
-
-
 @router.get("/get-posttest")
 async def get_posttest(user_id: str):
     # 1. 사전 평가 점수 불러오기
@@ -62,29 +57,6 @@ async def get_posttest(user_id: str):
     return {"questions": selected}
 
 
-# ------------------ 사후 평가 제출 및 점수 계산 ------------------
-
-class PosttestSubmitInput(BaseModel):
-    user_id: str
-    answers: List[AnswerItem]  # 기존 AnswerItem 재사용
-
-@router.post("/submit-posttest")
-async def submit_posttest(data: PosttestSubmitInput):
-    score = calculate_pretest_score(data.answers)  # 같은 방식으로 점수 계산
-
-    await db.posttest_results.update_one(
-        {"user_id": data.user_id},
-        {"$set": {
-            "score": score,
-            "answers": [a.dict() for a in data.answers],
-            "timestamp": datetime.now().isoformat()
-        }},
-        upsert=True
-    )
-
-    return {"user_id": data.user_id, "score": score}
-
-
 # 사전 평가 문제 반환(임시) -> 사후 평가 문제 반환으로 수정
 @router.get("/subject", response_model=List[QuestionStructure], response_model_by_alias=False)
 async def get_pretest(user_id:str, subject_id: int):
@@ -123,8 +95,7 @@ async def get_pretest(user_id:str, subject_id: int):
     result = result_generate(selected)
     return result
 
-# Method: POST
-# URI: /api/post/subject?user_id={user_id}
+
 @router.post('/subject', summary="사용자의 사후 평가 결과를 저장", description="백엔드 서버에서 전송된 사용자의 사후 평가 결과를 데이터베이스에 저장한다.")
 async def save_result(user_id: str, payload: AssessmentResult):
     user = await get_user(user_id)
