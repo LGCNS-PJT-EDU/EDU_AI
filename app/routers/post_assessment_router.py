@@ -57,40 +57,33 @@ async def get_posttest(user_id: str):
     return {"questions": selected}
 
 
-# 사전 평가 문제 반환(임시) -> 사후 평가 문제 반환으로 수정
-@router.get("/subject", response_model=List[QuestionStructure], response_model_by_alias=False)
+@router.get("/subject", response_model=List[QuestionStructure], response_model_by_alias=False, summary="사후 평가 문제를 생성", description="데이터베이스에서 사전에 지정된 규칙에 따라 저장된 문제를 가져오고, 사전 평가 문제 데이터셋을 완성한다.")
 async def get_pretest(user_id:str, subject_id: int):
     user = await get_user(user_id)
-    level_in_eng = user.get("level")
+    level = user.get("level")
 
     subject_name = await subject_id_to_name(subject_id)
 
-    difficulty_doc = await db.techMap.find_one({"difficulties": {"$exists": True}})
-    if not difficulty_doc:
-        raise HTTPException(500, "Difficulties mapping not found")
-
-    level_in_kr = difficulty_doc["difficulties"].get(level_in_eng)
-
     question_count = {}
-    if level_in_kr == "하":
-        question_count["상"], question_count["중"], question_count["하"] = 1, 3, 6
-    elif level_in_kr == "중":
-        question_count["상"], question_count["중"], question_count["하"] = 3, 4, 3
-    elif level_in_kr == "상":
-        question_count["상"], question_count["중"], question_count["하"] = 6, 3, 1
+    if level == "low":
+        question_count["high"], question_count["medium"], question_count["low"] = 2, 4, 9
+    elif level == "medium":
+        question_count["high"], question_count["medium"], question_count["low"] = 5, 5, 5
+    elif level == "high":
+        question_count["high"], question_count["medium"], question_count["low"] = 7, 6, 2
     else:
         raise HTTPException(status_code=500, detail="Forbidden attempt occurred")
 
     all_questions = await db[subject_name].find().to_list(length=1000)
 
-    hard_qs = [q for q in all_questions if q["difficulty"] == "상"]
-    mid_qs = [q for q in all_questions if q["difficulty"] == "중"]
-    easy_qs = [q for q in all_questions if q["difficulty"] == "하"]
+    hard_qs = [q for q in all_questions if q["difficulty"] == "high"]
+    mid_qs = [q for q in all_questions if q["difficulty"] == "medium"]
+    easy_qs = [q for q in all_questions if q["difficulty"] == "low"]
 
     selected = []
-    selected += safe_sample(hard_qs, question_count["상"])
-    selected += safe_sample(mid_qs,  question_count["중"])
-    selected += safe_sample(easy_qs, question_count["하"])
+    selected += safe_sample(hard_qs, question_count["high"])
+    selected += safe_sample(mid_qs,  question_count["medium"])
+    selected += safe_sample(easy_qs, question_count["low"])
 
     result = result_generate(selected)
     return result
