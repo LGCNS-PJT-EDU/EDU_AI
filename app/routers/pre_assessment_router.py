@@ -1,8 +1,8 @@
-from fastapi import APIRouter, HTTPException, Response, Query, Body
+from fastapi import APIRouter, Response
 from app.clients.mongodb import db
 from datetime import datetime
 
-from app.models.pre_assessment.request import AnswerItem, PretestSubmitInput, AssessmentInput, AssessmentResult
+from app.models.pre_assessment.request import AssessmentInput, AssessmentResult
 from app.models.pre_assessment.response import QuestionStructure
 from app.services.assessment.common import get_user, subject_id_to_name, safe_sample, result_generate
 from app.utils.level_utils import calculate_level_from_answers

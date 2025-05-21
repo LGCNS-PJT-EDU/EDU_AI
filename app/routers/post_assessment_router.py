@@ -1,13 +1,9 @@
 from fastapi import APIRouter, HTTPException, Response
-from pydantic import BaseModel
 from app.clients.mongodb import db
-from datetime import datetime
 from typing import List
-import random
 
 from app.models.pre_assessment.request import AssessmentResult
 from app.models.pre_assessment.response import QuestionStructure
-from app.routers.pre_assessment_router import AnswerItem, calculate_pretest_score
 from app.services.assessment.common import get_user, subject_id_to_name, result_generate, safe_sample
 from app.services.assessment.post import generate_key
 
