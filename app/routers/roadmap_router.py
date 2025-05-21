@@ -39,7 +39,7 @@ class StrategyRequest(BaseModel):
 # ------------------------------
 #  GPT 로드맵 생성 API
 # ------------------------------
-@router.post("/generate-roadmap", tags=["로드맵 생성"])
+@router.post("/generate-roadmap", summary="로드맵 생성")
 async def generate_roadmap(data: RoadmapRequest):
     user_profile = await db.user_profiles.find_one({"user_id": data.user_id})
     if not user_profile:
@@ -60,7 +60,7 @@ async def generate_roadmap(data: RoadmapRequest):
 # ------------------------------
 #  GPT 로드맵 설명 API
 # ------------------------------
-@router.post("/explain-roadmap", tags=["로드맵 설명"])
+@router.post("/explain-roadmap", summary="로드맵 설명")
 async def explain_roadmap(data: ExplainRequest):
     user_profile = {
         "track": data.track,
@@ -93,7 +93,7 @@ async def explain_roadmap(data: ExplainRequest):
 # ------------------------------
 #  GPT 학습 전략 추천 API
 # ------------------------------
-@router.post("/generate-strategy", tags=["학습 전략 추천"])
+@router.post("/generate-strategy", summary="학습 전략 추천")
 async def generate_strategy(data: StrategyRequest):
     prompt = build_strategy_prompt(
         subjects=data.subjects,
@@ -120,7 +120,7 @@ async def generate_strategy(data: StrategyRequest):
 # ------------------------------
 #  콘텐츠 추천 API
 # ------------------------------
-@router.get("/recommend-contents", tags=["콘텐츠 추천"])
+@router.get("/recommend-contents", summary="콘텐츠 추천")
 async def recommend_contents(subject_name: str = Query(...)):
     results = await get_recommended_contents_by_subject(subject_name)
     return {"subject_name": subject_name, "contents": results}
