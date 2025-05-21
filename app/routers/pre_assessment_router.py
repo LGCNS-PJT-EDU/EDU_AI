@@ -83,8 +83,8 @@ async def get_pretest(user_id: str, subject_id: int):
 
     selected = []
     for chapter in chapter_names:
-        mid_qs = [q for q in all_questions if q["chapterName"] == chapter and q["difficulty"] == "중"]
-        easy_qs = [q for q in all_questions if q["chapterName"] == chapter and q["difficulty"] == "하"]
+        mid_qs = [q for q in all_questions if q["chapterName"] == chapter and q["difficulty"] == "medium"]
+        easy_qs = [q for q in all_questions if q["chapterName"] == chapter and q["difficulty"] == "low"]
 
         selected += safe_sample(mid_qs, 1)
         selected += safe_sample(easy_qs, 1)
