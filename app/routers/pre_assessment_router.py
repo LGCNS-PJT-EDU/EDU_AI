@@ -76,12 +76,6 @@ def build_pretest_log(user_id: str, questions: list[dict]):
 
 @router.get("/subject", response_model=List[QuestionStructure], response_model_by_alias=False, summary="사전 평가 문제를 생성", description="데이터베이스에서 사전에 지정된 규칙에 따라 저장된 문제를 가져오고, 사전 평가 문제 데이터셋을 완성한다.")
 async def get_pretest(user_id: str, subject_id: int):
-    user = await get_user(user_id)
-    level = user.get("level")
-
-    if level is not None:
-        raise HTTPException(status_code=404, detail="Pre-test already done")
-
     subject_name = await subject_id_to_name(subject_id)
 
     all_questions = await db[subject_name].find().to_list(length=1000)
