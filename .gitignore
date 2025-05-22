@@ -175,3 +175,4 @@ cython_debug/
 
 # ChromaDB
 /chroma_store
+*.sqlite3
