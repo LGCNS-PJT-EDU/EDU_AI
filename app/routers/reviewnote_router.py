@@ -1,4 +1,4 @@
-# 📁 app/routers/reviewnote_router.py
+# 파일: app/routers/reviewnote_router.py
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
@@ -13,7 +13,7 @@ from app.clients.mongodb import db
 
 router = APIRouter()
 
-#  1. 입력 데이터 스키마 정의
+# 텍스트 입력 스킨링 정의
 class QuestionItem(BaseModel):
     question_id: str
     question: str
@@ -27,19 +27,20 @@ class ReviewNoteRequest(BaseModel):
     phase: str  # "pre" or "post"
     questions: List[QuestionItem]
 
-#  2. GPT 프롬프트 구성 함수
+# GPT 프롬프트 구성 함수
+
 def build_reviewnote_prompt(question, options, correct_answer, user_answer):
     return f"""
 당신은 교육 전문가 AI입니다.
 
-다음은 사용자가 틀린 문제입니다:
+다음은 사용자가 문제를 푼 내용입니다:
 
 질문: {question}
 보기: {options}
 사용자 답변: {user_answer}
 정답: {correct_answer}
 
-1. 사용자가 왜 틀렸는지 설명해주세요.
+1. 사용자가 왜 틀렸거나 맞았는지 설명해주세요.
 2. 해당 개념을 간단히 설명해주세요.
 3. 추천 학습 키워드 3개를 제시해주세요.
 
@@ -51,7 +52,7 @@ def build_reviewnote_prompt(question, options, correct_answer, user_answer):
 }}
 """
 
-#  3. GPT 호출 함수
+# GPT 호출 함수
 def call_gpt(prompt: str) -> dict:
     try:
         response = openai.ChatCompletion.create(
@@ -74,30 +75,32 @@ def call_gpt(prompt: str) -> dict:
             "recommend_keywords": []
         }
 
-#  4. 메인 API 라우터
-@router.post("/generate", summary="사전/사후 오답노트 자동 생성")
+# 메인 API
+@router.post("/generate", summary="사전/사후 오단노트 자동 생성")
 async def generate_reviewnote(request: ReviewNoteRequest):
     results = []
 
     for q in request.questions:
-        if q.user_answer != q.correct_answer:
-            prompt = build_reviewnote_prompt(
-                q.question, q.options, q.correct_answer, q.user_answer
-            )
-            gpt_result = call_gpt(prompt)
+        prompt = build_reviewnote_prompt(
+            q.question, q.options, q.correct_answer, q.user_answer
+        )
+        gpt_result = call_gpt(prompt)
 
-            result_doc = {
-                "user_id": request.user_id,
-                "subject": request.subject,
-                "phase": request.phase,  # "pre" or "post"
-                "question_id": q.question_id,
-                "question": q.question,
-                "user_answer": q.user_answer,
-                "correct_answer": q.correct_answer,
-                "created_at": datetime.utcnow(),
-                "review_note": gpt_result
-            }
-            await db["reviewnote"].insert_one(result_doc)
-            results.append(result_doc)
+        result_doc = {
+            "user_id": request.user_id,
+            "subject": request.subject,
+            "phase": request.phase,  # "pre" or "post"
+            "question_id": q.question_id,
+            "question": q.question,
+            "user_answer": q.user_answer,
+            "correct_answer": q.correct_answer,
+            "created_at": datetime.utcnow(),
+            "review_note": gpt_result
+        }
+
+        #  개인화된 검색을 위한 RAG 학습 저장 목적
+        await db["reviewnote"].insert_one(result_doc)
+        results.append(result_doc)
 
     return {"created": len(results), "reviewnotes": results}
+
