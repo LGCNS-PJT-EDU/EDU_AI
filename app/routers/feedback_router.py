@@ -49,10 +49,91 @@ async def list_feedbacks(userId: str):
     return JSONResponse(status_code=200, content=jsonable_encoder(serialized))
 
 
-@router.post("/generate-feedback",  summary="지정한 사용자의 피드백을 생성", description="해당 유저의 직전 테스트 결과와 이번 테스트 결과를 활용해서 피드백을 생성한다.")
+@router.post("",  summary="지정한 사용자의 피드백을 생성", description="해당 유저의 직전 테스트 결과와 이번 테스트 결과를 활용해서 피드백을 생성한다.")
 async def generate_feedback(userId: str, subjectId: int):
     user_id = userId
     subject_id = subjectId
     subject = await subject_id_to_name(subject_id)
-
     print(user_id, subject_id, subject)
+
+    data = await db.user_profiles.find_one({"user_id": user_id})
+    if not data:
+        raise HTTPException(status_code=404, detail="No User Found")
+    print(data)
+
+    has_pre = data.get("pre_assessment", {}).get("subject", {}).get("subjectId") == subject_id
+    print(has_pre)
+
+    post_count = sum(
+        1
+        for k, a in data.items()
+        if k.startswith("post_assessment_")
+        and int(
+            a.get("subject", {}).get("subjectId")
+            or a.get("subejct", {}).get("subjectId", -1)
+        ) == subject_id
+    )
+
+    print(post_count)
+
+    has_pre = data.get("pre_assessment", {}) \
+                  .get("subject", {}) \
+                  .get("subjectId") == subject_id
+
+    post_count = sum(
+        1
+        for k, a in data.items()
+        if k.startswith("post_assessment_")
+        and int(
+            a.get("subject", {}).get("subjectId")
+            or a.get("subejct", {}).get("subjectId", -1)
+        ) == subject_id
+    )
+
+    post_assessments = []
+    for k, a in data.items():
+        if not k.startswith("post_assessment_"):
+            continue
+        try:
+            n = int(k.rsplit("_", 1)[-1])
+            sid = int(a.get("subject", {}).get("subjectId", -1))
+        except (ValueError, TypeError):
+            continue
+        if sid == subject_id:
+            post_assessments.append((n, a))
+    post_assessments.sort(key=lambda x: x[0])
+
+
+    if not post_assessments:
+        selected = None
+        pre_assessment = data.get("pre_assessment", {}).get("subject", {})
+        type = "pre"
+        prompt = build_initial_feedback_prompt(pre_assessment)
+    elif len(post_assessments) == 1:
+        selected = post_assessments[-1][1]
+        pre_assessment = data.get("pre_assessment", {}).get("subject", {})
+        type = "pre-post"
+        prompt = build_pre_post_comparison_prompt(pre_assessment, post_assessments[-1][1])
+    else:
+        selected = [post_assessments[-2][1], post_assessments[-1][1]]
+        type = "post"
+        prompt = build_post_post_comparison_prompt(post_assessments[-2][1], post_assessments[-1][1])
+
+    print("all post_tuples:", post_assessments)
+    print("selected:", selected)
+    print(type, prompt)
+
+
+
+    response = openai.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {"role": "system", "content": "당신은 학습 성장 분석가입니다."},
+            {"role": "user", "content": prompt}
+        ],
+        temperature=0.7,
+        max_tokens=800
+    )
+
+    feedback_text = response.choices[0].message.content
+    return(feedback_text)

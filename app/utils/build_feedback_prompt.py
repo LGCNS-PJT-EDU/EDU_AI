@@ -45,10 +45,10 @@ def build_initial_feedback_prompt(data):
     prompt = f"""{data}에 기반해 피드백을 만들어줘"""
     return prompt
 
-def build_pre_post_comparison_prompt(pre_data, curr_data, pre_feedback):
+def build_pre_post_comparison_prompt(pre_data, curr_data):
     prompt = f"""사전 평가 데이터인 {pre_data}와\n
                  첫 번째 사후 평가 데이터인 {curr_data}을 사용해서 피드백을 만들어줘.\n
-                 단, 사전 평가 기반 피드백인 {pre_feedback}를 고려해서 결과를 출력해줘"""
+                 단, 차후에 추가할 사전 평가 기반 피드백을 고려해서 결과를 출력해줘"""
     return prompt
 
 def build_post_post_comparison_prompt(pre_doc, data):
