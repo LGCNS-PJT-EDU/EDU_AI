@@ -26,33 +26,32 @@ def build_growth_feedback_prompt(pre_text: str, post_text: str) -> str:
 ...
 """
 
-#def build_initial_feedback_prompt(data: FeedbackRequest) -> str:
-#    return f"""
-#[사전 평가 분석]
-#- 점수: {data.pre_score}
-#- 과목: {data.subject}, 단원: {data.chapter}
-#- 주요 응답: "{data.pre_text}"
-
-#학습자의 현재 이해도를 분석하고,
-#강점 3가지와 개선이 필요한 약점 5가지를 제시해주세요.
-
-#[출력 형식 예시]
-#- 키워드: 설명
-#...
-#"""
+def build_initial_feedback_prompt(data: FeedbackRequest) -> str:
+    return f"""
+        [사전 평가 분석]
+        - 점수: {data.pre_score}
+        - 과목: {data.subject}, 단원: {data.chapter}
+        - 주요 응답: "{data.pre_text}"
+        
+        학습자의 현재 이해도를 분석하고,
+        강점 3가지와 개선이 필요한 약점 5가지를 제시해주세요.
+        
+        [출력 형식 예시]
+        - 키워드: 설명
+        ...
+    """
 
 def build_initial_feedback_prompt(data):
     prompt = f"""{data}에 기반해 피드백을 만들어줘"""
     return prompt
 
-def build_pre_post_comparison_prompt(pre_data, curr_data):
-    prompt = f"""사전 평가 데이터인 {pre_data}와\n
-                 첫 번째 사후 평가 데이터인 {curr_data}을 사용해서 피드백을 만들어줘.\n
-                 단, 차후에 추가할 사전 평가 기반 피드백을 고려해서 결과를 출력해줘"""
+def build_pre_post_comparison_prompt(pre_feedback, pre_data, curr_data):
+    prompt = f"""사전 평가 데이터인 {pre_data}와 첫 번째 사후 평가 데이터인 {curr_data}을 사용해서 피드백을 만들어줘.\n
+                 단, 사전 평가 기반 피드백인 {pre_feedback}을 고려해서 결과를 출력해줘"""
     return prompt
 
-def build_post_post_comparison_prompt(pre_doc, data):
-    prompt = f"""{pre_doc}과 {data}를 비교해서 결과를 출력해줘"""
+def build_post_post_comparison_prompt(prev_feedback, recent_assessment, most_recent_assessment):
+    prompt = f"""{recent_assessment}과 {most_recent_assessment}를 비교해서 결과를 출력해줘. 단, 최근 피드백인 {prev_feedback}을 고려해서 결과를 출력해줘"""
     return prompt
 
 #def build_pre_post_comparison_prompt(pre_doc: Dict, data: FeedbackRequest) -> str:
