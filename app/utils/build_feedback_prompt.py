@@ -26,7 +26,7 @@ def build_growth_feedback_prompt(pre_text: str, post_text: str) -> str:
 ...
 """
 
-def build_initial_feedback_prompt(data: FeedbackRequest) -> str:
+def build_initial_feedback_prompt_1(data: FeedbackRequest) -> str:
     return f"""
         [사전 평가 분석]
         - 점수: {data.pre_score}
