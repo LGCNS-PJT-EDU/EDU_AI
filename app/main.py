@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from app.routers.pre_assessment_router import router as assessment_router
 from app.routers.post_assessment_router import router as post_assessment_router
 from app.routers.feedback_router import router as feedback_router
-from app.routers.recommend import router as recommend_router
+from app.routers.recommend_router import router as recommend_router
 
 app = FastAPI(
     title="AI 학습 플랫폼 API",
