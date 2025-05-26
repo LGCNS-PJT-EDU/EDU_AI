@@ -39,7 +39,7 @@ class ChapterInfo(BaseModel):
 
 
 class QuestionInfo(BaseModel):
-    id: int
+    examId: int
     chapterNum: int
     chapterName: str
     difficulty: str
