@@ -7,24 +7,13 @@ import os
 from dotenv import load_dotenv
 import openai
 
+from app.models.recommend.request import RecommendRequest
+from app.models.recommend.response import RecommendResponse
+
 load_dotenv()
 
 router = APIRouter()
 
-#  요청 데이터 구조 정의
-class RecommendRequest(BaseModel):
-    query: str
-    user_context: Dict[str, int]  # duration_preference, price_preference, likes_books 등
-
-class RecommendResponse(BaseModel):
-    title: str
-    url: str
-    type: str
-    platform: str
-    duration: str
-    level: str
-    price: str
-    ai_pick: bool = False
 
 #  GPT를 통한 AI Pick 결정 함수
 def call_gpt_rerank(contents: List[Dict], query: str, context: str) -> int:
