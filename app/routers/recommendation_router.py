@@ -4,50 +4,20 @@ from langchain_community.embeddings import OpenAIEmbeddings
 from typing import List, Dict
 import os
 
-from app.clients import ai_client
-from app.models.recommend.request import RecommendRequest
-from app.models.recommend.response import RecommendResponse
-
+from app.clients import ai_client, chroma_client
+from app.models.recommendation.request import RecommendRequest
+from app.models.recommendation.response import RecommendResponse
+from app.services.recommendation.recommendation import call_gpt_rerank
 
 router = APIRouter()
 
 
-#  GPT를 통한 AI Pick 결정 함수
-def call_gpt_rerank(contents: List[Dict], query: str, context: str) -> int:
-    prompt = f"""
-        다음은 사용자의 학습 맥락입니다:
-        {context}
-        
-        사용자의 학습 목표와 관련하여, 아래 콘텐츠들 중 가장 적합한 하나를 골라주세요:
-        {contents}
-        
-        가장 적합한 콘텐츠의 번호(index)를 하나의 숫자로만 출력해주세요.
-    """
-
-    system_prompt = "당신은 교육 추천 전문가입니다."
-    try:
-        idx_str = ai_client.create_chat_response(system_prompt, prompt).strip()
-        return int(idx_str)
-    except:
-        return 0
-
 @router.post("/recommend", response_model=List[RecommendResponse], summary="개인화 콘텐츠 추천 API", description="사전/사후 평가 및 진단 기반으로 사용자의 맥락에 맞는 콘텐츠 4개와 AI픽 1개를 제공합니다.")
 async def recommend_content(req: RecommendRequest):
     try:
-        openai_key = os.getenv("OPENAI_API_KEY")
-        if not openai_key:
-            raise HTTPException(status_code=500, detail="OPENAI_API_KEY not found")
+        results = chroma_client.similarity_search_with_score(req.query, k=6)
 
-        embedding = OpenAIEmbeddings(openai_api_key=openai_key)
-        vectordb = Chroma(
-            persist_directory="chroma_store/contents",
-            embedding_function=embedding
-        )
-
-        results = vectordb.similarity_search_with_score(req.query, k=6)
-
-        output = []
-        content_for_gpt = []
+        output, content_for_gpt = [], []
         for idx, (doc, score) in enumerate(results[:4]):
             meta = doc.metadata
             item = {
