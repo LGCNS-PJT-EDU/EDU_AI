@@ -7,7 +7,7 @@ from app.routers.post_assessment_router import router as post_assessment_router
 from app.routers.activity_log_router import router as activity_log_router
 from app.routers.roadmap_router import router as roadmap_router
 from app.routers.feedback_router import router as feedback_router
-from app.routers.recommend import router as recommend_router
+from app.routers.recommend_router import router as recommend_router
 from app.routers.reviewnote_router import router as reviewnote_router
 
 #  FastAPI 인스턴스 정의
