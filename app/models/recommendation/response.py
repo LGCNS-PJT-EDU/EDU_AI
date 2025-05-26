@@ -1,12 +1,16 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
-class RecommendResponse(BaseModel):
+class RecommendationResponse(BaseModel):
+    contentId: int
+    subjectId: int
     title: str
     url: str
     type: str
     platform: str
     duration: str
-    level: str
     price: str
-    ai_pick: bool = False
+    is_ai_recommendation: bool = Field(False, alias="isAiRecommendation")
+
+    class Config:
+        allow_population_by_alias = True

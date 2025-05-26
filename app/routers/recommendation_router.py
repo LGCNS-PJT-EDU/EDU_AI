@@ -1,18 +1,15 @@
 from fastapi import APIRouter, HTTPException
-from langchain_community.vectorstores import Chroma
-from langchain_community.embeddings import OpenAIEmbeddings
-from typing import List, Dict
-import os
+from typing import List
 
-from app.clients import ai_client, chroma_client
+from app.clients import chroma_client
 from app.models.recommendation.request import RecommendRequest
-from app.models.recommendation.response import RecommendResponse
+from app.models.recommendation.response import RecommendationResponse
 from app.services.recommendation.recommendation import call_gpt_rerank
 
 router = APIRouter()
 
 
-@router.post("/recommend", response_model=List[RecommendResponse], summary="개인화 콘텐츠 추천 API", description="사전/사후 평가 및 진단 기반으로 사용자의 맥락에 맞는 콘텐츠 4개와 AI픽 1개를 제공합니다.")
+@router.post("/recommend", response_model=List[RecommendationResponse], summary="개인화 콘텐츠 추천 API", description="사전/사후 평가 및 진단 기반으로 사용자의 맥락에 맞는 콘텐츠 4개와 AI픽 1개를 제공합니다.")
 async def recommend_content(req: RecommendRequest):
     try:
         results = chroma_client.similarity_search_with_score(req.query, k=6)
@@ -21,18 +18,18 @@ async def recommend_content(req: RecommendRequest):
         for idx, (doc, score) in enumerate(results[:4]):
             meta = doc.metadata
             item = {
+                "contentId": meta.get("contentId"),
+                "subjectId": meta.get("subjectId"),
                 "title": meta.get("title", ""),
                 "url": meta.get("url", ""),
                 "type": meta.get("type", ""),
                 "platform": meta.get("platform", ""),
                 "duration": meta.get("duration", ""),
-                "level": meta.get("level", ""),
                 "price": meta.get("price", "")
             }
             content_for_gpt.append(f"{idx}: {item['title']} ({item['platform']}) - {item['url']}")
-            output.append(RecommendResponse(**item))
+            output.append(RecommendationResponse(**item))
 
-        # 사용자 진단 정보 context string 생성
         context_str = "\n".join([
             f"강의 선호 시간: {req.user_context.get('duration_preference', 0)}",
             f"예산 선호: {req.user_context.get('price_preference', 0)}",
@@ -42,7 +39,7 @@ async def recommend_content(req: RecommendRequest):
         best_index = call_gpt_rerank(content_for_gpt, req.query, context_str)
 
         if 0 <= best_index < len(output):
-            output[best_index].ai_pick = True
+            output[best_index].is_ai_recommendation = True
 
         return output
 
