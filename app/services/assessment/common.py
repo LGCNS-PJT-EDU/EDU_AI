@@ -3,15 +3,7 @@ from typing import List
 
 from fastapi import HTTPException
 
-from app.clients.mongodb import db
 from app.models.pre_assessment.response import QuestionStructure
-
-
-async def get_user(user_id):
-    user = await db.user_profiles.find_one({"user_id": user_id})
-    if not user:
-        raise HTTPException(status_code=404, detail="User not found")
-    return user
 
 
 def safe_sample(pool, cnt):
