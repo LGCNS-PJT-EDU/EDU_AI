@@ -3,7 +3,9 @@
 from fastapi import APIRouter, Query
 from pydantic import BaseModel
 
-from app.clients.mongodb import db, save_explanation_log
+from app.clients.mongodb import db
+# save_explanation_log 임시 제거
+
 from app.services.mongo_roadmap import save_roadmap_cache
 from app.services.mongo_recommendation import get_recommended_contents_by_subject
 from app.services.roadmap_rag import generate_roadmap_rag
@@ -74,13 +76,7 @@ async def explain_roadmap(data: ExplainRequest):
 
     explanation = await call_gpt(prompt)
 
-    await save_explanation_log({
-        "user_id": data.user_id,
-        **user_profile,
-        "subjects": data.subjects,
-        "gpt_prompt": prompt,
-        "gpt_response": explanation
-    })
+
 
     save_explanations_to_chroma(
         user_id=data.user_id,
