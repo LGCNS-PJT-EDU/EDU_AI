@@ -1,5 +1,3 @@
-# app/utils/level_utils.py
-
 def calculate_level_from_answers(answers: dict) -> int:
   
     score = 0

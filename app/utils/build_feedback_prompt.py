@@ -1,7 +1,4 @@
-# app/utils/gpt_prompt/feedback_prompt.py
-
 from app.models.feedback.request import FeedbackRequest
-from typing import Dict
 
 def build_growth_feedback_prompt(pre_text: str, post_text: str) -> str:
     return f"""
@@ -26,76 +23,89 @@ def build_growth_feedback_prompt(pre_text: str, post_text: str) -> str:
 ...
 """
 
-def build_initial_feedback_prompt(data: FeedbackRequest) -> str:
+def build_initial_feedback_prompt_1(data: FeedbackRequest) -> str:
     return f"""
-[사전 평가 분석]
-- 점수: {data.pre_score}
-- 과목: {data.subject}, 단원: {data.chapter}
-- 주요 응답: "{data.pre_text}"
+        [사전 평가 분석]
+        - 점수: {data.pre_score}
+        - 과목: {data.subject}, 단원: {data.chapter}
+        - 주요 응답: "{data.pre_text}"
+        
+        학습자의 현재 이해도를 분석하고,
+        강점 3가지와 개선이 필요한 약점 5가지를 제시해주세요.
+        
+        [출력 형식 예시]
+        - 키워드: 설명
+        ...
+    """
 
-학습자의 현재 이해도를 분석하고,
-강점 3가지와 개선이 필요한 약점 5가지를 제시해주세요.
+def build_initial_feedback_prompt(data):
+    prompt = f"""{data}에 기반해 피드백을 만들어줘"""
+    return prompt
 
-[출력 형식 예시]
-- 키워드: 설명
-...
-"""
+def build_pre_post_comparison_prompt(pre_feedback, pre_data, curr_data):
+    prompt = f"""사전 평가 데이터인 {pre_data}와 첫 번째 사후 평가 데이터인 {curr_data}을 사용해서 피드백을 만들어줘.\n
+                 단, 사전 평가 기반 피드백인 {pre_feedback}을 고려해서 결과를 출력해줘"""
+    return prompt
 
-def build_pre_post_comparison_prompt(pre_doc: Dict, data: FeedbackRequest) -> str:
-    pre_score = pre_doc.get("scores", {}).get("pre", 0)
-    return f"""
-[사전 vs 사후 평가 비교]
-- 사전 점수: {pre_score}, 사후 점수: {data.post_score}
-- 과목: {data.subject}, 단원: {data.chapter}
+def build_post_post_comparison_prompt(prev_feedback, recent_assessment, most_recent_assessment):
+    prompt = f"""{recent_assessment}과 {most_recent_assessment}를 비교해서 결과를 출력해줘. 단, 최근 피드백인 {prev_feedback}을 고려해서 결과를 출력해줘"""
+    return prompt
 
-점수 변화와 학습자의 성장 정도를 분석하고,
-강점 5가지와 보완할 약점 5가지를 구체적으로 제시해주세요.
+#def build_pre_post_comparison_prompt(pre_doc: Dict, data: FeedbackRequest) -> str:
+#    pre_score = pre_doc.get("scores", {}).get("pre", 0)
+#    return f"""
+#[사전 vs 사후 평가 비교]
+#- 사전 점수: {pre_score}, 사후 점수: {data.post_score}
+#- 과목: {data.subject}, 단원: {data.chapter}
 
-[출력 형식 예시]
-- 키워드: 설명
-...
-"""
+#점수 변화와 학습자의 성장 정도를 분석하고,
+#강점 5가지와 보완할 약점 5가지를 구체적으로 제시해주세요.
 
-def build_post_post_comparison_prompt(prev_post_doc: Dict, data: FeedbackRequest) -> str:
-    prev_score = prev_post_doc.get("scores", {}).get("post", 0)
-    return f"""
-[사후 평가 반복 비교]
-- 이전 사후 점수: {prev_score}, 최신 사후 점수: {data.post_score}
-- 과목: {data.subject}, 단원: {data.chapter}
+#[출력 형식 예시]
+#- 키워드: 설명
+#...
+#"""
 
-이전보다 향상된 강점 5가지와 여전히 부족한 약점 5가지를 제시해주세요.
+#def build_post_post_comparison_prompt(prev_post_doc: Dict, data: FeedbackRequest) -> str:
+#    prev_score = prev_post_doc.get("scores", {}).get("post", 0)
+#    return f"""
+#[사후 평가 반복 비교]
+#- 이전 사후 점수: {prev_score}, 최신 사후 점수: {data.post_score}
+#- 과목: {data.subject}, 단원: {data.chapter}
 
-[출력 형식 예시]
-- 키워드: 설명
-...
-"""
+#이전보다 향상된 강점 5가지와 여전히 부족한 약점 5가지를 제시해주세요.
 
-JSON_SCHEMA = """
-[출력 포맷]
-반드시 순수 JSON 객체 하나만 반환해주세요. 다른 설명, 코드블록, 마크다운 문법은 절대 포함하지 마세요.
+#[출력 형식 예시]
+#- 키워드: 설명
+#...
+#"""
 
-스키마:
-{
-  "info": {
-    "userId": "<string>",
-    "date": "<YYYY-MM-DD>",
-    "subject": "<string>"
-  },
-  "scores": {
-    "chapter1": <int>,
-    "chapter2": <int>,
-    "chapter3": <int>,
-    "chapter4": <int>,
-    "chapter5": <int>,
-    "total":    <int>
-  },
-  "feedback": {
-    "strength": { "<key>": "<문장>", ... },
-    "weakness": { "<key>": "<문장>", ... },
-    "final":     "<최종 코멘트>"
-  }
-}
-"""
+#JSON_SCHEMA = """
+#[출력 포맷]
+#반드시 순수 JSON 객체 하나만 반환해주세요. 다른 설명, 코드블록, 마크다운 문법은 절대 포함하지 마세요.
+
+#스키마:
+#{
+    #  "info": {
+    #"userId": "<string>",
+    #"date": "<YYYY-MM-DD>",
+    #"subject": "<string>"
+    #  },
+  #"scores": {
+    #  "chapter1": <int>,
+    #"chapter2": <int>,
+    ###"chapter3": <int>,
+    #"chapter4": <int>,
+    #"chapter5": <int>,
+    #"total":    <int>
+  #},
+  ##"feedback": {
+    #"strength": { "<key>": "<문장>", ... },
+    ##"weakness": { "<key>": "<문장>", ... },
+    #"final":     "<최종 코멘트>"
+  #}
+#}
+#"""
 
 def build_feedback_prompt(data: FeedbackRequest) -> str:
     if data.pre_score is not None and data.post_score is not None:

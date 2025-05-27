@@ -1,4 +1,3 @@
-# app/models/roadmap/response.py
 from pydantic import BaseModel
 
 class RoadmapRecommendation(BaseModel):
