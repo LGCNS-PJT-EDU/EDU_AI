@@ -1,5 +1,3 @@
-# app/utils/roadmap_prompt.py
-
 def build_roadmap_prompt(user_profile: dict) -> str:
     track = user_profile.get("track", "프론트엔드")
     level = user_profile.get("level", "초급")

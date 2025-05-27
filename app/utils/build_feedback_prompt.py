@@ -1,7 +1,4 @@
-# app/utils/gpt_prompt/feedback_prompt.py
-
 from app.models.feedback.request import FeedbackRequest
-from typing import Dict
 
 def build_growth_feedback_prompt(pre_text: str, post_text: str) -> str:
     return f"""
