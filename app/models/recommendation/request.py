@@ -1,8 +1,13 @@
-from typing import Dict
-
 from pydantic import BaseModel
 
 
-class RecommendRequest(BaseModel):
+class UserPreference(BaseModel):
+    level: str
+    duration: int
+    price: int
+    is_prefer_book: bool
+
+
+class RecommendationRequest(BaseModel):
     query: str
-    user_context: Dict[str, int]  # duration_preference, price_preference, likes_books 등
+    user_context: UserPreference
