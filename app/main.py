@@ -13,6 +13,5 @@ app = FastAPI(
 
 app.include_router(assessment_router, prefix="/api/pre", tags=["사전 평가 기능 관련 API"])
 app.include_router(post_assessment_router, prefix="/api/post", tags=["사후 평가 기능 관련 API"])
-app.include_router(activity_log_router, prefix="/api/activity", tags=["활동 기록 기능 관련 API"])
 app.include_router(feedback_router, prefix="/api/feedback", tags=["피드백 기능 관련 API"])
 app.include_router(recommend_router, prefix="/api/recommend", tags=["추천 콘텐츠 관련 API"])
