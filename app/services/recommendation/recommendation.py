@@ -1,6 +1,8 @@
 from typing import List, Dict
 
-from app.clients import ai_client
+import openai
+
+from app.clients import ai_client, chroma_client
 
 
 def call_gpt_rerank(contents: List[str], context: str) -> int:
@@ -21,6 +23,8 @@ def call_gpt_rerank(contents: List[str], context: str) -> int:
 
 
 def explain_reason_with_rag(title: str, user_context: str):
+    vectordb = chroma_client
+
     try:
         similar_docs = vectordb.similarity_search(title, k=6)
         context_text = "\n".join([doc.page_content for doc in similar_docs])

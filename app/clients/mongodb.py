@@ -2,6 +2,9 @@ import os
 from datetime import datetime
 from motor.motor_asyncio import AsyncIOMotorClient
 
+client = AsyncIOMotorClient(os.getenv("MONGO_DB_URL"))
+db = client["ai_platform"]
+
 
 class MongoDBClient:
     def __init__(self, mongo_url: str | None = None, db_name: str = "ai_platform"):

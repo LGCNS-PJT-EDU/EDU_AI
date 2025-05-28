@@ -174,5 +174,5 @@ cython_debug/
 .pypirc
 
 # ChromaDB
-/chroma_store
+*/chroma_store
 *.sqlite3

@@ -8,7 +8,7 @@ import os
 load_dotenv()
 
 # ✅ MongoDB 연결
-mongo_client = MongoClient(os.getenv("MONGO_URI"))
+mongo_client = MongoClient(os.getenv("MONGO_DB_URL"))
 db = mongo_client["ai_platform"]
 collection = db["recommend_contents"]
 

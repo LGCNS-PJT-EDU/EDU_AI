@@ -28,8 +28,10 @@ async def recommend_content(user_id: str, subject_id: int):
     try:
         candidates = await recommend_collection.find({
             "sub_id": subject_id,
-            "content_type": prefs.is_prefer_book
+            "content_type": ("책" if prefs.is_prefer_book is True else "동영상"),
         }).limit(6).to_list(length=6)
+
+        print(candidates)
 
         if not candidates:
             raise HTTPException(status_code=404, detail="추천 콘텐츠 없음")
@@ -49,14 +51,14 @@ async def recommend_content(user_id: str, subject_id: int):
             content_for_gpt.append(summary)
 
             results.append({
-                "contentId": item.get("contentId"),
-                "subjectId": item.get("subjectId"),
-                "title": item.get("title", ""),
-                "url": item.get("url", ""),
-                "type": item.get("type", ""),
-                "platform": item.get("platform", ""),
-                "duration": item.get("duration", ""),
-                "price": item.get("price", "")
+                "contentId": item["total_content_id"],
+                "subjectId": item["sub_id"],
+                "title": item["content_title"],
+                "url": item["content_url"],
+                "type": item["content_type"],
+                "platform": item["content_platform"],
+                "duration": item["content_duration"],
+                "price": item["content_price"],
             })
 
         best_index = call_gpt_rerank(content_for_gpt, context_str)
