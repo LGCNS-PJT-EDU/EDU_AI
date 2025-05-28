@@ -1,6 +1,8 @@
 from typing import List, Dict
 
-import openai
+from openai import OpenAI
+
+client = OpenAI()
 
 from app.clients import ai_client, chroma_client
 
@@ -37,15 +39,13 @@ def explain_reason_with_rag(title: str, user_context: str):
         이 콘텐츠가 추천된 이유를 간단히 2~3문장으로 설명해 주세요.
         """
 
-        response = openai.ChatCompletion.create(
-            model="gpt-4o",
-            messages=[
-                {"role": "system", "content": "당신은 교육 추천 설명 전문가입니다."},
-                {"role": "user", "content": prompt}
-            ],
-            temperature=0.3,
-            max_tokens=200
-        )
+        response = client.chat.completions.create(model="gpt-4o",
+        messages=[
+            {"role": "system", "content": "당신은 교육 추천 설명 전문가입니다."},
+            {"role": "user", "content": prompt}
+        ],
+        temperature=0.3,
+        max_tokens=200)
         return response.choices[0].message.content.strip()
 
     except Exception as e:

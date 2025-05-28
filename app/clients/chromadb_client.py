@@ -21,3 +21,6 @@ class ChromaClient:
 
     def similarity_search_with_score(self, query: str, k: int = 6):
         return self.client.similarity_search_with_score(query, k)
+
+    def similarity_search(self, query: str, k: int = 6):
+        return self.similarity_search_with_score(query, k)

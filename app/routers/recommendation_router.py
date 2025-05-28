@@ -26,9 +26,10 @@ async def recommend_content(user_id: str, subject_id: int):
     )
 
     try:
+        content_types = ["책"] if prefs.is_prefer_book else ["동영상", "블로그"]
         candidates = await recommend_collection.find({
             "sub_id": subject_id,
-            "content_type": ("책" if prefs.is_prefer_book is True else "동영상"),
+            "content_type": {"$in": content_types},
         }).limit(6).to_list(length=6)
 
         print(candidates)
