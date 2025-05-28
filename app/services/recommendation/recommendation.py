@@ -3,15 +3,13 @@ from typing import List, Dict
 from app.clients import ai_client
 
 
-def call_gpt_rerank(contents: List[Dict], query: str, context: str) -> int:
+def call_gpt_rerank(contents: List[str], context: str) -> int:
     prompt = f"""
-        다음은 사용자의 학습 맥락입니다:
-        {context}
-
-        사용자의 학습 목표와 관련하여, 아래 콘텐츠들 중 가장 적합한 하나를 골라주세요:
-        {contents}
-
-        가장 적합한 콘텐츠의 번호(index)를 하나의 숫자로만 출력해주세요.
+        사용자 정보:
+            {context}
+    
+        아래 콘텐츠 중 가장 적합한 1개의 index 번호만 숫자로 출력해 주세요:
+            {contents}
     """
 
     system_prompt = "당신은 교육 추천 전문가입니다."
@@ -20,3 +18,32 @@ def call_gpt_rerank(contents: List[Dict], query: str, context: str) -> int:
         return int(idx_str)
     except:
         return 0
+
+
+def explain_reason_with_rag(title: str, user_context: str):
+    try:
+        similar_docs = vectordb.similarity_search(title, k=6)
+        context_text = "\n".join([doc.page_content for doc in similar_docs])
+
+        prompt = f"""
+        사용자 맥락: {user_context}
+        추천 콘텐츠 제목: {title}
+        관련 설명들: {context_text}
+
+        이 콘텐츠가 추천된 이유를 간단히 2~3문장으로 설명해 주세요.
+        """
+
+        response = openai.ChatCompletion.create(
+            model="gpt-4o",
+            messages=[
+                {"role": "system", "content": "당신은 교육 추천 설명 전문가입니다."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.3,
+            max_tokens=200
+        )
+        return response.choices[0].message.content.strip()
+
+    except Exception as e:
+        print("GPT 설명 실패:", e)
+        return "이 콘텐츠는 사용자의 관심 조건에 부합하여 추천되었습니다."
