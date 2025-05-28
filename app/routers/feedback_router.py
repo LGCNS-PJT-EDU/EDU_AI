@@ -52,7 +52,6 @@ async def generate_feedback(userId: str, subjectId: int):
     prompt = await set_prompt(data, post_assessments, subject, user_id)
     full_prompt = await build_full_prompt(prompt, subject, user_id)
 
-    #  GPT 호출
     system_msg = "당신은 학습 성장 분석가입니다."
     feedback_text = ai_client.create_chat_response(system_msg, full_prompt)
     feedback, info, scores = await build_feedback(data, feedback_text)

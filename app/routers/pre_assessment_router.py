@@ -3,8 +3,8 @@ from app.clients.mongodb import db
 
 from app.models.pre_assessment.request import AssessmentResult
 from app.models.pre_assessment.response import QuestionStructure
-from app.services.assessment.common import get_user, safe_sample, result_generate
-from app.services.common.common import subject_id_to_name
+from app.services.assessment.common import safe_sample, result_generate
+from app.services.common.common import subject_id_to_name, get_user
 from typing import List
 
 router = APIRouter()
