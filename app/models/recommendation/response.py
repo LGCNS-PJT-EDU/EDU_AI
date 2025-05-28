@@ -11,6 +11,7 @@ class RecommendationResponse(BaseModel):
     duration: str
     price: str
     is_ai_recommendation: bool = Field(False, alias="isAiRecommendation")
+    comment: str = ""
 
     class Config:
         allow_population_by_alias = True

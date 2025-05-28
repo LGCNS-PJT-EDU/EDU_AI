@@ -47,7 +47,7 @@ async def recommend_content(user_id: str, subject_id: int):
         content_for_gpt: List[str] = []
 
         for idx, item in enumerate(candidates[:4]):
-            _reason = explain_reason_with_rag(item["content_title"], context_str)
+            reason = explain_reason_with_rag(item["content_title"], context_str)
             summary = f"{idx}: {item['content_title']} ({item['content_platform']}) - {item['content_url']}"
             content_for_gpt.append(summary)
 
@@ -60,12 +60,13 @@ async def recommend_content(user_id: str, subject_id: int):
                 "platform": item["content_platform"],
                 "duration": item["content_duration"],
                 "price": item["content_price"],
+                "isAiRecommendation": False,
+                "comment": reason
             })
 
         best_index = call_gpt_rerank(content_for_gpt, context_str)
         if 0 <= best_index < len(results):
-            results[best_index]["ai_pick"] = True
-            results[best_index]["ai_pick_comment"] = "이 콘텐츠는 AI가 가장 적합하다고 판단한 추천입니다!"
+            results[best_index]["isAiRecommendation"] = True
 
         return results
 
