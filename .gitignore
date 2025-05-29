@@ -172,3 +172,8 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# ChromaDB
+/chroma_store
+*.sqlite3
+*.bin

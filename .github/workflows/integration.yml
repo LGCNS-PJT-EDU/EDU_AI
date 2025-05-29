@@ -15,6 +15,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      
+      - name: Set environment variables for OAuth
+        run: |
+          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> $GITHUB_ENV
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
@@ -29,9 +33,31 @@ jobs:
 
       - name: Build and Tag Docker image
         run: |
-          docker build -t ${{ secrets.ECR_REPOSITORY }}:${{ github.sha }} .
+          docker build -t ${{ secrets.ECR_REPOSITORY }}:$IMAGE_TAG .
+          docker tag ${{ secrets.ECR_REPOSITORY }}:$IMAGE_TAG ${{ secrets.ECR_REPOSITORY }}:latest
 
       - name: Push Docker image to ECR
         run: |
-          docker push ${{ secrets.ECR_REPOSITORY }}:${{ github.sha }}
+          docker push ${{ secrets.ECR_REPOSITORY }}:$IMAGE_TAG
+          docker push ${{ secrets.ECR_REPOSITORY }}:latest
 
+      - name: Clone CD Repository
+        env:
+          PAT_TOKEN: ${{ secrets.CD_REPO_PAT }}
+        run: |
+          git clone https://$PAT_TOKEN@github.com/LGCNS-PJT-EDU/EDU_Deployment.git
+          cd EDU_Deployment
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+      - name: Update image tag in values.yaml
+        run: |
+          cd EDU_Deployment
+          sed -i "s/^  tag: .*/  tag: \"${{ github.sha }}\"/" fastAPI/values.yaml
+
+      - name: Commit and Push updated image tag
+        run: |
+          cd EDU_Deployment
+          git add fastAPI/values.yaml
+          git commit -m "ci: update image tag to ${{ github.sha }}"
+          git push origin main

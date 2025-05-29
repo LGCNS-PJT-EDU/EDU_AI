@@ -1,46 +1,13 @@
 from fastapi import APIRouter, Response
 from app.clients.mongodb import db
-from datetime import datetime
 
-from app.models.pre_assessment.request import AssessmentInput, AssessmentResult
+from app.models.pre_assessment.request import AssessmentResult
 from app.models.pre_assessment.response import QuestionStructure
-from app.services.assessment.common import get_user, subject_id_to_name, safe_sample, result_generate
-from app.utils.level_utils import calculate_level_from_answers
+from app.services.assessment.common import safe_sample, result_generate
+from app.services.common.common import subject_id_to_name, get_user
 from typing import List
 
 router = APIRouter()
-
-# 사전 평가 기반 사용자 평가
-@router.post("/user-assessment")
-async def save_user_assessment(data: AssessmentInput):
-    level = calculate_level_from_answers(data.survey_answers)
-
-    await db.user_profiles.update_one(
-        {"user_id": data.user_id},
-        {"$set": {
-            "survey_answers": data.survey_answers,
-            "pre_test_score": data.pre_test_score,
-            "calculated_level": level
-        }},
-        upsert=True
-    )
-    return {"success": True, "calculated_level": level}
-
-# 사전 평가 로그용 빌더 함수
-def build_pretest_log(user_id: str, questions: list[dict]):
-    return {
-        "user_id": user_id,
-        "questions": [
-            {
-                "question_id": q["question_id"],
-                "difficulty": q["difficulty"],
-                "track": q["track"],
-                "level": q["level"]
-            }
-            for q in questions
-        ],
-        "timestamp": datetime.now().isoformat()
-    }
 
 
 @router.get("/subject", response_model=List[QuestionStructure], response_model_by_alias=False, summary="사전 평가 문제를 생성", description="데이터베이스에서 사전에 지정된 규칙에 따라 저장된 문제를 가져오고, 사전 평가 문제 데이터셋을 완성한다.")
