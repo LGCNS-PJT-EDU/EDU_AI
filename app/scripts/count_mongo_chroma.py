@@ -1,8 +1,8 @@
 from pymongo import MongoClient
-from langchain_chroma import Chroma
-from langchain_openai import OpenAIEmbeddings
 from dotenv import load_dotenv
 import os
+
+from app.clients import chroma_client
 
 load_dotenv()
 
@@ -15,11 +15,11 @@ collection = db["recommend_contents"]
 mongo_count = collection.count_documents({})
 print(f"✅ MongoDB 콘텐츠 개수: {mongo_count}")
 
-# ✅ ChromaDB 문서 수 확인
-embedding = OpenAIEmbeddings()
-vectordb = Chroma(
-    persist_directory="chroma_store/recommend_contents",
-    embedding_function=embedding
-)
-chroma_count = vectordb._collection.count()
+# ✅ ChromaClient 객체 생성
+client = chroma_client.client._client
+
+# ✅ HTTP-only 모드로 원격 ChromaDB의 정보를 가져옴
+coll = client.get_collection(name="recommend_contents")
+chroma_count = coll.count()
+
 print(f"✅ ChromaDB 벡터 문서 수: {chroma_count}")

@@ -1,9 +1,11 @@
-from pymongo import MongoClient
-from langchain_chroma import Chroma
-from langchain_openai import OpenAIEmbeddings
-from langchain_core.documents import Document
 from dotenv import load_dotenv
+from langchain_chroma import Chroma
+from langchain_core.documents import Document
 import os
+
+from pymongo import MongoClient
+
+from app.clients import chroma_client
 
 load_dotenv()
 
@@ -31,12 +33,17 @@ for item in contents:
 
 print(f"✅ 변환된 콘텐츠 수: {len(documents)}")
 
-# ✅ Chroma 저장
-embedding = OpenAIEmbeddings()
+# ✅ 임베딩 객체 생성
+emb = chroma_client
+
+# ✅ 원격 서버에 문서 업로드
 vectordb = Chroma.from_documents(
     documents=documents,
-    embedding=embedding,
-    persist_directory="chroma_store/recommend_contents"
+    embedding=emb.embedding,
+    persist_directory="chroma_store/recommend_contents",  # HTTP 모드에선 무시
+    client_settings=emb.settings,
+    client=emb.client._client,
+    collection_name="recommend_contents"
 )
 
-print("✅ ChromaDB에 저장 완료")  # ← 여기가 종료점입니다
+print("✅ ChromaDB에 저장 완료")
