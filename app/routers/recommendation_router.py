@@ -5,7 +5,8 @@ from app.clients import chroma_client, mongo_client
 from app.models.recommendation.request import UserPreference
 from app.models.recommendation.response import RecommendationResponse
 from app.services.common.common import get_user, subject_id_to_name
-from app.services.recommendation.recommendation import call_gpt_rerank, explain_reason_with_rag
+from app.services.recommendation.rag_explainer import explain_reason_with_rag
+from app.services.recommendation.reranker import call_gpt_rerank
 
 router = APIRouter()
 
