@@ -509,18 +509,18 @@ files = [
 
 [[package]]
 name = "chromadb"
-version = "1.0.8"
+version = "1.0.10"
 description = "Chroma."
 optional = false
 python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "chromadb-1.0.8-cp39-abi3-macosx_10_12_x86_64.whl", hash = "sha256:fa9ec1d8ebef84e1f13793e596a6a81c8fa62366e241ed2b411d6ea6f291264b"},
-    {file = "chromadb-1.0.8-cp39-abi3-macosx_11_0_arm64.whl", hash = "sha256:88e60508cf335e243bbab9e5d3fa8eb2a08b1557623edea9bf681a30cb683a9f"},
-    {file = "chromadb-1.0.8-cp39-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:7f65ac60a26955eec14dfd69092c3323873b4161280485c85f950e6e6fa04b43"},
-    {file = "chromadb-1.0.8-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:8da0c3293b8f18bea462b7166136c99e5624e218b009bad43d8fd931c092e2c0"},
-    {file = "chromadb-1.0.8-cp39-abi3-win_amd64.whl", hash = "sha256:627f3dd992b30895a62154e8ae07fedf1ffd3e99bbfc339732a16202e0816d81"},
-    {file = "chromadb-1.0.8.tar.gz", hash = "sha256:271ed476da71f46b44d0d8e1ee63bb009e3b0d81903b973422522f5637b169f2"},
+    {file = "chromadb-1.0.10-cp39-abi3-macosx_10_12_x86_64.whl", hash = "sha256:7e962123c27e85e9bf2112f6c60ffdaa0a4666502f205eadc34760284f4ca72f"},
+    {file = "chromadb-1.0.10-cp39-abi3-macosx_11_0_arm64.whl", hash = "sha256:81381e80a2cb74235816987ca601a8ebba467fae494b37c315efb1cb38c3ca9e"},
+    {file = "chromadb-1.0.10-cp39-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:9cca63ffa9316e3a1672ef8948e243dd3ae858559eda58eaf4826930f3a4faf5"},
+    {file = "chromadb-1.0.10-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:44f498f734f7396a21bf244b304dbae0f5e6d60d81f2ec4311807e3f13df403e"},
+    {file = "chromadb-1.0.10-cp39-abi3-win_amd64.whl", hash = "sha256:a12b0fbded699b00ffb7bb72e6ddce574d8fad381e783dc7cef08fc1fe268b19"},
+    {file = "chromadb-1.0.10.tar.gz", hash = "sha256:171ba48283e579debed920279f33d340ded80d8986802c2472df40e00a1d68eb"},
 ]
 
 [package.dependencies]
@@ -1589,16 +1589,23 @@ files = [
 referencing = ">=0.31.0"
 
 [[package]]
-name = "kafka-python"
-version = "2.0.0"
+name = "kafka-python-ng"
+version = "2.2.3"
 description = "Pure Python client for Apache Kafka"
 optional = false
-python-versions = "*"
+python-versions = ">=3.8"
 groups = ["main"]
 files = [
-    {file = "kafka-python-2.0.0.tar.gz", hash = "sha256:111a90e54a56182b6b7c4818ee58f984cc427ad8f85fdff59faf45aaeacb51ea"},
-    {file = "kafka_python-2.0.0-py2.py3-none-any.whl", hash = "sha256:53083c5c4d3a5b1f021c3c84ee4e772e5d0f7db559f623d8f02432b9a5e87264"},
+    {file = "kafka_python_ng-2.2.3-py2.py3-none-any.whl", hash = "sha256:adc6e82147c441ca4ae1f22e291fc08efab0d10971cbd4aa1481d2ffa38e9480"},
+    {file = "kafka_python_ng-2.2.3.tar.gz", hash = "sha256:f79f28e10ade9b5a9860b2ec15b7cc8dc510d5702f5a399430478cff5f93a05a"},
 ]
+
+[package.extras]
+boto = ["botocore"]
+crc32c = ["crc32c"]
+lz4 = ["lz4"]
+snappy = ["python-snappy"]
+zstd = ["zstandard"]
 
 [[package]]
 name = "kubernetes"
@@ -1667,6 +1674,26 @@ openai = ["langchain-openai"]
 perplexity = ["langchain-perplexity"]
 together = ["langchain-together"]
 xai = ["langchain-xai"]
+
+[[package]]
+name = "langchain-chroma"
+version = "0.2.4"
+description = "An integration package connecting Chroma and LangChain."
+optional = false
+python-versions = ">=3.9"
+groups = ["main"]
+files = [
+    {file = "langchain_chroma-0.2.4-py3-none-any.whl", hash = "sha256:8bd5316ab415ff7c6ac911d2069926a54777aa4a04f69239a422415c02d1feeb"},
+    {file = "langchain_chroma-0.2.4.tar.gz", hash = "sha256:d021ebf743969f6c2887b3878e829d1814d770e2bbf8e22df7d8cce15efed0d7"},
+]
+
+[package.dependencies]
+chromadb = ">=1.0.9"
+langchain-core = ">=0.3.60"
+numpy = [
+    {version = ">=1.26.0", markers = "python_version < \"3.13\""},
+    {version = ">=2.1.0", markers = "python_version >= \"3.13\""},
+]
 
 [[package]]
 name = "langchain-cli"
@@ -4575,4 +4602,4 @@ cffi = ["cffi (>=1.11)"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.11"
-content-hash = "8a8ca42f7c24fd58ef0c2727887e7a7a8f6f8acf1ca1be55a16a68823e7a0a56"
+content-hash = "eae67d1f87accc08bd66fde55c15b7006485f4338664913c071f0d81530ab278"

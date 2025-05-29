@@ -33,8 +33,6 @@ async def recommend_content(user_id: str, subject_id: int):
             "content_type": {"$in": content_types},
         }).limit(6).to_list(length=6)
 
-        print(candidates)
-
         if not candidates:
             raise HTTPException(status_code=404, detail="추천 콘텐츠 없음")
 
