@@ -1,8 +1,8 @@
 import json
 import logging
 import sys
-from datetime import datetime
 
+from aiokafka import AIOKafkaProducer
 from kafka import KafkaProducer
 
 from app.config.kafka_config import KAFKA_BOOTSTRAP_SERVERS
@@ -19,25 +19,32 @@ if not logger.handlers:
     handler.setFormatter(formatter)
     logger.addHandler(handler)
 
-producer = KafkaProducer(
-    bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
-    value_serializer=lambda m: json.dumps(m).encode("utf-8")
-)
+producer: AIOKafkaProducer = None  # 전역으로 선언
 
-def publish_success(payload) :
+async def init_producer():
+    global producer
+    producer = AIOKafkaProducer(
+        bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
+        value_serializer=lambda v: json.dumps(v).encode("utf-8")
+    )
+    await producer.start()
+
+async def close_producer():
+    global producer
+    if producer:
+        logger.info("Closing producer...")
+        await producer.stop()
+        producer = None
+
+async def publish_success(payload) :
     logger.info("Publish success message")
-    producer.send(TOPIC_RESULT_SUCCESS, value=payload)
-    producer.flush()
+    await producer.send_and_wait(TOPIC_RESULT_SUCCESS, value=payload)
 
-def publish_fail(original_payload, error_code: str, error_message: str) :
-    failure_payload = {
-        "userId": original_payload["userId"],
-        "subjectId": original_payload["subjectId"],
-        "type": original_payload["type"],
-        "nth": original_payload["nth"],
+async def publish_fail(original_payload, error_code: str, error_message: str) :
+    payload = {
+        **original_payload,
         "errorCode": error_code,
         "errorMessage": error_message,
     }
     logger.info("Publish fail message")
-    producer.send(TOPIC_RESULT_FAIL, value=failure_payload)
-    producer.flush()
+    await producer.send_and_wait(TOPIC_RESULT_FAIL, value=payload)

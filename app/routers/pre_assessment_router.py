@@ -1,3 +1,6 @@
+import logging
+import sys
+
 from fastapi import APIRouter, Response
 from app.clients.mongodb import db
 
@@ -9,6 +12,14 @@ from typing import List
 
 router = APIRouter()
 
+logger = logging.getLogger("pre-assessment-router")
+logger.setLevel(logging.INFO)
+
+if not logger.handlers:
+    handler = logging.StreamHandler(sys.stdout)  # 터미널로 출력
+    formatter = logging.Formatter('[%(levelname)s] %(name)s: %(message)s')
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
 
 @router.get("/subject", response_model=List[QuestionStructure], response_model_by_alias=False, summary="사전 평가 문제를 생성", description="데이터베이스에서 사전에 지정된 규칙에 따라 저장된 문제를 가져오고, 사전 평가 문제 데이터셋을 완성한다.")
 async def get_pretest(user_id: str, subject_id: int):
