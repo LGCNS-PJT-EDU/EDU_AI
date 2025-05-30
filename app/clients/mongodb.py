@@ -17,6 +17,7 @@ class MongoDBClient:
 
         self.recommend_contents = self.db["recommend_contents"]
         self.user_profiles = self.db["user_profiles"]
+        self.recommend_cache = self.db["recommend_cache"]
 
 
     async def save_explanation_log(self, log_data: dict):

@@ -6,9 +6,8 @@ client = OpenAI()
 def explain_reason_with_rag(title: str, user_context: str) -> str:
     vectordb = chroma_client
     try:
-        similar_results = vectordb.similarity_search(title, k=6)
-        docs = [res[0] if isinstance(res, tuple) else res for res in similar_results]
-        context_text = "\n".join([doc.page_content for doc in docs])
+        docs_with_scores = vectordb.similarity_search_with_score(title, k=6)
+        context_text = "\n".join([doc.page_content for doc, _ in docs_with_scores])
 
         prompt = f"""
         사용자 맥락: {user_context}
