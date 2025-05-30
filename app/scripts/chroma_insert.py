@@ -1,49 +1,47 @@
 from dotenv import load_dotenv
-from langchain_chroma import Chroma
 from langchain_core.documents import Document
-import os
-
 from pymongo import MongoClient
+import os
 
 from app.clients import chroma_client
 
 load_dotenv()
 
-# ✅ MongoDB 연결
 mongo_client = MongoClient(os.getenv("MONGO_DB_URL"))
 db = mongo_client["ai_platform"]
 collection = db["recommend_contents"]
 
-# ✅ MongoDB에서 콘텐츠 불러오기
 contents = list(collection.find({}))
 
-# ✅ Chroma에 넣을 문서 생성
 documents = []
 for item in contents:
-    title = item.get("content_title")
+    title = item.get("content_title", "")
     if not title:
         continue
 
-    page_content = f"{title} 관련 콘텐츠입니다. HTML, 웹 개발, 기초 태그 등을 다룹니다."
+    page_content = f"""
+제목: {title}
+플랫폼: {item.get("content_platform", "")}
+형태: {item.get("content_type", "")}
+가격: {item.get("content_price", "")}
+소요 시간: {item.get("content_duration", "")}
+설명: HTML, CSS, 자바스크립트 관련 자율 학습 콘텐츠입니다.
+"""
+
     doc = Document(
-        page_content=page_content,
-        metadata={"title": title}
+        page_content=page_content.strip(),
+        metadata={
+            "title": title,
+            "url": item.get("content_url", ""),
+            "platform": item.get("content_platform", "")
+        }
     )
     documents.append(doc)
 
-print(f"✅ 변환된 콘텐츠 수: {len(documents)}")
+print(f" 변환된 콘텐츠 수: {len(documents)}")
 
-# ✅ 임베딩 객체 생성
-emb = chroma_client
+# 기존 데이터 초기화 (선택)
+# shutil.rmtree("chroma_store/recommend_contents")
 
-# ✅ 원격 서버에 문서 업로드
-vectordb = Chroma.from_documents(
-    documents=documents,
-    embedding=emb.embedding,
-    persist_directory="chroma_store/recommend_contents",  # HTTP 모드에선 무시
-    client_settings=emb.settings,
-    client=emb.client._client,
-    collection_name="recommend_contents"
-)
-
-print("✅ ChromaDB에 저장 완료")
+chroma_client.add_documents(documents)
+print(" ChromaDB에 문서 삽입 완료")

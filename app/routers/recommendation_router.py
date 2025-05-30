@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from typing import List
+from datetime import datetime
 
 from app.clients import chroma_client, mongo_client
 from app.models.recommendation.request import UserPreference
@@ -12,6 +13,7 @@ router = APIRouter()
 
 vectordb = chroma_client
 recommend_collection = mongo_client.recommend_contents
+cache_collection = mongo_client.recommend_cache
 
 @router.post("", response_model=List[RecommendationResponse], summary="개인화 콘텐츠 추천 API", description="사전/사후 평가 및 진단 기반으로 사용자의 맥락에 맞는 콘텐츠 4개와 AI픽 1개를 제공합니다.")
 async def recommend_content(user_id: str, subject_id: int):
@@ -44,10 +46,29 @@ async def recommend_content(user_id: str, subject_id: int):
 
         results: List[RecommendationResponse] = []
         content_for_gpt: List[str] = []
+        log = []
 
         for idx, item in enumerate(candidates[:4]):
-            reason = explain_reason_with_rag(item["content_title"], context_str)
-            summary = f"{idx}: {item['content_title']} ({item['content_platform']}) - {item['content_url']}"
+            title = item.get("content_title")
+
+
+            cached = await cache_collection.find_one({
+                "title": title,
+                "user_context": context_str
+            })
+
+            if cached:
+                reason = cached["cached_reason"]
+            else:
+                reason = explain_reason_with_rag(title, context_str)  # 동기 함수 호출
+                log.append({
+                    "title": title,
+                    "user_context": context_str,
+                    "cached_reason": reason,
+                    "cached_at": datetime.utcnow()
+                })
+
+            summary = f"{idx}: {title} ({item['content_platform']}) - {item['content_url']}"
             content_for_gpt.append(summary)
 
             results.append({
@@ -66,6 +87,10 @@ async def recommend_content(user_id: str, subject_id: int):
         best_index = call_gpt_rerank(content_for_gpt, context_str)
         if 0 <= best_index < len(results):
             results[best_index]["isAiRecommendation"] = True
+
+        # log가 비어있지 않을 때만 저장
+        if log:
+            await cache_collection.insert_many(log)
 
         return results
 
