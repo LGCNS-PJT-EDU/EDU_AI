@@ -25,7 +25,11 @@ async def init_producer():
     global producer
     producer = AIOKafkaProducer(
         bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
-        value_serializer=lambda v: json.dumps(v).encode("utf-8")
+        value_serializer=lambda v: json.dumps(v).encode("utf-8"),
+        retry_backoff_ms=1000,  # 1초마다 재시도
+        request_timeout_ms=30000,  # 요청 타임아웃 30초
+        acks="all",  # 모든 복제본이 메시지를 받을 때까지 대기 (가장 안전)
+        enable_idempotence=True  # 중복 메시지 방지
     )
     await producer.start()
 
@@ -37,8 +41,18 @@ async def close_producer():
         producer = None
 
 async def publish_success(payload) :
-    logger.info("Publish success message")
-    await producer.send_and_wait(TOPIC_RESULT_SUCCESS, value=payload)
+    try:
+        logger.info("Publish success message")
+        await producer.send_and_wait(TOPIC_RESULT_SUCCESS, value=payload)
+    except Exception as e:
+        logger.error(f"Failed to send success message: {e}")
+        payload = {
+            "userId": payload["userId"],
+            "subjectId": payload["subjectId"],
+            "type": payload["type"],
+            "nth": payload["nth"]
+        }
+        await publish_fail(payload, error_code="FEEDBACK_SUCCESS_PUBLISH_FAIL_ERROR", error_message="Failed to publish success message")
 
 async def publish_fail(original_payload, error_code: str, error_message: str) :
     payload = {
