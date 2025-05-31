@@ -3,6 +3,7 @@ name = "ai-feedback-api"
 version = "0.1.0"
 description = "KFastAPI + AI 시스템"
 packages = [{ include = "app" }]
+authors = ["Honey"]
 
 [tool.poetry.dependencies]
 python = "^3.11"
