@@ -39,7 +39,7 @@ async def shutdown_event():
     await close_producer()
 
 
-#  라우터 등록 (순서 중요)
+#  라우터 등록
 app.include_router(assessment_router, prefix="/api/pre", tags=["사전 평가 기능 관련 API"])
 app.include_router(post_assessment_router, prefix="/api/post", tags=["사후 평가 기능 관련 API"])
 app.include_router(feedback_router, prefix="/api/feedback", tags=["피드백 기능 관련 API"])

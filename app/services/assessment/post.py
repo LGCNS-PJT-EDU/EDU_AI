@@ -1,8 +1,10 @@
-from app.clients.mongodb import db
+from app.clients import db_clients
 
+
+user_db = db_clients["user"]
 
 async def generate_key(user):
-    profile = await db.user_profiles.find_one(
+    profile = await user_db.user_profiles.find_one(
         {"user_id": user["user_id"]},
         {"_id": False, **{f: False for f in ["user_id", "pre_assessment"]}}
     )

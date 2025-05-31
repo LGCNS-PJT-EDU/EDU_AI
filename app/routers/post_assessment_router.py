@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, Response
 
-from app.clients.mongodb import db
+from app.clients import db_clients
 from typing import List
 
 from app.models.pre_assessment.request import AssessmentResult
@@ -10,6 +10,9 @@ from app.services.assessment.post import generate_key
 from app.services.common.common import subject_id_to_name, get_user
 
 router = APIRouter()
+
+question_db = db_clients["ai_platform"]
+user_db = db_clients["user"]
 
 @router.get("/subject", response_model=List[QuestionStructure], response_model_by_alias=False, summary="사후 평가 문제를 생성", description="데이터베이스에서 사전에 지정된 규칙에 따라 저장된 문제를 가져오고, 사전 평가 문제 데이터셋을 완성한다.")
 async def get_pretest(user_id:str, subject_id: int):
@@ -28,7 +31,7 @@ async def get_pretest(user_id:str, subject_id: int):
     else:
         raise HTTPException(status_code=500, detail="Forbidden attempt occurred")
 
-    all_questions = await db[subject_name].find().to_list(length=1000)
+    all_questions = await question_db[subject_name].find().to_list(length=1000)
 
     hard_qs = [q for q in all_questions if q["difficulty"] == "high"]
     mid_qs = [q for q in all_questions if q["difficulty"] == "medium"]
@@ -50,7 +53,7 @@ async def save_result(user_id: str, payload: AssessmentResult):
 
     new_key = await generate_key(user)
 
-    await db.user_profiles.update_one(
+    await user_db.user_profiles.update_one(
         {"user_id": user["user_id"]},
         {"$set": { new_key: compiled_data }}
     )
