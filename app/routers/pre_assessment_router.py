@@ -16,6 +16,7 @@ logger = logging.getLogger("pre-assessment-router")
 logger.setLevel(logging.INFO)
 
 question_db = db_clients["ai_platform"]
+assessment_db = db_clients["assessment"]
 user_db = db_clients["user"]
 
 if not logger.handlers:
@@ -47,9 +48,19 @@ async def get_pretest(user_id: str, subject_id: int):
 async def save_result(user_id: str, payload: AssessmentResult):
     user = await get_user(user_id)
     compiled_data = payload.model_dump(exclude={"userId"})
+    subject_id = compiled_data["subject"]["subjectId"]
 
-    await user_db.user_profile.update_one(
-        {"user_id": user["user_id"]},
-        {"$set": { "pre_assessment": compiled_data }}
+    await assessment_db.pre_result.update_one(
+        {
+            "userId": user["user_id"],
+            "pre_assessment.subject.subjectId": subject_id
+        },
+        {
+            "$set": {
+                "pre_assessment": compiled_data
+            }
+        },
+        upsert=True
     )
+
     return Response(status_code=204)

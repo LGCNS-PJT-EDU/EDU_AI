@@ -31,7 +31,7 @@ async def get_pretest(user_id:str, subject_id: int):
     else:
         raise HTTPException(status_code=500, detail="Forbidden attempt occurred")
 
-    all_questions = await question_db[subject_name].find().to_list(length=1000)
+    all_questions = await question_db.db[subject_name].find().to_list(length=1000)
 
     hard_qs = [q for q in all_questions if q["difficulty"] == "high"]
     mid_qs = [q for q in all_questions if q["difficulty"] == "medium"]
