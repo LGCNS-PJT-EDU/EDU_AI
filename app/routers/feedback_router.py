@@ -44,7 +44,7 @@ async def generate_feedback(userId: str, subjectId: int):
     subject_id = subjectId
     subject = await subject_id_to_name(subject_id)
 
-    data = await db.user_profiles.find_one({"user_id": user_id})
+    data = await db.user_profiles.find_one({"user_id": str(user_id)})
     if not data:
         raise HTTPException(status_code=404, detail="No User Found")
 
@@ -72,4 +72,4 @@ async def generate_feedback(userId: str, subjectId: int):
         "feedback": feedback
     }
 
-    return JSONResponse(status_code=200, content=jsonable_encoder([return_json]))
+    return return_json

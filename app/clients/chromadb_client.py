@@ -4,6 +4,9 @@ from chromadb.config import Settings
 from dotenv import load_dotenv
 from langchain_openai import OpenAIEmbeddings
 from langchain_chroma import Chroma
+from langchain_core.documents import Document
+from typing import List
+
 
 load_dotenv()
 
@@ -34,3 +37,8 @@ class ChromaClient:
 
     def similarity_search(self, query: str, k: int = 6):
         return self.similarity_search_with_score(query, k)
+
+    def add_documents(self, docs: List[Document]):
+        """외부에서 문서 삽입을 쉽게 호출할 수 있도록 래핑"""
+        self.client.add_documents(docs)
+
