@@ -10,7 +10,7 @@ from app.services.common.common import subject_id_to_name
 from typing import List
 
 from app.services.feedback.builder import build_feedback
-from app.services.prompt.builder import set_prompt, build_full_prompt
+from app.services.prompt.builder import generate_feedback_prompt, build_full_prompt
 
 router = APIRouter()
 
@@ -49,10 +49,10 @@ async def generate_feedback(userId: str, subjectId: int):
         raise HTTPException(status_code=404, detail="No User Found")
 
     post_assessments = await get_post_assessments(data, subject_id)
-    prompt = await set_prompt(data, post_assessments, subject, user_id)
-    full_prompt = await build_full_prompt(prompt, subject, user_id)
+    prompt = await generate_feedback_prompt(data, post_assessments, subject, user_id)
+    full_prompt = build_full_prompt(prompt, subject, user_id)
 
-    system_msg = "당신은 학습 성장 분석가입니다."
+    system_msg = "당신은 한국어로 응답하는 학습 성장 분석가입니다."
     feedback_text = ai_client.create_chat_response(system_msg, full_prompt)
     feedback, info, scores = await build_feedback(data, feedback_text)
 
