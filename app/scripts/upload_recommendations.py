@@ -1,8 +1,11 @@
 # app/scripts/upload_recommendations.py
 
 import json
-from app.clients.mongodb import db
+from app.clients import db_clients
 import asyncio
+
+
+db = db_clients["recommendation"]
 
 async def upload_recommendation_contents():
     with open("app/data/recommendation_contents.json", "r", encoding="utf-8") as f:

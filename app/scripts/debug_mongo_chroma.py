@@ -3,7 +3,6 @@ from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
 from dotenv import load_dotenv
 import pandas as pd
-import os
 
 load_dotenv()
 

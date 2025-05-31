@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException
 from typing import List
 from datetime import datetime
 
-from app.clients import chroma_client, mongo_client
+from app.clients import chroma_client, db_clients
 from app.models.recommendation.request import UserPreference
 from app.models.recommendation.response import RecommendationResponse
 from app.services.common.common import get_user, subject_id_to_name
@@ -12,8 +12,10 @@ from app.services.recommendation.reranker import call_gpt_rerank
 router = APIRouter()
 
 vectordb = chroma_client
-recommend_collection = mongo_client.recommend_contents
-cache_collection = mongo_client.recommend_cache
+recommendation_db = db_clients["recommendation"]
+
+recommend_collection = recommendation_db.recommendation_content
+cache_collection = recommendation_db.recommendation_cache
 
 @router.post("", response_model=List[RecommendationResponse], summary="개인화 콘텐츠 추천 API", description="사전/사후 평가 및 진단 기반으로 사용자의 맥락에 맞는 콘텐츠 4개와 AI픽 1개를 제공합니다.")
 async def recommend_content(user_id: str, subject_id: int):

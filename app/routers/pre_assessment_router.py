@@ -2,18 +2,21 @@ import logging
 import sys
 
 from fastapi import APIRouter, Response
-from app.clients.mongodb import db
+from app.clients import db_clients
 
 from app.models.pre_assessment.request import AssessmentResult
 from app.models.pre_assessment.response import QuestionStructure
 from app.services.assessment.common import safe_sample, result_generate
-from app.services.common.common import subject_id_to_name, get_user
+from app.services.common.common import subject_id_to_name, get_user, question_db
 from typing import List
 
 router = APIRouter()
 
 logger = logging.getLogger("pre-assessment-router")
 logger.setLevel(logging.INFO)
+
+question_db = db_clients["ai_platform"]
+user_db = db_clients["user"]
 
 if not logger.handlers:
     handler = logging.StreamHandler(sys.stdout)  # 터미널로 출력
@@ -25,7 +28,7 @@ if not logger.handlers:
 async def get_pretest(user_id: str, subject_id: int):
     subject_name = await subject_id_to_name(subject_id)
 
-    all_questions = await db[subject_name].find().to_list(length=1000)
+    all_questions = await question_db.db[subject_name].find().to_list(length=1000)
     chapter_names = {q["chapterName"] for q in all_questions}
 
     selected = []
@@ -45,7 +48,7 @@ async def save_result(user_id: str, payload: AssessmentResult):
     user = await get_user(user_id)
     compiled_data = payload.model_dump(exclude={"userId"})
 
-    await db.user_profiles.update_one(
+    await user_db.user_profile.update_one(
         {"user_id": user["user_id"]},
         {"$set": { "pre_assessment": compiled_data }}
     )

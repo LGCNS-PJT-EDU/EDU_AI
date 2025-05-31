@@ -3,7 +3,7 @@ from fastapi.encoders import jsonable_encoder
 from starlette.responses import JSONResponse
 
 from app.clients import ai_client
-from app.clients.mongodb import db
+from app.clients import db_clients
 from app.models.feedback.response import FeedbackResponse, Info, Feedback
 from app.services.assessment.post import get_post_assessments
 from app.services.common.common import subject_id_to_name
@@ -14,10 +14,12 @@ from app.services.prompt.builder import generate_feedback_prompt, build_full_pro
 
 router = APIRouter()
 
+feedback_db = db_clients["feedback"]
+user_db = db_clients["user"]
 
 @router.get("", response_model=List[FeedbackResponse], response_model_by_alias=True, summary="지정한 사용자의 피드백을 반환", description="해당 유저의 전체 피드백을 반환한다.")
 async def list_feedbacks(userId: str):
-    target = db["feedback"].find({"info.userId": userId})
+    target = feedback_db["feedback"].find({"info.userId": userId})
     docs = await target.to_list(length=1000)
 
     responses: List[FeedbackResponse] = []
@@ -44,7 +46,7 @@ async def generate_feedback(userId: str, subjectId: int):
     subject_id = subjectId
     subject = await subject_id_to_name(subject_id)
 
-    data = await db.user_profiles.find_one({"user_id": str(user_id)})
+    data = await user_db.user_profiles.find_one({"user_id": str(user_id)})
     if not data:
         raise HTTPException(status_code=404, detail="No User Found")
 

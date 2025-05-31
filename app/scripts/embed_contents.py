@@ -1,6 +1,5 @@
 import os
 import json
-import pandas as pd
 from dotenv import load_dotenv
 from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import OpenAIEmbeddings

@@ -1,6 +1,5 @@
 from pymongo import MongoClient
 from dotenv import load_dotenv
-import os
 
 from app.clients import chroma_client
 

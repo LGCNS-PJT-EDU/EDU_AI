@@ -1,8 +1,7 @@
-# app/services/mongo_recommendation.py
-
-from app.clients.mongodb import db
-from datetime import datetime
+from app.clients import db_clients
 
 async def get_recommended_contents_by_subject(subject_name: str):
-    results = await db.recommendation_contents.find({"subject_name": subject_name}).to_list(length=None)
+    db = db_clients["recommendation"]
+
+    results = await db.recommendation_content.find({"subject_name": subject_name}).to_list(length=None)
     return results
