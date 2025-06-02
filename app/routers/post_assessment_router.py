@@ -12,6 +12,7 @@ from app.services.common.common import subject_id_to_name, get_user
 router = APIRouter()
 
 question_db = db_clients["ai_platform"]
+assessment_db = db_clients["assessment"]
 user_db = db_clients["user"]
 
 @router.get("/subject", response_model=List[QuestionStructure], response_model_by_alias=False, summary="사후 평가 문제를 생성", description="데이터베이스에서 사전에 지정된 규칙에 따라 저장된 문제를 가져오고, 사전 평가 문제 데이터셋을 완성한다.")
@@ -52,9 +53,16 @@ async def save_result(user_id: str, payload: AssessmentResult):
     compiled_data = payload.model_dump(exclude={"userId"})
 
     new_key = await generate_key(user)
-
-    await user_db.user_profiles.update_one(
-        {"user_id": user["user_id"]},
-        {"$set": { new_key: compiled_data }}
+    await assessment_db.post_result.update_one(
+        {
+            "userId": user["user_id"],
+        },
+        {
+            "$set": {
+                new_key: compiled_data
+            }
+        },
+        upsert=True
     )
+
     return Response(status_code=204)
