@@ -14,7 +14,7 @@ router = APIRouter()
 vectordb = chroma_client
 recommendation_db = db_clients["recommendation"]
 
-recommend_collection = recommendation_db.recommendation_content
+recommendation_collection = recommendation_db.recommendation_content
 cache_collection = recommendation_db.recommendation_cache
 
 @router.post("", response_model=List[RecommendationResponse], summary="개인화 콘텐츠 추천 API", description="사전/사후 평가 및 진단 기반으로 사용자의 맥락에 맞는 콘텐츠 4개와 AI픽 1개를 제공합니다.")
@@ -32,7 +32,7 @@ async def recommend_content(user_id: str, subject_id: int):
 
     try:
         content_types = ["책"] if prefs.is_prefer_book else ["동영상", "블로그"]
-        candidates = await recommend_collection.find({
+        candidates = await recommendation_collection.find({
             "sub_id": subject_id,
             "content_type": {"$in": content_types},
         }).limit(6).to_list(length=6)

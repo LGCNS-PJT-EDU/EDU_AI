@@ -7,8 +7,8 @@ load_dotenv()
 
 # ✅ 정확한 MongoDB 인스턴스 주소 사용
 mongo_client = MongoClient("mongodb://54.180.4.224:27017")  # ← 고정 IP로 연결
-db = mongo_client["ai_platform"]
-collection = db["recommend_contents"]
+db = mongo_client["recommendation"]
+collection = db.recommendation_content
 
 # ✅ MongoDB 콘텐츠 수 확인
 mongo_count = collection.count_documents({})
