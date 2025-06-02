@@ -4,6 +4,7 @@ from starlette.responses import JSONResponse
 
 from app.clients import ai_client
 from app.clients import db_clients
+from app.models.feedback import request
 from app.models.feedback.response import FeedbackResponse, Info, Feedback
 from app.services.assessment.post import get_post_assessments
 from app.services.common.common import subject_id_to_name
@@ -58,7 +59,7 @@ async def generate_feedback(userId: str, subjectId: int):
     feedback_text = ai_client.create_chat_response(system_msg, full_prompt)
     feedback, info, scores = await build_feedback(data, feedback_text)
 
-    await db.feedback.insert_one({
+    await feedback_db.insert_one({
         "info": info,
         "scores": scores,
         "feedback": {
