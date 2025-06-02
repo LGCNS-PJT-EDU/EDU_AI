@@ -1,7 +1,6 @@
 from datetime import date
 from fastapi import HTTPException
-<<<<<<< HEAD
-from app.clients.mongodb import db
+from app.clients import db_clients
 from app.utils.build_feedback_prompt import (
     build_initial_feedback_prompt_1,
     build_pre_post_comparison_prompt,
@@ -10,6 +9,8 @@ from app.utils.build_feedback_prompt import (
 from app.models.feedback.request import FeedbackRequest
 from pydantic import ValidationError
 
+
+feedback_db = db_clients["feedback"]
 
 # 전체 프롬프트 구성
 def build_full_prompt(base_prompt: str, subject: str, user_id: str) -> str:
@@ -26,27 +27,6 @@ def build_full_prompt(base_prompt: str, subject: str, user_id: str) -> str:
 
 아래 **JSON 스키마**에 맞춰서 **순수 JSON 객체** 하나만 반환해주세요.  
 다른 설명, 마크다운, 코드 블록(```…)은 절대 포함하지 마세요.
-=======
-
-from app.clients import db_clients
-from app.utils.build_feedback_prompt import build_initial_feedback_prompt, build_pre_post_comparison_prompt, build_post_post_comparison_prompt
-
-
-feedback_db = db_clients["feedback"]
-
-async def set_prompt(data, post_assessments, subject, user_id):
-    if not post_assessments:
-        pre_assessment = data.get("pre_assessment", {}).get("subject", {})
-        prompt = build_initial_feedback_prompt(pre_assessment)
-    elif len(post_assessments) == 1:
-        pre_feedback = await feedback_db.feedback.find_one({"info.userId": user_id, "info.subject": subject}, sort=[("_id", 1)])
-        pre_assessment = data.get("pre_assessment", {}).get("subject", {})
-        prompt = build_pre_post_comparison_prompt(pre_feedback, pre_assessment, post_assessments[-1][1])
-    else:
-        prev_feedback = await feedback_db.feedback.find_one({"info.userId": user_id, "info.subject": subject}, sort=[("_id", -1)])
-        prompt = build_post_post_comparison_prompt(prev_feedback, post_assessments[-2][1], post_assessments[-1][1])
-    return prompt
->>>>>>> 457b174 (EDU-497 feat: DB 클라이언트와 여기에 기반한 DB 객체를 추가)
 
 
 {{
@@ -99,7 +79,7 @@ async def generate_feedback_prompt(data, post_assessments, subject: str, user_id
                 raise HTTPException(status_code=422, detail=f"입력 데이터 오류: {str(ve)}")
 
         elif len(post_assessments) == 1:
-            pre_feedback = await db.feedback.find_one(
+            pre_feedback = await feedback_db.find_one(
                 {"info.userId": user_id, "info.subject": subject},
                 sort=[("_id", 1)]
             )
@@ -111,7 +91,7 @@ async def generate_feedback_prompt(data, post_assessments, subject: str, user_id
             )
 
         else:
-            prev_feedback = await db.feedback.find_one(
+            prev_feedback = await feedback_db.find_one(
                 {"info.userId": user_id, "info.subject": subject},
                 sort=[("_id", -1)]
             )
