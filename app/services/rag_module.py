@@ -1,5 +1,3 @@
-# app/rag_module.py
-
 from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import OpenAIEmbeddings
 

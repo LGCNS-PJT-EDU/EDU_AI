@@ -10,4 +10,16 @@ chroma_client = ChromaClient(
     openai_api_key=None
 )
 
-mongo_client  = MongoDBClient()
+question_client = MongoDBClient()
+assessment_client = MongoDBClient(db_name="assessment")
+feedback_client = MongoDBClient(db_name="feedback")
+recommendation_client = MongoDBClient(db_name="recommendation")
+user_client = MongoDBClient(db_name="user")
+
+db_clients = {
+    "ai_platform":    question_client,
+    "assessment":     assessment_client,
+    "feedback":       feedback_client,
+    "recommendation": recommendation_client,
+    "user":           user_client
+}

@@ -1,6 +1,6 @@
 from datetime import date
 from fastapi import HTTPException
-from app.clients.mongodb import db
+from app.clients import db_clients
 from app.utils.build_feedback_prompt import (
     build_initial_feedback_prompt_1,
     build_pre_post_comparison_prompt,
@@ -9,6 +9,8 @@ from app.utils.build_feedback_prompt import (
 from app.models.feedback.request import FeedbackRequest
 from pydantic import ValidationError
 
+
+feedback_db = db_clients["feedback"]
 
 # 전체 프롬프트 구성
 def build_full_prompt(base_prompt: str, subject: str, user_id: str) -> str:
@@ -77,7 +79,7 @@ async def generate_feedback_prompt(data, post_assessments, subject: str, user_id
                 raise HTTPException(status_code=422, detail=f"입력 데이터 오류: {str(ve)}")
 
         elif len(post_assessments) == 1:
-            pre_feedback = await db.feedback.find_one(
+            pre_feedback = await feedback_db.find_one(
                 {"info.userId": user_id, "info.subject": subject},
                 sort=[("_id", 1)]
             )
@@ -89,7 +91,7 @@ async def generate_feedback_prompt(data, post_assessments, subject: str, user_id
             )
 
         else:
-            prev_feedback = await db.feedback.find_one(
+            prev_feedback = await feedback_db.find_one(
                 {"info.userId": user_id, "info.subject": subject},
                 sort=[("_id", -1)]
             )

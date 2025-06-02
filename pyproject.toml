@@ -156,6 +156,7 @@ langchain-chroma = "0.2.4"
 kafka-python-ng = "^2.2.3"
 aiokafka = "^0.10.0"
 logging = "^0.4.9.6"
+pandas = "^2.2.3"
 
 [build-system]
 requires = ["poetry-core"]

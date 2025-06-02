@@ -2,7 +2,7 @@ import logging
 import sys
 
 from fastapi import APIRouter, Response
-from app.clients.mongodb import db
+from app.clients import db_clients
 
 from app.models.pre_assessment.request import AssessmentResult
 from app.models.pre_assessment.response import QuestionStructure
@@ -15,6 +15,10 @@ router = APIRouter()
 logger = logging.getLogger("pre-assessment-router")
 logger.setLevel(logging.INFO)
 
+question_db = db_clients["ai_platform"]
+assessment_db = db_clients["assessment"]
+user_db = db_clients["user"]
+
 if not logger.handlers:
     handler = logging.StreamHandler(sys.stdout)  # 터미널로 출력
     formatter = logging.Formatter('[%(levelname)s] %(name)s: %(message)s')
@@ -25,7 +29,7 @@ if not logger.handlers:
 async def get_pretest(user_id: str, subject_id: int):
     subject_name = await subject_id_to_name(subject_id)
 
-    all_questions = await db[subject_name].find().to_list(length=1000)
+    all_questions = await question_db.db[subject_name].find().to_list(length=1000)
     chapter_names = {q["chapterName"] for q in all_questions}
 
     selected = []
@@ -44,9 +48,19 @@ async def get_pretest(user_id: str, subject_id: int):
 async def save_result(user_id: str, payload: AssessmentResult):
     user = await get_user(user_id)
     compiled_data = payload.model_dump(exclude={"userId"})
+    subject_id = compiled_data["subject"]["subjectId"]
 
-    await db.user_profiles.update_one(
-        {"user_id": user["user_id"]},
-        {"$set": { "pre_assessment": compiled_data }}
+    await assessment_db.pre_result.update_one(
+        {
+            "userId": user["user_id"],
+            "pre_assessment.subject.subjectId": subject_id
+        },
+        {
+            "$set": {
+                "pre_assessment": compiled_data
+            }
+        },
+        upsert=True
     )
+
     return Response(status_code=204)
