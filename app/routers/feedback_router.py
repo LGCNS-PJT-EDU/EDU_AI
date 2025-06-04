@@ -95,7 +95,7 @@ async def generate_feedback_kafka(user_id, subject_id, feedback_type, nth):
     feedback_text = ai_client.create_chat_response(system_msg, full_prompt)
     feedback, info, scores = await build_feedback(user, feedback_text)
 
-    await feedback_db.insert_one({
+    await feedback_db.feedback.insert_one({
         "info": info,
         "scores": scores,
         "feedback": {

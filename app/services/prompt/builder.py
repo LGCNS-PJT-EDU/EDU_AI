@@ -2,11 +2,11 @@ from datetime import date
 from fastapi import HTTPException
 from app.clients import db_clients
 from app.utils.build_feedback_prompt import (
-    build_initial_feedback_prompt_1,
+    build_initial_feedback_prompt,
     build_pre_post_comparison_prompt,
-    build_post_post_comparison_prompt
+    build_post_post_comparison_prompt, build_initial_feedback_prompt
 )
-from app.models.feedback.request import FeedbackRequest
+from app.models.feedback.request import FeedbackRequest, ChapterData
 from pydantic import ValidationError
 
 
@@ -129,24 +129,57 @@ async def generate_feedback_prompt(data, post_assessments, subject: str, user_id
 async def generate_feedback_prompt_rev(user_id, subject, subject_id, feedback_type, nth) -> str:
     try:
         if feedback_type == "PRE":
-            pre_assessment_result = await assessment_db.pre_result.find_one({ "userId": user_id, "subject.subjectId": subject_id })
-            base_prompt = build_initial_feedback_prompt_1(pre_assessment_result)
+            pre_assessment_result = await assessment_db.pre_result.find_one({ "userId": user_id, "pre_assessment.subject.subjectId": subject_id })
+            pre_score = pre_assessment_result.get("subject", {}).get("cnt", 0)
+            chapters = pre_assessment_result.get("pre_assessment", {}).get("chapters", [])
+
+            chapters_list: list[ChapterData] = []
+            for chapter in chapters:
+                chapter_obj = ChapterData(**chapter)
+                chapters_list.append(chapter_obj)
+
+            pre_feedback_request = FeedbackRequest(
+                user_id=str(user_id),
+                subject=subject,
+                chapter=chapters_list,
+                pre_score=pre_score
+            )
+
+            base_prompt = build_initial_feedback_prompt(pre_feedback_request)
+
+            print(base_prompt)
 
         elif feedback_type == "POST" and nth == 1:
-            pre_feedback = await feedback_db.find_one({ "info.userId": user_id, "info.subject": subject }, sort=[("_id", -1)])
-            pre_assessment_result = await assessment_db.pre_result.find_one({ "userId": user_id, "subject.subjectId": subject_id })
-            post_assessment_result = await assessment_db.post_result.find_one({ "userId": user_id, "subject.subjectId": subject_id })
+            pre_feedback = await feedback_db.feedback.find_one({ "info.userId": user_id, "info.subject": subject }, sort=[("_id", -1)])
+            pre_assessment_result = await assessment_db.pre_result.find_one({ "userId": user_id, "pre_assessment.subject.subjectId": subject_id })
+            post_assessment_result = await assessment_db.post_result.find_one({"userId": user_id})
 
-            base_prompt = build_pre_post_comparison_prompt(pre_feedback, pre_assessment_result, post_assessment_result)
+            if post_assessment_result:
+                post_assessment_result = {
+                    key: value for key, value in post_assessment_result.items()
+                    if key.startswith("post_assessment_") and value.get("subjectId") == subject_id
+                }
+
+            pre_score = pre_assessment_result.get("subject", {}).get("cnt", 0)
+            post_score = post_assessment_result.get("subject", {}).get("cnt", 0)
+
+
+            base_prompt = build_pre_post_comparison_prompt(pre_feedback, pre_score, post_score)
 
         else:
             post_assessments = await assessment_db.post_result.find({ "userId": user_id, "subject.subjectId": subject_id }).sort([("_id", -1)]).limit(2).to_list(length=2)
+            print(post_assessments)
 
-            prev_feedback = await feedback_db.find_one({ "info.userId": user_id, "info.subject": subject },sort=[("_id", -1)])
+            prev_feedback = await feedback_db.feedback.find_one({ "info.userId": user_id, "info.subject": subject },sort=[("_id", -1)])
             post_assessment_e = post_assessments[1]
             post_assessment_z = post_assessments[0]
 
-            base_prompt = build_post_post_comparison_prompt(prev_feedback, post_assessment_e, post_assessment_z)
+            post_score_e = post_assessment_e.get("subject", {}).get("cnt", 0)
+            post_score_z = post_assessment_z.get("subject", {}).get("cnt", 0)
+
+            print(post_assessment_e)
+            print(post_assessment_z)
+            base_prompt = build_post_post_comparison_prompt(prev_feedback, post_score_e, post_score_z)
 
         return base_prompt
 
