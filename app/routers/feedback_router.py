@@ -87,7 +87,7 @@ async def generate_feedback_kafka(user_id, subject_id, feedback_type, nth):
     subject = await subject_id_to_name(subject_id)
 
 
-    base_prompt = await generate_feedback_prompt_rev(user_id, subject, feedback_type.upper(), nth)
+    base_prompt = await generate_feedback_prompt_rev(user_id, subject, subject_id, feedback_type.upper(), nth)
     full_prompt = build_full_prompt(base_prompt, subject, user_id)
 
 

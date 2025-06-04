@@ -69,10 +69,6 @@ def build_initial_feedback_prompt_1(data: FeedbackRequest) -> str:
 ...
 """
 
-#  (내부에서 호출용) 사전 데이터 전체 프롬프트
-def build_initial_feedback_prompt(data):
-    return f"{data}에 기반해 피드백을 만들어줘"
-
 #  사전-사후 비교용 프롬프트
 def build_pre_post_comparison_prompt(pre_feedback, pre_data, curr_data):
     return f"""사전 평가 데이터인 {pre_data}와 첫 번째 사후 평가 데이터인 {curr_data}을 사용해서 피드백을 만들어줘.

@@ -38,7 +38,7 @@ async def consume_feedback():
             user_id = payload["userId"]
             subject_id = payload["subjectId"]
             feedback_type = payload["type"]
-            nth = payload["nth"]
+            nth = payload["nth"] if payload["nth"] is not None else 0
 
             success = False
             last_error = None
