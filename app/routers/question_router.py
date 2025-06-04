@@ -1,29 +1,31 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Query
 from typing import List
 
-from app.models.question_model import Question
+from app.models.interview.question_model import Question
 from app.clients.mongodb import MongoDBClient
 
-router = APIRouter(prefix="/api/questions", tags=["Questions"])
-
-# MongoDB 클라이언트 인스턴스 생성
+router = APIRouter()
 mongodb = MongoDBClient()
 
-@router.get("/{category}", response_model=List[Question])
-async def get_questions_by_category(category: str):
+
+@router.get("/questions", response_model=List[Question])
+async def get_questions_by_user_and_subject(
+    user_id: str = Query(..., description="사용자 ID"),
+    subject_id: int = Query(..., description="과목 ID")
+):
     try:
-        # 카테고리 컬렉션 불러오기
-        collection = mongodb.get_category_collection(category)
-        cursor = collection.find()
+        collection = mongodb.get_default_collection()  # 또는 통합 collection
+        cursor = collection.find({"user_id": user_id, "sub_id": subject_id})
 
         questions = []
         async for doc in cursor:
-            doc["id"] = doc.pop("_id")  # MongoDB의 _id → Pydantic용 id
+            doc["id"] = doc.pop("_id")
             questions.append(doc)
 
         if not questions:
-            raise HTTPException(status_code=404, detail=f"'{category}'에 해당하는 질문이 없습니다.")
+            raise HTTPException(status_code=404, detail="해당 조건의 질문이 없습니다.")
         return questions
 
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"질문을 불러오는 중 오류 발생: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"질문 검색 중 오류 발생: {str(e)}")
+
