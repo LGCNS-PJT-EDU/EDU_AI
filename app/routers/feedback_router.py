@@ -10,7 +10,7 @@ from app.services.common.common import subject_id_to_name
 from typing import List
 
 from app.services.feedback.builder import build_feedback
-from app.services.prompt.builder import generate_feedback_prompt, build_full_prompt
+from app.services.prompt.builder import generate_feedback_prompt, build_full_prompt, generate_feedback_prompt_rev
 
 router = APIRouter()
 
@@ -59,6 +59,41 @@ async def generate_feedback(userId: int, subjectId: int):
     system_msg = "당신은 한국어로 응답하는 학습 성장 분석가입니다."
     feedback_text = ai_client.create_chat_response(system_msg, full_prompt)
     feedback, info, scores = await build_feedback(data, feedback_text)
+
+    await feedback_db.insert_one({
+        "info": info,
+        "scores": scores,
+        "feedback": {
+            "strength": feedback.get("strength", {}),
+            "weakness": feedback.get("weakness", {}),
+            "final": feedback.get("final", "")
+        }
+    })
+
+    return_json = {
+        "info": info,
+        "scores": scores,
+        "feedback": feedback
+    }
+
+    return return_json
+
+
+async def generate_feedback_kafka(user_id, subject_id, feedback_type, nth):
+    user = await user_db.user_profile.find_one({"user_id": user_id})
+    if not user:
+        raise HTTPException(status_code=404, detail="사용자 정보를 찾을 수 없습니다.")
+
+    subject = await subject_id_to_name(subject_id)
+
+
+    base_prompt = await generate_feedback_prompt_rev(user_id, subject, feedback_type.upper(), nth)
+    full_prompt = build_full_prompt(base_prompt, subject, user_id)
+
+
+    system_msg = "당신은 한국어로 응답하는 학습 성장 분석가입니다."
+    feedback_text = ai_client.create_chat_response(system_msg, full_prompt)
+    feedback, info, scores = await build_feedback(user, feedback_text)
 
     await feedback_db.insert_one({
         "info": info,

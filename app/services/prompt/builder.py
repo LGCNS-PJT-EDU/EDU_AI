@@ -11,6 +11,7 @@ from pydantic import ValidationError
 
 
 feedback_db = db_clients["feedback"]
+assessment_db = db_clients["assessment"]
 
 # 전체 프롬프트 구성
 def build_full_prompt(base_prompt: str, subject: str, user_id: str) -> str:
@@ -119,6 +120,35 @@ async def generate_feedback_prompt(data, post_assessments, subject: str, user_id
             )
 
         return build_full_prompt(base_prompt, subject, user_id)
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"피드백 프롬프트 생성 오류: {str(e)}")
+
+
+
+async def generate_feedback_prompt_rev(user_id, subject, subject_id, feedback_type, nth) -> str:
+    try:
+        if feedback_type == "PRE":
+            pre_assessment_result = await assessment_db.pre_result.find_one({ "userId": user_id, "subject.subjectId": subject_id })
+            base_prompt = build_initial_feedback_prompt_1(pre_assessment_result)
+
+        elif feedback_type == "POST" and nth == 1:
+            pre_feedback = await feedback_db.find_one({ "info.userId": user_id, "info.subject": subject }, sort=[("_id", -1)])
+            pre_assessment_result = await assessment_db.pre_result.find_one({ "userId": user_id, "subject.subjectId": subject_id })
+            post_assessment_result = await assessment_db.post_result.find_one({ "userId": user_id, "subject.subjectId": subject_id })
+
+            base_prompt = build_pre_post_comparison_prompt(pre_feedback, pre_assessment_result, post_assessment_result)
+
+        else:
+            post_assessments = await assessment_db.post_result.find({ "userId": user_id, "subject.subjectId": subject_id }).sort([("_id", -1)]).limit(2).to_list(length=2)
+
+            prev_feedback = await feedback_db.find_one({ "info.userId": user_id, "info.subject": subject },sort=[("_id", -1)])
+            post_assessment_e = post_assessments[1]
+            post_assessment_z = post_assessments[0]
+
+            base_prompt = build_post_post_comparison_prompt(prev_feedback, post_assessment_e, post_assessment_z)
+
+        return base_prompt
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"피드백 프롬프트 생성 오류: {str(e)}")
