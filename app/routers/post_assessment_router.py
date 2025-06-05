@@ -7,6 +7,7 @@ from app.models.pre_assessment.request import AssessmentResult
 from app.models.pre_assessment.response import QuestionStructure
 from app.services.assessment.common import result_generate, safe_sample
 from app.services.assessment.post import generate_key
+from app.services.assessment.pre import level_to_string
 from app.services.common.common import subject_id_to_name, get_user
 
 router = APIRouter()
@@ -60,6 +61,8 @@ async def get_pretest(user_id:str, subject_id: int):
 async def save_result(user_id: str, payload: AssessmentResult):
     user = await get_user(user_id)
     compiled_data = payload.model_dump(exclude={"userId"})
+    level = await level_to_string(payload.subject.level)
+    level_key = str(payload.subject.subjectId)
 
     new_key = await generate_key(user)
     await assessment_db.post_result.update_one(
@@ -69,6 +72,18 @@ async def save_result(user_id: str, payload: AssessmentResult):
         {
             "$set": {
                 new_key: compiled_data
+            }
+        },
+        upsert=True
+    )
+
+    await user_db.user_profile.update_one(
+        {
+            "user_id": user["user_id"],
+        },
+        {
+            "$set": {
+                f"level.{level_key}": level
             }
         },
         upsert=True
