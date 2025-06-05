@@ -7,6 +7,7 @@ from app.clients import db_clients
 from app.models.pre_assessment.request import AssessmentResult
 from app.models.pre_assessment.response import QuestionStructure
 from app.services.assessment.common import safe_sample, result_generate
+from app.services.assessment.pre import level_to_string
 from app.services.common.common import subject_id_to_name, get_user
 from typing import List
 
@@ -49,6 +50,8 @@ async def save_result(user_id: str, payload: AssessmentResult):
     user = await get_user(user_id)
     compiled_data = payload.model_dump(exclude={"userId"})
     subject_id = compiled_data["subject"]["subjectId"]
+    level = await level_to_string(payload.subject.level)
+    level_key = str(subject_id)
 
     await assessment_db.pre_result.update_one(
         {
@@ -61,6 +64,19 @@ async def save_result(user_id: str, payload: AssessmentResult):
             }
         },
         upsert=True
+    )
+
+    await user_db.user_profile.update_one(
+        {
+            "user_id": user["user_id"],
+        },
+        {
+            "$set": {
+                "level": {
+                    level_key: level
+                }
+            }
+        }
     )
 
     return Response(status_code=204)
