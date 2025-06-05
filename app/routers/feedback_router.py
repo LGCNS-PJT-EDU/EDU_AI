@@ -19,8 +19,9 @@ assessment_db = db_clients["assessment"]
 user_db = db_clients["user"]
 
 @router.get("", response_model=List[FeedbackResponse], response_model_by_alias=True, summary="지정한 사용자의 피드백을 반환", description="해당 유저의 전체 피드백을 반환한다.")
-async def list_feedbacks(userId: str):
-    target = feedback_db.feedback.find({"info.userId": userId})
+async def list_feedbacks(userId: str, subjectId: int):
+    subject_name = await subject_id_to_name(subjectId)
+    target = feedback_db.feedback.find({ "info.userId": userId, "info.subject": subject_name })
     docs = await target.to_list(length=1000)
 
     responses: List[FeedbackResponse] = []
