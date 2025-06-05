@@ -2,15 +2,16 @@ from datetime import date
 from fastapi import HTTPException
 from app.clients import db_clients
 from app.utils.build_feedback_prompt import (
-    build_initial_feedback_prompt_1,
+    build_initial_feedback_prompt,
     build_pre_post_comparison_prompt,
-    build_post_post_comparison_prompt
+    build_post_post_comparison_prompt, build_initial_feedback_prompt
 )
-from app.models.feedback.request import FeedbackRequest
+from app.models.feedback.request import FeedbackRequest, ChapterData
 from pydantic import ValidationError
 
 
 feedback_db = db_clients["feedback"]
+assessment_db = db_clients["assessment"]
 
 # 전체 프롬프트 구성
 def build_full_prompt(base_prompt: str, subject: str, user_id: str) -> str:
@@ -119,6 +120,87 @@ async def generate_feedback_prompt(data, post_assessments, subject: str, user_id
             )
 
         return build_full_prompt(base_prompt, subject, user_id)
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"피드백 프롬프트 생성 오류: {str(e)}")
+
+
+
+async def generate_feedback_prompt_rev(user_id, subject, subject_id, feedback_type, nth) -> str:
+    try:
+        if feedback_type == "PRE":
+            pre_assessment_result = await assessment_db.pre_result.find_one({ "userId": user_id, "pre_assessment.subject.subjectId": subject_id })
+            pre_score = pre_assessment_result.get("subject", {}).get("cnt", 0)
+            chapters = pre_assessment_result.get("pre_assessment", {}).get("chapters", [])
+
+            chapters_list: list[ChapterData] = []
+            for chapter in chapters:
+                chapter_obj = ChapterData(**chapter)
+                chapters_list.append(chapter_obj)
+
+            pre_feedback_request = FeedbackRequest(
+                user_id=str(user_id),
+                subject=subject,
+                chapter=chapters_list,
+                pre_score=pre_score
+            )
+
+            base_prompt = build_initial_feedback_prompt(pre_feedback_request)
+
+            print(base_prompt)
+
+        elif feedback_type == "POST" and nth == 1:
+            pre_feedback = await feedback_db.feedback.find_one({ "info.userId": user_id, "info.subject": subject }, sort=[("_id", -1)])
+            pre_assessment_result = await assessment_db.pre_result.find_one({ "userId": user_id, "pre_assessment.subject.subjectId": subject_id })
+            post_assessment_result = await assessment_db.post_result.find_one({"userId": user_id})
+
+            if post_assessment_result:
+                post_assessment_result = {
+                    key: value for key, value in post_assessment_result.items()
+                    if key.startswith("post_assessment_") and value.get("subjectId") == subject_id
+                }
+
+            pre_score = pre_assessment_result.get("subject", {}).get("cnt", 0)
+            post_score = post_assessment_result.get("subject", {}).get("cnt", 0)
+
+
+            base_prompt = build_pre_post_comparison_prompt(pre_feedback, pre_score, post_score)
+
+        else:
+            all_post_assessments = await assessment_db.post_result.find_one({ "userId": user_id })
+            if not all_post_assessments:
+                raise HTTPException(status_code=404, detail="해당 사용자의 사후 평가 문서를 찾을 수 없습니다.")
+
+            post_assessments = []
+            for k, v in all_post_assessments.items():
+                if not k.startswith("post_assessments_"):
+                    continue
+
+                try:
+                    idx = int(k.split("_")[-1])
+                except (ValueError, IndexError):
+                    continue
+
+                subject_obj = v.get("subject")
+                if isinstance(subject_obj, dict) and subject_obj.get("subjectId") == subject_id:
+                    post_assessments.append((idx, v))
+
+            if len(post_assessments) < 2:
+                raise HTTPException(status_code=400, detail="해당 과목에 대한 사후 평가가 2회차 이상 존재하지 않습니다.")
+
+            post_assessments.sort(key=lambda x: x[0], reverse=True)
+            post_assessment_e = post_assessments[1][1]
+            post_assessment_z = post_assessments[0][1]
+
+            prev_feedback = await feedback_db.feedback.find_one({"info.userId": user_id, "info.subject": subject}, sort=[("_id", -1)])
+            post_score_e = post_assessment_e.get("subject", {}).get("cnt", 0)
+            post_score_z = post_assessment_z.get("subject", {}).get("cnt", 0)
+
+            print(post_assessment_e)
+            print(post_assessment_z)
+            base_prompt = build_post_post_comparison_prompt(prev_feedback, post_score_e, post_score_z)
+
+        return base_prompt
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"피드백 프롬프트 생성 오류: {str(e)}")

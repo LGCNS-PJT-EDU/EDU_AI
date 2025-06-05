@@ -18,7 +18,7 @@ async def subject_id_to_name(subject_id):
 
 
 async def get_user(user_id):
-    user = await user_db.user_profile.find_one({"user_id": user_id})
+    user = await user_db.user_profile.find_one({"user_id": int(user_id)})
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     return user
