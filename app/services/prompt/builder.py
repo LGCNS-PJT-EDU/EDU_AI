@@ -167,13 +167,32 @@ async def generate_feedback_prompt_rev(user_id, subject, subject_id, feedback_ty
             base_prompt = build_pre_post_comparison_prompt(pre_feedback, pre_score, post_score)
 
         else:
-            post_assessments = await assessment_db.post_result.find({ "userId": user_id, "subject.subjectId": subject_id }).sort([("_id", -1)]).limit(2).to_list(length=2)
-            print(post_assessments)
+            all_post_assessments = await assessment_db.post_result.find_one({ "userId": user_id })
+            if not all_post_assessments:
+                raise HTTPException(status_code=404, detail="해당 사용자의 사후 평가 문서를 찾을 수 없습니다.")
 
-            prev_feedback = await feedback_db.feedback.find_one({ "info.userId": user_id, "info.subject": subject },sort=[("_id", -1)])
-            post_assessment_e = post_assessments[1]
-            post_assessment_z = post_assessments[0]
+            post_assessments = []
+            for k, v in all_post_assessments.items():
+                if not k.startswith("post_assessments_"):
+                    continue
 
+                try:
+                    idx = int(k.split("_")[-1])
+                except (ValueError, IndexError):
+                    continue
+
+                subject_obj = v.get("subject")
+                if isinstance(subject_obj, dict) and subject_obj.get("subjectId") == subject_id:
+                    post_assessments.append((idx, v))
+
+            if len(post_assessments) < 2:
+                raise HTTPException(status_code=400, detail="해당 과목에 대한 사후 평가가 2회차 이상 존재하지 않습니다.")
+
+            post_assessments.sort(key=lambda x: x[0], reverse=True)
+            post_assessment_e = post_assessments[1][1]
+            post_assessment_z = post_assessments[0][1]
+
+            prev_feedback = await feedback_db.feedback.find_one({"info.userId": user_id, "info.subject": subject}, sort=[("_id", -1)])
             post_score_e = post_assessment_e.get("subject", {}).get("cnt", 0)
             post_score_z = post_assessment_z.get("subject", {}).get("cnt", 0)
 
