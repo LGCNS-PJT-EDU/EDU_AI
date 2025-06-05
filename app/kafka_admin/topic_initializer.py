@@ -18,6 +18,7 @@ if not logger.handlers:
 
 TOPIC_RESULT_SUCCESS = "feedback.result.success"
 TOPIC_RESULT_FAIL = "feedback.result.fail"
+TOPIC_REQUEST = "feedback.request"
 
 def initialize_topics():
     admin_client = KafkaAdminClient(
@@ -28,7 +29,9 @@ def initialize_topics():
     topics_to_create = [
         NewTopic(name=TOPIC_RESULT_SUCCESS, num_partitions=3, replication_factor=1),
         NewTopic(name=TOPIC_RESULT_FAIL, num_partitions=3, replication_factor=1),
+        NewTopic(name=TOPIC_REQUEST, num_partitions=3, replication_factor=1),  # ✅ 추가
     ]
+
 
     try:
         existing_topics = admin_client.list_topics()
