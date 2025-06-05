@@ -1,14 +1,17 @@
-from app.clients.mongodb import db
+from app.clients import db_clients
 
+
+assessment_db = db_clients["assessment"]
+user_db = db_clients["user"]
 
 async def generate_key(user):
-    profile = await db.user_profiles.find_one(
-        {"user_id": user["user_id"]},
-        {"_id": False, **{f: False for f in ["user_id", "pre_assessment"]}}
+    post_results = await assessment_db.post_result.find_one(
+        {
+            "userId": user["user_id"]
+        }
     )
 
-    existing = [k for k in profile.keys() if k.startswith("post_assessments_")]
-    next_idx = len(existing) + 1
+    next_idx = 1 if post_results is None else sum(1 for k in post_results.keys() if k.startswith("post_assessments_")) + 1
 
     new_key = f"post_assessments_{next_idx}"
     return new_key

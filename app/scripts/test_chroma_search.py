@@ -1,5 +1,3 @@
-import app.services.rag_explainer
-
 from app.services.recommendation.rag_explainer import explain_reason_with_rag
 
 title = "생활코딩-HTML"

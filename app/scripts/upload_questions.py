@@ -1,7 +1,10 @@
 import os
 import json
 import asyncio
-from app.clients.mongodb import db
+from app.clients import db_clients
+
+
+question_db = db_clients["ai_platform"]
 
 async def upload_questions():
     # 현재 스크립트 기준 경로
@@ -11,8 +14,8 @@ async def upload_questions():
     with open(filepath, "r", encoding="utf-8") as f:
         questions = json.load(f)
 
-    await db.evaluation_questions.delete_many({})  # 옵션: 기존 삭제
-    await db.evaluation_questions.insert_many(questions)
+    await question_db.evaluation_questions.delete_many({})  # 옵션: 기존 삭제
+    await question_db.evaluation_questions.insert_many(questions)
     print("문제 업로드 완료")
 
 if __name__ == "__main__":

@@ -54,24 +54,20 @@ def build_growth_feedback_prompt(pre_text: str, post_text: str) -> str:
 """
 
 #  사전 평가 기반 분석용
-def build_initial_feedback_prompt_1(data: FeedbackRequest) -> str:
+def build_initial_feedback_prompt(data: FeedbackRequest) -> str:
     return f"""
-[사전 평가 분석]
-- 점수: {data.pre_score}
-- 과목: {data.subject}, 단원: {data.chapter}
-- 주요 응답: "{data.pre_text}"
-
-학습자의 현재 이해도를 분석하고,
-강점 5가지와 개선이 필요한 약점 5가지를 제시해주세요.
-
-[출력 형식 예시]
-- 키워드: 설명
-...
-"""
-
-#  (내부에서 호출용) 사전 데이터 전체 프롬프트
-def build_initial_feedback_prompt(data):
-    return f"{data}에 기반해 피드백을 만들어줘"
+        [사전 평가 분석]
+        - 점수: {data.pre_score}
+        - 과목: {data.subject}, 단원: {data.chapter}
+        - 주요 응답: "{data.pre_text}"
+        
+        학습자의 현재 이해도를 분석하고,
+        강점 5가지와 개선이 필요한 약점 5가지를 제시해주세요.
+        
+        [출력 형식 예시]
+        - 키워드: 설명
+        ...
+    """
 
 #  사전-사후 비교용 프롬프트
 def build_pre_post_comparison_prompt(pre_feedback, pre_data, curr_data):
