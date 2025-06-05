@@ -72,11 +72,10 @@ async def save_result(user_id: str, payload: AssessmentResult):
         },
         {
             "$set": {
-                "level": {
-                    level_key: level
-                }
+                f"level.{level_key}": level
             }
-        }
+        },
+        upsert=True
     )
 
     return Response(status_code=204)
