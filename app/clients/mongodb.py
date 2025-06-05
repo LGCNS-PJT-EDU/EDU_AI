@@ -29,9 +29,15 @@ class MongoDBClient:
         # db_name = ai_platform
         self.techMap = self.db["techMap"]
 
+        self.questions = self.db["questions"]
+
     def get_category_collection(self, category: str):
         return self.db[category]
 
     async def save_explanation_log(self, log_data: dict):
         log_data["created_at"] = datetime.utcnow()
         await self.explanation_log.insert_one(log_data)
+
+
+
+

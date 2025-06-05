@@ -1,5 +1,9 @@
 from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import OpenAIEmbeddings
+# app/services/rag_module.py
+from app.clients.chromadb_client import ChromaClient
+
+chroma_client = ChromaClient(CHROMA_DIR)
 
 CHROMA_DIR = "chroma_store"
 

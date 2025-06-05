@@ -1,31 +1,56 @@
+import json
+
+import openai
 from fastapi import APIRouter, HTTPException, Query
 from typing import List
 
-from app.models.interview.question_model import Question
-from app.clients.mongodb import MongoDBClient
+from app.clients import db_clients
+from app.models.interview.question_model import InterviewQuestion
+from app.services.common.common import subject_id_to_name
+from app.services.interview.bulider import get_questions_by_sub_id
+from app.models.interview.evaluation_model import EvaluationRequest
+from app.services.interview.evaluator import evaluate_answer_with_rag
 
-router = APIRouter()
-mongodb = MongoDBClient()
+router = APIRouter(tags=["인터뷰 면접 기능 관련 API"])
 
 
-@router.get("/questions", response_model=List[Question])
-async def get_questions_by_user_and_subject(
-    user_id: str = Query(..., description="사용자 ID"),
-    subject_id: int = Query(..., description="과목 ID")
+#  면접 질문 조회 API
+@router.get("/questions", response_model=List[InterviewQuestion], summary="면접 질문 조회")
+async def get_questions(
+    user_id: str,
+    subject_id: int,
+    num: int = Query(1, description="질문 개수")
 ):
     try:
-        collection = mongodb.get_default_collection()  # 또는 통합 collection
-        cursor = collection.find({"user_id": user_id, "sub_id": subject_id})
-
-        questions = []
-        async for doc in cursor:
-            doc["id"] = doc.pop("_id")
-            questions.append(doc)
-
-        if not questions:
-            raise HTTPException(status_code=404, detail="해당 조건의 질문이 없습니다.")
+        subject_name = await subject_id_to_name(subject_id)
+        questions = await get_questions_by_sub_id(subject_name, num)
         return questions
-
+    except HTTPException as e:
+        raise e
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"질문 검색 중 오류 발생: {str(e)}")
+
+
+#  면접 답변 GPT 평가 API
+@router.post("/question/evaluate-rag", summary="면접 답변 GPT 평가")
+async def evaluate_with_rag(request: EvaluationRequest):
+    try:
+        result = await evaluate_answer_with_rag(request.question, request.user_answer)
+        return result
+    except json.JSONDecodeError:
+        raise HTTPException(status_code=500, detail="GPT 응답이 올바른 JSON이 아닙니다.")
+    except openai.APIConnectionError:
+        raise HTTPException(status_code=503, detail="OpenAI API 연결 실패")
+
+
+
+
+
+
+
+
+
+
+
+
 
