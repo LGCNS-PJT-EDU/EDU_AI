@@ -24,7 +24,7 @@ async def recommend_content(user_id: str, subject_id: int):
 
     raw_prefs = user.get("preferences", {})
     prefs = UserPreference(
-        level=user.get("level", "Not_Defined"),
+        level=user.get(f"level.{subject_id}", "Not_Defined"),
         duration=raw_prefs.get("duration", 0),
         price=raw_prefs.get("price", 0),
         is_prefer_book=raw_prefs.get("is_prefer_book", False),

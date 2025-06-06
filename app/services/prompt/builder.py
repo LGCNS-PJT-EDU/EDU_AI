@@ -4,10 +4,9 @@ from app.clients import db_clients
 from app.utils.build_feedback_prompt import (
     build_initial_feedback_prompt,
     build_pre_post_comparison_prompt,
-    build_post_post_comparison_prompt, build_initial_feedback_prompt
+    build_post_post_comparison_prompt
 )
 from app.models.feedback.request import FeedbackRequest, ChapterData
-from pydantic import ValidationError
 
 
 feedback_db = db_clients["feedback"]
@@ -75,58 +74,7 @@ def build_full_prompt(base_prompt: str, subject: str, user_id: str) -> str:
 
 
 # 상황별 프롬프트 생성
-async def generate_feedback_prompt(data, post_assessments, subject: str, user_id: str) -> str:
-    try:
-        if not post_assessments:
-            try:
-                subject_data = data.get("pre_assessment", {}).get("subject", {})
-                questions = data.get("pre_assessment", {}).get("questions", [])
-
-                pre_score = sum(1 for q in questions if q.get("answerTF") is True)
-
-                pre_assessment = FeedbackRequest(
-                    user_id=user_id,
-                    subject=subject,
-                    chapter="전체",  # 단원 정보가 없거나 통합일 경우
-                    pre_score=pre_score
-                )
-
-                base_prompt = build_initial_feedback_prompt_1(pre_assessment)
-
-            except ValidationError as ve:
-                raise HTTPException(status_code=422, detail=f"입력 데이터 오류: {str(ve)}")
-
-        elif len(post_assessments) == 1:
-            pre_feedback = await feedback_db.find_one(
-                {"info.userId": user_id, "info.subject": subject},
-                sort=[("_id", 1)]
-            )
-            pre_assessment = data.get("pre_assessment", {}).get("subject", {})
-            base_prompt = build_pre_post_comparison_prompt(
-                pre_feedback,
-                pre_assessment,
-                post_assessments[-1][1]
-            )
-
-        else:
-            prev_feedback = await feedback_db.find_one(
-                {"info.userId": user_id, "info.subject": subject},
-                sort=[("_id", -1)]
-            )
-            base_prompt = build_post_post_comparison_prompt(
-                prev_feedback,
-                post_assessments[-2][1],
-                post_assessments[-1][1]
-            )
-
-        return build_full_prompt(base_prompt, subject, user_id)
-
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"피드백 프롬프트 생성 오류: {str(e)}")
-
-
-
-async def generate_feedback_prompt_rev(user_id, subject, subject_id, feedback_type, nth) -> str:
+async def generate_feedback_prompt(user_id, subject, subject_id, feedback_type, nth) -> str:
     try:
         if feedback_type == "PRE":
             pre_assessment_result = await assessment_db.pre_result.find_one({ "userId": user_id, "pre_assessment.subject.subjectId": subject_id })
