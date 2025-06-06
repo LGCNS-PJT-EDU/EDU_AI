@@ -6,7 +6,7 @@ import json
 
 from app.config.kafka_config import KAFKA_BOOTSTRAP_SERVERS
 from app.producer.feedback_producer import publish_success, publish_fail
-from app.routers.feedback_router import generate_feedback, generate_feedback_kafka
+from app.routers.feedback_router import generate_feedback
 from aiokafka import AIOKafkaConsumer
 
 TOPIC_REQUEST = "feedback.request"
@@ -49,7 +49,7 @@ async def consume_feedback():
                     # if True:  # 항상 예외 발생
                     #     raise Exception("테스트용 강제 오류: Feedback 생성 실패")
                     # 실제 비즈니스 로직(create_feedback 등)이 여기에 들어갑니다.
-                    feedback = await generate_feedback_kafka(user_id, subject_id, feedback_type, nth)
+                    feedback = await generate_feedback(user_id, subject_id, feedback_type, nth)
                     logger.info(f"Feedback: {feedback}")
                     result = {
                         **payload,
