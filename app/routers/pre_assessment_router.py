@@ -9,6 +9,8 @@ from app.models.pre_assessment.response import QuestionStructure
 from app.services.assessment.common import safe_sample, result_generate
 from app.services.common.common import subject_id_to_name, get_user
 from typing import List
+from app.utils.embed import embed_to_chroma
+
 
 router = APIRouter()
 
@@ -49,6 +51,12 @@ async def save_result(user_id: str, payload: AssessmentResult):
     user = await get_user(user_id)
     compiled_data = payload.model_dump(exclude={"userId"})
     subject_id = compiled_data["subject"]["subjectId"]
+
+    #  Chroma 자동 삽입
+    for ch in compiled_data.get("chapters", []):
+        content = ch.get("userAnswer", "")
+        qid = ch.get("questionId")
+        embed_to_chroma(user_id=user_id, content=content, source="pre_result", source_id=str(qid))
 
     await assessment_db.pre_result.update_one(
         {

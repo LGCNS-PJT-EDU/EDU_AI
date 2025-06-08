@@ -11,6 +11,7 @@ from typing import List
 
 from app.services.feedback.builder import build_feedback
 from app.services.prompt.builder import generate_feedback_prompt, build_full_prompt
+from app.utils.embed import embed_to_chroma
 
 router = APIRouter()
 
@@ -59,6 +60,14 @@ async def generate_feedback(userId: int, subjectId: int):
     system_msg = "당신은 한국어로 응답하는 학습 성장 분석가입니다."
     feedback_text = ai_client.create_chat_response(system_msg, full_prompt)
     feedback, info, scores = await build_feedback(data, feedback_text)
+
+    #  Chroma 자동 삽입
+    embed_to_chroma(
+        user_id=user_id,
+        content=feedback_text,
+        source="feedback",
+        source_id=subject
+    )
 
     await feedback_db.insert_one({
         "info": info,

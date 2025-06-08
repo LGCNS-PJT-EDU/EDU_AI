@@ -4,12 +4,14 @@ import openai
 from fastapi import APIRouter, HTTPException, Query
 from typing import List
 
+
 from app.clients import db_clients
 from app.models.interview.question_model import InterviewQuestion
 from app.services.common.common import subject_id_to_name
 from app.services.interview.bulider import get_questions_by_sub_id
 from app.models.interview.evaluation_model import EvaluationRequest
 from app.services.interview.evaluator import evaluate_answer_with_rag
+from app.utils.embed import embed_to_chroma
 
 router = APIRouter(tags=["인터뷰 면접 기능 관련 API"])
 
@@ -36,6 +38,14 @@ async def get_questions(
 async def evaluate_with_rag(request: EvaluationRequest):
     try:
         result = await evaluate_answer_with_rag(request.question, request.user_answer)
+
+        #  Chroma 자동 삽입
+        embed_to_chroma(
+            user_id="system_user",  # 필요 시 request에 user_id 포함
+            content=request.user_answer,
+            source="interview",
+            source_id=request.question[:30]  # 질문 일부를 ID처럼 사용
+        )
         return result
     except json.JSONDecodeError:
         raise HTTPException(status_code=500, detail="GPT 응답이 올바른 JSON이 아닙니다.")

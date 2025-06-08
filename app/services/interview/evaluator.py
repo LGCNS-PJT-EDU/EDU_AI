@@ -1,14 +1,15 @@
 from app.clients.chromadb_client import ChromaClient
 import os, json, re
 from openai import AsyncOpenAI, APIError, RateLimitError, Timeout
+from app.services.rag_module import retrieve_personalized_docs
 
 client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 chroma_client = ChromaClient()
 
-async def evaluate_answer_with_rag(question: str, user_answer: str) -> dict:
-    #  ChromaDB에서 유사 문서 검색
-    similar_docs = chroma_client.similarity_search(user_answer, k=3)
+def evaluate_answer_with_rag(user_id: str, question: str, user_answer: str):
+    similar_docs = retrieve_personalized_docs(user_id, user_answer, k=3)
     context = "\n".join([doc.page_content for doc in similar_docs])
+
 
 EVALUATION_RAG_PROMPT = """
 당신은 AI 면접관입니다. 아래 면접 질문과 사용자의 답변을 평가하고, 부족한 개념을 보강해주세요
@@ -18,6 +19,10 @@ EVALUATION_RAG_PROMPT = """
 
 [사용자 답변]
 {user_answer}
+
+[참고 문맥]
+{context}
+
 
 1.다음 네 가지 항목에 대해 각각 피드백에 반영해주세요.
 - 논리성: 답변이 명확한 근거와 전개 흐름을 갖추고 있는가?
@@ -44,8 +49,16 @@ EVALUATION_RAG_PROMPT = """
 }}
 """
 
-async def evaluate_answer_with_rag(question: str, user_answer: str) -> dict:
-    prompt = EVALUATION_RAG_PROMPT.format(question=question, user_answer=user_answer)
+#  user_id 추가, context 반영
+async def evaluate_answer_with_rag(user_id: str, question: str, user_answer: str) -> dict:
+    similar_docs = retrieve_personalized_docs(user_id, user_answer, k=3)
+    context = "\n".join([doc.page_content for doc in similar_docs])
+
+    prompt = EVALUATION_RAG_PROMPT.format(
+        question=question,
+        user_answer=user_answer,
+        context=context
+    )
 
     try:
         response = await client.chat.completions.create(
@@ -60,12 +73,10 @@ async def evaluate_answer_with_rag(question: str, user_answer: str) -> dict:
 
         # 코드 블록 제거
         cleaned = re.sub(r"```(?:json)?\n(.*?)\n```", r"\1", raw, flags=re.DOTALL).strip()
-
         return json.loads(cleaned)
 
     except (APIError, RateLimitError, Timeout) as e:
         raise RuntimeError(f"OpenAI API 호출 실패: {str(e)}")
-
     except json.JSONDecodeError as e:
         raise ValueError(f"GPT 응답이 JSON이 아닙니다: {e}\n원본 응답:\n{raw}")
 
