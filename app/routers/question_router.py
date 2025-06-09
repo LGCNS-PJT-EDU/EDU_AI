@@ -1,29 +1,66 @@
-from fastapi import APIRouter, HTTPException
+import json
+
+import openai
+from fastapi import APIRouter, HTTPException, Query
 from typing import List
 
-from app.models.question_model import Question
-from app.clients.mongodb import MongoDBClient
 
-router = APIRouter(prefix="/api/questions", tags=["Questions"])
+from app.clients import db_clients
+from app.models.interview.question_model import InterviewQuestion
+from app.services.common.common import subject_id_to_name
+from app.services.interview.bulider import get_questions_by_sub_id
+from app.models.interview.evaluation_model import EvaluationRequest
+from app.services.interview.evaluator import evaluate_answer_with_rag
+from app.utils.embed import embed_to_chroma
 
-# MongoDB 클라이언트 인스턴스 생성
-mongodb = MongoDBClient()
+router = APIRouter(tags=["인터뷰 면접 기능 관련 API"])
 
-@router.get("/{category}", response_model=List[Question])
-async def get_questions_by_category(category: str):
+
+#  면접 질문 조회 API
+@router.get("/questions", response_model=List[InterviewQuestion], summary="면접 질문 조회")
+async def get_questions(
+    user_id: str,
+    subject_id: int,
+    num: int = Query(1, description="질문 개수")
+):
     try:
-        # 카테고리 컬렉션 불러오기
-        collection = mongodb.get_category_collection(category)
-        cursor = collection.find()
-
-        questions = []
-        async for doc in cursor:
-            doc["id"] = doc.pop("_id")  # MongoDB의 _id → Pydantic용 id
-            questions.append(doc)
-
-        if not questions:
-            raise HTTPException(status_code=404, detail=f"'{category}'에 해당하는 질문이 없습니다.")
+        subject_name = await subject_id_to_name(subject_id)
+        questions = await get_questions_by_sub_id(subject_name, num)
         return questions
-
+    except HTTPException as e:
+        raise e
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"질문을 불러오는 중 오류 발생: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"질문 검색 중 오류 발생: {str(e)}")
+
+
+#  면접 답변 GPT 평가 API
+@router.post("/question/evaluate-rag", summary="면접 답변 GPT 평가")
+async def evaluate_with_rag(request: EvaluationRequest):
+    try:
+        result = await evaluate_answer_with_rag(request.question, request.user_answer)
+
+        #  Chroma 자동 삽입
+        embed_to_chroma(
+            user_id="system_user",  # 필요 시 request에 user_id 포함
+            content=request.user_answer,
+            source="interview",
+            source_id=request.question[:30]  # 질문 일부를 ID처럼 사용
+        )
+        return result
+    except json.JSONDecodeError:
+        raise HTTPException(status_code=500, detail="GPT 응답이 올바른 JSON이 아닙니다.")
+    except openai.APIConnectionError:
+        raise HTTPException(status_code=503, detail="OpenAI API 연결 실패")
+
+
+
+
+
+
+
+
+
+
+
+
+
