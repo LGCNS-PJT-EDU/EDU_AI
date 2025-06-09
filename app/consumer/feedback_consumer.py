@@ -37,6 +37,8 @@ async def consume_feedback():
             logger.info(f"Received: {payload}")
             user_id = payload["userId"]
             subject_id = payload["subjectId"]
+            feedback_type = payload["type"]
+            nth = payload["nth"] if payload["nth"] is not None else 0
 
             success = False
             last_error = None
@@ -47,7 +49,7 @@ async def consume_feedback():
                     # if True:  # 항상 예외 발생
                     #     raise Exception("테스트용 강제 오류: Feedback 생성 실패")
                     # 실제 비즈니스 로직(create_feedback 등)이 여기에 들어갑니다.
-                    feedback = await generate_feedback(user_id, subject_id)
+                    feedback = await generate_feedback(user_id, subject_id, feedback_type, nth)
                     logger.info(f"Feedback: {feedback}")
                     result = {
                         **payload,

@@ -1,6 +1,15 @@
-# app/models/feedback/request.py
+from typing import List
 
 from pydantic import BaseModel
+
+
+class ChapterData(BaseModel):
+    chapterNum: int
+    chapterName: str
+    weakness: bool
+    cnt: int
+    totalCnt: int
+
 
 class FeedbackRequest(BaseModel):
     user_id: str
@@ -9,4 +18,4 @@ class FeedbackRequest(BaseModel):
     pre_text: str | None = None
     post_text: str | None = None
     subject: str = "frontend"
-    chapter: str = "전체"  # 단원명 (예: "JS", "React", "전체")
+    chapter: List[ChapterData]
