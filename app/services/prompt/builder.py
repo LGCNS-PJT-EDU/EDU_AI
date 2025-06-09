@@ -8,9 +8,9 @@ from app.utils.build_feedback_prompt import (
 )
 from app.models.feedback.request import FeedbackRequest, ChapterData
 
-
 feedback_db = db_clients["feedback"]
 assessment_db = db_clients["assessment"]
+
 
 # 전체 프롬프트 구성
 def build_full_prompt(base_prompt: str, subject: str, user_id: str) -> str:
@@ -18,13 +18,13 @@ def build_full_prompt(base_prompt: str, subject: str, user_id: str) -> str:
 
     return f"""
         [RAG 기반 유사 학습 정보]
-        
+
         [사용자 피드백 요청]
         {base_prompt}
-        
+
         다음 조건에 맞춰 JSON 피드백을 생성하세요.
-        
-        
+
+
         <출력 조건>
         1. 모든 피드백 문장은 **존댓말**로 작성하고, 반드시 **'-습니다'** 형태의 종결어미를 사용하세요.
         2. **모든 내용을 한국어로만 출력**하며, 영어 표현이나 혼용 표현은 절대 사용하지 마세요.
@@ -39,13 +39,13 @@ def build_full_prompt(base_prompt: str, subject: str, user_id: str) -> str:
         11. 아래 JSON 스키마에 따라 순수 JSON 객체 **하나만** 반환하세요. 
         12. 인삿말, 설명, 마크다운, 코드블록(```) 등은 절대 포함하지 마세요. 
         13. JSON 구조는 유효한 형태여야 하며, 문법 오류(따옴표, 쉼표 등)가 없도록 하세요.
-        
+
         <추론 흐름>
         - 먼저 점수(`scores`)를 확인한 뒤, 점수가 높은 챕터부터 강점을 간결하게 정리하세요.
         - 이어서 점수가 낮은 챕터를 찾아 개선 방향을 제시하세요.
         - 마지막으로, 전체 학습 상황을 요약한 한 문장 이상의 `final` 코멘트를 작성하세요.
-        
-        
+
+
         {{
           "info": {{
             "userId": "{user_id}",
@@ -77,7 +77,8 @@ def build_full_prompt(base_prompt: str, subject: str, user_id: str) -> str:
 async def generate_feedback_prompt(user_id, subject, subject_id, feedback_type, nth) -> str:
     try:
         if feedback_type == "PRE":
-            pre_assessment_result = await assessment_db.pre_result.find_one({ "userId": user_id, "pre_assessment.subject.subjectId": subject_id })
+            pre_assessment_result = await assessment_db.pre_result.find_one(
+                {"userId": user_id, "pre_assessment.subject.subjectId": subject_id})
             pre_score = pre_assessment_result.get("subject", {}).get("cnt", 0)
             chapters = pre_assessment_result.get("pre_assessment", {}).get("chapters", [])
 
@@ -96,8 +97,10 @@ async def generate_feedback_prompt(user_id, subject, subject_id, feedback_type, 
             base_prompt = build_initial_feedback_prompt(pre_feedback_request)
 
         elif feedback_type == "POST" and nth == 1:
-            pre_feedback = await feedback_db.feedback.find_one({ "info.userId": user_id, "info.subject": subject }, sort=[("_id", -1)])
-            pre_assessment_result = await assessment_db.pre_result.find_one({ "userId": user_id, "pre_assessment.subject.subjectId": subject_id })
+            pre_feedback = await feedback_db.feedback.find_one({"info.userId": user_id, "info.subject": subject},
+                                                               sort=[("_id", -1)])
+            pre_assessment_result = await assessment_db.pre_result.find_one(
+                {"userId": user_id, "pre_assessment.subject.subjectId": subject_id})
             post_assessment_result = await assessment_db.post_result.find_one({"userId": user_id})
 
             if post_assessment_result:
@@ -112,7 +115,7 @@ async def generate_feedback_prompt(user_id, subject, subject_id, feedback_type, 
             base_prompt = build_pre_post_comparison_prompt(pre_feedback, pre_score, post_score)
 
         else:
-            all_post_assessments = await assessment_db.post_result.find_one({ "userId": user_id })
+            all_post_assessments = await assessment_db.post_result.find_one({"userId": user_id})
             if not all_post_assessments:
                 raise HTTPException(status_code=404, detail="해당 사용자의 사후 평가 문서를 찾을 수 없습니다.")
 
@@ -137,7 +140,8 @@ async def generate_feedback_prompt(user_id, subject, subject_id, feedback_type, 
             post_assessment_e = post_assessments[1][1]
             post_assessment_z = post_assessments[0][1]
 
-            prev_feedback = await feedback_db.feedback.find_one({"info.userId": user_id, "info.subject": subject}, sort=[("_id", -1)])
+            prev_feedback = await feedback_db.feedback.find_one({"info.userId": user_id, "info.subject": subject},
+                                                                sort=[("_id", -1)])
             post_score_e = post_assessment_e.get("chapters", [])
             post_score_z = post_assessment_z.get("chapters", [])
 

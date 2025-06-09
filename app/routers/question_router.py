@@ -37,16 +37,18 @@ async def get_questions(
 @router.post("/question/evaluate-rag", summary="면접 답변 GPT 평가")
 async def evaluate_with_rag(request: EvaluationRequest):
     try:
-        result = await evaluate_answer_with_rag(request.question, request.user_answer)
+        user_id = "system_user"
+        result = await evaluate_answer_with_rag(user_id, request.question, request.user_answer)
 
         #  Chroma 자동 삽입
         embed_to_chroma(
-            user_id="system_user",  # 필요 시 request에 user_id 포함
+            user_id=user_id,
             content=request.user_answer,
             source="interview",
-            source_id=request.question[:30]  # 질문 일부를 ID처럼 사용
+            source_id=request.question[:30]
         )
         return result
+
     except json.JSONDecodeError:
         raise HTTPException(status_code=500, detail="GPT 응답이 올바른 JSON이 아닙니다.")
     except openai.APIConnectionError:
