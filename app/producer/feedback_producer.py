@@ -3,12 +3,11 @@ import logging
 import sys
 
 from aiokafka import AIOKafkaProducer
-from kafka import KafkaProducer
 
 from app.config.kafka_config import KAFKA_BOOTSTRAP_SERVERS
 
-TOPIC_RESULT_SUCCESS = "feedback.result.success"
-TOPIC_RESULT_FAIL = "feedback.result.fail"
+FEEDBACK_RESULT_SUCCESS_TOPIC = "feedback.result.success"
+FEEDBACK_RESULT_FAIL_TOPIC = "feedback.result.fail"
 
 logger = logging.getLogger("feedback_producer")
 logger.setLevel(logging.INFO)
@@ -21,7 +20,7 @@ if not logger.handlers:
 
 producer: AIOKafkaProducer = None  # 전역으로 선언
 
-async def init_producer():
+async def init_feedback_producer():
     global producer
     producer = AIOKafkaProducer(
         bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
@@ -33,17 +32,17 @@ async def init_producer():
     )
     await producer.start()
 
-async def close_producer():
+async def close_feedback_producer():
     global producer
     if producer:
         logger.info("Closing producer...")
         await producer.stop()
         producer = None
 
-async def publish_success(payload) :
+async def publish_feedback_success(payload) :
     try:
+        await producer.send_and_wait(FEEDBACK_RESULT_SUCCESS_TOPIC, value=payload)
         logger.info("Publish success message")
-        await producer.send_and_wait(TOPIC_RESULT_SUCCESS, value=payload)
     except Exception as e:
         logger.error(f"Failed to send success message: {e}")
         payload = {
@@ -52,13 +51,13 @@ async def publish_success(payload) :
             "type": payload["type"],
             "nth": payload["nth"]
         }
-        await publish_fail(payload, error_code="FEEDBACK_SUCCESS_PUBLISH_FAIL_ERROR", error_message="Failed to publish success message")
+        await publish_feedback_fail(payload, error_code="FEEDBACK_SUCCESS_PUBLISH_FAIL_ERROR", error_message="Failed to publish success message")
 
-async def publish_fail(original_payload, error_code: str, error_message: str) :
+async def publish_feedback_fail(original_payload, error_code: str, error_message: str) :
     payload = {
         **original_payload,
         "errorCode": error_code,
         "errorMessage": error_message,
     }
     logger.info("Publish fail message")
-    await producer.send_and_wait(TOPIC_RESULT_FAIL, value=payload)
+    await producer.send_and_wait(FEEDBACK_RESULT_FAIL_TOPIC, value=payload)
