@@ -1,3 +1,4 @@
+#  app/routers/recommendation_router.py 수정 예시
 from fastapi import APIRouter, HTTPException
 from typing import List
 from datetime import datetime
@@ -8,6 +9,7 @@ from app.models.recommendation.response import RecommendationResponse
 from app.services.common.common import get_user, subject_id_to_name
 from app.services.recommendation.rag_explainer import explain_reason_with_rag
 from app.services.recommendation.reranker import call_gpt_rerank
+from app.utils.embed import embed_to_chroma
 
 router = APIRouter()
 
@@ -24,7 +26,7 @@ async def recommend_content(user_id: str, subject_id: int):
 
     raw_prefs = user.get("preferences", {})
     prefs = UserPreference(
-        level=user.get("level", "Not_Defined"),
+        level=user.get(f"level.{subject_id}", "Not_Defined"),
         duration=raw_prefs.get("duration", 0),
         price=raw_prefs.get("price", 0),
         is_prefer_book=raw_prefs.get("is_prefer_book", False),
@@ -52,8 +54,6 @@ async def recommend_content(user_id: str, subject_id: int):
 
         for idx, item in enumerate(candidates[:4]):
             title = item.get("content_title")
-
-
             cached = await cache_collection.find_one({
                 "title": title,
                 "user_context": context_str
@@ -62,13 +62,17 @@ async def recommend_content(user_id: str, subject_id: int):
             if cached:
                 reason = cached["cached_reason"]
             else:
-                reason = explain_reason_with_rag(title, context_str)  # 동기 함수 호출
+                reason = explain_reason_with_rag(title, context_str)
                 log.append({
                     "title": title,
                     "user_context": context_str,
                     "cached_reason": reason,
                     "cached_at": datetime.utcnow()
                 })
+
+            #  Chroma 삽입
+            content_text = f"{item['content_title']} {item['content_platform']} {item['content_type']}"
+            embed_to_chroma(user_id=user_id, content=content_text, source="recommendation", source_id=str(item["_id"]))
 
             summary = f"{idx}: {title} ({item['content_platform']}) - {item['content_url']}"
             content_for_gpt.append(summary)
@@ -90,7 +94,6 @@ async def recommend_content(user_id: str, subject_id: int):
         if 0 <= best_index < len(results):
             results[best_index]["isAiRecommendation"] = True
 
-        # log가 비어있지 않을 때만 저장
         if log:
             await cache_collection.insert_many(log)
 
@@ -98,3 +101,4 @@ async def recommend_content(user_id: str, subject_id: int):
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error during recommendation: {str(e)}")
+

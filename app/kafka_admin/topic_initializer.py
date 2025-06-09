@@ -16,6 +16,7 @@ if not logger.handlers:
     handler.setFormatter(formatter)
     logger.addHandler(handler)
 
+
 FEEDBACK_REQUEST_TOPIC = "feedback.request"
 FEEDBACK_RESULT_SUCCESS_TOPIC = "feedback.result.success"
 FEEDBACK_RESULT_FAIL_TOPIC = "feedback.result.fail"
@@ -37,6 +38,7 @@ def initialize_topics():
         NewTopic(name=RECOM_RESULT_SUCCESS_TOPIC, num_partitions=3, replication_factor=1),
         NewTopic(name=RECOM_RESULT_FAIL_TOPIC, num_partitions=3, replication_factor=1),
     ]
+
 
     try:
         existing_topics = admin_client.list_topics()
