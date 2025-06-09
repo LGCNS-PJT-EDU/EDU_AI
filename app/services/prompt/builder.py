@@ -41,6 +41,7 @@ def build_full_prompt(base_prompt: str, subject: str, user_id: str) -> str:
         13. JSON 구조는 유효한 형태여야 하며, 문법 오류(따옴표, 쉼표 등)가 없도록 하세요.
 
         <추론 흐름>
+        - 결과 도출을 위해 {base_prompt}의 데이터를 사용합니다.
         - 먼저 점수(`scores`)를 확인한 뒤, 점수가 높은 챕터부터 강점을 간결하게 정리하세요.
         - 이어서 점수가 낮은 챕터를 찾아 개선 방향을 제시하세요.
         - 마지막으로, 전체 학습 상황을 요약한 한 문장 이상의 `final` 코멘트를 작성하세요.
@@ -53,21 +54,29 @@ def build_full_prompt(base_prompt: str, subject: str, user_id: str) -> str:
             "subject": "{subject}"
           }},
           "scores": {{
-            "BASE_PROMPT.scores[0].key": ,
-            "BASE_PROMPT.scores.[1]": 0,
-            "BASE_PROMPT.scores.[2]": 0,
-            "BASE_PROMPT.scores.[3]": 0,
-            "BASE_PROMPT.scores.[4]": 0,
-            "": 0
+            "CHAPTER_1의 이름": CHAPTER_1의 점수,
+            "CHAPTER_2의 이름": CHAPTER_2의 점수,
+            "CHAPTER_3의 이름": CHAPTER_3의 점수,
+            "CHAPTER_4의 이름": CHAPTER_4의 점수,
+            "CHAPTER_5의 이름": CHAPTER_5의 점수,
+            "total": SUBJECT의 총점
           }},
           "feedback": {{
             "strength": {{
-              "chapter1": ""
+              "CHAPTER_1의 이름": CHAPTER_1의 강점,
+              "CHAPTER_2의 이름": CHAPTER_2의 강점,
+              "CHAPTER_3의 이름": CHAPTER_3의 강점,
+              "CHAPTER_4의 이름": CHAPTER_4의 강점,
+              "CHAPTER_5의 이름": CHAPTER_5의 강점,
             }},
             "weakness": {{
-              "chapter2": ""
+              "CHAPTER_1의 이름": CHAPTER_1의 약점,
+              "CHAPTER_2의 이름": CHAPTER_2의 약점,
+              "CHAPTER_3의 이름": CHAPTER_3의 약점,
+              "CHAPTER_4의 이름": CHAPTER_4의 약점,
+              "CHAPTER_5의 이름": CHAPTER_5의 약점,
             }},
-            "final": ""
+            "final": 종합 평가
           }}
         }}
 """.strip()
