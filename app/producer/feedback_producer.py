@@ -35,16 +35,16 @@ async def init_feedback_producer():
 async def close_feedback_producer():
     global producer
     if producer:
-        logger.info("Closing producer...")
+        logger.info("Closing feedback producer...")
         await producer.stop()
         producer = None
 
 async def publish_feedback_success(payload) :
     try:
         await producer.send_and_wait(FEEDBACK_RESULT_SUCCESS_TOPIC, value=payload)
-        logger.info("Publish success message")
+        logger.info("Publish feedback success message")
     except Exception as e:
-        logger.error(f"Failed to send success message: {e}")
+        logger.error(f"Failed to send feedback success message: {e}")
         payload = {
             "userId": payload["userId"],
             "subjectId": payload["subjectId"],
@@ -59,5 +59,5 @@ async def publish_feedback_fail(original_payload, error_code: str, error_message
         "errorCode": error_code,
         "errorMessage": error_message,
     }
-    logger.info("Publish fail message")
+    logger.info("Publish feedback fail message")
     await producer.send_and_wait(FEEDBACK_RESULT_FAIL_TOPIC, value=payload)

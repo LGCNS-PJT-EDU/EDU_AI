@@ -43,9 +43,9 @@ async def publish_recommendation_success(payload):
     try:
         logger.info("Try to publish success message...")
         await producer.send_and_wait(RECOM_RESULT_SUCCESS_TOPIC, value=payload)
-        logger.info("Publish success message")
+        logger.info("Publish recommendation success message")
     except Exception as e:
-        logger.error(f"Failed to send success message: {e}")
+        logger.error(f"Failed to send recommendation success message: {e}")
         payload = {
             "userId": payload["userId"],
             "subjectId": payload["subjectId"],
@@ -60,6 +60,6 @@ async def publish_recommendation_fail(original_payload, error_code: str, error_m
         "errorCode": error_code,
         "errorMessage": error_message,
     }
-    logger.info("Try to publish failed message...")
+    logger.info("Try to publish recommendation failed message...")
     await producer.send_and_wait(RECOM_RESULT_FAIL_TOPIC, value=payload)
-    logger.info("Publish fail message")
+    logger.info("Publish recommendation fail message")
