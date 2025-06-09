@@ -42,24 +42,19 @@ async def list_feedbacks(userId: str):
     return JSONResponse(status_code=200, content=jsonable_encoder(serialized))
 
 
-@router.post("",  summary="지정한 사용자의 피드백을 생성", description="해당 유저의 직전 테스트 결과와 이번 테스트 결과를 활용해서 피드백을 생성한다.")
-async def generate_feedback(userId: int, subjectId: int):
-    user_id = str(userId)
-    subject_id = subjectId
+async def generate_feedback(user_id, subject_id, feedback_type, nth):
+    user = await user_db.user_profile.find_one({"user_id": user_id})
+    if not user:
+        raise HTTPException(status_code=404, detail="사용자 정보를 찾을 수 없습니다.")
+
     subject = await subject_id_to_name(subject_id)
 
-    data = await user_db.user_profile.find_one({"user_id": user_id})
-    if not data:
-        raise HTTPException(status_code=404, detail="No User Found")
-
-    post_assessments = await get_post_assessments(data, subject_id)
-    # post_assessments = await assessment_db.post_result()
-    prompt = await generate_feedback_prompt(data, post_assessments, subject, user_id)
-    full_prompt = build_full_prompt(prompt, subject, user_id)
+    base_prompt = await generate_feedback_prompt(user_id, subject, subject_id, feedback_type.upper(), nth)
+    full_prompt = build_full_prompt(base_prompt, subject, user_id)
 
     system_msg = "당신은 한국어로 응답하는 학습 성장 분석가입니다."
     feedback_text = ai_client.create_chat_response(system_msg, full_prompt)
-    feedback, info, scores = await build_feedback(data, feedback_text)
+    feedback, info, scores = await build_feedback(user, feedback_text)
 
     #  Chroma 자동 삽입
     embed_to_chroma(
@@ -69,7 +64,7 @@ async def generate_feedback(userId: int, subjectId: int):
         source_id=subject
     )
 
-    await feedback_db.insert_one({
+    await feedback_db.feedback.insert_one({
         "info": info,
         "scores": scores,
         "feedback": {
