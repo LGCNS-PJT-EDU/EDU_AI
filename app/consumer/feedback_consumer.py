@@ -49,7 +49,6 @@ async def consume_feedback():
             for attempt in range(3):
                 try:
                     logger.info(f"Attempt #{attempt + 1}")
-                    feedback = await generate_feedback(user_id, subject_id)
                     feedback = await generate_feedback(user_id, subject_id, feedback_type, nth)
                     logger.info(f"Feedback: {feedback}")
                     result = {
