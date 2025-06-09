@@ -31,29 +31,6 @@ BASE_PROMPT = """
       }
 """
 
-#  기본 사전/사후 텍스트 비교용
-def build_growth_feedback_prompt(pre_text: str, post_text: str) -> str:
-    return f"""
-당신은 학습 성장 분석가입니다.
-
-다음은 학습자의 사전/사후 평가 응답입니다:
-- 사전 답변: "{pre_text}"
-- 사후 답변: "{post_text}"
-
-이 두 답변을 비교하여 학습자의 성장을 다음 기준으로 평가해주세요:
-1. 지식 깊이 향상 여부
-2. 구현 능력의 구체성/적용력
-3. 논리적 흐름과 설명력
-
-[출력 형식 예시]
-1. 총평 (2~3줄 요약)
-2. 강점
-- 키워드: 설명
-...
-3. 약점
-- 키워드: 설명
-...
-"""
 
 #  사전 평가 기반 분석용
 def build_initial_feedback_prompt(data: FeedbackRequest) -> str:
