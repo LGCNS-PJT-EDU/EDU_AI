@@ -55,6 +55,9 @@ async def generate_feedback(user_id, subject_id, feedback_type, nth):
     system_msg = "당신은 한국어로 응답하는 학습 성장 분석가입니다."
     feedback_text = ai_client.create_chat_response(system_msg, full_prompt)
     feedback, info, scores = await build_feedback(user, feedback_text)
+    print("DEBUG - feedback:", feedback)
+    print("DEBUG - info:", info)
+    print("DEBUG - scores:", scores)
 
     #  Chroma 자동 삽입
     embed_to_chroma(

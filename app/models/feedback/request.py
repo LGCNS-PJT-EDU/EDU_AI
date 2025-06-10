@@ -7,15 +7,17 @@ class ChapterData(BaseModel):
     chapterNum: int
     chapterName: str
     weakness: bool
-    cnt: int
-    totalCnt: int
+    score: int
+    totalScore: int
+
+
+class FeedbackData(BaseModel):
+    chapterName: str
+    feedback_text: str
 
 
 class FeedbackRequest(BaseModel):
     user_id: str
-    pre_score: int | None = None
-    post_score: int | None = None
-    pre_text: str | None = None
-    post_text: str | None = None
-    subject: str = "frontend"
+    subject: str
     chapter: List[ChapterData]
+    feedback: List[FeedbackData] | None = None

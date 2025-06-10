@@ -4,6 +4,7 @@ from datetime import date
 
 
 async def build_feedback(data, feedback_text):
+    print(data)
     try:
         text_reg = feedback_text.strip()
         text_reg = re.sub(r"^```json\s*|\s*```$", "", text_reg)
@@ -18,12 +19,12 @@ async def build_feedback(data, feedback_text):
 
     except json.JSONDecodeError:
         info = {
-            "userId": data.user_id,
+            "userId": data["user_id"],
             "date": date.today().isoformat(),
-            "subject": data.subject
+            "subject": data["subject"]
         }
         scores = {
-            **data.scores,
+            **data["scores"],
         }
         scores["total"] = sum(scores.values())
         feedback = {

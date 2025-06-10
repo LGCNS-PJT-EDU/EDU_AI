@@ -1,20 +1,48 @@
+from collections import defaultdict
 from datetime import date
+from typing import List
+
 from fastapi import HTTPException
+
 from app.clients import db_clients
+from app.models.feedback.request import FeedbackRequest, ChapterData
 from app.utils.build_feedback_prompt import (
     build_initial_feedback_prompt,
     build_pre_post_comparison_prompt,
     build_post_post_comparison_prompt
 )
-from app.models.feedback.request import FeedbackRequest, ChapterData
 
 feedback_db = db_clients["feedback"]
 assessment_db = db_clients["assessment"]
 
 
+def calculate_chapter_scores(questions: list[dict]) -> dict[int, tuple[int, int]]:
+
+    difficulty_score_map = {
+        "low": 1,
+        "medium": 3,
+        "high": 5
+    }
+
+    chapter_scores = defaultdict(lambda: [0, 0])
+
+    for question in questions:
+        chapter_num = question["chapterNum"]
+        difficulty = question["difficulty"]
+        point = difficulty_score_map.get(difficulty, 0)
+
+        chapter_scores[chapter_num][1] += point
+
+        if question["answerTF"]:
+            chapter_scores[chapter_num][0] += point
+
+    return {k: tuple(v) for k, v in chapter_scores.items()}
+
+
 # 전체 프롬프트 구성
-def build_full_prompt(base_prompt: str, subject: str, user_id: str) -> str:
+def build_full_prompt(base_prompt: str, subject: str, user_id: str, score: int = 20) -> str:
     today = date.today().isoformat()
+    possible_max_score = score
 
     return f"""
         [RAG 기반 유사 학습 정보]
@@ -47,6 +75,9 @@ def build_full_prompt(base_prompt: str, subject: str, user_id: str) -> str:
         - 마지막으로, 전체 학습 상황을 요약한 한 문장 이상의 `final` 코멘트를 작성하세요.
 
 
+        <출력 조건>
+        base_prompt에서 지정한 출력 조건을 아래의 형태로 바꿉니다.
+        
         {{
           "info": {{
             "userId": "{user_id}",
@@ -59,7 +90,7 @@ def build_full_prompt(base_prompt: str, subject: str, user_id: str) -> str:
             "CHAPTER_3의 이름": CHAPTER_3의 점수,
             "CHAPTER_4의 이름": CHAPTER_4의 점수,
             "CHAPTER_5의 이름": CHAPTER_5의 점수,
-            "total": SUBJECT의 총점
+            "total": {possible_max_score}
           }},
           "feedback": {{
             "strength": {{
@@ -83,31 +114,48 @@ def build_full_prompt(base_prompt: str, subject: str, user_id: str) -> str:
 
 
 # 상황별 프롬프트 생성
+def build_chapter_data(chapters: List[dict], questions: List[dict]):
+    chapter_score = calculate_chapter_scores(questions)
+
+    chapters_list: list[ChapterData] = []
+    for chapter in chapters:
+        chapter_num = chapter["chapterNum"]
+        score, total_score = chapter_score.get(chapter_num, (0, 0))
+
+        chapter_obj = ChapterData(
+            chapterNum=chapter_num,
+            chapterName=chapter["chapterName"],
+            weakness=chapter["weakness"],
+            score=score,
+            totalScore=total_score
+        )
+        chapters_list.append(chapter_obj)
+
+    return chapters_list
+
+
 async def generate_feedback_prompt(user_id, subject, subject_id, feedback_type, nth) -> str:
     try:
         if feedback_type == "PRE":
             pre_assessment_result = await assessment_db.pre_result.find_one(
-                {"userId": user_id, "pre_assessment.subject.subjectId": subject_id})
-            pre_score = pre_assessment_result.get("subject", {}).get("cnt", 0)
-            chapters = pre_assessment_result.get("pre_assessment", {}).get("chapters", [])
+                {"userId": user_id, "pre_assessment.subject.subjectId": subject_id}
+            )
 
-            chapters_list: list[ChapterData] = []
-            for chapter in chapters:
-                chapter_obj = ChapterData(**chapter)
-                chapters_list.append(chapter_obj)
+            chapters = pre_assessment_result.get("pre_assessment", {}).get("chapters", [])
+            questions = pre_assessment_result.get("pre_assessment", {}).get("questions", [])
+
+            chapter_data = build_chapter_data(chapters, questions)
 
             pre_feedback_request = FeedbackRequest(
                 user_id=str(user_id),
                 subject=subject,
-                chapter=chapters_list,
-                pre_score=pre_score
+                chapter=chapter_data
             )
 
             base_prompt = build_initial_feedback_prompt(pre_feedback_request)
 
         elif feedback_type == "POST" and nth == 1:
-            pre_feedback = await feedback_db.feedback.find_one({"info.userId": user_id, "info.subject": subject},
-                                                               sort=[("_id", -1)])
+            pre_feedback = await feedback_db.feedback.find_one({"info.userId": str(user_id), "info.subject": subject}, sort=[("_id", -1)])
             pre_assessment_result = await assessment_db.pre_result.find_one(
                 {"userId": user_id, "pre_assessment.subject.subjectId": subject_id})
             post_assessment_result = await assessment_db.post_result.find_one({"userId": user_id})
@@ -149,8 +197,7 @@ async def generate_feedback_prompt(user_id, subject, subject_id, feedback_type, 
             post_assessment_e = post_assessments[1][1]
             post_assessment_z = post_assessments[0][1]
 
-            prev_feedback = await feedback_db.feedback.find_one({"info.userId": user_id, "info.subject": subject},
-                                                                sort=[("_id", -1)])
+            prev_feedback = await feedback_db.feedback.find_one({"info.userId": str(user_id), "info.subject": subject}, sort=[("_id", -1)])
             post_score_e = post_assessment_e.get("chapters", [])
             post_score_z = post_assessment_z.get("chapters", [])
 

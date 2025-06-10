@@ -4,6 +4,11 @@ from app.models.feedback.request import FeedbackRequest
 #  출력 스키마: GPT 출력 포맷 가이드로 사용
 BASE_PROMPT = """
     BASE_PROMPT = {
+      "info": {
+        "userId": "{user_id}",
+        "date": "{today}",
+        "subject": "{subject}"
+      },
       "scores": {
         "{chapter1}": <int>,
         "{chapter2}": <int>,
@@ -36,29 +41,40 @@ BASE_PROMPT = """
 def build_initial_feedback_prompt(data: FeedbackRequest) -> str:
     return f"""
         [사전 평가 분석]
-        - 점수: {data.pre_score}
-        - 과목: {data.subject}, 단원: {data.chapter}
-        - 주요 응답: "{data.pre_text}"
+        - userId: {data.user_id}
+        - Subject: {data.subject}
+        - Chapter 별 정보: "{data.chapter}"
         
         학습자의 현재 이해도를 분석하고,
         강점 5가지와 개선이 필요한 약점 5가지를 제시해주세요.
         
-        [출력 형식 예시]
+        [출력 형식]
         {BASE_PROMPT}의 형태로 출력 형태를 만들어 주세요.
     """
 
 #  사전-사후 비교용 프롬프트
 def build_pre_post_comparison_prompt(pre_feedback, pre_data, curr_data):
     return f"""
-        사전 평가 데이터인 {pre_data}와 첫 번째 사후 평가 데이터인 {curr_data}을 사용해서 피드백을 만들어 주세요.
-        단, 사전 평가 기반 피드백인 {pre_feedback}에 기반해서 결과를 만들어야 합니다.
-        출력 형태는 {BASE_PROMPT}입니다.
+        [첫 번째 사후 평가 분석]
+        사전 평가 데이터인 {pre_data}와 첫 번째 사후 평가 데이터인 {curr_data}을 비교하세요.
+        
+        학습자의 현재 이해도를 분석하고,
+        강점 5가지와 개선이 필요한 약점 5가지를 제시해주세요.
+        
+        단, 사전 평가 기반 피드백인 {pre_feedback}에서 변화한 점을 고려해야 합니다.
+        
+        [출력 형식]
+        {BASE_PROMPT}의 형태로 출력 형태를 만들어 주세요.
     """
 
 #  사후-사후 반복 비교용
 def build_post_post_comparison_prompt(prev_feedback, recent_assessment, most_recent_assessment):
     return f"""
-        {recent_assessment}와 {most_recent_assessment}를 비교해서 결과를 출력해주세요.
-        단, 최근 피드백인 {prev_feedback}을 고려해야 합니다.
-        출력 형태는 {BASE_PROMPT}입니다.
+        [추가 사후 평가 분석]
+        직전 사후 평가 데이터인 {recent_assessment}와 이번 사후 평가 데이터인 {most_recent_assessment}를 비교하세요.
+        단, 최근 피드백인 {prev_feedback}에서 변화한 점을 고려해야 합니다.
+        
+    
+        [출력 형식]
+        {BASE_PROMPT}의 형태로 출력 형태를 만들어 주세요.
     """
