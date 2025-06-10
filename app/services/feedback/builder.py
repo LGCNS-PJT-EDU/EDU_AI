@@ -3,7 +3,7 @@ import re
 from datetime import date
 
 
-async def build_feedback(data, feedback_text):
+async def build_feedback(data, feedback_text, max_score: int):
     print(data)
     try:
         text_reg = feedback_text.strip()
@@ -15,6 +15,7 @@ async def build_feedback(data, feedback_text):
         parsed = json.loads(text_reg)
         info = parsed["info"]
         scores = parsed["scores"]
+        scores["total"] = max_score
         feedback = parsed["feedback"]
 
     except json.JSONDecodeError:
