@@ -6,22 +6,27 @@ from langchain_core.documents import Document
 from app.clients.chromadb_client import ChromaClient
 
 load_dotenv()
-
 mongo = MongoClient(os.getenv("MONGO_DB_URL"))
 collection = mongo["ai_interview"]["interview_contents"]
 chroma_client = ChromaClient()
 
 @shared_task
 def batch_sync_all_sources():
-    from app.services.sync.sync_recommend import sync_recommendation
-    from app.services.sync.sync_feedback import sync_feedback
-    from app.services.sync.sync_assessments import sync_pre, sync_post
+    try:
+        from app.services.sync.sync_recommend import sync_recommendation
+        from app.services.sync.sync_feedback import sync_feedback
+        from app.services.sync.sync_assessments import sync_pre, sync_post
+        from app.services.sync.sync_inrweview import sync_evaluator
 
-    print(" 모든 소스 동기화 시작")
-    sync_recommendation()
-    sync_feedback()
-    sync_pre()
-    sync_post()
+        print(" 모든 소스 동기화 시작")
+        sync_recommendation()
+        sync_feedback()
+        sync_pre()
+        sync_post()
+        sync_evaluator()
+
+    except ModuleNotFoundError:
+        print("⚠ sync 모듈 경로 확인 필요: app/services/sync/*")
 
 @shared_task
 def batch_migrate_to_chroma():
@@ -44,4 +49,4 @@ def batch_migrate_to_chroma():
             print(f" user_id={user_id}: {len(langchain_docs)}개 삽입")
             total += len(langchain_docs)
 
-    print(f" Celery Batch 전체 삽입 완료: 총 {total}개 문서")
+    print(f" Celery Batch 삽입 완료: 총 {total}개 문서")

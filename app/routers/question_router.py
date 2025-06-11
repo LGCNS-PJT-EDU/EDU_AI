@@ -1,7 +1,7 @@
 import json
 
 import openai
-from fastapi import APIRouter, HTTPException, Query
+from fastapi import APIRouter, HTTPException, Query, Body
 from typing import List
 
 
@@ -34,33 +34,35 @@ async def get_questions(
 
 
 #  면접 답변 GPT 평가 API
-@router.post("/question/evaluate-rag", summary="면접 답변 GPT 평가")
-async def evaluate_with_rag(request: EvaluationRequest):
+@router.post("/evaluate", summary="면접 답변 평가")
+async def evaluate_with_rag_and_embed(
+    user_id: str = Query(..., description="사용자 ID"),
+    request: EvaluationRequest = Body(...)
+):
     try:
-        user_id = "system_user"
-        result = await evaluate_answer_with_rag(user_id, request.question, request.user_answer)
+        # ✅ GPT 평가 (subject_id 없이 호출)
+        result = await evaluate_answer_with_rag(
+            user_id=user_id,
+            question=request.question,
+            user_answer=request.user_answer
+        )
 
-        #  Chroma 자동 삽입
+        # ✅ 답변 내용 자동 임베딩 (source: interview)
         embed_to_chroma(
             user_id=user_id,
             content=request.user_answer,
             source="interview",
-            source_id=request.question[:30]
+            source_id=request.question[:30]  # 질문 일부를 ID로 활용
         )
+
         return result
 
     except json.JSONDecodeError:
         raise HTTPException(status_code=500, detail="GPT 응답이 올바른 JSON이 아닙니다.")
     except openai.APIConnectionError:
         raise HTTPException(status_code=503, detail="OpenAI API 연결 실패")
-
-
-
-
-
-
-
-
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"오류 발생: {str(e)}")
 
 
 
