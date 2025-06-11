@@ -210,7 +210,7 @@ async def generate_feedback_prompt(user_id, subject, subject_id, feedback_type, 
 
             base_prompt = build_pre_post_comparison_prompt(pre_feedback, pre_request, post_request)
 
-        else:
+        elif feedback_type == "POST" and nth > 1:
             all_post_assessments = await assessment_db.post_result.find_one({"userId": user_id})
             if not all_post_assessments:
                 raise HTTPException(status_code=404, detail="해당 사용자의 사후 평가 문서를 찾을 수 없습니다.")
@@ -219,30 +219,50 @@ async def generate_feedback_prompt(user_id, subject, subject_id, feedback_type, 
             for k, v in all_post_assessments.items():
                 if not k.startswith("post_assessments_"):
                     continue
-
                 try:
                     idx = int(k.split("_")[-1])
                 except (ValueError, IndexError):
                     continue
 
-                subject_obj = v.get("subject")
+                subject_obj = v.get("subject", {})
                 if isinstance(subject_obj, dict) and subject_obj.get("subjectId") == subject_id:
                     post_assessments.append((idx, v))
 
             if len(post_assessments) < 2:
-                raise HTTPException(status_code=400, detail="해당 과목에 대한 사후 평가가 2회차 이상 존재하지 않습니다.")
+                raise HTTPException(status_code=400, detail="2회차 이상의 사후 평가가 없습니다.")
 
-            post_assessments.sort(key=lambda x: x[0], reverse=True)
-            post_assessment_e = post_assessments[1][1]
-            post_assessment_z = post_assessments[0][1]
+            post_assessments.sort(key=lambda x: x[0])
+            prev_post_data, post_post_data = post_assessments[-2][1], post_assessments[-1][1]
 
-            prev_feedback = await feedback_db.feedback.find_one({"info.userId": str(user_id), "info.subject": subject}, sort=[("_id", -1)])
-            post_score_e = post_assessment_e.get("chapters", [])
-            post_score_z = post_assessment_z.get("chapters", [])
-
-            base_prompt = build_post_post_comparison_prompt(prev_feedback, post_score_e, post_score_z)
             max_score = get_max_score_by_level(user_level)
 
+            prev_feedback = await feedback_db.feedback.find_one({"info.userId": str(user_id), "info.subject": subject}, sort=[("_id", -1)])
+
+            prev_post_chapters = prev_post_data.get("chapters", [])
+            prev_questions = prev_post_data.get("questions", [])
+
+            post_post_chapters = post_post_data.get("chapters", [])
+            post_post_questions = post_post_data.get("questions", [])
+
+            prev_data = build_chapter_data(prev_post_chapters, prev_questions, max_score)
+            post_data = build_chapter_data(post_post_chapters, post_post_questions, max_score)
+
+            prev_request = FeedbackRequest(
+                user_id=str(user_id),
+                subject=subject,
+                chapter=prev_data
+            )
+
+            curr_request = FeedbackRequest(
+                user_id=str(user_id),
+                subject=subject,
+                chapter=post_data
+            )
+
+            base_prompt = build_post_post_comparison_prompt(prev_feedback, prev_request, curr_request)
+
+        else:
+            raise HTTPException(status_code=400, detail="유효하지 않은 feedback 생성 요청입니다.")
 
         return base_prompt, max_score
 
