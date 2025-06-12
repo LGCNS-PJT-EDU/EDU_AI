@@ -1,4 +1,4 @@
-# app/routers/chroma_status_router.py
+#  chroma_status_router.py (라우터)
 
 from fastapi import APIRouter, HTTPException, Query
 from typing import Optional
@@ -20,14 +20,27 @@ router = APIRouter()
 client = ChromaClient()
 
 
-@router.delete("/docs/delete", summary="user_id + source 기준 문서 삭제", tags=["ChromaDB 관리 API"])
-async def delete_docs(user_id: str, source: Optional[SourceType] = Query(default=None)):
+@router.delete("/docs/delete", summary="user_id + source 기준 문서 삭제")
+async def delete_documents_by_user_and_source(
+    user_id: str = Query(..., description="사용자 ID"),
+    source: str = Query(..., description="문서 출처 예: feedback, recommendation"),
+    limit: Optional[int] = Query(default=None, description="최대 삭제 문서 수 (기본: 전체)"),
+    sort_order: Optional[str] = Query(default="asc", pattern="^(asc|desc)$", description="정렬 기준 (asc: 오래된 순, desc: 최신 순)")
+):
     try:
-        result = client.delete_documents(user_id=user_id, source=source.value if source else None)
-        delete_total.labels(status="success", source=source.value if source else "all").inc()
-        return {"status": "success", "deleted": result}
+        deleted_ids = client.delete_documents(
+            user_id=user_id,
+            source=source,
+            limit=limit,
+            sort_order=sort_order
+        )
+        delete_total.labels(status="success", source=source).inc()
+        if deleted_ids:
+            return {"message": f"삭제 성공: {len(deleted_ids)}개 삭제됨", "deleted_ids": deleted_ids}
+        else:
+            return {"message": "조건에 해당하는 문서가 없습니다."}
     except Exception as e:
-        delete_total.labels(status="failure", source=source.value if source else "all").inc()
+        delete_total.labels(status="error", source=source).inc()
         raise HTTPException(status_code=500, detail=f"삭제 오류: {str(e)}")
 
 @router.get("/count", summary="전체 문서 수 확인", tags=["ChromaDB 상태 점검 API"])
@@ -38,34 +51,32 @@ async def get_total_doc_count():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/docs/user", summary="user_id 기준 문서 미리보기", tags=["ChromaDB 상태 점검 API"])
-async def get_docs_by_user(
-    user_id: str,
-    limit: int = 5,
-    source: Optional[SourceType] = Query(default=None)
+@router.delete("/docs/delete", summary="user_id + source 기준 문서 삭제", tags=["ChromaDB 상태 점검 API"])
+async def delete_documents_by_user_and_source(
+    user_id: str = Query(..., description="사용자 ID"),
+    source: str = Query(..., description="문서 출처 예: feedback, recommendation"),
+    limit: Optional[int] = Query(None, description="최대 삭제 문서 수 (기본: 전체)"),
+    sort_order: Optional[str] = Query("asc", regex="^(asc|desc)$", description="정렬 기준 (asc: 오래된 순, desc: 최신 순)")
 ):
     try:
-        # 모든 문서를 가져온 후 라우터에서 source 필터링
-        results = client.get_documents_by_user(user_id=user_id, limit=limit)
+        deleted_ids = client.delete_documents(
+            user_id=user_id,
+            source=source,
+            limit=limit,
+            sort_order=sort_order
+        )
 
-        # source가 주어졌다면 필터링
-        filtered = [
-            {
-                "id": results["ids"][i],
-                "content": results["documents"][i][:100],
-                "metadata": results["metadatas"][i]
-            }
-            for i in range(len(results["ids"]))
-            if not source or results["metadatas"][i].get("source") == source.value
-        ]
+        delete_total.labels(status="success", source=source).inc()
 
         return {
-            "total": len(filtered),
-            "samples": filtered[:limit]
+            "message": f"{len(deleted_ids)}개 문서 삭제 완료",
+            "deleted_ids": deleted_ids
         }
-
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"조회 오류: {str(e)}")
+        delete_total.labels(status="error", source=source).inc()
+        raise HTTPException(status_code=500, detail=f"삭제 오류: {str(e)}")
+
+
 
 
 @router.get("/docs/user/source-counts", summary="user_id 기준 source별 문서 개수", tags=["ChromaDB 상태 점검 API"])
