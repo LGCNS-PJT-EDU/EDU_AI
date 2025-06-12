@@ -1,9 +1,7 @@
 import json
-
 import openai
 from fastapi import APIRouter, HTTPException, Query, Body
 from typing import List
-
 
 from app.clients import db_clients
 from app.models.interview.question_model import InterviewQuestion
@@ -33,8 +31,7 @@ async def get_questions(
         raise HTTPException(status_code=500, detail=f"질문 검색 중 오류 발생: {str(e)}")
 
 
-
-#  여러 개의 면접 답변 평가 지원 API
+#  면접 답변 평가 API (복수 개 요청 처리 + Chroma 임베딩)
 @router.post("/evaluate", summary="면접 답변 평가 (복수 개)", response_model=List[dict])
 async def evaluate_with_rag_and_embed(
     user_id: str = Query(..., description="사용자 ID"),
@@ -44,20 +41,18 @@ async def evaluate_with_rag_and_embed(
         results = []
 
         for request in requests:
-            # GPT 평가
             result = await evaluate_answer_with_rag(
                 user_id=user_id,
-                question=request.question,
-                user_answer=request.user_answer
+                question=request.interview_content,
+                user_answer=request.user_reply
             )
             results.append(result)
 
-            # Chroma 자동 임베딩
             embed_to_chroma(
                 user_id=user_id,
-                content=request.user_answer,
+                content=request.user_reply,
                 source="interview",
-                source_id=request.question[:30]
+                source_id=str(request.interviewId)
             )
 
         return results
@@ -68,7 +63,3 @@ async def evaluate_with_rag_and_embed(
         raise HTTPException(status_code=503, detail="OpenAI API 연결 실패")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"오류 발생: {str(e)}")
-
-
-
-

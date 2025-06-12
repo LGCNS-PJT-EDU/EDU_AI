@@ -75,7 +75,7 @@ async def evaluate_answer_with_rag(
         )
         raw: str = response.choices[0].message.content.strip()
 
-        # ✅ GPT 응답에서 JSON 추출
+        #  GPT 응답에서 JSON 추출
         cleaned = re.sub(r"```(?:json)?\s*(.*?)\s*```", r"\1", raw, flags=re.DOTALL).strip()
         return json.loads(cleaned)
 
