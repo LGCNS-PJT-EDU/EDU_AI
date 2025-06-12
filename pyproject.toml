@@ -158,6 +158,7 @@ aiokafka = "^0.10.0"
 logging = "^0.4.9.6"
 pandas = "^2.2.3"
 prometheus-fastapi-instrumentator = "^7.1.0"
+celery = "^5.5.3"
 
 [build-system]
 requires = ["poetry-core"]
