@@ -1,7 +1,7 @@
 from celery import Celery
+from celery.schedules import crontab
 import os
 from dotenv import load_dotenv
-from celery.schedules import crontab
 
 load_dotenv()
 
@@ -12,7 +12,10 @@ celery_app = Celery(
     include=["app.tasks.migrate_task"]
 )
 
-
 celery_app.conf.timezone = "Asia/Seoul"
-celery_app.conf.beat_schedule = {}  # Celery Beat가 설정을 여기에 넣음
-
+celery_app.conf.beat_schedule = {
+    "daily-migrate-to-chroma": {
+        "task": "app.tasks.migrate_task.batch_migrate_to_chroma",
+        "schedule": crontab(hour=3, minute=0),  # 매일 새벽 3시 자동 실행
+    }
+}

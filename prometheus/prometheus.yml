@@ -1,0 +1,7 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: "ai-platform"
+    static_configs:
+      - targets: ["host.docker.internal:8000"]  # 또는 127.0.0.1:8000

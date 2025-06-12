@@ -4,6 +4,8 @@ import sys
 
 import json
 
+from aiokafka.errors import CommitFailedError
+
 from app.config.kafka_config import KAFKA_BOOTSTRAP_SERVERS
 from app.producer.feedback_producer import publish_feedback_success, publish_feedback_fail
 from app.routers.feedback_router import generate_feedback
@@ -65,10 +67,16 @@ async def consume_feedback():
                     await asyncio.sleep(1)
             if not success:
                 await publish_feedback_fail(payload, error_code="FEEDBACK_GEN_ERROR", error_message=str(last_error))
-                await consumer.commit()
+                try:
+                    await consumer.commit()
+                except CommitFailedError as e:
+                    logger.warning(f"오프셋 커밋 실패: {str(e)}")
             else:
                 await publish_feedback_success(result)
-                await consumer.commit()
+                try:
+                    await consumer.commit()
+                except CommitFailedError as e:
+                    logger.warning(f"오프셋 커밋 실패: {str(e)}")
     except asyncio.CancelledError:
         logger.info("Consumer task cancelled.")
     except Exception as e:

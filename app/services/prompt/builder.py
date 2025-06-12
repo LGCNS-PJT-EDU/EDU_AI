@@ -1,19 +1,47 @@
+from collections import defaultdict
 from datetime import date
+from typing import List
+
 from fastapi import HTTPException
+
 from app.clients import db_clients
+from app.models.feedback.request import FeedbackRequest, ChapterData
 from app.utils.build_feedback_prompt import (
     build_initial_feedback_prompt,
     build_pre_post_comparison_prompt,
     build_post_post_comparison_prompt
 )
-from app.models.feedback.request import FeedbackRequest, ChapterData
 
-
+user_db = db_clients["user"]
 feedback_db = db_clients["feedback"]
 assessment_db = db_clients["assessment"]
 
+
+def calculate_chapter_scores(questions: list[dict]) -> dict[int, tuple[int, int]]:
+
+    difficulty_score_map = {
+        "low": 1,
+        "medium": 3,
+        "high": 5
+    }
+
+    chapter_scores = defaultdict(lambda: [0, 0])
+
+    for question in questions:
+        chapter_num = question["chapterNum"]
+        difficulty = question["difficulty"]
+        point = difficulty_score_map.get(difficulty, 0)
+
+        chapter_scores[chapter_num][1] += point
+
+        if question["answerTF"]:
+            chapter_scores[chapter_num][0] += point
+
+    return {k: tuple(v) for k, v in chapter_scores.items()}
+
+
 # 전체 프롬프트 구성
-def build_full_prompt(base_prompt: str, subject: str, user_id: str) -> str:
+def build_full_prompt(base_prompt: str, subject: str, user_id: str, max_score: int = 20) -> str:
     today = date.today().isoformat()
 
     return f"""
@@ -41,10 +69,14 @@ def build_full_prompt(base_prompt: str, subject: str, user_id: str) -> str:
 13. JSON 구조는 유효한 형태여야 하며, 문법 오류(따옴표, 쉼표 등)가 없도록 하세요.
 
 <추론 흐름>
+- 결과 도출을 위해 {base_prompt}의 데이터를 사용합니다.
 - 먼저 점수(`scores`)를 확인한 뒤, 점수가 높은 챕터부터 강점을 간결하게 정리하세요.
 - 이어서 점수가 낮은 챕터를 찾아 개선 방향을 제시하세요.
 - 마지막으로, 전체 학습 상황을 요약한 한 문장 이상의 `final` 코멘트를 작성하세요.
 
+
+<출력 조건>
+base_prompt에서 지정한 출력 조건을 아래의 형태로 바꿉니다.
 
 {{
   "info": {{
@@ -53,69 +85,133 @@ def build_full_prompt(base_prompt: str, subject: str, user_id: str) -> str:
     "subject": "{subject}"
   }},
   "scores": {{
-    "chapter1": 0,
-    "chapter2": 0,
-    "chapter3": 0,
-    "chapter4": 0,
-    "chapter5": 0,
-    "total": 0
+    "CHAPTER_1의 이름": CHAPTER_1의 점수,
+    "CHAPTER_2의 이름": CHAPTER_2의 점수,
+    "CHAPTER_3의 이름": CHAPTER_3의 점수,
+    "CHAPTER_4의 이름": CHAPTER_4의 점수,
+    "CHAPTER_5의 이름": CHAPTER_5의 점수,
+    "total": {max_score}
   }},
   "feedback": {{
     "strength": {{
-      "chapter1": ""
+      "CHAPTER_1의 이름": CHAPTER_1의 강점,
+      "CHAPTER_2의 이름": CHAPTER_2의 강점,
+      "CHAPTER_3의 이름": CHAPTER_3의 강점,
+      "CHAPTER_4의 이름": CHAPTER_4의 강점,
+      "CHAPTER_5의 이름": CHAPTER_5의 강점,
     }},
     "weakness": {{
-      "chapter2": ""
+      "CHAPTER_1의 이름": CHAPTER_1의 약점,
+      "CHAPTER_2의 이름": CHAPTER_2의 약점,
+      "CHAPTER_3의 이름": CHAPTER_3의 약점,
+      "CHAPTER_4의 이름": CHAPTER_4의 약점,
+      "CHAPTER_5의 이름": CHAPTER_5의 약점,
     }},
-    "final": ""
+    "final": 종합 평가
   }}
 }}
 """.strip()
 
 
 # 상황별 프롬프트 생성
-async def generate_feedback_prompt(user_id, subject, subject_id, feedback_type, nth) -> str:
+def build_chapter_data(chapters: List[dict], questions: List[dict], max_score) -> List[ChapterData]:
+    chapter_score = calculate_chapter_scores(questions)
+
+    chapters_list: list[ChapterData] = []
+    for chapter in chapters:
+        chapter_num = chapter["chapterNum"]
+        score, total_score = chapter_score.get(chapter_num, (0, 0))
+
+        chapter_obj = ChapterData(
+            chapterNum=chapter_num,
+            chapterName=chapter["chapterName"],
+            weakness=chapter["weakness"],
+            score=score,
+            totalScore=max_score
+        )
+        chapters_list.append(chapter_obj)
+
+    return chapters_list
+
+
+def get_max_score_by_level(level):
+    if level == "novice":
+        return 25
+    elif level == "amateur":
+        return 35
+    elif level == "intermediate":
+        return 45
+    elif level == "expert":
+        return 65
+    elif level == "master":
+        return 75
+    else:
+        return HTTPException(status_code=404, detail="Level out of range")
+
+
+async def generate_feedback_prompt(user_id, subject, subject_id, feedback_type, nth) -> tuple[str, int]:
+    user = await user_db.user_profile.find_one({"user_id": user_id})
+    user_level = user.get("level", {}).get(str(subject_id))
+
     try:
         if feedback_type == "PRE":
-            pre_assessment_result = await assessment_db.pre_result.find_one({ "userId": user_id, "pre_assessment.subject.subjectId": subject_id })
-            pre_score = pre_assessment_result.get("subject", {}).get("cnt", 0)
+            pre_assessment_result = await assessment_db.pre_result.find_one(
+                {"userId": user_id, "pre_assessment.subject.subjectId": subject_id}
+            )
             chapters = pre_assessment_result.get("pre_assessment", {}).get("chapters", [])
+            questions = pre_assessment_result.get("pre_assessment", {}).get("questions", [])
 
-            chapters_list: list[ChapterData] = []
-            for chapter in chapters:
-                chapter_obj = ChapterData(**chapter)
-                chapters_list.append(chapter_obj)
+            max_score = 20
+            chapter_data = build_chapter_data(chapters, questions, max_score)
 
             pre_feedback_request = FeedbackRequest(
                 user_id=str(user_id),
                 subject=subject,
-                chapter=chapters_list,
-                pre_score=pre_score
+                chapter=chapter_data
             )
 
             base_prompt = build_initial_feedback_prompt(pre_feedback_request)
 
-            print(base_prompt)
-
         elif feedback_type == "POST" and nth == 1:
-            pre_feedback = await feedback_db.feedback.find_one({ "info.userId": user_id, "info.subject": subject }, sort=[("_id", -1)])
-            pre_assessment_result = await assessment_db.pre_result.find_one({ "userId": user_id, "pre_assessment.subject.subjectId": subject_id })
+            pre_feedback = await feedback_db.feedback.find_one({"info.userId": str(user_id), "info.subject": subject}, sort=[("_id", -1)])
+            pre_assessment_result = await assessment_db.pre_result.find_one(
+                {"userId": user_id, "pre_assessment.subject.subjectId": subject_id})
             post_assessment_result = await assessment_db.post_result.find_one({"userId": user_id})
 
-            if post_assessment_result:
-                post_assessment_result = {
-                    key: value for key, value in post_assessment_result.items()
-                    if key.startswith("post_assessment_") and value.get("subjectId") == subject_id
-                }
+            post_data = next(
+                (v for k, v in post_assessment_result.items()
+                 if k.startswith("post_assessments_") and
+                 isinstance(v, dict) and
+                 v.get("subject", {}).get("subjectId") == subject_id),
+                None
+            )
+            if not post_data:
+                raise HTTPException(status_code=404, detail="해당 과목의 사후 평가가 존재하지 않습니다.")
 
-            pre_score = pre_assessment_result.get("subject", {}).get("cnt", 0)
-            post_score = post_assessment_result.get("subject", {}).get("cnt", 0)
+            pre_chapters = pre_assessment_result.get("pre_assessment", {}).get("chapters", [])
+            pre_questions = pre_assessment_result.get("pre_assessment", {}).get("questions", [])
+            post_chapters = post_data.get("chapters", [])
+            post_questions = post_data.get("questions", [])
 
+            max_score = get_max_score_by_level(user_level)
+            pre_data = build_chapter_data(pre_chapters, pre_questions, max_score)
+            post_data = build_chapter_data(post_chapters, post_questions, max_score)
 
-            base_prompt = build_pre_post_comparison_prompt(pre_feedback, pre_score, post_score)
+            pre_request = FeedbackRequest(
+                user_id=str(user_id),
+                subject=subject,
+                chapter=pre_data
+            )
+            post_request = FeedbackRequest(
+                user_id=str(user_id),
+                subject=subject,
+                chapter=post_data
+            )
 
-        else:
-            all_post_assessments = await assessment_db.post_result.find_one({ "userId": user_id })
+            base_prompt = build_pre_post_comparison_prompt(pre_feedback, pre_request, post_request)
+
+        elif feedback_type == "POST" and nth > 1:
+            all_post_assessments = await assessment_db.post_result.find_one({"userId": user_id})
             if not all_post_assessments:
                 raise HTTPException(status_code=404, detail="해당 사용자의 사후 평가 문서를 찾을 수 없습니다.")
 
@@ -123,32 +219,52 @@ async def generate_feedback_prompt(user_id, subject, subject_id, feedback_type, 
             for k, v in all_post_assessments.items():
                 if not k.startswith("post_assessments_"):
                     continue
-
                 try:
                     idx = int(k.split("_")[-1])
                 except (ValueError, IndexError):
                     continue
 
-                subject_obj = v.get("subject")
+                subject_obj = v.get("subject", {})
                 if isinstance(subject_obj, dict) and subject_obj.get("subjectId") == subject_id:
                     post_assessments.append((idx, v))
 
             if len(post_assessments) < 2:
-                raise HTTPException(status_code=400, detail="해당 과목에 대한 사후 평가가 2회차 이상 존재하지 않습니다.")
+                raise HTTPException(status_code=400, detail="2회차 이상의 사후 평가가 없습니다.")
 
-            post_assessments.sort(key=lambda x: x[0], reverse=True)
-            post_assessment_e = post_assessments[1][1]
-            post_assessment_z = post_assessments[0][1]
+            post_assessments.sort(key=lambda x: x[0])
+            prev_post_data, post_post_data = post_assessments[-2][1], post_assessments[-1][1]
 
-            prev_feedback = await feedback_db.feedback.find_one({"info.userId": user_id, "info.subject": subject}, sort=[("_id", -1)])
-            post_score_e = post_assessment_e.get("subject", {}).get("cnt", 0)
-            post_score_z = post_assessment_z.get("subject", {}).get("cnt", 0)
+            max_score = get_max_score_by_level(user_level)
 
-            print(post_assessment_e)
-            print(post_assessment_z)
-            base_prompt = build_post_post_comparison_prompt(prev_feedback, post_score_e, post_score_z)
+            prev_feedback = await feedback_db.feedback.find_one({"info.userId": str(user_id), "info.subject": subject}, sort=[("_id", -1)])
 
-        return base_prompt
+            prev_post_chapters = prev_post_data.get("chapters", [])
+            prev_questions = prev_post_data.get("questions", [])
+
+            post_post_chapters = post_post_data.get("chapters", [])
+            post_post_questions = post_post_data.get("questions", [])
+
+            prev_data = build_chapter_data(prev_post_chapters, prev_questions, max_score)
+            post_data = build_chapter_data(post_post_chapters, post_post_questions, max_score)
+
+            prev_request = FeedbackRequest(
+                user_id=str(user_id),
+                subject=subject,
+                chapter=prev_data
+            )
+
+            curr_request = FeedbackRequest(
+                user_id=str(user_id),
+                subject=subject,
+                chapter=post_data
+            )
+
+            base_prompt = build_post_post_comparison_prompt(prev_feedback, prev_request, curr_request)
+
+        else:
+            raise HTTPException(status_code=400, detail="유효하지 않은 feedback 생성 요청입니다.")
+
+        return base_prompt, max_score
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"피드백 프롬프트 생성 오류: {str(e)}")
