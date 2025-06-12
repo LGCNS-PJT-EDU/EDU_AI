@@ -41,7 +41,18 @@ def batch_migrate_to_chroma():
             content = doc.get("content", "")
             if not content:
                 continue
-            metadata = {"user_id": user_id, "source_id": str(doc["_id"])}
+
+            metadata = {
+                "user_id": user_id,
+                "source_id": str(doc["_id"]),
+                "source": doc.get("source", "interview")
+            }
+
+            # 중복 체크: 이미 같은 source_id가 있는 경우 건너뜀
+            existing = chroma_client.collection.get(where={"source_id": metadata["source_id"]})
+            if existing.get("ids"):
+                continue
+
             langchain_docs.append(Document(page_content=content, metadata=metadata))
 
         if langchain_docs:

@@ -33,29 +33,34 @@ async def get_questions(
         raise HTTPException(status_code=500, detail=f"질문 검색 중 오류 발생: {str(e)}")
 
 
-#  면접 답변 GPT 평가 API
-@router.post("/evaluate", summary="면접 답변 평가")
+
+#  여러 개의 면접 답변 평가 지원 API
+@router.post("/evaluate", summary="면접 답변 평가 (복수 개)", response_model=List[dict])
 async def evaluate_with_rag_and_embed(
     user_id: str = Query(..., description="사용자 ID"),
-    request: EvaluationRequest = Body(...)
+    requests: List[EvaluationRequest] = Body(...)
 ):
     try:
-        # ✅ GPT 평가 (subject_id 없이 호출)
-        result = await evaluate_answer_with_rag(
-            user_id=user_id,
-            question=request.question,
-            user_answer=request.user_answer
-        )
+        results = []
 
-        # ✅ 답변 내용 자동 임베딩 (source: interview)
-        embed_to_chroma(
-            user_id=user_id,
-            content=request.user_answer,
-            source="interview",
-            source_id=request.question[:30]  # 질문 일부를 ID로 활용
-        )
+        for request in requests:
+            # GPT 평가
+            result = await evaluate_answer_with_rag(
+                user_id=user_id,
+                question=request.question,
+                user_answer=request.user_answer
+            )
+            results.append(result)
 
-        return result
+            # Chroma 자동 임베딩
+            embed_to_chroma(
+                user_id=user_id,
+                content=request.user_answer,
+                source="interview",
+                source_id=request.question[:30]
+            )
+
+        return results
 
     except json.JSONDecodeError:
         raise HTTPException(status_code=500, detail="GPT 응답이 올바른 JSON이 아닙니다.")
@@ -63,7 +68,6 @@ async def evaluate_with_rag_and_embed(
         raise HTTPException(status_code=503, detail="OpenAI API 연결 실패")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"오류 발생: {str(e)}")
-
 
 
 
