@@ -3,6 +3,8 @@ import asyncio
 from fastapi import FastAPI
 from prometheus_fastapi_instrumentator import Instrumentator
 
+from app.consumer.recommendation_consumer import run_recommend_consumer_with_restart
+
 # FastAPI 인스턴스 먼저 정의
 app = FastAPI(
     title="AI 학습 플랫폼 API",
@@ -14,8 +16,7 @@ app = FastAPI(
 Instrumentator().instrument(app).expose(app)
 
 # Kafka 관련 기능
-from app.consumer.feedback_consumer import consume_feedback
-from app.consumer.recommendation_consumer import consume_recommend
+from app.consumer.feedback_consumer import consume_feedback, run_feedback_consumer_with_restart
 from app.kafka_admin.topic_initializer import initialize_topics
 from app.producer.feedback_producer import init_feedback_producer, close_feedback_producer
 from app.producer.recommendation_producer import close_recommendation_producer, init_recommendation_producer
@@ -49,8 +50,8 @@ async def startup_event():
     initialize_topics()
     await init_feedback_producer()
     await init_recommendation_producer()
-    feedback_consumer_task = asyncio.create_task(consume_feedback())
-    recom_consumer_task = asyncio.create_task(consume_recommend())
+    feedback_consumer_task = asyncio.create_task(run_feedback_consumer_with_restart())
+    recom_consumer_task = asyncio.create_task(run_recommend_consumer_with_restart())
 
 @app.on_event("shutdown")
 async def shutdown_event():
