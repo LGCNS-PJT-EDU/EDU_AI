@@ -52,11 +52,11 @@ async def evaluate_answer_with_rag(
     question: str,
     user_answer: str
 ) -> Dict:
-    # 🔍 개인화 문서 검색
+    #  개인화 문서 검색
     similar_docs = retrieve_personalized_docs(user_id, user_answer, k=3)
     context = "\n".join([doc.page_content for doc in similar_docs]) if similar_docs else "※ 문맥 검색 결과 없음"
 
-    # 🧠 GPT 프롬프트 구성
+    #  GPT 프롬프트 구성
     prompt = EVALUATION_RAG_PROMPT.format(
         question=question,
         user_answer=user_answer,
@@ -64,7 +64,7 @@ async def evaluate_answer_with_rag(
     )
 
     try:
-        # 💬 GPT 호출
+        #  GPT 호출
         response = await client.chat.completions.create(
             model="gpt-4o",
             messages=[
