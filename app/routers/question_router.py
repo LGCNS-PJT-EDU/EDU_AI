@@ -43,14 +43,14 @@ async def evaluate_with_rag_and_embed(
         for request in requests:
             result = await evaluate_answer_with_rag(
                 user_id=user_id,
-                question=request.interview_content,
-                user_answer=request.user_reply
+                question=request.interviewContent,
+                user_answer=request.userReply
             )
             results.append(result)
 
             embed_to_chroma(
                 user_id=user_id,
-                content=request.user_reply,
+                content=request.userReply,
                 source="interview",
                 source_id=str(request.interviewId)
             )
