@@ -41,7 +41,7 @@
 
 ### testEc2용 Dockerfile
 # ⚙️ 1. Python 베이스 이미지
-FROM python:3.12-slim
+FROM python:3.11.9-slim
 
 # ⚙️ 2. Poetry 설치
 ENV POETRY_VERSION=1.8.2
