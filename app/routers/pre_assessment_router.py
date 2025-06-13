@@ -10,6 +10,8 @@ from app.services.assessment.common import safe_sample, result_generate
 from app.services.assessment.pre import level_to_string
 from app.services.common.common import subject_id_to_name, get_user
 from typing import List
+from app.utils.embed import embed_to_chroma
+
 
 router = APIRouter()
 
@@ -52,6 +54,12 @@ async def save_result(user_id: str, payload: AssessmentResult):
     subject_id = compiled_data["subject"]["subjectId"]
     level = await level_to_string(payload.subject.level)
     level_key = str(subject_id)
+
+    #  Chroma 자동 삽입
+    for ch in compiled_data.get("chapters", []):
+        content = ch.get("userAnswer", "")
+        qid = ch.get("questionId")
+        embed_to_chroma(user_id=user_id, content=content, source="pre_result", source_id=str(qid))
 
     await assessment_db.pre_result.update_one(
         {

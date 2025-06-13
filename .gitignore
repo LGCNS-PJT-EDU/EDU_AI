@@ -176,4 +176,7 @@ cython_debug/
 # ChromaDB
 /chroma_store
 *.sqlite3
-*.bin
+*.bin/*
+
+# Grafana
+/grafana

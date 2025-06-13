@@ -4,12 +4,14 @@ import sys
 
 import json
 
+from aiokafka.errors import CommitFailedError
+
 from app.config.kafka_config import KAFKA_BOOTSTRAP_SERVERS
-from app.producer.feedback_producer import publish_success, publish_fail
+from app.producer.feedback_producer import publish_feedback_success, publish_feedback_fail
 from app.routers.feedback_router import generate_feedback
 from aiokafka import AIOKafkaConsumer
 
-TOPIC_REQUEST = "feedback.request"
+FEEDBACK_REQUEST_TOPIC = "feedback.request"
 
 logger = logging.getLogger("feedback-request-consumer")
 logger.setLevel(logging.INFO)
@@ -22,12 +24,15 @@ if not logger.handlers:
 
 async def consume_feedback():
     consumer = AIOKafkaConsumer(
-        TOPIC_REQUEST,
+        FEEDBACK_REQUEST_TOPIC,
         bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
         value_deserializer=lambda m: json.loads(m.decode("utf-8")),
         auto_offset_reset="earliest",  # 수정
         enable_auto_commit=False,  # 수동 커밋 권장
         group_id="feedback-request-group",
+        max_poll_interval_ms=300000,
+        session_timeout_ms=10000,
+        heartbeat_interval_ms=3000,
     )
     await consumer.start()
     logger.info("Consumer started.")
@@ -42,13 +47,10 @@ async def consume_feedback():
 
             success = False
             last_error = None
-
+            result = None
             for attempt in range(3):
                 try:
                     logger.info(f"Attempt #{attempt + 1}")
-                    # if True:  # 항상 예외 발생
-                    #     raise Exception("테스트용 강제 오류: Feedback 생성 실패")
-                    # 실제 비즈니스 로직(create_feedback 등)이 여기에 들어갑니다.
                     feedback = await generate_feedback(user_id, subject_id, feedback_type, nth)
                     logger.info(f"Feedback: {feedback}")
                     result = {
@@ -57,16 +59,24 @@ async def consume_feedback():
                     }
                     logger.info(f"Feedback result: {result}")
                     logger.info("Feedback creation succeeded")
-                    await publish_success(result)
                     success = True
-                    await consumer.commit()
                     break
                 except Exception as e:
                     logger.error(f"Feedback creation failed (attempt {attempt + 1}): {e}")
                     last_error = e
                     await asyncio.sleep(1)
             if not success:
-                await publish_fail(payload, error_code="FEEDBACK_GEN_ERROR", error_message=str(last_error))
+                await publish_feedback_fail(payload, error_code="FEEDBACK_GEN_ERROR", error_message=str(last_error))
+                try:
+                    await consumer.commit()
+                except CommitFailedError as e:
+                    logger.warning(f"오프셋 커밋 실패: {str(e)}")
+            else:
+                await publish_feedback_success(result)
+                try:
+                    await consumer.commit()
+                except CommitFailedError as e:
+                    logger.warning(f"오프셋 커밋 실패: {str(e)}")
     except asyncio.CancelledError:
         logger.info("Consumer task cancelled.")
     except Exception as e:

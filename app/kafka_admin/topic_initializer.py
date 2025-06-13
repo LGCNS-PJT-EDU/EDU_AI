@@ -16,8 +16,13 @@ if not logger.handlers:
     handler.setFormatter(formatter)
     logger.addHandler(handler)
 
-TOPIC_RESULT_SUCCESS = "feedback.result.success"
-TOPIC_RESULT_FAIL = "feedback.result.fail"
+
+FEEDBACK_REQUEST_TOPIC = "feedback.request"
+FEEDBACK_RESULT_SUCCESS_TOPIC = "feedback.result.success"
+FEEDBACK_RESULT_FAIL_TOPIC = "feedback.result.fail"
+RECOM_REQUEST_TOPIC = "recom.request"
+RECOM_RESULT_SUCCESS_TOPIC = "recom.result.success"
+RECOM_RESULT_FAIL_TOPIC = "recom.result.fail"
 
 def initialize_topics():
     admin_client = KafkaAdminClient(
@@ -26,9 +31,14 @@ def initialize_topics():
     )
 
     topics_to_create = [
-        NewTopic(name=TOPIC_RESULT_SUCCESS, num_partitions=3, replication_factor=1),
-        NewTopic(name=TOPIC_RESULT_FAIL, num_partitions=3, replication_factor=1),
+        NewTopic(name=FEEDBACK_REQUEST_TOPIC, num_partitions=3, replication_factor=1),
+        NewTopic(name=FEEDBACK_RESULT_SUCCESS_TOPIC, num_partitions=3, replication_factor=1),
+        NewTopic(name=FEEDBACK_RESULT_FAIL_TOPIC, num_partitions=3, replication_factor=1),
+        NewTopic(name=RECOM_REQUEST_TOPIC, num_partitions=3, replication_factor=1),
+        NewTopic(name=RECOM_RESULT_SUCCESS_TOPIC, num_partitions=3, replication_factor=1),
+        NewTopic(name=RECOM_RESULT_FAIL_TOPIC, num_partitions=3, replication_factor=1),
     ]
+
 
     try:
         existing_topics = admin_client.list_topics()
