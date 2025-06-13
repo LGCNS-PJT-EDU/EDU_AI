@@ -75,4 +75,3 @@ class ChromaClient:
             result = self.collection.delete(where=where_clause)
             print(f"\n[전체 삭제] 조건 {where_clause} → {result}")
             return []
-
