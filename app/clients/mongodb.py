@@ -30,6 +30,7 @@ class MongoDBClient:
         self.techMap = self.db["techMap"]
 
         self.questions = self.db["questions"]
+        self.interview_feedback = self.db["interview_feedback"]
 
     def get_category_collection(self, category: str):
         return self.db[category]
