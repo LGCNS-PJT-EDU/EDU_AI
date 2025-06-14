@@ -27,9 +27,10 @@ async def consume_recommend():
         auto_offset_reset="earliest",
         enable_auto_commit=False,
         group_id="recom-request-group",
-        max_poll_interval_ms=300000,
-        session_timeout_ms=10000,
-        heartbeat_interval_ms=3000,   
+        max_poll_interval_ms=900000,
+        session_timeout_ms=30000,
+        heartbeat_interval_ms=10000,
+        request_timeout_ms=60000
     )
     await consumer.start()
     logger.info("Consumer started.")
@@ -60,17 +61,28 @@ async def consume_recommend():
                     logger.error(f"Recommendation creation failed (attempt {attempt + 1}): {e}")
                     last_error = e
                     await asyncio.sleep(1)
-            if not success:
-                await publish_recommendation_fail(payload, error_code="RECOM_GEN_ERROR", error_message=str(last_error))
+            try:
+                if not success:
+                    await publish_recommendation_fail(payload, error_code="RECOM_GEN_ERROR", error_message=str(last_error))
+                else:
+                    await publish_recommendation_success(result)
                 await consumer.commit()
-            else:
-                await publish_recommendation_success(result)
-                await consumer.commit()
-    except asyncio.CancelledError:
-        logger.info("Consumer task cancelled.")
-        
-    except Exception as e:
-        logger.exception(f"Unexpected error: {e}")
+            except Exception as e:  # ✅ 모든 예외 처리
+                logger.error(f"publish 또는 commit 중 예외 발생: {type(e).__name__} - {e}")
+                raise e
     finally:
         await consumer.stop()
         logger.info("Consumer stopped.")
+
+async def run_recommend_consumer_with_restart(retries=3, delay=5):
+    for i in range(retries):
+        try:
+            logger.info(f"Recommend Consumer 시작 (attemp {i + 1})/retries")
+            await consume_recommend()
+            break
+        except Exception as e:
+            logger.error(f"예외 발생: {type(e).__name__} - {e}")
+            logger.info(f"{delay}초 후 재시도...")
+            await asyncio.sleep(delay)
+    else:
+        logger.critical("재시도 3회 실패로 Recommend Consumer 종료")
