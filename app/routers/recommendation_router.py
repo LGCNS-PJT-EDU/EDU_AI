@@ -1,4 +1,6 @@
 #  app/routers/recommendation_router.py 수정 예시
+import asyncio
+
 from fastapi import APIRouter, HTTPException
 from typing import List
 from datetime import datetime
@@ -23,10 +25,11 @@ cache_collection = recommendation_db.recommendation_cache
 async def recommend_content(user_id: str, subject_id: int):
     user = await get_user(user_id)
     subject = await subject_id_to_name(subject_id)
+    all_levels = user.get("level", {})
 
     raw_prefs = user.get("preferences", {})
     prefs = UserPreference(
-        level=user.get(f"level.{subject_id}", "Not_Defined"),
+        level=all_levels.get(str(subject_id), "Not_Defined"),
         duration=raw_prefs.get("duration", 0),
         price=raw_prefs.get("price", 0),
         is_prefer_book=raw_prefs.get("is_prefer_book", False),
