@@ -94,7 +94,7 @@ EDU_AI/
 │ │ └── sync/
 │ │ │ └── sync_recommend.py
 │ ├── tasks/
-│ │ ├── migrate_task.py
+│ │ │ └── migrate_task.py
 │ ├── utils/
 │ │ ├── build_feedback_prompt.py
 │ │ ├── embed.py
@@ -116,7 +116,6 @@ EDU_AI/
 ├── pyproject.toml
 ├── requirements.txt
 └── test_main.http
-
 ```
 
 ---
