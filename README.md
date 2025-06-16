@@ -15,18 +15,15 @@
 ```md
 FastAPI – 웹 API 프레임워크
 
-Uvicorn – ASGI 서버
+Hypercorn – ASGI 서버
 
-MongoDB – 비정형 데이터 저장 (피드백, 진단 결과)
+MongoDB – 비정형 데이터 저장
 
-MySQL – 구조화 데이터 저장 (유저, 평가, 진도)
+CromaDB - MongoDB의 데이터 중 일부를 임베딩 및 저장
 
-CromaDB - 로드맵 데이터 저장
-
-OpenAI GPT-4 – 로드맵 및 피드백 생성
+OpenAI GPT 4o – LLM 기반 답변 생성
 
 LangChain – GPT + RAG 기반 검색 기능
-
 
 ```
 
