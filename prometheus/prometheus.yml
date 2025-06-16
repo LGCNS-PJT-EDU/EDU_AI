@@ -1,8 +1,11 @@
 global:
-  scrape_interval: 120s
+  scrape_interval: 120s   
 
 scrape_configs:
-  - job_name: "ai-platform"
+  - job_name: "fastapi-ai-server"
+    metrics_path: /metrics   
+    scheme: https            
     static_configs:
-      - targets: ["host.docker.internal:8000"]  # 또는 127.0.0.1:8000
-      #- targets: ["EC2_FastAPI_URL:PORT"] # FastAPI 원격 경로 입력
+      - targets: ["ai.takeit.academy"]  
+    tls_config:
+      insecure_skip_verify: true        
