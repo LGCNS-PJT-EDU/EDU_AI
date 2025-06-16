@@ -91,10 +91,10 @@ EDU_AI/
 │ │ ├── recommendation/
 │ │ │ ├── rag_explainer.py
 │ │ │ └── reranker.py
-│ │ └── sync/
+│ │ ├── sync/
 │ │ │ └── sync_recommend.py
-│ ├── tasks/
-│ │ │ └── migrate_task.py
+│ │ └── tasks/
+│ │   └── migrate_task.py
 │ ├── utils/
 │ │ ├── build_feedback_prompt.py
 │ │ ├── embed.py
