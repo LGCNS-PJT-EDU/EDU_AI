@@ -15,18 +15,15 @@
 ```md
 FastAPI – 웹 API 프레임워크
 
-Uvicorn – ASGI 서버
+Hypercorn – ASGI 서버
 
-MongoDB – 비정형 데이터 저장 (피드백, 진단 결과)
+MongoDB – 비정형 데이터 저장
 
-MySQL – 구조화 데이터 저장 (유저, 평가, 진도)
+CromaDB - MongoDB의 데이터 중 일부를 임베딩 및 저장
 
-CromaDB - 로드맵 데이터 저장
-
-OpenAI GPT-4 – 로드맵 및 피드백 생성
+OpenAI GPT 4o – LLM 기반 답변 생성
 
 LangChain – GPT + RAG 기반 검색 기능
-
 
 ```
 
@@ -34,16 +31,88 @@ LangChain – GPT + RAG 기반 검색 기능
 ### 프로젝트 구조
 ```md
 EDU_AI/
+├── .github/
+├── .zen/
+│ └── config.yaml
 ├── app/
-│ ├── main.py # FastAPI 실행 진입점
-│ ├── routes/ # API 라우터들
-│ ├── models/ # Pydantic 모델 정의
-│ └── services/ # GPT, RAG, DB 연동 등 로직
-├── .env # 환경 변수 파일
-├── requirements.txt # 의존성 리스트
-├── README.md # 프로젝트 설명 문서
-└── .gitignore
-
+│ ├── clients/
+│ │ ├── chromadb_client.py
+│ │ ├── mongodb.py
+│ │ └── openai_client.py
+│ ├── config/
+│ │ └── kafka_config.py
+│ ├── consumer/
+│ │ ├── feedback_consumer.py
+│ │ └── recommendation_consumer.py
+│ ├── data/
+│ ├── kafka_admin/
+│ │ └── topic_initializer.py
+│ ├── models/
+│ │ ├── feedback/
+│ │ ├── interview/
+│ │ ├── pre-assessment/
+│ │ └── recommendation/
+│ ├── clients/
+│ ├── producer/
+│ │ ├── feedback_producer.py
+│ │ └── recommendation_producer.py
+│ ├── routers/
+│ │ ├── chroma_status_router.py
+│ │ ├── feedback_router.py
+│ │ ├── post_assessment_router.py
+│ │ ├── pre_assessment_router.py
+│ │ ├── question_router.py
+│ │ ├── recommendation_router.py
+│ │ └── status_router.py
+│ ├── scripts/
+│ │ ├── chroma_insert.py
+│ │ ├── count_mongo_chroma.py
+│ │ ├── create_index.py
+│ │ ├── insert_sample.py
+│ │ ├── migrate_mongo_to_chroma.py
+│ │ └── test_rag_pipeline.py
+│ ├── services/
+│ │ ├── assessment/
+│ │ │ ├── common.py
+│ │ │ ├── post.py
+│ │ │ └── pre.py
+│ │ ├── common/
+│ │ │ └── common.py
+│ │ ├── feedback/
+│ │ │ └── builder.py
+│ │ ├── interview/
+│ │ │ ├── builder.py
+│ │ │ └── evaluator.py
+│ │ ├── prompt/
+│ │ │ └── builder.py
+│ │ ├── recommendation/
+│ │ │ ├── rag_explainer.py
+│ │ │ └── reranker.py
+│ │ ├── sync/
+│ │ │ └── sync_recommend.py
+│ │ └── tasks/
+│ │   └── migrate_task.py
+│ ├── utils/
+│ │ ├── build_feedback_prompt.py
+│ │ ├── embed.py
+│ │ ├── gpt_prompt.py
+│ │ ├── level_utils.py
+│ │ ├── pretest_log_utils.py
+│ │ ├── prometheus_metrics.py
+│ │ └── roadmap_prompt.py
+│ ├── celery_worker.py
+│ └── main.py
+├── prometheus/
+│ └── prometheus.yml
+├── .env
+├── .gitignore
+├── Dockerfile
+├── README.md
+├── docker-compose.yml
+├── poetry.lock
+├── pyproject.toml
+├── requirements.txt
+└── test_main.http
 ```
 
 ---
