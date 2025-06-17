@@ -76,4 +76,3 @@ async def evaluate_with_rag_and_embed(
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"오류 발생: {str(e)}")
 
-
