@@ -1,27 +1,102 @@
 version: '3.8'
 
 services:
-  prometheus:
-    image: prom/prometheus:latest
-    container_name: prometheus
-    volumes:
-      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+  redis:
+    image:  redis:latest
+    container_name: redis
     ports:
-      - "9090:9090"
+      - "6379:6379"
+    restart: always
     networks:
       - edu-network
-    restart: always
 
-  grafana:
-    image: grafana/grafana:latest
-    container_name: grafana
+  mysql:
+    image: mysql:8.0
+    platform: linux/amd64
+    container_name: mysql
     ports:
-      - "3000:3000"
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root1234
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: edu
+      MYSQL_PASSWORD: edu1234
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    restart: always
     networks:
       - edu-network
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.6.0
+    container_name: kzoo
+    restart: unless-stopped # 컨테이너가 죽으면 자동 재시작, docker stop 시엔 유지
+    networks:
+      - edu-network
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181 # 클라이언트 접속 포트
+      ZOOKEEPER_TICK_TIME: 2000 # 서버 간 하트비트 주기
+      ZOOKEEPER_SYNC_LIMIT: 2 # 리더 <-> 팔로워 최대 자연 틱
+
+  kafka:
+    image: confluentinc/cp-kafka:7.6.0
+    container_name: kbroker
+    depends_on: [ zookeeper ]
+    ports:
+      - "9092:9092"
+      - "19092:19092"
     volumes:
-      - ./grafana:/var/lib/grafana
-    restart: always
+      - kafka_data:/var/lib/kafka/data          # 데이터 남기기
+    restart: unless-stopped
+    networks:
+      - edu-network
+    environment:
+      # ------ 기본 ------
+      KAFKA_BROKER_ID: 1 # 브로커 고유 ID
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181 # 브로커가 메타데이터를 저장할 ZK
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1 # 컨슈머 그룹 오프셋 토픽의 복제계수, 싱글 노드라 1 운영은 3 권장
+      # ------ 리스너 설정 ------
+      KAFKA_LISTENERS: EXTERNAL://0.0.0.0:9092,INTERNAL://0.0.0.0:19092
+      KAFKA_ADVERTISED_LISTENERS: EXTERNAL://localhost:9092,INTERNAL://kafka:19092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+      # ------ 로그 & 성능 튜닝 ------
+      # (운영 전환 시 override 용이)
+      KAFKA_LOG_RETENTION_HOURS: 168          # 7일
+      KAFKA_NUM_NETWORK_THREADS: 3
+      KAFKA_NUM_IO_THREADS: 8
+      KAFKA_SOCKET_REQUEST_MAX_BYTES: 104857600
+      # ───────── JVM 메모리 (로컬 최소화) ─────────
+      KAFKA_HEAP_OPTS: "-Xmx512M -Xms256M"
+      # ───────── TOPIC 자동 생성 해제 ─────────
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
+
+  connect:
+    image: debezium/connect:3.0.0.Final
+    container_name: kconnect
+    depends_on: [ kafka ]
+    ports:
+      - "8083:8083"
+    volumes:
+      - ./custom-connectors:/kafka/custom
+    restart: unless-stopped
+    networks:
+      - edu-network
+    environment:
+      BOOTSTRAP_SERVERS: kafka:19092 # Kafka 브로커 주소
+      GROUP_ID: 1 #Connect 클러스터 그룹 ID
+      CONFIG_STORAGE_TOPIC: k_connect_configs # 커넥터 설정 저장 토픽
+      OFFSET_STORAGE_TOPIC: k_connect_offsets # 오프셋 저장 토픽
+      STATUS_STORAGE_TOPIC: k_connect_statuses # 상태 저장 토픽
+      CONNECT_KEY_CONVERTER: org.apache.kafka.connect.json.JsonConverter # 메시지 키 변환기
+      CONNECT_VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter # 메시지 값 변환기
+      CONNECT_KEY_CONVERTER_SCHEMAS_ENABLE: "false" # 메시지 키 스키마 미포함
+      CONNECT_VALUE_CONVERTER_SCHEMAS_ENABLE: "false" # 메시지 값 스키마 미포함
+      CONNECT_PLUGIN_PATH: /kafka/custom,/kafka/connect,/usr/share/java, # 커넥터 플러그인 경로
+
+volumes:
+  kafka_data:
 
 networks:
   edu-network:

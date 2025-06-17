@@ -1,8 +1,11 @@
 # library
 import asyncio
+
+import metrics
 from fastapi import FastAPI
 from prometheus_fastapi_instrumentator import Instrumentator
 
+from app.routers.test import router as test_router
 # FastAPI 인스턴스 먼저 정의
 app = FastAPI(
     title="AI 학습 플랫폼 API",
@@ -10,8 +13,13 @@ app = FastAPI(
     description="진단 기반 개인 맞춤형 로드맵 및 성장 피드백 생성 API"
 )
 
-# Prometheus AIOps 미들웨어 삽입 (metrics 라우터 자동 생성)
-Instrumentator().instrument(app).expose(app)
+Instrumentator(
+    should_group_status_codes=False,
+    should_ignore_untemplated=True,
+    should_respect_env_var=False,
+).add(
+    metrics.latency_histogram()  # <== 이게 핵심!
+).instrument(app).expose(app)
 
 # Kafka 관련 기능
 from app.consumer.feedback_consumer import consume_feedback
@@ -28,6 +36,7 @@ from app.routers.recommendation_router import router as recommendation_router
 from app.routers.question_router import router as question_router
 from app.routers.chroma_status_router import router as chroma_status_router
 from app.routers.status_router import router as status_router
+from app.routers.chroma_router import router as chroma_router
 
 
 # 라우터 등록
@@ -38,6 +47,8 @@ app.include_router(recommendation_router, prefix="/api/recommendation", tags=["�
 app.include_router(question_router, prefix="/api/question", tags=["인터뷰 면접 기능 관련 API"])
 app.include_router(chroma_status_router, prefix="/api/chroma", tags=["ChromaDB 상태 점검 API"])
 app.include_router(status_router, prefix="/api", tags=["AIOps 상태 모니터링"])
+app.include_router(chroma_router, prefix="/api/chroma/manage", tags=["ChromaDB 관리 API"])
+app.include_router(test_router, prefix="/api/test", tags=["Prometheus 테스트"])
 
 # Kafka consumer 실행 등록
 feedback_consumer_task = None

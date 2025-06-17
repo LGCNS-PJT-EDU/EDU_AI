@@ -1,14 +1,45 @@
 from celery import shared_task
 from pymongo import MongoClient
 from dotenv import load_dotenv
+
 import os
 from langchain_core.documents import Document
 from app.clients.chromadb_client import ChromaClient
+from app.clients.opensearch_client import opensearch_client
 
 load_dotenv()
 mongo = MongoClient(os.getenv("MONGO_DB_URL"))
 collection = mongo["ai_interview"]["interview_contents"]
+feedback_collection = mongo["ai_platform"]["feedback"]
 chroma_client = ChromaClient()
+
+@shared_task
+def sync_feedback_logs_to_opensearch():  # ⬅ 추가
+    """
+    MongoDB 'feedback' 컬렉션을 OpenSearch로 전송하는 작업.
+    """
+    from opensearchpy.helpers import bulk  # ⬅ 추가
+
+    feedback_docs = list(feedback_collection.find())
+
+    actions = []
+    for doc in feedback_docs:
+        action = {
+            "_index": "feedback_logs",
+            "_id": str(doc["_id"]),
+            "_source": {
+                "user_id": doc.get("user_id"),
+                "question_id": doc.get("question_id"),
+                "score": doc.get("score"),
+                "reason": doc.get("reason"),
+                "created_at": doc.get("created_at").isoformat() if doc.get("created_at") else None
+            }
+        }
+        actions.append(action)
+
+    success, _ = bulk(opensearch_client, actions)
+    print(f"[OpenSearch] {success}개 문서 전송 완료")  # ⬅ 추가
+
 
 @shared_task
 def batch_sync_all_sources():

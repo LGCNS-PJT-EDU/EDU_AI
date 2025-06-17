@@ -1,1 +1,4 @@
 hypercorn
+celery
+opensearch-py
+pymongo

@@ -1,7 +1,8 @@
 # app/utils/embed.py
 from langchain_core.documents import Document
 from app.clients.chromadb_client import ChromaClient
-from datetime import datetime
+from datetime import datetime, date
+from app.utils.prometheus_metrics import daily_insert_total
 
 chroma_client = ChromaClient()
 
@@ -23,4 +24,8 @@ def embed_to_chroma(user_id: str, content: str, source: str, source_id: str, met
         metadata=base_meta
     )
     chroma_client.add_documents([doc])
+
+    #  Prometheus 카운터 증가
+    daily_insert_total.labels(source=source, date=str(date.today())).inc()
+
     print(f" Chroma에 삽입 완료: {source} - {source_id}")

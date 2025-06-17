@@ -17,5 +17,10 @@ celery_app.conf.beat_schedule = {
     "daily-migrate-to-chroma": {
         "task": "app.tasks.migrate_task.batch_migrate_to_chroma",
         "schedule": crontab(hour=3, minute=0),  # 매일 새벽 3시 자동 실행
+    },
+    #  OpenSearch 로그 동기화 작업 추가
+    "daily-sync-feedback-to-opensearch": {
+        "task": "app.tasks.migrate_task.sync_feedback_logs_to_opensearch",
+        "schedule": crontab(hour=4, minute=0),  # 매일 새벽 4시 자동 실행
     }
 }

@@ -1,5 +1,3 @@
-#  chromadb_client.py (최신 수정 버전)
-
 import os
 from dotenv import load_dotenv
 from typing import List, Optional
@@ -75,4 +73,31 @@ class ChromaClient:
             result = self.collection.delete(where=where_clause)
             print(f"\n[전체 삭제] 조건 {where_clause} → {result}")
             return []
+
+    def delete_all_documents(self, batch_size: int = 500):
+        """컬렉션 내 모든 문서를 batch로 나눠 삭제합니다 (컬렉션은 유지)."""
+        all_docs = self.collection.get()
+        all_ids = all_docs.get("ids", [])
+
+        if not all_ids:
+            print("\n[전체 삭제] 삭제할 문서가 없습니다.")
+            return
+
+        total = len(all_ids)
+        print(f"\n[전체 삭제] 총 {total}개 문서 삭제 시작")
+
+        # Batch로 나누기
+        for i in range(0, total, batch_size):
+            batch_ids = all_ids[i:i + batch_size]
+            result = self.collection.delete(ids=batch_ids)
+            print(f"  → {i + 1} ~ {i + len(batch_ids)}번 문서 삭제 완료")
+
+        print(f"\n 전체 {total}개 문서 삭제 완료")
+        return total
+
+
+
+if __name__ == "__main__":
+    chroma = ChromaClient()
+    chroma.delete_all_documents()
 

@@ -1,6 +1,6 @@
 import logging
 import sys
-
+from kafka.admin import KafkaAdminClient, NewTopic
 from kafka import KafkaAdminClient
 from kafka.admin import NewTopic
 from kafka.errors import TopicAlreadyExistsError
@@ -27,7 +27,9 @@ RECOM_RESULT_FAIL_TOPIC = "recom.result.fail"
 def initialize_topics():
     admin_client = KafkaAdminClient(
         bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
-        client_id="feedback-admin"
+        client_id="feedback-admin" ,
+        api_version = (3, 6),
+        api_version_auto_timeout_ms = 3000
     )
 
     topics_to_create = [
