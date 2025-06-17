@@ -1,11 +1,11 @@
 global:
-  scrape_interval: 120s   
+  scrape_interval: 120s
 
 scrape_configs:
   - job_name: "fastapi-ai-server"
-    metrics_path: /metrics   
-    scheme: https            
+    metrics_path: /metrics
+    scheme: https
     static_configs:
-      - targets: ["ai.takeit.academy"]  
+      - targets: ["ai.takeit.academy"]
     tls_config:
-      insecure_skip_verify: true        
+      insecure_skip_verify: true

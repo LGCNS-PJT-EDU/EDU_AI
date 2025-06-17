@@ -104,4 +104,3 @@ async def recommend_content(user_id: str, subject_id: int):
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error during recommendation: {str(e)}")
-
