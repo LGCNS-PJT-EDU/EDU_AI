@@ -1,16 +1,30 @@
+# app/tasks/feedback_task.py
+
 from celery import shared_task
-from opensearchpy.helpers import bulk
 from datetime import datetime
-from app.clients.opensearch_client import opensearch_client  # ← 여기!
-from app.clients.mongodb import db_client   # ← 여기!
+from app.utils.embed import embed_to_chroma
 
-mongo_client = db_client()
-collection = mongo_client.feedback  # ai_platform.feedback 컬렉션
+#  1. Chroma 삽입용 Task
+@shared_task(name="sync_feedback_to_chroma")
+def sync_feedback_to_chroma_task(user_id: str, content: str, source_id: str):
+    return embed_to_chroma(
+        user_id=user_id,
+        content=content,
+        source="feedback",
+        source_id=source_id
+    )
 
-@shared_task
+
+#  2. OpenSearch 로그 전송용 Task
+from opensearchpy.helpers import bulk
+from app.clients.opensearch_client import opensearch_client
+from app.clients import db_clients
+
+collection = db_clients.mongo_client.feedback  # db 접근 인스턴스 수정
+
+@shared_task(name="sync_feedback_logs_to_opensearch")
 def sync_feedback_logs_to_opensearch():
     import asyncio
-
     actions = []
 
     async def prepare_docs():
@@ -26,13 +40,14 @@ def sync_feedback_logs_to_opensearch():
                     "final_comment": doc.get("final_comment"),
                     "score": doc.get("score", 0),
                     "timestamp": doc.get("timestamp", datetime.utcnow()),
-                    "embedding": doc.get("embedding", [0.0] * 768)
+                    "embedding": doc.get("embedding", [0.0]*768)
                 }
             })
+
     asyncio.run(prepare_docs())
 
     if actions:
         success, _ = bulk(opensearch_client, actions)
-        print(f"OpenSearch 전송 완료: {success}개 문서")
+        print(f" OpenSearch 전송 완료: {success}개 문서")
     else:
-        print("MongoDB에서 읽은 문서가 없습니다!")
+        print(" MongoDB에서 읽은 문서가 없습니다!")

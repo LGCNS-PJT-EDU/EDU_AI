@@ -100,4 +100,3 @@ class ChromaClient:
 if __name__ == "__main__":
     chroma = ChromaClient()
     chroma.delete_all_documents()
-

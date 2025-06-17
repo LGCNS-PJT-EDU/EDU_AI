@@ -181,5 +181,5 @@ cython_debug/
 # Grafana
 /grafana
 
-# MySQL 데이터/소켓 파일 무시
+# .gitignore에 아래 추가
 mysql/data/

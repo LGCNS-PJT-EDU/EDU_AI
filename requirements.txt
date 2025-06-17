@@ -1,4 +1,7 @@
 hypercorn
-celery
-opensearch-py
+motor
 pymongo
+opensearch-py
+celery
+python-dotenv
+fastapi

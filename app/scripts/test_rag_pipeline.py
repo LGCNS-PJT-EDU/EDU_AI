@@ -1,4 +1,4 @@
-#  통합 테스트용 스크립트: test_rag_pipeline.py
+# ✅ 통합 테스트용 스크립트: test_rag_pipeline.py
 import os
 from dotenv import load_dotenv
 from pymongo import MongoClient

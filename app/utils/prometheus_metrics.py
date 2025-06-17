@@ -1,11 +1,11 @@
-# app/utils/prometheus_metrics.py
+from prometheus_client import REGISTRY, Counter
 
-from prometheus_client import Counter
-from datetime import date
-
-# 일일 삽입 수 추적
-daily_insert_total = Counter(
-    "daily_insert_total",
-    "일일 문서 삽입 수",
-    ["source", "date"]
-)
+# 이미 등록된 경우 가져오기
+if "daily_insert_total" in REGISTRY._names_to_collectors:
+    daily_insert_total = REGISTRY._names_to_collectors["daily_insert_total"]
+else:
+    daily_insert_total = Counter(
+        "daily_insert_total",
+        "일일 문서 삽입 수",
+        ["source", "date"]
+    )
