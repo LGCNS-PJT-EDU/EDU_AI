@@ -2,6 +2,7 @@ from fastapi import FastAPI
 import asyncio
 from prometheus_fastapi_instrumentator import Instrumentator
 
+from app.routers.opensearch_test_router import router as opensearch_test_router
 from app.utils.metrics import observe_latency
 from app.routers.pre_assessment_router import router as assessment_router
 from app.routers.post_assessment_router import router as post_assessment_router
@@ -36,6 +37,7 @@ Instrumentator(
 ).instrument(app).expose(app)
 
 # 라우터 등록
+app.include_router(opensearch_test_router, prefix="/api/opensearch", tags=["OpenSearch 로그 전송"])
 app.include_router(assessment_router, prefix="/api/pre", tags=["사전 평가 기능 관련 API"])
 app.include_router(post_assessment_router, prefix="/api/post", tags=["사후 평가 기능 관련 API"])
 app.include_router(feedback_router, prefix="/api/feedback", tags=["피드백 기능 관련 API"])
@@ -45,6 +47,7 @@ app.include_router(chroma_status_router, prefix="/api/chroma", tags=["ChromaDB �
 app.include_router(status_router, prefix="/api", tags=["AIOps 상태 모니터링"])
 app.include_router(chroma_test_router, prefix="/api/test", tags=["Chroma 삽입 테스트"])
 app.include_router(chroma_manage_router, prefix="/api/chroma/manage", tags=["ChromaDB 관리 API"])
+
 
 # Kafka Consumer Task
 feedback_consumer_task = None
@@ -57,7 +60,7 @@ async def startup_event():
     await init_feedback_producer()
     await init_recommendation_producer()
     feedback_consumer_task = asyncio.create_task(consume_feedback())
-    recom_consumer_task = asyncio.create_task(consume_recommend())
+    recom_consumer_task = asyncio.create_task(consume_recommend())#
 
 @app.on_event("shutdown")
 async def shutdown_event():
@@ -75,5 +78,5 @@ async def shutdown_event():
         try:
             await recom_consumer_task
         except asyncio.CancelledError:
-            pass
-        await close_recommendation_producer()
+           pass
+    await close_recommendation_producer()

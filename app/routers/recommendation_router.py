@@ -1,9 +1,9 @@
 #  app/routers/recommendation_router.py 수정 예시
 import asyncio
+from datetime import datetime
+from typing import List
 
 from fastapi import APIRouter, HTTPException
-from typing import List
-from datetime import datetime
 
 from app.clients import chroma_client, db_clients
 from app.models.recommendation.request import UserPreference
@@ -16,27 +16,30 @@ from app.utils.embed import embed_to_chroma
 router = APIRouter()
 
 vectordb = chroma_client
-recommendation_db = db_clients["recommendation"]
+recommendation_collection = db_clients.recommendation_content      # ✅ 수정
+cache_collection = db_clients.recommendation_cache                # ✅ 수정
 
-recommendation_collection = recommendation_db.recommendation_content
-cache_collection = recommendation_db.recommendation_cache
 
-@router.post("", response_model=List[RecommendationResponse], summary="개인화 콘텐츠 추천 API", description="사전/사후 평가 및 진단 기반으로 사용자의 맥락에 맞는 콘텐츠 4개와 AI픽 1개를 제공합니다.")
+@router.post("", response_model=List[RecommendationResponse],
+             summary="개인화 콘텐츠 추천 API",
+             description="사전/사후 평가 및 진단 기반으로 사용자의 맥락에 맞는 콘텐츠 4개와 AI픽 1개를 제공합니다.")
 async def recommend_content(user_id: str, subject_id: int):
-    user = await get_user(user_id)
-    subject = await subject_id_to_name(subject_id)
-    all_levels = user.get("level", {})
-
-    raw_prefs = user.get("preferences", {})
-    prefs = UserPreference(
-        level=all_levels.get(str(subject_id), "Not_Defined"),
-        duration=raw_prefs.get("duration", 0),
-        price=raw_prefs.get("price", 0),
-        is_prefer_book=raw_prefs.get("is_prefer_book", False),
-    )
-
     try:
+        user = await get_user(user_id)
+        subject = await subject_id_to_name(subject_id)
+        all_levels = user.get("level", {})
+
+        raw_prefs = user.get("preferences", {})
+        prefs = UserPreference(
+            level=all_levels.get(str(subject_id), "Not_Defined"),
+            duration=raw_prefs.get("duration", 0),
+            price=raw_prefs.get("price", 0),
+            is_prefer_book=raw_prefs.get("is_prefer_book", False),
+        )
+
         content_types = ["책"] if prefs.is_prefer_book else ["동영상", "블로그"]
+
+        # 콘텐츠 후보 가져오기
         candidates = await recommendation_collection.find({
             "sub_id": subject_id,
             "content_type": {"$in": content_types},
@@ -73,7 +76,7 @@ async def recommend_content(user_id: str, subject_id: int):
                     "cached_at": datetime.utcnow()
                 })
 
-            #  Chroma 삽입
+            # Chroma 임베딩
             content_text = f"{item['content_title']} {item['content_platform']} {item['content_type']}"
             embed_to_chroma(user_id=user_id, content=content_text, source="recommendation", source_id=str(item["_id"]))
 
@@ -93,10 +96,12 @@ async def recommend_content(user_id: str, subject_id: int):
                 "comment": reason
             })
 
+        # AI픽 선정
         best_index = call_gpt_rerank(content_for_gpt, context_str)
         if 0 <= best_index < len(results):
             results[best_index]["isAiRecommendation"] = True
 
+        # 캐시 저장
         if log:
             await cache_collection.insert_many(log)
 
