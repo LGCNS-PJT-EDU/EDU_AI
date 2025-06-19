@@ -1,31 +1,57 @@
-# LGCNS_InspireCamp_Education
----
-### 프로젝트 개요
-**AI 기반 초개인화 개발자 성장 로드맵 추천 플랫폼**
+# 🧠 EDU_AI
 
-이 서비스는 진입 단계의 전공자/비전공자와 주니어 개발자를 위한 맞춤형 커리어 성장 가이드입니다. 단순히 기술 커리큘럼을 나열하는 데 그치지 않고, 사용자의 성향, 경험, 기술 수준을 종합적으로 분석하여 왜 이 기술을 배우는지, 어떻게 접근해야 하는지를 AI가 코치처럼 피드백하고 추천합니다.
-
-#### 주요 타겟
-1. IT 진입을 꿈꾸는 전공/비전공 학습자
-2. 방향을 잃은 주니어 개발자
-3. 효율적인 역량 향상을 원하는 예비 취준생
+AI 기반 학습 지원을 위한 백엔드/ML 플랫폼 **EDU_AI**입니다.  
+학습자 맞춤 콘텐츠 추천, 인터뷰 피드백 등 AI 로직이 포함된 핵심 엔진 역할을 수행합니다.
 
 ---
-### 기술 스택
-```md
-FastAPI – 웹 API 프레임워크
 
-Hypercorn – ASGI 서버
+## 🚀 주요 기능
 
-MongoDB – 비정형 데이터 저장
+### 🔍 학습 스타일 분석
+- 사용자 입력을 바탕으로 **학습 스타일 예측** 
 
-CromaDB - MongoDB의 데이터 중 일부를 임베딩 및 저장
+### 🧩 콘텐츠/로드맵 추천
+- 분류 모델 기반 **개인 맞춤 콘텐츠 큐레이션**
+- 추천된 콘텐츠에 대한 메타데이터 및 사용 히스토리 관리
 
-OpenAI GPT 4o – LLM 기반 답변 생성
+### 🗣 인터뷰 피드백 모듈
+- STT 기반 음성 응답 변환
+- GPT 기반 평가 및 개선 피드백 생성
 
-LangChain – GPT + RAG 기반 검색 기능
+### 🧠 AI Q&A 지원
+- 학습 질문에 대해 GPT 등 LLM으로 답변 제공
 
-```
+---
+## 🛠 기술 스택
+
+### 🔹 핵심 기술
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white)
+![Python](https://img.shields.io/badge/Python%203.10+-3776AB?style=flat&logo=python&logoColor=white)
+
+### ⚙️ 서버 및 런타임
+![Hypercorn](https://img.shields.io/badge/Hypercorn-333333?style=flat)
+![ASGI](https://img.shields.io/badge/ASGI-3A3A3A?style=flat)
+
+### 🧠 AI & LLM
+![OpenAI](https://img.shields.io/badge/OpenAI%20GPT--4o-412991?style=flat&logo=openai&logoColor=white)
+![LangChain](https://img.shields.io/badge/LangChain-4B5563?style=flat)
+
+### 📦 벡터 검색 & 데이터 저장
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white)
+![ChromaDB](https://img.shields.io/badge/ChromaDB-9D34DA?style=flat)
+
+### 🔗 API & 통신
+![HTTPX](https://img.shields.io/badge/HTTPX-3B82F6?style=flat)
+![Pydantic](https://img.shields.io/badge/Pydantic-BA68C8?style=flat)
+
+### 🧪 테스트 & 품질
+![Pytest](https://img.shields.io/badge/Pytest-0A9EDC?style=flat)
+![FastAPI TestClient](https://img.shields.io/badge/FastAPI%20TestClient-009688?style=flat)
+
+### 🐳 배포 & 운영
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=flat&logo=githubactions&logoColor=white)
+
 
 ---
 ### 프로젝트 구조
@@ -114,60 +140,6 @@ EDU_AI/
 ├── requirements.txt
 └── test_main.http
 ```
-
----
-### 깃 커밋 컨벤션
-
-* 작성 방식
-```
-type: subject
-
-body (optional)
-...
-...
-...
-
-footer (optional)
-```
-
-* 작성 예시
-```
-feat: 압축파일 미리보기 기능 추가
-
-사용자의 편의를 위해 압축을 풀기 전에
-다음과 같이 압축파일 미리보기를 할 수 있도록 함
- - 마우스 오른쪽 클릭
- - 윈도우 탐색기 또는 맥 파인더의 미리보기 창
-
-Closes #125
-```
-
-* Type
-
-| 타입 | 설명 |
-| :- | - |
-| ✨feat | 새로운 기능 추가 |  
-| 🐛fix | 버그 수정 |  
-| 📝docs | 문서 수정 |  
-| 💄style | 공백, 세미콜론 등 스타일 수정 |  
-| ♻️refactor | 코드 리팩토링 |  
-| ⚡️perf | 성능 개선 | 
-| ✅test | 테스트 추가 | 
-| 👷chore | 빌드 과정 또는 보조 기능(문서 생성기능 등) 수정 | 
-
-* Subject: 
-커밋의 작업 내용 간략히 설명
-
-
-* Body: 
-길게 설명할 필요가 있을 시 작성
-
-
-* Footer: 
-Breaking Point 가 있을 때
-특정 이슈에 대한 해결 작업일 때
-
-* [Gitmoji](https://gitmoji.dev/)를 이용하여 Type을 대신하기도 합니다.
 
 ---
 
