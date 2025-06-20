@@ -1,37 +1,40 @@
 import logging
 import sys
 
-from fastapi import APIRouter, Response
-from app.clients import db_clients
+from fastapi import APIRouter, Response, HTTPException
+from typing import List
 
+from app.clients import db_clients
 from app.models.pre_assessment.request import AssessmentResult
 from app.models.pre_assessment.response import QuestionStructure
 from app.services.assessment.common import safe_sample, result_generate
 from app.services.assessment.pre import level_to_string
 from app.services.common.common import subject_id_to_name, get_user
-from typing import List
 from app.utils.embed import embed_to_chroma
-
 
 router = APIRouter()
 
 logger = logging.getLogger("pre-assessment-router")
 logger.setLevel(logging.INFO)
 
-question_db = db_clients["ai_platform"]
-assessment_db = db_clients["assessment"]
-user_db = db_clients["user"]
-
 if not logger.handlers:
-    handler = logging.StreamHandler(sys.stdout)  # 터미널로 출력
+    handler = logging.StreamHandler(sys.stdout)
     formatter = logging.Formatter('[%(levelname)s] %(name)s: %(message)s')
     handler.setFormatter(formatter)
     logger.addHandler(handler)
 
-@router.get("/subject", response_model=List[QuestionStructure], response_model_by_alias=False, summary="사전 평가 문제를 생성", description="데이터베이스에서 사전에 지정된 규칙에 따라 저장된 문제를 가져오고, 사전 평가 문제 데이터셋을 완성한다.")
+# DB 클라이언트 정의
+question_db = db_clients["ai_platform"]
+assessment_db = db_clients["assessment"]
+user_db = db_clients["user"]
+
+
+@router.get("/subject", response_model=List[QuestionStructure], response_model_by_alias=False,
+            summary="사전 평가 문제를 생성", description="데이터베이스에서 사전에 지정된 규칙에 따라 저장된 문제를 가져오고, 사전 평가 문제 데이터셋을 완성한다.")
 async def get_pretest(user_id: str, subject_id: int):
     subject_name = await subject_id_to_name(subject_id)
 
+    # ✅ 과목별 컬렉션에서 문제 조회 (예: ai_platform.math)
     all_questions = await question_db.db[subject_name].find().to_list(length=1000)
     chapter_names = {q["chapterName"] for q in all_questions}
 
@@ -47,7 +50,7 @@ async def get_pretest(user_id: str, subject_id: int):
     return result
 
 
-@router.post('/subject', summary="사용자의 사전 평가 결과를 저장", description="백엔드 서버에서 전송된 사용자의 사전 평가 결과를 데이터베이스에 저장한다.")
+@router.post("/subject", summary="사용자의 사전 평가 결과를 저장", description="백엔드 서버에서 전송된 사용자의 사전 평가 결과를 데이터베이스에 저장한다.")
 async def save_result(user_id: str, payload: AssessmentResult):
     user = await get_user(user_id)
     compiled_data = payload.model_dump(exclude={"userId"})
@@ -55,7 +58,7 @@ async def save_result(user_id: str, payload: AssessmentResult):
     level = await level_to_string(payload.subject.level)
     level_key = str(subject_id)
 
-    #  Chroma 자동 삽입
+    # ✅ Chroma 자동 임베딩
     for ch in compiled_data.get("chapters", []):
         content = ch.get("userAnswer", "")
         qid = ch.get("questionId")
@@ -76,7 +79,7 @@ async def save_result(user_id: str, payload: AssessmentResult):
 
     await user_db.user_profile.update_one(
         {
-            "user_id": user["user_id"],
+            "user_id": user["user_id"]
         },
         {
             "$set": {

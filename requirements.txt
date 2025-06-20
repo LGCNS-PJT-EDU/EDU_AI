@@ -1,5 +1,4 @@
 hypercorn
-motor
 pymongo
 opensearch-py
 celery

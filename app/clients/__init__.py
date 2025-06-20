@@ -1,8 +1,8 @@
 from .chromadb_client import ChromaClient
-from .mongodb import MongoDBClient
+from .mongodb import MongoClientsManager  # ✅ MongoClientsManager만 사용
 from .openai_client import OpenAiClient
 
-
+# 클라이언트 초기화
 ai_client = OpenAiClient()
 
 chroma_client = ChromaClient(
@@ -10,18 +10,5 @@ chroma_client = ChromaClient(
     openai_api_key=None
 )
 
-question_client = MongoDBClient()
-assessment_client = MongoDBClient(db_name="assessment")
-feedback_client = MongoDBClient(db_name="feedback")
-recommendation_client = MongoDBClient(db_name="recommendation")
-user_client = MongoDBClient(db_name="user")
-interview_client = MongoDBClient(db_name="ai_interview")
-
-db_clients = {
-    "ai_platform":    question_client,
-    "assessment":     assessment_client,
-    "feedback":       feedback_client,
-    "recommendation": recommendation_client,
-    "user":           user_client,
-    "ai_interview" : interview_client,
-}
+# MongoClientsManager 사용
+db_clients = MongoClientsManager()

@@ -39,7 +39,7 @@ class ChromaClient:
         return self.collection.count()
 
     def get_documents_by_user(self, user_id: str, limit: int = 5):
-        return self.collection.get(where={"user_id": user_id})
+        return self.collection.get(where={"user_id": user_id}, limit=limit)
 
     def delete_documents(self, user_id: str = None, source: str = None, limit: Optional[int] = None, sort_order: Optional[str] = "asc"):
         filter_ = []
@@ -52,7 +52,8 @@ class ChromaClient:
             print("\n삭제 조건이 없습니다.")
             return
 
-        where_clause = {"$and": filter_} if len(filter_) > 1 else filter_[0]
+        # 수정: Mongo 스타일 → Chroma 스타일 where_clause로 변환
+        where_clause = {k: v for d in filter_ for k, v in d.items()}
 
         if limit:
             docs = self.collection.get(where=where_clause)
@@ -86,7 +87,6 @@ class ChromaClient:
         total = len(all_ids)
         print(f"\n[전체 삭제] 총 {total}개 문서 삭제 시작")
 
-        # Batch로 나누기
         for i in range(0, total, batch_size):
             batch_ids = all_ids[i:i + batch_size]
             result = self.collection.delete(ids=batch_ids)
@@ -94,7 +94,6 @@ class ChromaClient:
 
         print(f"\n 전체 {total}개 문서 삭제 완료")
         return total
-
 
 
 if __name__ == "__main__":

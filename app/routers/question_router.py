@@ -2,16 +2,14 @@ import json
 import openai
 from fastapi import APIRouter, HTTPException, Query, Body
 from typing import List
-from app.clients import interview_client
-from app.clients import db_clients
+
+from app.clients import db_clients  # ✅ 수정: interview_client 제거
 from app.models.interview.question_model import InterviewQuestion
+from app.models.interview.evaluation_model import EvaluationRequest
 from app.services.common.common import subject_id_to_name
 from app.services.interview.bulider import get_questions_by_sub_id
-from app.models.interview.evaluation_model import EvaluationRequest
 from app.services.interview.evaluator import evaluate_answer_with_rag
 from app.utils.embed import embed_to_chroma
-from bson import ObjectId
-
 
 router = APIRouter(tags=["인터뷰 면접 기능 관련 API"])
 
@@ -33,6 +31,7 @@ async def get_questions(
         raise HTTPException(status_code=500, detail=f"질문 검색 중 오류 발생: {str(e)}")
 
 
+#  면접 평가 및 저장 API
 @router.post("/evaluate", summary="면접 답변 평가 및 저장 (복수 개)", response_model=List[dict])
 async def evaluate_with_rag_and_embed(
     user_id: str = Query(..., description="사용자 ID"),
@@ -57,7 +56,7 @@ async def evaluate_with_rag_and_embed(
                 source_id=str(request.interviewId)
             )
 
-            # 3. MongoDB 저장 (기록은 유지)
+            # 3. MongoDB 저장 (기록 유지)
             doc = {
                 "user_id": user_id,
                 "interview_id": request.interviewId,
@@ -65,14 +64,12 @@ async def evaluate_with_rag_and_embed(
                 "user_reply": request.userReply,
                 "evaluation": evaluation_result
             }
-            await interview_client.interview_feedback.insert_one(doc)
+            await db_clients.interview_feedback.insert_one(doc)  # ✅ 수정된 부분
 
-            # 4. evaluation만 리스트로 추가
+            # 4. 평가 결과 리스트에 추가
             evaluations.append(evaluation_result)
 
-        # 전체 문서 대신 evaluation 리스트만 반환
         return evaluations
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"오류 발생: {str(e)}")
-
