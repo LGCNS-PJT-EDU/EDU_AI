@@ -25,24 +25,25 @@ AI 기반 학습 지원을 위한 백엔드/ML 플랫폼 **EDU_AI**입니다.
 ## 🛠 기술 스택
 
 ### 🔹 핵심 기술
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white)
 ![Python](https://img.shields.io/badge/Python%203.10+-3776AB?style=flat&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white)
 
 ### ⚙️ 서버 및 런타임
-![Hypercorn](https://img.shields.io/badge/Hypercorn-333333?style=flat)
 ![ASGI](https://img.shields.io/badge/ASGI-3A3A3A?style=flat)
+![Hypercorn](https://img.shields.io/badge/Hypercorn-333333?style=flat)
 
 ### 🧠 AI & LLM
-![OpenAI](https://img.shields.io/badge/OpenAI%20GPT--4o-412991?style=flat&logo=openai&logoColor=white)
 ![LangChain](https://img.shields.io/badge/LangChain-4B5563?style=flat)
+![OpenAI](https://img.shields.io/badge/OpenAI%20GPT--4o-412991?style=flat&logo=openai&logoColor=white)
 
-### 📦 벡터 검색 & 데이터 저장
+### 📦 데이터베이스
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white)
 ![ChromaDB](https://img.shields.io/badge/ChromaDB-9D34DA?style=flat)
 
 ### 🔗 API & 통신
 ![HTTPX](https://img.shields.io/badge/HTTPX-3B82F6?style=flat)
 ![Pydantic](https://img.shields.io/badge/Pydantic-BA68C8?style=flat)
+![Apache Kafka](https://img.shields.io/badge/Apache_Kafka-231F20?style=flat)
 
 ### 🧪 테스트 & 품질
 ![Pytest](https://img.shields.io/badge/Pytest-0A9EDC?style=flat)
