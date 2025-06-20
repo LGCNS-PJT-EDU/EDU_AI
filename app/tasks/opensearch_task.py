@@ -1,10 +1,11 @@
 # app/tasks/opensearch_task.py
-# app/tasks/opensearch_task.py
 from celery import shared_task
 from datetime import datetime
-from pymongo import MongoClient              # Motor → PyMongo
+from pymongo import MongoClient
 from opensearchpy.helpers import bulk
-from app.clients.opensearch_client import opensearch_client  # PyMongo 동기 래퍼
+from dateutil.parser import parse as parse_date
+from app.clients.opensearch_client import get_opensearch_client
+opensearch_client = get_opensearch_client()# PyMongo 동기 래퍼
 
 mongo = MongoClient("mongodb://54.180.4.224:27017")
 
@@ -20,17 +21,26 @@ COLLECTION_MAPPINGS = {
 @shared_task(name="sync_all_logs_to_opensearch")
 def sync_all_logs_to_opensearch():
     for index_name, collection in COLLECTION_MAPPINGS.items():
-        actions = [
-            {
+        actions = []
+        for doc in collection.find({}):
+            timestamp = doc.get("timestamp")
+            if isinstance(timestamp, str):
+                try:
+                    timestamp = parse_date(timestamp)
+                except Exception:
+                    timestamp = datetime.utcnow()
+            elif not timestamp:
+                timestamp = datetime.utcnow()
+
+            action = {
                 "_index": index_name,
                 "_id": str(doc["_id"]),
                 "_source": {
                     **{k: v for k, v in doc.items() if k != "_id"},
-                    "timestamp": doc.get("timestamp", datetime.utcnow())
+                    "timestamp": timestamp
                 }
             }
-            for doc in collection.find({})
-        ]
+            actions.append(action)
 
         if actions:
             success, _ = bulk(opensearch_client, actions, request_timeout=60)
