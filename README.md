@@ -64,7 +64,7 @@ AI 기반 학습 지원을 위한 백엔드/ML 플랫폼 **EDU_AI**입니다.
 ![Amazon Elastic Kubernetes Service](https://img.shields.io/badge/Amazon%20EKS-326CE5?style=flat&logo=kubernetes&logoColor=white)
 ![Argo](https://img.shields.io/badge/Argo-EF7B4D?style=flat&logo=Argo&logoColor=white)
 ![Helm](https://img.shields.io/badge/Helm-0F1689?style=flat&logo=Helm&logoColor=white)
-![EC2 Status](https://img.shields.io/badge/EC2-EF7B4D?logo=amazon-aws&style=flat&logoColor=white)
+![AWS EC2](https://img.shields.io/badge/AWS%20EC2-EF7B4D?logo=amazon-aws&style=flat&logoColor=white)
 
 ### 문서화
 ![Swagger](https://img.shields.io/badge/Swagger-85EA2D?logo=swagger&style=flat&logoColor=white)
