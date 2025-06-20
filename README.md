@@ -65,25 +65,34 @@ EDU_AI/
 │ │ ├── chromadb_client.py
 │ │ ├── mongodb.py
 │ │ └── openai_client.py
+│ │ └── opensearch_client.py
 │ ├── config/
 │ │ └── kafka_config.py
 │ ├── consumer/
 │ │ ├── feedback_consumer.py
 │ │ └── recommendation_consumer.py
-│ ├── data/
 │ ├── kafka_admin/
 │ │ └── topic_initializer.py
 │ ├── models/
 │ │ ├── feedback/
+│ │ │ ├── request.py
+│ │ │ └── response.py
 │ │ ├── interview/
+│ │ │ ├── evaluation_model.py
+│ │ │ └── question_model.py
 │ │ ├── pre-assessment/
+│ │ │ ├── request.py
+│ │ │ └── response.py
 │ │ └── recommendation/
-│ ├── clients/
+│ │ │ ├── request.py
+│ │ │ └── response.py
 │ ├── producer/
 │ │ ├── feedback_producer.py
 │ │ └── recommendation_producer.py
 │ ├── routers/
+│ │ ├── chroma_router.py
 │ │ ├── chroma_status_router.py
+│ │ ├── chroma_test_router.py
 │ │ ├── feedback_router.py
 │ │ ├── post_assessment_router.py
 │ │ ├── pre_assessment_router.py
@@ -94,7 +103,6 @@ EDU_AI/
 │ │ ├── chroma_insert.py
 │ │ ├── count_mongo_chroma.py
 │ │ ├── create_index.py
-│ │ ├── insert_sample.py
 │ │ ├── migrate_mongo_to_chroma.py
 │ │ └── test_rag_pipeline.py
 │ ├── services/
@@ -116,13 +124,14 @@ EDU_AI/
 │ │ │ └── reranker.py
 │ │ ├── sync/
 │ │ │ └── sync_recommend.py
-│ │ └── tasks/
-│ │   └── migrate_task.py
+│ │ ├── mongo_recommendation.py
+│ │ └── rag_module.py
 │ ├── utils/
 │ │ ├── build_feedback_prompt.py
 │ │ ├── embed.py
 │ │ ├── gpt_prompt.py
 │ │ ├── level_utils.py
+│ │ ├── metrics.py
 │ │ ├── pretest_log_utils.py
 │ │ ├── prometheus_metrics.py
 │ │ └── roadmap_prompt.py
