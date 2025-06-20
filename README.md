@@ -31,9 +31,11 @@ AI 기반 학습 지원을 위한 백엔드/ML 플랫폼 **EDU_AI**입니다.
 ### ⚙️ 서버 및 런타임
 ![Hypercorn](https://img.shields.io/badge/Hypercorn-333333?style=flat)
 
-### 🧠 AI & LLM
+### 🧠 AI & LLM & RAG
 ![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=flat&logo=langchain&logoColor=white)
 ![OpenAI](https://img.shields.io/badge/OpenAI%20GPT--4o-412991?style=flat&logo=openai&logoColor=white)
+![CELERY](https://img.shields.io/badge/CELERY-BFFF00?style=flat)
+![CELERYBEAT](https://img.shields.io/badge/CELERYBEAT-BFFF00?style=flat)
 
 ### 📦 데이터베이스
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white)
