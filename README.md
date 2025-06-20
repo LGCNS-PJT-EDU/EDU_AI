@@ -46,9 +46,15 @@ AI 기반 학습 지원을 위한 백엔드/ML 플랫폼 **EDU_AI**입니다.
 ![Pydantic](https://img.shields.io/badge/Pydantic-E92063?style=flat&logo=pydantic&logoColor=white)
 ![Apache Kafka](https://img.shields.io/badge/Apache_Kafka-231F20?style=flat&logo=apachekafka&logoColor=white)
 
+### 로그 및 모니터링
+![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=flat&logo=prometheus&logoColor=white)
+![Grafana](https://img.shields.io/badge/Grafana-F46800?style=flat&logo=grafana&logoColor=white)
+![OpenSearch](https://img.shields.io/badge/OpenSearch-005EB8?style=flat&logo=opensearch&logoColor=white)
+
+
 ### 🧪 테스트 & 품질
-![Pytest](https://img.shields.io/badge/Pytest-0A9EDC?style=flat)
-![FastAPI TestClient](https://img.shields.io/badge/FastAPI%20TestClient-009688?style=flat)
+![Pytest](https://img.shields.io/badge/Pytest-0A9EDC?style=flat&logoColor=white)
+![FastAPI TestClient](https://img.shields.io/badge/FastAPI%20TestClient-009688?style=flat&logoColor=white)
 
 ### 🐳 배포 & 운영
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
