@@ -29,21 +29,20 @@ AI 기반 학습 지원을 위한 백엔드/ML 플랫폼 **EDU_AI**입니다.
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white)
 
 ### ⚙️ 서버 및 런타임
-![ASGI](https://img.shields.io/badge/ASGI-3A3A3A?style=flat)
 ![Hypercorn](https://img.shields.io/badge/Hypercorn-333333?style=flat)
 
 ### 🧠 AI & LLM
-![LangChain](https://img.shields.io/badge/LangChain-4B5563?style=flat)
+![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=flat&logo=langchain&logoColor=white)
 ![OpenAI](https://img.shields.io/badge/OpenAI%20GPT--4o-412991?style=flat&logo=openai&logoColor=white)
 
 ### 📦 데이터베이스
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white)
-![ChromaDB](https://img.shields.io/badge/ChromaDB-9D34DA?style=flat)
+![ChromaDB](https://img.shields.io/badge/ChromaDB-9D34DA?style=flat&logo=chromadb&logoColor=white)
 
 ### 🔗 API & 통신
 ![HTTPX](https://img.shields.io/badge/HTTPX-3B82F6?style=flat)
-![Pydantic](https://img.shields.io/badge/Pydantic-BA68C8?style=flat)
-![Apache Kafka](https://img.shields.io/badge/Apache_Kafka-231F20?style=flat)
+![Pydantic](https://img.shields.io/badge/Pydantic-E92063?style=flat&logo=pydantic&logoColor=white)
+![Apache Kafka](https://img.shields.io/badge/Apache_Kafka-231F20?style=flat&logo=apachekafka&logoColor=white)
 
 ### 🧪 테스트 & 품질
 ![Pytest](https://img.shields.io/badge/Pytest-0A9EDC?style=flat)
