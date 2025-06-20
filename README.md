@@ -51,6 +51,8 @@ AI 기반 학습 지원을 위한 백엔드/ML 플랫폼 **EDU_AI**입니다.
 ![Grafana](https://img.shields.io/badge/Grafana-F46800?style=flat&logo=grafana&logoColor=white)
 ![OpenSearch](https://img.shields.io/badge/OpenSearch-005EB8?style=flat&logo=opensearch&logoColor=white)
 
+### 버전 관리
+![Poetry](https://img.shields.io/badge/Poetry-60A5FA?style=flat&logo=poetry&logoColor=white)
 
 ### 🧪 테스트 & 품질
 ![Pytest](https://img.shields.io/badge/Pytest-0A9EDC?style=flat&logo=pytest&logoColor=white)
@@ -59,6 +61,10 @@ AI 기반 학습 지원을 위한 백엔드/ML 플랫폼 **EDU_AI**입니다.
 ### 🐳 배포 & 운영
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=flat&logo=githubactions&logoColor=white)
+![Amazon Elastic Kubernetes Service](https://img.shields.io/badge/Amazon%20EKS-326CE5?style=flat&logo=kubernetes&logoColor=white)
+![Argo](https://img.shields.io/badge/Argo-EF7B4D?style=flat&logo=Argo&logoColor=white)
+![Helm](https://img.shields.io/badge/Helm-0F1689?style=flat&logo=Helm&logoColor=white)
+![EC2 Status](https://img.shields.io/badge/EC2-EF7B4D?logo=amazon-aws&style=flatWlogoColor=white)
 
 
 ---
