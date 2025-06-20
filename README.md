@@ -36,13 +36,13 @@ AI 기반 학습 지원을 위한 백엔드/ML 플랫폼 **EDU_AI**입니다.
 ![OpenAI](https://img.shields.io/badge/OpenAI%20GPT--4o-412991?style=flat&logo=openai&logoColor=white)
 ![CELERY](https://img.shields.io/badge/CELERY-BFFF00?style=flat)
 ![CELERYBEAT](https://img.shields.io/badge/CELERYBEAT-BFFF00?style=flat)
+![OpenAI](https://img.shields.io/badge/Redis-FF4438?style=flat&logo=redis&logoColor=white)
 
 ### 📦 데이터베이스
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white)
 ![ChromaDB](https://img.shields.io/badge/ChromaDB-9D34DA?style=flat&logo=chromadb&logoColor=white)
 
 ### 🔗 API & 통신
-![HTTPX](https://img.shields.io/badge/HTTPX-3B82F6?style=flat)
 ![Pydantic](https://img.shields.io/badge/Pydantic-E92063?style=flat&logo=pydantic&logoColor=white)
 ![Apache Kafka](https://img.shields.io/badge/Apache_Kafka-231F20?style=flat&logo=apachekafka&logoColor=white)
 
@@ -53,8 +53,8 @@ AI 기반 학습 지원을 위한 백엔드/ML 플랫폼 **EDU_AI**입니다.
 
 
 ### 🧪 테스트 & 품질
-![Pytest](https://img.shields.io/badge/Pytest-0A9EDC?style=flat&logoColor=white)
-![FastAPI TestClient](https://img.shields.io/badge/FastAPI%20TestClient-009688?style=flat&logoColor=white)
+![Pytest](https://img.shields.io/badge/Pytest-0A9EDC?style=flat&logo=pytest&logoColor=white)
+![FastAPI TestClient](https://img.shields.io/badge/FastAPI%20TestClient-009688?style=flat&logo=fastapi&logoColor=white)
 
 ### 🐳 배포 & 운영
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
